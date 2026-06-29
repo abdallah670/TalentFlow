@@ -1,0 +1,127 @@
+## Ignore build output directories
+**/bin/
+**/obj/
+
+# Ignore generated files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio temp files
+*.vspscc
+*.vssscc
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet packages
+*.nupkg
+*.snupkg
+
+# Resharper
+_Resharper*/
+
+# VS Code settings
+.vscode/
+
+# Log files
+*.log
+
+# Misc
+*.tmp
+
+# .NET
+*.dll
+*.exe
+*.pdb
+*.runtimeconfig.json
+*.deps.json
+*.xml
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Test results
+[Tt]est[Rr]esults*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.ipch
+*.pgc
+*.pgd
+*.rsp
+*.tmp
+*.tlb
+*.tli
+*.tlh
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vsscc
+.builds
+
+# Files built by Visual Studio Code
+.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Mac files
+.DS_Store
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Certificate files
+*.pfx
+*.p12
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+packages/
+*.nupkg
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
