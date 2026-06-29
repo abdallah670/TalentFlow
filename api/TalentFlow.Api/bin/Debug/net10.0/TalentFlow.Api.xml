@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TalentFlow.Api</name>
+    </assembly>
+    <members>
+        <member name="T:TalentFlow.Api.Middleware.HangfireAuthorizationFilter">
+            <summary>
+            Authorization filter for Hangfire Dashboard
+            In production, you should restrict this to admin users only
+            </summary>
+        </member>
+    </members>
+</doc>

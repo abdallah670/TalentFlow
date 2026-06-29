@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\TalentFlow.Domain\TalentFlow.Domain.csproj" />
+    <ProjectReference Include="..\TalentFlow.Persistence\TalentFlow.Persistence.csproj" />
+    <ProjectReference Include="..\TalentFlow.Application\TalentFlow.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.1.2" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.1.2" />
+    <PackageReference Include="Hangfire.MemoryStorage" Version="1.8.1.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
