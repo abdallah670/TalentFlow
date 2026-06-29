@@ -1,7 +1,7 @@
 ﻿using TalentFlow.Api.Middleware;
 using TalentFlow.Api.Converters;
 using TalentFlow.Infrastructure;
-
+    
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
@@ -12,7 +12,6 @@ using System.Text.Json.Serialization;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.RateLimiting;
-using System.Threading.RateLimiting;
 using Asp.Versioning;
 
 Log.Logger = new LoggerConfiguration()
@@ -141,7 +140,7 @@ builder.Services.AddHangfire(configuration => configuration
     .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions
+    .UseSqlServerStorage(builder.Configuration.GetConnectionString("TalentFlowConnection"), new SqlServerStorageOptions
     {
         CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
         SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
