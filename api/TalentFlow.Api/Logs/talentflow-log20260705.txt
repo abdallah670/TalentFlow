@@ -1,0 +1,114 @@
+2026-07-05 18:05:59.975 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:06:17.915 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:07:09.602 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:08:27.584 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:37:13.501 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:50:23.859 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:50:25.025 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-07-05 18:50:27.292 +03:00 [INF] Hangfire SQL objects installed.
+2026-07-05 18:51:50.175 +03:00 [WRN] OAuth credentials not found. Social login buttons will fail if clicked.
+2026-07-05 18:51:50.695 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-07-05 18:51:51.736 +03:00 [INF] Hangfire SQL objects installed.
+2026-07-05 18:51:51.928 +03:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-07-05 18:51:51.928 +03:00 [INF] Starting web host
+2026-07-05 18:51:51.965 +03:00 [INF] User profile is available. Using 'C:\Users\ABOSALAH\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-05 18:51:52.368 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/ - null null
+2026-07-05 18:51:52.466 +03:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@TalentFlow'
+2026-07-05 18:51:52.466 +03:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-07-05 18:51:52.467 +03:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-07-05 18:51:52.548 +03:00 [DBG] Execution loop BackgroundServerProcess:11ecbb6a has started in 61.0326 ms
+2026-07-05 18:51:52.550 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-05 18:51:52.550 +03:00 [INF] Hosting environment: Development
+2026-07-05 18:51:52.550 +03:00 [INF] Content root path: D:\Progects .NET\TalentFlow\api\TalentFlow.Api
+2026-07-05 18:51:52.730 +03:00 [INF] HTTP GET / started at "2026-07-05T15:51:52.7262071Z"
+2026-07-05 18:51:52.739 +03:00 [INF] Executing endpoint 'HTTP: GET /'
+2026-07-05 18:51:52.752 +03:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2026-07-05 18:51:52.753 +03:00 [INF] Executed endpoint 'HTTP: GET /'
+2026-07-05 18:51:52.754 +03:00 [INF] HTTP GET / completed with 302 in 27ms
+2026-07-05 18:51:52.890 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger - null null
+2026-07-05 18:51:52.898 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/ - 302 null null 543.1333ms
+2026-07-05 18:51:52.900 +03:00 [INF] HTTP GET /swagger started at "2026-07-05T15:51:52.9003281Z"
+2026-07-05 18:51:52.902 +03:00 [INF] HTTP GET /swagger completed with 301 in 1ms
+2026-07-05 18:51:52.903 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger - 301 null null 13.6475ms
+2026-07-05 18:51:52.914 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.html - null null
+2026-07-05 18:51:52.916 +03:00 [INF] HTTP GET /swagger/index.html started at "2026-07-05T15:51:52.9165592Z"
+2026-07-05 18:51:52.932 +03:00 [INF] Server desktop-q28rf8l:15644:28550ea6 successfully announced in 378.597 ms
+2026-07-05 18:51:52.938 +03:00 [DBG] Execution loop ServerHeartbeatProcess:29c4a8fc has started in 5.0947 ms
+2026-07-05 18:51:52.939 +03:00 [INF] Server desktop-q28rf8l:15644:28550ea6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-07-05 18:51:52.944 +03:00 [DBG] Execution loop ServerWatchdog:61dc8c5f has started in 4.68 ms
+2026-07-05 18:51:52.980 +03:00 [DBG] Execution loop ServerJobCancellationWatcher:9c820476 has started in 36.1308 ms
+2026-07-05 18:51:52.987 +03:00 [DBG] Execution loop ExpirationManager:a1e9dedb has started in 7.1224 ms
+2026-07-05 18:51:52.993 +03:00 [DBG] Execution loop CountersAggregator:0968b222 has started in 9.2558 ms
+2026-07-05 18:51:52.993 +03:00 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2026-07-05 18:51:52.993 +03:00 [DBG] Aggregating records in 'Counter' table...
+2026-07-05 18:51:52.999 +03:00 [DBG] Execution loop SqlServerHeartbeatProcess:533d1a2f has started in 6.8944 ms
+2026-07-05 18:51:53.004 +03:00 [DBG] Execution loop Worker:cdc60729 has started in 5.0237 ms
+2026-07-05 18:51:53.008 +03:00 [DBG] Execution loop Worker:d3b61cef has started in 9.0813 ms
+2026-07-05 18:51:53.016 +03:00 [DBG] Execution loop Worker:5701db3c has started in 16.5564 ms
+2026-07-05 18:51:53.020 +03:00 [DBG] Execution loop Worker:55dc0d80 has started in 20.9342 ms
+2026-07-05 18:51:53.025 +03:00 [DBG] Execution loop Worker:07e584a9 has started in 26.2982 ms
+2026-07-05 18:51:53.064 +03:00 [DBG] Execution loop Worker:9d0002d1 has started in 64.5622 ms
+2026-07-05 18:51:53.088 +03:00 [DBG] Execution loop Worker:05344b94 has started in 88.5183 ms
+2026-07-05 18:51:53.107 +03:00 [DBG] Execution loop Worker:4a881bb5 has started in 108.1939 ms
+2026-07-05 18:51:53.124 +03:00 [DBG] Execution loop Worker:eeab70cc has started in 125.2968 ms
+2026-07-05 18:51:53.137 +03:00 [DBG] Execution loop Worker:3e3b708c has started in 137.9147 ms
+2026-07-05 18:51:53.183 +03:00 [DBG] Removing outdated records from the 'Job' table...
+2026-07-05 18:51:53.183 +03:00 [DBG] Execution loop Worker:2e1797fa has started in 184.0882 ms
+2026-07-05 18:51:53.205 +03:00 [DBG] Execution loop Worker:8f485693 has started in 206.102 ms
+2026-07-05 18:51:53.217 +03:00 [DBG] Execution loop Worker:72b908cb has started in 217.589 ms
+2026-07-05 18:51:53.219 +03:00 [INF] HTTP GET /swagger/index.html completed with 200 in 302ms
+2026-07-05 18:51:53.224 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.html - 200 null text/html;charset=utf-8 310.7427ms
+2026-07-05 18:51:53.246 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/swagger-ui.css - null null
+2026-07-05 18:51:53.247 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.css - null null
+2026-07-05 18:51:53.247 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/swagger-ui-bundle.js - null null
+2026-07-05 18:51:53.247 +03:00 [DBG] Execution loop Worker:8baf5174 has started in 248.2528 ms
+2026-07-05 18:51:53.249 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/swagger-ui-standalone-preset.js - null null
+2026-07-05 18:51:53.249 +03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js started at "2026-07-05T15:51:53.2492003Z"
+2026-07-05 18:51:53.249 +03:00 [INF] HTTP GET /swagger/swagger-ui.css started at "2026-07-05T15:51:53.2492052Z"
+2026-07-05 18:51:53.249 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.js - null null
+2026-07-05 18:51:53.249 +03:00 [INF] HTTP GET /swagger/index.js started at "2026-07-05T15:51:53.2494270Z"
+2026-07-05 18:51:53.249 +03:00 [INF] HTTP GET /swagger/index.css started at "2026-07-05T15:51:53.2492006Z"
+2026-07-05 18:51:53.249 +03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js started at "2026-07-05T15:51:53.2496738Z"
+2026-07-05 18:51:53.250 +03:00 [INF] HTTP GET /swagger/index.js completed with 200 in 1ms
+2026-07-05 18:51:53.251 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.js - 200 null application/javascript;charset=utf-8 2.4451ms
+2026-07-05 18:51:53.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-05 18:51:53.257 +03:00 [DBG] Execution loop Worker:80b7e475 has started in 258.1787 ms
+2026-07-05 18:51:53.299 +03:00 [DBG] Execution loop Worker:0962aa12 has started in 299.9448 ms
+2026-07-05 18:51:53.299 +03:00 [DBG] Execution loop Worker:22233031 has started in 299.9251 ms
+2026-07-05 18:51:53.301 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 49.3425ms
+2026-07-05 18:51:53.304 +03:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2026-07-05 18:51:53.305 +03:00 [INF] HTTP GET /swagger/index.css completed with 200 in 55ms
+2026-07-05 18:51:53.305 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.css - 200 202 text/css 58.3329ms
+2026-07-05 18:51:53.318 +03:00 [DBG] Execution loop Worker:71467879 has started in 318.5498 ms
+2026-07-05 18:51:53.320 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-07-05 18:51:53.320 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-07-05 18:51:53.320 +03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js completed with 200 in 70ms
+2026-07-05 18:51:53.320 +03:00 [INF] HTTP GET /swagger/swagger-ui.css completed with 200 in 71ms
+2026-07-05 18:51:53.327 +03:00 [DBG] Execution loop Worker:247b9cfb has started in 327.4617 ms
+2026-07-05 18:51:53.354 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/swagger-ui.css - 200 152035 text/css 87.9439ms
+2026-07-05 18:51:53.354 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/swagger-ui-standalone-preset.js - 200 230007 text/javascript 105.9519ms
+2026-07-05 18:51:53.354 +03:00 [DBG] Execution loop Worker:fae936eb has started in 355.2821 ms
+2026-07-05 18:51:53.354 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_vs/browserLink - null null
+2026-07-05 18:51:53.375 +03:00 [DBG] Execution loop DelayedJobScheduler:7c3e75af has started in 20.8381 ms
+2026-07-05 18:51:53.379 +03:00 [DBG] Removing outdated records from the 'List' table...
+2026-07-05 18:51:53.379 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-07-05 18:51:53.379 +03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js completed with 200 in 130ms
+2026-07-05 18:51:53.433 +03:00 [INF] Server desktop-q28rf8l:15644:28550ea6 all the dispatchers started
+2026-07-05 18:51:53.434 +03:00 [DBG] Execution loop RecurringJobScheduler:b734aa93 has started in 58.9797 ms
+2026-07-05 18:51:53.456 +03:00 [DBG] Removing outdated records from the 'Set' table...
+2026-07-05 18:51:53.481 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/swagger-ui-bundle.js - 200 1426050 text/javascript 233.0854ms
+2026-07-05 18:51:53.525 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_vs/browserLink - 200 null text/javascript; charset=UTF-8 170.957ms
+2026-07-05 18:51:53.532 +03:00 [DBG] Removing outdated records from the 'Hash' table...
+2026-07-05 18:51:53.745 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - null null
+2026-07-05 18:51:53.745 +03:00 [INF] HTTP GET /swagger/v1/swagger.json started at "2026-07-05T15:51:53.7455476Z"
+2026-07-05 18:51:53.752 +03:00 [INF] HTTP GET /swagger/v1/swagger.json completed with 200 in 6ms
+2026-07-05 18:51:53.752 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.2437ms
+2026-07-05 18:51:53.754 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/favicon-32x32.png - null null
+2026-07-05 18:51:53.754 +03:00 [INF] HTTP GET /swagger/favicon-32x32.png started at "2026-07-05T15:51:53.7542702Z"
+2026-07-05 18:51:53.754 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-07-05 18:51:53.754 +03:00 [INF] HTTP GET /swagger/favicon-32x32.png completed with 200 in 0ms
+2026-07-05 18:51:53.755 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/favicon-32x32.png - 200 628 image/png 1.0269ms

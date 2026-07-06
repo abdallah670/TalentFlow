@@ -7,7 +7,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly DbContext _dbContext;
+    private readonly AppDbContext _dbContext;
 
     private ITenantRepository? _tenantRepository;
     private ITenantSettingRepository? _tenantsettingRepository;
@@ -45,7 +45,7 @@ public class UnitOfWork : IUnitOfWork
     private INotificationTemplateRepository? _notificationtemplateRepository;
     private IAuditLogRepository? _auditlogRepository;
 
-    public UnitOfWork(DbContext dbContext)
+    public UnitOfWork(AppDbContext dbContext)
     {
         _dbContext = dbContext;
     }

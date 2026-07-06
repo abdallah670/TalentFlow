@@ -1,18 +1,21 @@
-﻿using TalentFlow.Api.Middleware;
-using TalentFlow.Api.Converters;
-using TalentFlow.Infrastructure;
+﻿using Asp.Versioning;
+using Hangfire;
+using Hangfire.SqlServer;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.IdentityModel.Tokens;
     
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
-using TalentFlow.Application;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.Facebook;
+using System.Text;
 using System.Text.Json.Serialization;
-using Hangfire;
-using Hangfire.SqlServer;
-using Microsoft.AspNetCore.RateLimiting;
-using Asp.Versioning;
+using TalentFlow.Api.Converters;
+using TalentFlow.Api.Middleware;
+using TalentFlow.Application;
+using TalentFlow.Infrastructure;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -134,6 +137,7 @@ builder.Services.AddApplication(builder.Configuration);
 
 // Add Memory Cache for search results
 builder.Services.AddMemoryCache();
+builder.Services.AddHealthChecks();
 
 // Add Hangfire for background job processing
 builder.Services.AddHangfire(configuration => configuration
@@ -151,6 +155,36 @@ builder.Services.AddHangfire(configuration => configuration
 
 // Add Hangfire server
 builder.Services.AddHangfireServer();
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(o =>
+{
+    o.RequireHttpsMetadata = false;
+    o.SaveToken = false;
+
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidAudience = builder.Configuration["JWT:Audience"],
+
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])
+        )
+    };
+});
+
+
+
 
 
 

@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class ApplicationStageHistoryRepository : GenericRepository<ApplicationStageHistory>, IApplicationStageHistoryRepository
 {
-    public ApplicationStageHistoryRepository(DbContext dbContext) : base(dbContext)
+    public ApplicationStageHistoryRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

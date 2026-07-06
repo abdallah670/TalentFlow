@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class RoleRepository : GenericRepository<Role>, IRoleRepository
 {
-    public RoleRepository(DbContext dbContext) : base(dbContext)
+    public RoleRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

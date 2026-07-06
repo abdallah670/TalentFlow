@@ -10,9 +10,9 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    protected readonly DbContext _dbContext;
+    private readonly AppDbContext _dbContext;
 
-    public GenericRepository(DbContext dbContext)
+    public GenericRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
     }

@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class InterviewCriteriaRepository : GenericRepository<InterviewCriteria>, IInterviewCriteriaRepository
 {
-    public InterviewCriteriaRepository(DbContext dbContext) : base(dbContext)
+    public InterviewCriteriaRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

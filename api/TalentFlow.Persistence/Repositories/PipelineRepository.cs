@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class PipelineRepository : GenericRepository<Pipeline>, IPipelineRepository
 {
-    public PipelineRepository(DbContext dbContext) : base(dbContext)
+    public PipelineRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }
