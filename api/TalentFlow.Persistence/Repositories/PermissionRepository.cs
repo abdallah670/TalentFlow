@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class PermissionRepository : GenericRepository<Permission>, IPermissionRepository
 {
-    public PermissionRepository(DbContext dbContext) : base(dbContext)
+    public PermissionRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

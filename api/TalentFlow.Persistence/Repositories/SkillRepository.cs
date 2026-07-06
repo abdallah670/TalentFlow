@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class SkillRepository : GenericRepository<Skill>, ISkillRepository
 {
-    public SkillRepository(DbContext dbContext) : base(dbContext)
+    public SkillRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

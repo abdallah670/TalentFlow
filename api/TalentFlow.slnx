@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="TalentFlow.Api/TalentFlow.Api.csproj" />
+  <Project Path="TalentFlow.Application/TalentFlow.Application.csproj" />
+  <Project Path="TalentFlow.Domain/TalentFlow.Domain.csproj" />
+  <Project Path="TalentFlow.Infrastructure/TalentFlow.Infrastructure.csproj" />
+  <Project Path="TalentFlow.Persistence/TalentFlow.Persistence.csproj" />
+</Solution>

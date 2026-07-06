@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class AssessmentResultRepository : GenericRepository<AssessmentResult>, IAssessmentResultRepository
 {
-    public AssessmentResultRepository(DbContext dbContext) : base(dbContext)
+    public AssessmentResultRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

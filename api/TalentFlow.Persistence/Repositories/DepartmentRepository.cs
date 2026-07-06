@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class DepartmentRepository : GenericRepository<Department>, IDepartmentRepository
 {
-    public DepartmentRepository(DbContext dbContext) : base(dbContext)
+    public DepartmentRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

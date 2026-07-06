@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class NotificationRepository : GenericRepository<Notification>, INotificationRepository
 {
-    public NotificationRepository(DbContext dbContext) : base(dbContext)
+    public NotificationRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

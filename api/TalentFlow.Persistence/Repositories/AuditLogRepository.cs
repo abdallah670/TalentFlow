@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class AuditLogRepository : GenericRepository<AuditLog>, IAuditLogRepository
 {
-    public AuditLogRepository(DbContext dbContext) : base(dbContext)
+    public AuditLogRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }

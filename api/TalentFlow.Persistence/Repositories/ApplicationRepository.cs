@@ -6,7 +6,7 @@ namespace TalentFlow.Persistence.Repositories;
 
 public class ApplicationRepository : GenericRepository<TalentFlow.Domain.Entities.RecruitmentModule.Application>, IApplicationRepository
 {
-    public ApplicationRepository(DbContext dbContext) : base(dbContext)
+    public ApplicationRepository(AppDbContext dbContext) : base(dbContext)
     {
     }
 }
