@@ -1,4 +1,4 @@
-﻿using Asp.Versioning;
+using Asp.Versioning;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Authentication.Facebook;
@@ -133,8 +133,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Add Application Services
 builder.Services.AddApplication(builder.Configuration);
 
-
-
 // Add Memory Cache for search results
 builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks();
@@ -155,7 +153,6 @@ builder.Services.AddHangfire(configuration => configuration
 
 // Add Hangfire server
 builder.Services.AddHangfireServer();
-
 
 builder.Services.AddAuthentication(options =>
 {
@@ -182,11 +179,6 @@ builder.Services.AddAuthentication(options =>
         )
     };
 });
-
-
-
-
-
 
 // Identity.Application cookie scheme used automatically by AddIdentity for external login callbacks
 
@@ -256,7 +248,6 @@ app.UseRateLimiter();
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("Swagger:Enabled"))
 {
@@ -280,8 +271,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-
 
 // Hangfire Dashboard - accessible at /hangfire
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
