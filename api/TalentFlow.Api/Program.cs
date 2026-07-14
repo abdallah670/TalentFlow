@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+=======
 using Asp.Versioning;
 using Hangfire;
 using Hangfire.SqlServer;
@@ -5,114 +10,160 @@ using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
+>>>>>>> 03bfb6c64f9b0d5db4cb2b9bda19a411c4c31c7a
 using Microsoft.IdentityModel.Tokens;
-    
-using Serilog;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using System.Reflection;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using System.Text.Json.Serialization;
-using TalentFlow.Api.Converters;
-using TalentFlow.Api.Middleware;
+using TalentFlow.Application.Models.Identity;
+using TalentFlow.Domain.Entities.IdentityModule;
+using TalentFlow.Persistence;
+using MediatR;
 using TalentFlow.Application;
+using System.Reflection;
 using TalentFlow.Infrastructure;
-
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Information)
-    .MinimumLevel.Override("Swashbuckle", Serilog.Events.LogEventLevel.Debug)
-    .WriteTo.Console()
-    .WriteTo.File("Logs/talentflow-log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add environment variables to configuration
-builder.Configuration.AddEnvironmentVariables();
+// =========================
+// Add Services
+// =========================
 
-builder.Host.UseSerilog();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
-// Add services to the container.
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
-        options.JsonSerializerOptions.Converters.Add(new NullableTimeSpanConverter());
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-    });
+
+builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
+
+// =========================
+// Swagger
+// =========================
+
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new() { Title = "Talent Flow API", Version = "v1" });
-    
-    // Set the comments path for the Swagger JSON and UI.
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    options.IncludeXmlComments(xmlPath);
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "TalentFlow API",
+        Version = "v1"
+    });
 
-    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-        Scheme = "Bearer",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
         BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme."
+        In = ParameterLocation.Header,
+        Description = "Enter the JWT token only"
     });
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            new OpenApiSecurityScheme
             {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                Reference = new OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            Array.Empty<string>()
         }
     });
-
-    // Use full names to avoid collisions between DTOs with same names in different namespaces
-    options.CustomSchemaIds(type => type.FullName?.Replace("`", "_").Replace("[", "_").Replace("]", "_").Replace(",", "_").Replace(" ", ""));
 });
 
-builder.Services.AddApiVersioning(options =>
+// =========================
+// Database
+// =========================
+
+builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.AssumeDefaultVersionWhenUnspecified = true;
-    options.ReportApiVersions = true;
-}).AddApiExplorer(options =>
-{
-    options.GroupNameFormat = "'v'VVV";
-    options.SubstituteApiVersionInUrl = true;
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("TalentFlowConnection"));
 });
 
-builder.Services.AddRateLimiter(options =>
-{
-    var config = builder.Configuration.GetSection("RateLimiting");
-    options.AddFixedWindowLimiter("Api", opt =>
+// =========================
+// JWT Settings
+// =========================
+
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
+
+var jwtSettings = builder.Configuration
+    .GetSection("JwtSettings")
+    .Get<JwtSettings>()!;
+
+// =========================
+// Identity
+// =========================
+
+builder.Services
+    .AddIdentity<User, Role>(options =>
     {
-        opt.PermitLimit = config.GetValue<int>("ApiLimit");
-        opt.Window = TimeSpan.FromMinutes(config.GetValue<int>("ApiWindowMinutes"));
-    });
-    
-    options.AddFixedWindowLimiter("Auth", opt =>
+        options.Password.RequiredLength = 8;
+        options.Password.RequireDigit = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireNonAlphanumeric = false;
+
+        options.User.RequireUniqueEmail = true;
+    })
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
+// =========================
+// Authentication
+// =========================
+
+builder.Services
+    .AddAuthentication(options =>
     {
-        opt.PermitLimit = config.GetValue<int>("AuthLimit");
-        opt.Window = TimeSpan.FromMinutes(config.GetValue<int>("AuthWindowMinutes"));
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(jwtSettings.Key)),
+
+            ValidateIssuer = true,
+            ValidIssuer = jwtSettings.Issuer,
+
+            ValidateAudience = true,
+            ValidAudience = jwtSettings.Audience,
+
+            ValidateLifetime = true,
+
+            ClockSkew = TimeSpan.Zero
+        };
     });
 
-    options.AddFixedWindowLimiter("Feed", opt =>
-    {
-        opt.PermitLimit = config.GetValue<int>("FeedLimit");
-        opt.Window = TimeSpan.FromMinutes(config.GetValue<int>("FeedWindowMinutes"));
-    });
-});
+// =========================
+// Authorization
+// =========================
+
+builder.Services.AddAuthorization();
+
+// =========================
+// CORS
+// =========================
 
 builder.Services.AddCors(options =>
 {
+<<<<<<< HEAD
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+=======
     options.AddPolicy("AllowAll", builder =>
         builder.WithOrigins(
             "http://localhost:4200", 
@@ -215,63 +266,59 @@ if (hasGoogleOAuth)
         options.CallbackPath = "/signin-google";
         options.SignInScheme = "Identity.External";
         options.SaveTokens = true;
+>>>>>>> 03bfb6c64f9b0d5db4cb2b9bda19a411c4c31c7a
     });
-    Log.Information("Google OAuth configured");
-}
-
-// Add Facebook OAuth if credentials exist
-if (hasFacebookOAuth)
-{
-    authBuilder.AddFacebook(options =>
-    {
-        options.AppId = facebookAppId;
-        options.AppSecret = facebookAppSecret;
-        options.CallbackPath = "/signin-facebook";
-        options.SignInScheme = "Identity.External";
-        options.SaveTokens = true;
-    });
-    Log.Information("Facebook OAuth configured");
-}
-
-if (!hasGoogleOAuth && !hasFacebookOAuth)
-{
-    Log.Warning("OAuth credentials not found. Social login buttons will fail if clicked.");
-}
+});
 
 var app = builder.Build();
 
-// Apply CORS before logging and exceptions to ensure headers are present on error responses
-app.UseCors("AllowAll");
-app.UseRateLimiter();
+// =========================
+// Seed Database
+// =========================
 
-// Add Request Logging Middleware
-app.UseMiddleware<RequestLoggingMiddleware>();
-app.UseMiddleware<ExceptionMiddleware>();
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
+<<<<<<< HEAD
+    await SeedRole.SeedRoleAsync(roleManager);
+    await SeedUser.SeedUserAsync(userManager, context);
+}
+
+// =========================
+// Middleware
+// =========================
+
+if (app.Environment.IsDevelopment())
+=======
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("Swagger:Enabled"))
+>>>>>>> 03bfb6c64f9b0d5db4cb2b9bda19a411c4c31c7a
 {
     app.UseSwagger();
+
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Talent Flow API v1");
-        options.RoutePrefix = "swagger";
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "TalentFlow API v1");
+        options.RoutePrefix = string.Empty;
     });
 }
 
-// Ensure wwwroot/uploads exists
-var uploadsPath = Path.Combine(app.Environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"), "uploads");
-if (!Directory.Exists(uploadsPath))
-{
-    Directory.CreateDirectory(uploadsPath);
-}
-
-app.UseStaticFiles();
 app.UseHttpsRedirection();
 
+app.UseCors("AllowAll");
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
+<<<<<<< HEAD
+app.MapControllers();
+
+app.Run();
+=======
 // Hangfire Dashboard - accessible at /hangfire
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
@@ -304,3 +351,4 @@ finally
 
 // Make Program class accessible for integration testing
 public partial class Program { }
+>>>>>>> 03bfb6c64f9b0d5db4cb2b9bda19a411c4c31c7a

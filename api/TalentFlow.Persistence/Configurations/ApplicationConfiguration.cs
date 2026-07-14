@@ -15,6 +15,7 @@ public class ApplicationConfiguration : IEntityTypeConfiguration<TalentFlow.Doma
         if (typeof(TalentFlow.Domain.Common.ISoftDelete).IsAssignableFrom(typeof(TalentFlow.Domain.Entities.RecruitmentModule.Application)))
         {
             builder.HasQueryFilter(e => !((TalentFlow.Domain.Common.ISoftDelete)e).IsDeleted);
+
         }
     }
 }

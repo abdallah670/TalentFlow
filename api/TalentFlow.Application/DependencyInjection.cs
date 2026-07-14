@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TalentFlow.Application.Contracts;
+using TalentFlow.Application.Interfaces;
 
 namespace TalentFlow.Application
 {

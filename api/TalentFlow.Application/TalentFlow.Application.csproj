@@ -13,12 +13,26 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="10.0.5" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.14.0" />
-	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
 	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Infra\" />
+    <Folder Include="Features\Tenant\Command\DeactivateTenant\" />
+    <Folder Include="Features\Tenant\Command\ActivateTenant\" />
+    <Folder Include="Features\Tenant\Command\UpdateSettings\" />
+    <Folder Include="Features\Tenant\Command\UpdateBranding\" />
+    <Folder Include="Features\Tenant\Command\UpdateTenant\" />
+    <Folder Include="Features\Tenant\DTOs\" />
+    <Folder Include="Features\Tenant\Queries\GetTenantSettings\" />
+    <Folder Include="Features\Tenant\Queries\GetTenant\" />
+    <Folder Include="Features\User\Command\DeleteUser\" />
+    <Folder Include="Features\User\Command\ActivateUser\" />
+    <Folder Include="Features\User\Command\DeactivateUser\" />
+    <Folder Include="Features\User\Command\AssignRole\" />
+    <Folder Include="Features\User\Command\NewFolder\" />
+    <Folder Include="Features\User\Command\UpdateUser\" />
+    <Folder Include="Features\User\Query\GetUsers\" />
+
   </ItemGroup>
 
   <PropertyGroup>

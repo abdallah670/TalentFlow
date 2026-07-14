@@ -12,6 +12,7 @@ public class UserConfiguration : IEntityTypeConfiguration<TalentFlow.Domain.Enti
         builder.Property(e => e.CreatedAt).IsRequired();
         builder.Property(e => e.IsActive).HasDefaultValue(true);
         // Soft‑delete filter if the entity implements ISoftDelete
+
         if (typeof(TalentFlow.Domain.Common.ISoftDelete).IsAssignableFrom(typeof(TalentFlow.Domain.Entities.IdentityModule.User)))
         {
             builder.HasQueryFilter(e => !((TalentFlow.Domain.Common.ISoftDelete)e).IsDeleted);
