@@ -51,6 +51,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
     public DbSet<Notification> Notifications { get; set; } = null!;
     public DbSet<NotificationTemplate> NotificationTemplates { get; set; } = null!;
     public DbSet<AuditLog> AuditLogs { get; set; } = null!;
+    public DbSet<RefreshToken> RefreshTokens { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

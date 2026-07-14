@@ -12,8 +12,8 @@ using TalentFlow.Persistence;
 namespace TalentFlow.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260629132834_Init_Entities")]
-    partial class Init_Entities
+    [Migration("20260707101348_addrefreshtoken")]
+    partial class addrefreshtoken
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -416,6 +416,41 @@ namespace TalentFlow.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Permission", (string)null);
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("RevokedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TokenHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.Role", b =>
@@ -1549,6 +1584,22 @@ namespace TalentFlow.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.RefreshToken", b =>
+                {
+                    b.HasOne("TalentFlow.Domain.Entities.IdentityModule.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.User", b =>
+                {
+                    b.Navigation("RefreshTokens");
                 });
 #pragma warning restore 612, 618
         }

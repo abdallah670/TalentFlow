@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Progects .NET\\TalentFlow\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\authentication\\queries\\getprofile\\getprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\authentication\\queries\\getprofile\\getprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\authentication\\commands\\refreshtoken\\refreshtokencommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\authentication\\commands\\refreshtoken\\refreshtokencommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|d:\\progects .net\\talentflow\\api\\talentflow.api\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|solutionrelative:talentflow.api\\controller\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\user\\query\\getuser\\getusersqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\user\\query\\getuser\\getusersqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\user\\query\\getuser\\getusersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\user\\query\\getuser\\getusersquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\user\\query\\getuser\\getusersdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\user\\query\\getuser\\getusersdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|d:\\progects .net\\talentflow\\api\\talentflow.api\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|solutionrelative:talentflow.api\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|d:\\progects .net\\talentflow\\api\\talentflow.api\\controller\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|solutionrelative:talentflow.api\\controller\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\user\\command\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\user\\command\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|d:\\progects .net\\talentflow\\api\\talentflow.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|solutionrelative:talentflow.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\user\\command\\createuser\\createusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\user\\command\\createuser\\createusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetProfileQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Queries\\GetProfile\\GetProfileQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Authentication\\Queries\\GetProfile\\GetProfileQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Queries\\GetProfile\\GetProfileQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Authentication\\Queries\\GetProfile\\GetProfileQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T14:22:40.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RefreshTokenCommandHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Commands\\RefreshToken\\RefreshTokenCommandHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Authentication\\Commands\\RefreshToken\\RefreshTokenCommandHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Commands\\RefreshToken\\RefreshTokenCommandHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Authentication\\Commands\\RefreshToken\\RefreshTokenCommandHandler.cs",
+              "ViewState": "AgIAACAAAACA+P////8XwBQAAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T14:22:14.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\AuthController.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Api\\Controller\\AuthController.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\AuthController.cs",
+              "RelativeToolTip": "TalentFlow.Api\\Controller\\AuthController.cs",
+              "ViewState": "AgIAACwAAAAA8////38XwBAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:29:47.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\UsersController.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Api\\Controller\\UsersController.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\UsersController.cs",
+              "RelativeToolTip": "TalentFlow.Api\\Controller\\UsersController.cs",
+              "ViewState": "AgIAABAAAAAA8/////8PwCMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:25:26.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TenantController.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\TenantController.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Api\\Controller\\TenantController.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\TenantController.cs",
+              "RelativeToolTip": "TalentFlow.Api\\Controller\\TenantController.cs",
+              "ViewState": "AgIAAAAAAADsLjMzMzMLwAsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:24:30.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetUsersDTOs.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersDTOs.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersDTOs.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersDTOs.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:17:58.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetUsersQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQueryHandler.cs",
+              "ViewState": "AgIAABoAAAAA7jIzMzPzvyEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:17:42.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetUsersQuery.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQuery.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQuery.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQuery.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\User\\Query\\GetUser\\GetUsersQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:17:23.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:12:26.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ViewState": "AgIAADoAAAAAaGZmZuYcwEwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:02:32.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateUserCommandHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
+              "ViewState": "AgIAADQAAAAAtMzMzMwAwEwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:01:53.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateUserCommand.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommand.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommand.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommand.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\User\\Command\\CreateUser\\CreateUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T13:01:52.416Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

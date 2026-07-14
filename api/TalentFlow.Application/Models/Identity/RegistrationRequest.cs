@@ -21,5 +21,8 @@ namespace TalentFlow.Application.Models.Identity
         [Required]
         [MinLength(6)]
         public string Password { get; set; } = string.Empty;
+        [Required]
+        [Compare(nameof(Password))]
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 }
