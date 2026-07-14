@@ -19,8 +19,7 @@ namespace TalentFlow.Application
             });
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             
-            // Note: Image processing services (IImageCombinationService, IOutfitImageProcessingService)
-            // are now registered in Infrastructure layer
+           
             return services;
         }
     }

@@ -32,6 +32,7 @@
     <Folder Include="Features\User\Command\NewFolder\" />
     <Folder Include="Features\User\Command\UpdateUser\" />
     <Folder Include="Features\User\Query\GetUsers\" />
+
   </ItemGroup>
 
   <PropertyGroup>
