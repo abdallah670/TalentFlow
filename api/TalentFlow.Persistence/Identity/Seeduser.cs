@@ -19,7 +19,8 @@ public static class SeedUser
                 Name = "Demo Company",
                 Slug = "demo-company",
                 SubscriptionPlan = "Free",
-                IsActive = true
+                IsActive = true,
+                
             };
             context.Tenants.Add(tenant);
             await context.SaveChangesAsync();
