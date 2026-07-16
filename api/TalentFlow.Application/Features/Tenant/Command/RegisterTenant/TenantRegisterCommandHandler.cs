@@ -126,21 +126,21 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 var accessToken = new JwtSecurityTokenHandler().WriteToken(JwtToken);
                 var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
 
-                return new AuthResponse
-                {
-                    Id = user.Id.ToString(),
-                    UserName = user.UserName!,
-                    Email = user.Email!,
-                    IsAuthenticated = true,
-                    Roles = roles.ToList(),
-
+            return new AuthResponse
+            {
+                Id = user.Id.ToString(),
+                UserName = user.UserName!,
+                Email = user.Email!,
+                IsAuthenticated = true,
+                Roles = roles.ToList(),
+                Message = $"Register Company {request.TentantName} Has Been Successfuly ",
                     Token = accessToken,
-                    TokenExpiration = JwtToken.ValidTo,
+                TokenExpiration = JwtToken.ValidTo,
 
-                    RefreshToken = refreshToken,
-                    RefreshTokenExpiration =
-        DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays)
-                };
+                RefreshToken = refreshToken,
+                RefreshTokenExpiration =
+    DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays)
+            };
             }
             
         }

@@ -58,6 +58,14 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
                     Message = "Your account is inactive"
                 };
             }
+            if (!user.EmailConfirmed)
+            {
+                return new AuthResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "Your Must Conferm Email"
+                };
+            }
             var roles = await userManager.GetRolesAsync(user);
 
             var jwtToken = await jWTService.CreateJwtToken(user, roles);

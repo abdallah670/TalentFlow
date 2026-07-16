@@ -55,6 +55,7 @@ namespace TalentFlow.Application.Features.User.Command.CreateUser
                 UserName = request.UserName,
                 Email = request.Email,
                 TenantId = currentUserService.TenantId,
+                
                 LastName = request.LastName,
                 IsActive = true
             };
@@ -70,7 +71,7 @@ namespace TalentFlow.Application.Features.User.Command.CreateUser
             }
 
 
-            await userManager.AddToRoleAsync(user, request.Role);
+          //  await userManager.AddToRoleAsync(user, request.Role);
             var roleResult = await userManager.AddToRoleAsync(user, request.Role);
 
             if (!roleResult.Succeeded)
@@ -92,7 +93,7 @@ namespace TalentFlow.Application.Features.User.Command.CreateUser
             {
                 Success = true,
                 Id = user.Id,
-                Message = "User created successfully."
+                Message =$"User created as a{request.Role} successfully ."
             };
         }
     }

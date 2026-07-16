@@ -18,6 +18,7 @@ public static class DependencyInjection
         services.AddScoped<IJWTService, JWTSErvice>();
         services.AddScoped<IRefreshTokenService, RefreshTokenService>();
         services.AddHttpContextAccessor();
+        services.AddScoped<IEmailService, EmailService>();
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
 

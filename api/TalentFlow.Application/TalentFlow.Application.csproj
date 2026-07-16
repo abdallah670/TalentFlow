@@ -30,8 +30,6 @@
     <Folder Include="Features\User\Command\DeactivateUser\" />
     <Folder Include="Features\User\Command\AssignRole\" />
     <Folder Include="Features\User\Command\NewFolder\" />
-    <Folder Include="Features\User\Command\UpdateUser\" />
-    <Folder Include="Features\User\Query\GetUsers\" />
 
   </ItemGroup>
 
