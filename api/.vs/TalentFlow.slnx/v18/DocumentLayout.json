@@ -1,0 +1,294 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Progects .NET\\TalentFlow\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F66273-C086-389E-BBD1-DEB4D8C36DCE}|TalentFlow.Persistence\\TalentFlow.Persistence.csproj|d:\\progects .net\\talentflow\\api\\talentflow.persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F66273-C086-389E-BBD1-DEB4D8C36DCE}|TalentFlow.Persistence\\TalentFlow.Persistence.csproj|solutionrelative:talentflow.persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|d:\\progects .net\\talentflow\\api\\talentflow.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|solutionrelative:talentflow.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|d:\\progects .net\\talentflow\\api\\talentflow.infrastructure\\service\\auditservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|solutionrelative:talentflow.infrastructure\\service\\auditservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\interfaces\\iauditservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\interfaces\\iauditservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\interfaces\\icurrentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\interfaces\\icurrentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\interfaces\\icurrenttenantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\interfaces\\icurrenttenantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B54F43E2-BFF9-4FBA-20EE-63E8A0B4ED0F}|TalentFlow.Domain\\TalentFlow.Domain.csproj|d:\\progects .net\\talentflow\\api\\talentflow.domain\\entities\\auditmodule\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B54F43E2-BFF9-4FBA-20EE-63E8A0B4ED0F}|TalentFlow.Domain\\TalentFlow.Domain.csproj|solutionrelative:talentflow.domain\\entities\\auditmodule\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|d:\\progects .net\\talentflow\\api\\talentflow.infrastructure\\service\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|solutionrelative:talentflow.infrastructure\\service\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B54F43E2-BFF9-4FBA-20EE-63E8A0B4ED0F}|TalentFlow.Domain\\TalentFlow.Domain.csproj|d:\\progects .net\\talentflow\\api\\talentflow.domain\\common\\itenantentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B54F43E2-BFF9-4FBA-20EE-63E8A0B4ED0F}|TalentFlow.Domain\\TalentFlow.Domain.csproj|solutionrelative:talentflow.domain\\common\\itenantentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F66273-C086-389E-BBD1-DEB4D8C36DCE}|TalentFlow.Persistence\\TalentFlow.Persistence.csproj|d:\\progects .net\\talentflow\\api\\talentflow.persistence\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F66273-C086-389E-BBD1-DEB4D8C36DCE}|TalentFlow.Persistence\\TalentFlow.Persistence.csproj|solutionrelative:talentflow.persistence\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|d:\\progects .net\\talentflow\\api\\talentflow.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|solutionrelative:talentflow.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|d:\\progects .net\\talentflow\\api\\talentflow.infrastructure\\service\\currenttenantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92EDEF0C-7D0E-6705-0053-05C0E1275293}|TalentFlow.Infrastructure\\TalentFlow.Infrastructure.csproj|solutionrelative:talentflow.infrastructure\\service\\currenttenantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|d:\\progects .net\\talentflow\\api\\talentflow.api\\controller\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3457AFB6-85C1-DD41-E975-502314C431A7}|TalentFlow.Api\\TalentFlow.Api.csproj|solutionrelative:talentflow.api\\controller\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\roles\\command\\assignpermissions\\assignpermissionscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\roles\\command\\assignpermissions\\assignpermissionscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\roles\\command\\assignpermissions\\assignpermissionscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\roles\\command\\assignpermissions\\assignpermissionscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\DependencyInjection.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\DependencyInjection.cs",
+              "RelativeToolTip": "TalentFlow.Application\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:42:58.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICurrentUserService.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\ICurrentUserService.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Interfaces\\ICurrentUserService.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\ICurrentUserService.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Interfaces\\ICurrentUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:42:12.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuditLog.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Domain\\Entities\\AuditModule\\AuditLog.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Domain\\Entities\\AuditModule\\AuditLog.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Domain\\Entities\\AuditModule\\AuditLog.cs",
+              "RelativeToolTip": "TalentFlow.Domain\\Entities\\AuditModule\\AuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:41:52.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuditService.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\AuditService.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Infrastructure\\Service\\AuditService.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\AuditService.cs",
+              "RelativeToolTip": "TalentFlow.Infrastructure\\Service\\AuditService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:39:21.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAuditService.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\IAuditService.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Interfaces\\IAuditService.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\IAuditService.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Interfaces\\IAuditService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:38:56.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "JWTSErvice.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\JWTSErvice.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Infrastructure\\Service\\JWTSErvice.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\JWTSErvice.cs",
+              "RelativeToolTip": "TalentFlow.Infrastructure\\Service\\JWTSErvice.cs",
+              "ViewState": "AgIAABQAAAAAkZmZmZkVwCYAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:36:50.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ITenantEntity.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Domain\\Common\\ITenantEntity.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Domain\\Common\\ITenantEntity.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Domain\\Common\\ITenantEntity.cs",
+              "RelativeToolTip": "TalentFlow.Domain\\Common\\ITenantEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:31:25.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Persistence\\AppDbContext.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "TalentFlow.Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAALkAAAAAAAAAAAAmwMoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:30:08.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppDbContextFactory.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Persistence\\AppDbContextFactory.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Persistence\\AppDbContextFactory.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Persistence\\AppDbContextFactory.cs",
+              "RelativeToolTip": "TalentFlow.Persistence\\AppDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:30:07.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Api\\Program.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Program.cs",
+              "RelativeToolTip": "TalentFlow.Api\\Program.cs",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAUwPoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:27:45.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "TalentFlow.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:26:32.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CurrentTenantService.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\CurrentTenantService.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Infrastructure\\Service\\CurrentTenantService.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Infrastructure\\Service\\CurrentTenantService.cs",
+              "RelativeToolTip": "TalentFlow.Infrastructure\\Service\\CurrentTenantService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:26:06.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ICurrentTenantService.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\ICurrentTenantService.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Interfaces\\ICurrentTenantService.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Interfaces\\ICurrentTenantService.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Interfaces\\ICurrentTenantService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:25:35.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AssignPermissionsCommandHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommandHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommandHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommandHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommandHandler.cs",
+              "ViewState": "AgIAAAwAAADA//////8twBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T13:08:45.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AssignPermissionsCommand.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommand.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommand.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommand.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Roles\\Command\\AssignPermissions\\AssignPermissionsCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T13:06:49.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\RolesController.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Api\\Controller\\RolesController.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Api\\Controller\\RolesController.cs",
+              "RelativeToolTip": "TalentFlow.Api\\Controller\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T12:17:14.31Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -24,6 +24,7 @@ namespace TalentFlow.Application
             services.Configure<AppUrlSettings>(configuration.GetSection("AppSettings"));
 
 
+
             return services;
         }
     }

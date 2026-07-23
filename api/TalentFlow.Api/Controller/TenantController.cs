@@ -1,7 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TalentFlow.Application.Features.Tenant.Command.RegisterTenant;
+using TalentFlow.Application.Features.Tenant.Command.UpdateTenantSettings;
+using TalentFlow.Application.Features.Tenant.Queries.GetCurrentTenant;
 
 namespace TalentFlow.Api.Controller
 {
@@ -25,5 +28,21 @@ namespace TalentFlow.Api.Controller
             var result =await mediator.Send(command);
             return Ok(result);
         }
-    }
+
+
+        [HttpGet("Current")]
+        public async Task<IActionResult> GetCurrent ()
+        {
+            var result = await mediator.Send(new GetCurrentTenantQuery());
+            return Ok(result);
+        }
+        [Authorize(Roles ="TenantAdmin")]
+        [HttpPut("settings")]
+        public async Task<IActionResult> UpdateSettings([FromBody]UpdateTenantSettingsCommand command)
+        {
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+    
+}
 }

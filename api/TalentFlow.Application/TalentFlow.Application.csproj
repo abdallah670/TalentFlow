@@ -17,19 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Tenant\Command\DeactivateTenant\" />
-    <Folder Include="Features\Tenant\Command\ActivateTenant\" />
-    <Folder Include="Features\Tenant\Command\UpdateSettings\" />
-    <Folder Include="Features\Tenant\Command\UpdateBranding\" />
-    <Folder Include="Features\Tenant\Command\UpdateTenant\" />
     <Folder Include="Features\Tenant\DTOs\" />
-    <Folder Include="Features\Tenant\Queries\GetTenantSettings\" />
-    <Folder Include="Features\Tenant\Queries\GetTenant\" />
-    <Folder Include="Features\User\Command\DeleteUser\" />
-    <Folder Include="Features\User\Command\ActivateUser\" />
-    <Folder Include="Features\User\Command\DeactivateUser\" />
-    <Folder Include="Features\User\Command\AssignRole\" />
-    <Folder Include="Features\User\Command\NewFolder\" />
 
   </ItemGroup>
 

@@ -36,7 +36,9 @@ namespace TalentFlow.Infrastructure.Service
     {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())    ,    
             new(JwtRegisteredClaimNames.Email, user.Email!),
-        new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim("TenantId", user.TenantId.ToString())
+
     };
 
             claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));

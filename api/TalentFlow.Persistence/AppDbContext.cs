@@ -1,26 +1,36 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+using TalentFlow.Application.Interfaces;
 using TalentFlow.Domain.Common;
-using TalentFlow.Domain.Entities.IdentityModule;
-using TalentFlow.Domain.Entities.TenantModule;
-using TalentFlow.Domain.Entities.RecruitmentModule;
-using TalentFlow.Domain.Entities.WorkflowModule;
-using TalentFlow.Domain.Entities.InterviewModule;
 using TalentFlow.Domain.Entities.AssessmentModule;
-using TalentFlow.Domain.Entities.NotificationModule;
 using TalentFlow.Domain.Entities.AuditModule;
+using TalentFlow.Domain.Entities.IdentityModule;
+using TalentFlow.Domain.Entities.InterviewModule;
+using TalentFlow.Domain.Entities.NotificationModule;
+using TalentFlow.Domain.Entities.OfferModule;
+using TalentFlow.Domain.Entities.RecruitmentModule;
+using TalentFlow.Domain.Entities.TenantModule;
+using TalentFlow.Domain.Entities.WorkflowModule;
 
 namespace TalentFlow.Persistence;
 
 public class AppDbContext : IdentityDbContext<User, Role, Guid>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-    }
+    private readonly ICurrentTenantService _currentTenantService;
 
+    private readonly IAuditService _auditService;
+    public AppDbContext(
+     DbContextOptions<AppDbContext> options,
+     ICurrentTenantService currentTenantService,
+     IAuditService auditService)
+     : base(options)
+    {
+        _currentTenantService = currentTenantService;
+        _auditService = auditService;
+    }
     public DbSet<Tenant> Tenants { get; set; } = null!;
     public DbSet<TenantSetting> TenantSettings { get; set; } = null!;
     public DbSet<Department> Departments { get; set; } = null!;
@@ -52,6 +62,8 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
     public DbSet<NotificationTemplate> NotificationTemplates { get; set; } = null!;
     public DbSet<AuditLog> AuditLogs { get; set; } = null!;
     public DbSet<RefreshToken> RefreshTokens { get; set; } = default!;
+    public DbSet<Offer>  offers { get; set; } = default!;
+    public DbSet<OfferApproval> offerApprovals { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -59,6 +71,75 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
         
         // Apply configurations from assembly
         builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        builder.Entity<Job>()
+    .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Candidate>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Department>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+        builder.Entity<Offer>()
+                  .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+        builder.Entity<OfferApproval>()
+          .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<AuditLog>()
+          .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Notification>()
+          .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<NotificationTemplate>()
+          .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Department>()
+          .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Tenant>()
+    .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<TenantSetting>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Department>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Job>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Candidate>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+
+        builder.Entity<Pipeline>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<InterviewCriteria>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Assessment>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+
+
+        builder.Entity<Notification>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<NotificationTemplate>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<AuditLog>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Offer>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<OfferApproval>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+
+        builder.Entity<Pipeline>()
+            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
 
         // Apply global query filter for soft delete on all ISoftDelete subtypes
         foreach (var entityType in builder.Model.GetEntityTypes())
@@ -123,6 +204,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
                 softDeleteEntity.DeletedAt = DateTime.UtcNow;
             }
         }
+        await _auditService.CreateAuditLogsAsync(ChangeTracker);
 
         return await base.SaveChangesAsync(cancellationToken);
     }
