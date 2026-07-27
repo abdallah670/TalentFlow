@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Senior Backend Engineer Assessment - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dee0ff",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-primary-fixed": "#00105c",
+                        "surface-bright": "#fbf8ff",
+                        "primary": "#24389c",
+                        "secondary": "#565c84",
+                        "on-background": "#1a1b22",
+                        "tertiary-fixed": "#ffdcc6",
+                        "outline-variant": "#c5c5d4",
+                        "surface-dim": "#dbd9e2",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-container": "#efedf6",
+                        "outline": "#757684",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "surface": "#fbf8ff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#c9cffd",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#6c3400",
+                        "primary-fixed-dim": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "on-surface": "#1a1b22",
+                        "inverse-primary": "#bac3ff",
+                        "background": "#fbf8ff",
+                        "surface-container-low": "#f4f2fc",
+                        "secondary-fixed": "#dee0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-container-high": "#e9e7f0",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e3e1ea",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#3f51b5",
+                        "surface-tint": "#4355b9",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-container": "#cacfff",
+                        "inverse-surface": "#2f3037",
+                        "on-surface-variant": "#454652",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "on-tertiary-fixed-variant": "#713700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "margin": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "label": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-radio:checked + div {
+            border-color: #3f51b5;
+            background-color: #f4f2fc; /* surface-container-low */
+        }
+        .custom-radio:checked + div .radio-inner {
+            background-color: #3f51b5;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body text-body antialiased flex flex-col overflow-hidden">
+<!-- Simplified Header for Focus (Suppressed main nav logic as per mandate for transactional/focused intent) -->
+<header class="h-16 flex justify-between items-center px-lg bg-surface border-b border-outline-variant shadow-sm shrink-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="font-h3 text-h3 text-primary">TalentFlow</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm bg-error-container text-on-error-container px-md py-sm rounded-full">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+<span class="font-h3 text-h3">42:15</span>
+</div>
+<button class="bg-surface-variant hover:bg-surface-container-high text-on-surface-variant font-label text-label px-md py-sm rounded-lg transition-colors border border-outline-variant">
+                Pause Assessment
+            </button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Progress Sidebar -->
+<aside class="w-64 bg-surface-container-low border-r border-outline-variant flex flex-col shrink-0">
+<div class="p-lg border-b border-outline-variant">
+<h1 class="font-h3 text-h3 mb-xs text-on-surface">Senior Backend Engineer</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Technical Screen</p>
+<div class="mt-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label text-label text-on-surface-variant">Progress</span>
+<span class="font-label text-label text-primary">7 of 20</span>
+</div>
+<div class="h-2 bg-surface-variant rounded-full overflow-hidden w-full">
+<div class="h-full bg-primary rounded-full transition-all duration-300" style="width: 35%;"></div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-md space-y-xs">
+<!-- Status Map -->
+<p class="font-label text-label text-on-surface-variant mb-sm px-sm uppercase tracking-wider">Question Map</p>
+<div class="grid grid-cols-5 gap-xs">
+<!-- Answered -->
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">1</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">2</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">3</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">4</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">5</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container text-on-primary flex items-center justify-center font-label text-label cursor-pointer opacity-70 hover:opacity-100">6</div>
+<!-- Current -->
+<div class="w-8 h-8 rounded-DEFAULT border-2 border-primary bg-surface text-primary flex items-center justify-center font-h3 text-h3 font-bold shadow-sm ring-2 ring-primary-fixed-dim">7</div>
+<!-- Unanswered -->
+<div class="w-8 h-8 rounded-DEFAULT bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label text-label cursor-pointer hover:bg-surface-container">8</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label text-label cursor-pointer hover:bg-surface-container">9</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label text-label cursor-pointer hover:bg-surface-container">10</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label text-label cursor-pointer hover:bg-surface-container">11</div>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label text-label cursor-pointer hover:bg-surface-container">12</div>
+<!-- ... more conceptual boxes -->
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant bg-surface">
+<button class="w-full bg-surface hover:bg-error-container text-error border border-error hover:border-error-container font-label text-label px-md py-md rounded-lg transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">stop_circle</span>
+                    Finish Assessment
+                </button>
+</div>
+</aside>
+<!-- Main Assessment Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface-bright flex justify-center p-xl">
+<div class="max-w-3xl w-full flex flex-col h-full">
+<!-- Question Context -->
+<div class="mb-xl">
+<div class="flex items-center gap-sm mb-md text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dns</span>
+<span class="font-label text-label uppercase tracking-wider">Architecture &amp; System Design</span>
+</div>
+<h2 class="font-h1 text-h1 text-on-background mb-lg">Question 7</h2>
+<div class="bg-surface p-lg rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] border border-outline-variant text-on-surface">
+<p class="font-body text-body mb-md">
+                            You are designing a distributed order processing system for an e-commerce platform transitioning to a microservices architecture. 
+                            The system involves several discrete services: <code>OrderService</code>, <code>InventoryService</code>, and <code>PaymentService</code>.
+                        </p>
+<p class="font-body text-body mb-md">
+                            When a customer places an order, all three services must update their respective states. If <code>PaymentService</code> fails after <code>InventoryService</code> has already deducted stock, the system must revert the inventory change to maintain consistency.
+                        </p>
+<p class="font-h3 text-h3 text-on-background mt-md">
+                            Which pattern is most appropriate to handle this distributed transaction scenario without relying on a centralized two-phase commit (2PC) protocol?
+                        </p>
+</div>
+</div>
+<!-- Answer Selection (Bento-ish Grid for Options) -->
+<div class="flex-1">
+<form class="grid grid-cols-1 gap-md">
+<label class="relative block cursor-pointer group">
+<input class="custom-radio peer sr-only" name="q7" type="radio" value="a"/>
+<div class="flex items-start gap-md p-lg rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200">
+<div class="mt-xs w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 bg-surface">
+<div class="radio-inner w-2.5 h-2.5 rounded-full transition-colors"></div>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-background mb-xs">API Gateway Pattern</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Use a central gateway to route requests and manage state across all services synchronously.</p>
+</div>
+</div>
+</label>
+<label class="relative block cursor-pointer group">
+<input class="custom-radio peer sr-only" name="q7" type="radio" value="b"/>
+<div class="flex items-start gap-md p-lg rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200">
+<div class="mt-xs w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 bg-surface">
+<div class="radio-inner w-2.5 h-2.5 rounded-full transition-colors"></div>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-background mb-xs">Circuit Breaker Pattern</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prevent cascading failures by immediately failing calls to the PaymentService if it becomes unresponsive.</p>
+</div>
+</div>
+</label>
+<label class="relative block cursor-pointer group">
+<input class="custom-radio peer sr-only" name="q7" type="radio" value="c"/>
+<div class="flex items-start gap-md p-lg rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200 shadow-sm">
+<div class="mt-xs w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 bg-surface">
+<div class="radio-inner w-2.5 h-2.5 rounded-full transition-colors"></div>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-background mb-xs">Saga Pattern</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Implement a sequence of local transactions where each service updates its data and publishes an event or message to trigger the next step. If a step fails, compensating transactions are executed to undo preceding steps.</p>
+</div>
+</div>
+</label>
+<label class="relative block cursor-pointer group">
+<input class="custom-radio peer sr-only" name="q7" type="radio" value="d"/>
+<div class="flex items-start gap-md p-lg rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200">
+<div class="mt-xs w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center shrink-0 bg-surface">
+<div class="radio-inner w-2.5 h-2.5 rounded-full transition-colors"></div>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-background mb-xs">Event Sourcing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Store the state of all services as a sequence of state-changing events in an append-only log.</p>
+</div>
+</div>
+</label>
+</form>
+</div>
+<!-- Actions -->
+<div class="mt-xl pt-lg border-t border-outline-variant flex justify-between items-center bg-surface-bright sticky bottom-0 py-md">
+<button class="flex items-center gap-xs text-secondary hover:text-on-background font-label text-label transition-colors">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+                        Flag for review
+                    </button>
+<div class="flex gap-md">
+<button class="px-lg py-md rounded-lg font-label text-label border border-primary text-primary hover:bg-surface-container-low transition-colors">
+                            Previous
+                        </button>
+<button class="px-lg py-md rounded-lg font-label text-label bg-primary text-on-primary hover:bg-surface-tint shadow-sm transition-colors flex items-center gap-xs">
+                            Save &amp; Next
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

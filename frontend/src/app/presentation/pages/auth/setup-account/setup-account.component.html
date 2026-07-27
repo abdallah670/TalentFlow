@@ -1,0 +1,91 @@
+<div class="setup-account-page">
+  <div class="setup-account-layout">
+    <!-- Left Panel: Branding -->
+    <div class="setup-account-branding">
+      <div class="setup-account-branding-content">
+        <h1>TalentFlow</h1>
+        <p>Enterprise HR</p>
+      </div>
+      <div class="setup-account-branding-footer">
+        <h2>Welcome to the team.</h2>
+        <p>Secure your account to access enterprise recruitment tools, pipeline analytics, and candidate management workflows.</p>
+      </div>
+    </div>
+
+    <!-- Right Panel: Form -->
+    <div class="setup-account-form-panel">
+      <div class="setup-account-form-header">
+        <h2>Complete Setup</h2>
+        <p>Please verify your details and set a secure password.</p>
+      </div>
+
+      <div class="user-info-card">
+        <div class="user-avatar">
+          {{ firstName()?.charAt(0)?.toUpperCase() || '?' }}
+        </div>
+        <div class="user-details">
+          <h3>{{ firstName() }} {{ lastName() }}</h3>
+          <p>{{ email() }}</p>
+        </div>
+        <span class="role-chip">
+          <span class="material-symbols-outlined">work</span>
+          {{ role() || 'Team Member' }}
+        </span>
+      </div>
+
+      <form [formGroup]="setupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group password-input-group">
+          <label for="password">Create Password</label>
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="••••••••"
+          />
+          <button type="button" class="password-toggle" (click)="togglePassword()">
+            <span class="material-symbols-outlined">{{ showPassword() ? 'visibility_off' : 'visibility' }}</span>
+          </button>
+        </div>
+
+        <div class="form-group password-input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            [type]="showConfirmPassword() ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="••••••••"
+          />
+          <button type="button" class="password-toggle" (click)="toggleConfirmPassword()">
+            <span class="material-symbols-outlined">{{ showConfirmPassword() ? 'visibility_off' : 'visibility' }}</span>
+          </button>
+        </div>
+
+        <div class="password-requirements">
+          <ul>
+            <li [class.met]="isPasswordValid('length')">
+              <span class="material-symbols-outlined">{{ isPasswordValid('length') ? 'check_circle' : 'radio_button_unchecked' }}</span>
+              8+ characters
+            </li>
+            <li [class.met]="isPasswordValid('uppercase')">
+              <span class="material-symbols-outlined">{{ isPasswordValid('uppercase') ? 'check_circle' : 'radio_button_unchecked' }}</span>
+              Uppercase letter
+            </li>
+            <li [class.met]="isPasswordValid('special')">
+              <span class="material-symbols-outlined">{{ isPasswordValid('special') ? 'check_circle' : 'radio_button_unchecked' }}</span>
+              Special character
+            </li>
+          </ul>
+        </div>
+
+        <button type="submit" class="btn-primary" [disabled]="setupForm.invalid || isLoading()">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+          } @else {
+            <span>Complete Setup</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

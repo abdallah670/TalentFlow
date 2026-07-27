@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Create Job</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1a1b22",
+                        "on-secondary-container": "#51577f",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "primary-container": "#3f51b5",
+                        "on-secondary-fixed": "#12183d",
+                        "background": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-tertiary-container": "#ffc7a2",
+                        "inverse-on-surface": "#f2eff9",
+                        "surface-container-low": "#f4f2fc",
+                        "secondary": "#565c84",
+                        "inverse-primary": "#bac3ff",
+                        "primary": "#24389c",
+                        "on-surface-variant": "#454652",
+                        "on-primary-fixed": "#00105c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "secondary-fixed": "#dee0ff",
+                        "tertiary": "#6c3400",
+                        "outline-variant": "#c5c5d4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-tint": "#4355b9",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "secondary-container": "#c9cffd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-variant": "#e3e1ea",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#efedf6",
+                        "surface-container-high": "#e9e7f0",
+                        "primary-fixed-dim": "#bac3ff",
+                        "on-background": "#1a1b22",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf8ff",
+                        "on-primary-container": "#cacfff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbd9e2",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#8f4700",
+                        "inverse-surface": "#2f3037",
+                        "primary-fixed": "#dee0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "24px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "label": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F5F6FA; }
+        .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+        .shadow-hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    </style>
+</head>
+<body class="font-body text-body text-on-surface antialiased bg-[#F5F6FA] min-h-screen flex">
+<!-- SideNavBar (Suppressed as per rules: Task-focused form implies temporary departure) -->
+<!-- We omit the SideNavBar to prioritize the focused canvas for form filling -->
+<main class="flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Transactional Header) -->
+<header class="bg-surface w-full h-16 border-b border-outline-variant flex justify-between items-center px-lg shrink-0">
+<div class="flex items-center gap-md">
+<a class="text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg transition-colors flex items-center justify-center" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h1 class="font-h2 text-h2 font-bold text-primary">Create New Job</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label text-label text-on-surface-variant hover:bg-surface-container-high px-md py-sm rounded-lg transition-colors border border-outline-variant">
+                    Save Draft
+                </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="flex-1 p-margin md:p-gutter max-w-[1440px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<!-- Vertical Stepper (Left Column) -->
+<aside class="md:col-span-3 lg:col-span-3 hidden md:block sticky top-margin">
+<nav aria-label="Progress">
+<ol class="overflow-hidden" role="list">
+<!-- Step 1: Active -->
+<li class="relative pb-10">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></div>
+<a aria-current="step" class="relative flex items-start group" href="#">
+<span class="h-9 flex items-center">
+<span class="relative z-10 w-8 h-8 flex items-center justify-center bg-primary rounded-full ring-2 ring-white">
+<span class="text-white font-label text-label">1</span>
+</span>
+</span>
+<span class="ml-4 min-w-0 flex flex-col">
+<span class="font-h3 text-h3 text-primary tracking-wide">Job Details</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Title, location, type</span>
+</span>
+</a>
+</li>
+<!-- Step 2: Upcoming -->
+<li class="relative pb-10">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></div>
+<a class="relative flex items-start group" href="#">
+<span class="h-9 flex items-center">
+<span class="relative z-10 w-8 h-8 flex items-center justify-center bg-surface border-2 border-outline-variant rounded-full group-hover:border-outline transition-colors">
+<span class="text-on-surface-variant font-label text-label">2</span>
+</span>
+</span>
+<span class="ml-4 min-w-0 flex flex-col">
+<span class="font-h3 text-h3 text-on-surface-variant group-hover:text-on-surface transition-colors">Description</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Roles &amp; requirements</span>
+</span>
+</a>
+</li>
+<!-- Step 3: Upcoming -->
+<li class="relative pb-10">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></div>
+<a class="relative flex items-start group" href="#">
+<span class="h-9 flex items-center">
+<span class="relative z-10 w-8 h-8 flex items-center justify-center bg-surface border-2 border-outline-variant rounded-full group-hover:border-outline transition-colors">
+<span class="text-on-surface-variant font-label text-label">3</span>
+</span>
+</span>
+<span class="ml-4 min-w-0 flex flex-col">
+<span class="font-h3 text-h3 text-on-surface-variant group-hover:text-on-surface transition-colors">Pipeline</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Workflow template</span>
+</span>
+</a>
+</li>
+<!-- Step 4: Upcoming -->
+<li class="relative">
+<a class="relative flex items-start group" href="#">
+<span class="h-9 flex items-center">
+<span class="relative z-10 w-8 h-8 flex items-center justify-center bg-surface border-2 border-outline-variant rounded-full group-hover:border-outline transition-colors">
+<span class="text-on-surface-variant font-label text-label">4</span>
+</span>
+</span>
+<span class="ml-4 min-w-0 flex flex-col">
+<span class="font-h3 text-h3 text-on-surface-variant group-hover:text-on-surface transition-colors">Review</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Confirm &amp; publish</span>
+</span>
+</a>
+</li>
+</ol>
+</nav>
+</aside>
+<!-- Form Area (Right Column) -->
+<div class="md:col-span-9 lg:col-span-7 flex flex-col gap-lg">
+<!-- Step 1 Card -->
+<div class="bg-surface shadow-soft rounded-xl p-lg md:p-xl border border-outline-variant">
+<div class="mb-lg border-b border-outline-variant pb-md">
+<h2 class="font-h1 text-h1 text-on-surface">Job Details</h2>
+<p class="font-body text-body text-on-surface-variant mt-sm">Define the core information for this requisition.</p>
+</div>
+<form class="space-y-lg">
+<!-- Job Title -->
+<div>
+<label class="block font-label text-label text-on-surface mb-xs" for="job-title">Job Title <span class="text-error">*</span></label>
+<input class="w-full bg-surface border border-[#E0E0E0] rounded-lg px-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="job-title" name="job-title" placeholder="e.g. Senior Frontend Engineer" type="text"/>
+</div>
+<!-- Department & Location Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label text-label text-on-surface mb-xs" for="department">Department <span class="text-error">*</span></label>
+<select class="w-full bg-surface border border-[#E0E0E0] rounded-lg px-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none bg-no-repeat bg-[right_16px_center]" id="department" name="department" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23454652\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option disabled="" selected="" value="">Select department...</option>
+<option value="engineering">Engineering</option>
+<option value="design">Design</option>
+<option value="product">Product</option>
+<option value="sales">Sales</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-label text-on-surface mb-xs" for="location">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface border border-[#E0E0E0] rounded-lg pl-10 pr-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="location" name="location" placeholder="City, State or Remote" type="text"/>
+</div>
+</div>
+</div>
+<!-- Employment Type & Experience -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label text-label text-on-surface mb-xs" for="employment-type">Employment Type</label>
+<select class="w-full bg-surface border border-[#E0E0E0] rounded-lg px-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none bg-no-repeat bg-[right_16px_center]" id="employment-type" name="employment-type" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23454652\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option value="full-time">Full-Time</option>
+<option value="part-time">Part-Time</option>
+<option value="contract">Contract</option>
+<option value="internship">Internship</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-label text-on-surface mb-xs" for="experience-level">Experience Level</label>
+<select class="w-full bg-surface border border-[#E0E0E0] rounded-lg px-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none bg-no-repeat bg-[right_16px_center]" id="experience-level" name="experience-level" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23454652\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option value="entry">Entry Level</option>
+<option value="mid">Mid Level</option>
+<option value="senior">Senior Level</option>
+<option value="director">Director</option>
+</select>
+</div>
+</div>
+<!-- Salary Range -->
+<div>
+<label class="block font-label text-label text-on-surface mb-xs">Salary Range (Optional)</label>
+<div class="flex items-center gap-md">
+<div class="relative flex-1">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body">$</span>
+<input class="w-full bg-surface border border-[#E0E0E0] rounded-lg pl-8 pr-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="salary-min" name="salary-min" placeholder="Min" type="number"/>
+</div>
+<span class="text-on-surface-variant font-body">to</span>
+<div class="relative flex-1">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body">$</span>
+<input class="w-full bg-surface border border-[#E0E0E0] rounded-lg pl-8 pr-md py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="salary-max" name="salary-max" placeholder="Max" type="number"/>
+</div>
+<select class="w-32 bg-surface border border-[#E0E0E0] rounded-lg px-sm py-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none bg-no-repeat bg-[right_8px_center]" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23454652\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option value="yearly">/ Year</option>
+<option value="monthly">/ Month</option>
+<option value="hourly">/ Hour</option>
+</select>
+</div>
+</div>
+</form>
+</div>
+<!-- Action Footer -->
+<div class="flex justify-end gap-md pt-md">
+<button class="font-label text-label text-primary bg-transparent hover:bg-primary/5 px-xl py-md rounded-lg transition-colors border border-primary">
+                        Cancel
+                    </button>
+<button class="font-label text-label text-white bg-[#3F51B5] hover:bg-[#24389c] px-xl py-md rounded-lg transition-colors shadow-soft flex items-center gap-sm">
+                        Continue to Description
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Empty right gutter for balance on large screens -->
+<div class="hidden lg:block lg:col-span-2"></div>
+</div>
+</main>
+</body></html>

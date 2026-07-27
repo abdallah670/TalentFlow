@@ -1,0 +1,63 @@
+<div class="select-plan-page">
+  <header class="select-plan-header">
+    <div class="select-plan-header-inner">
+      <div class="select-plan-brand">
+        <span class="material-symbols-outlined filled" style="font-size: 24px; color: var(--primary);">work</span>
+        <span class="select-plan-brand-text">TalentFlow</span>
+      </div>
+      <div class="select-plan-header-actions">
+        <a routerLink="/login" class="select-plan-login">Log In</a>
+        <button class="select-plan-contact">Contact Sales</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="select-plan-main">
+    <div class="select-plan-header-text">
+      <h1>Select Subscription Plan</h1>
+      <p>Choose the perfect plan to scale your hiring process. Upgrade, downgrade, or cancel at any time.</p>
+    </div>
+
+    <div class="select-plan-grid">
+      @for (plan of plans; track plan.id) {
+        <div class="plan-card" [class.recommended]="plan.recommended">
+          @if (plan.recommended) {
+            <div class="plan-recommended-badge">Recommended</div>
+          }
+          <div class="plan-header">
+            <h2 [class.primary-text]="plan.recommended">{{ plan.name }}</h2>
+            <p>{{ plan.description }}</p>
+            <div class="plan-price">
+              <span class="plan-amount">{{ plan.price }}</span>
+              @if (plan.period) {
+                <span class="plan-period">{{ plan.period }}</span>
+              }
+            </div>
+          </div>
+          <ul class="plan-features">
+            @for (feature of plan.features; track feature) {
+              <li>
+                <span class="material-symbols-outlined check-icon">check</span>
+                <span>{{ feature }}</span>
+              </li>
+            }
+            @for (feature of plan.missingFeatures; track feature) {
+              <li class="missing">
+                <span class="material-symbols-outlined">close</span>
+                <span>{{ feature }}</span>
+              </li>
+            }
+          </ul>
+          <button
+            class="plan-cta"
+            [class.primary]="plan.recommended"
+            [class.outline]="!plan.recommended"
+            (click)="selectPlan(plan.id)"
+          >
+            {{ plan.cta }}
+          </button>
+        </div>
+      }
+    </div>
+  </main>
+</div>

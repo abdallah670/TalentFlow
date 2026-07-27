@@ -1,0 +1,101 @@
+<div class="step1-page">
+  <div class="step1-card">
+    <div class="step1-header">
+      <h1 class="step1-brand">TalentFlow</h1>
+      <p class="step1-subtitle">Enterprise HR Solutions</p>
+    </div>
+
+    <div class="step1-form-header">
+      <h2>Create Account</h2>
+      <p>Step 1 of 4: Enter your details to get started.</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="step1-name-grid">
+        <div class="input-container">
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+            [class.ng-invalid]="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched"
+          />
+          <label for="firstName">First Name</label>
+        </div>
+        <div class="input-container">
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+            [class.ng-invalid]="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched"
+          />
+          <label for="lastName">Last Name</label>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Email Address"
+          [class.ng-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+        />
+        <label for="email">Email Address</label>
+      </div>
+
+      <div class="input-container">
+        <input
+          id="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <label for="password">Password</label>
+        <button type="button" class="password-toggle" (click)="togglePassword()">
+          <span class="material-symbols-outlined">{{ showPassword() ? 'visibility_off' : 'visibility' }}</span>
+        </button>
+      </div>
+
+      <div class="input-container">
+        <input
+          id="confirmPassword"
+          [type]="showConfirmPassword() ? 'text' : 'password'"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <label for="confirmPassword">Confirm Password</label>
+        <button type="button" class="password-toggle" (click)="toggleConfirmPassword()">
+          <span class="material-symbols-outlined">{{ showConfirmPassword() ? 'visibility_off' : 'visibility' }}</span>
+        </button>
+      </div>
+
+      <div class="privacy-checkbox">
+        <input
+          id="privacy"
+          type="checkbox"
+          formControlName="privacyAccepted"
+        />
+        <label for="privacy">
+          I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+        </label>
+      </div>
+
+      <div class="verification-notice">
+        <span class="material-symbols-outlined filled">mail</span>
+        <p>A verification email will be sent to the address provided upon account creation.</p>
+      </div>
+
+      <div class="step1-actions">
+        <button type="submit" class="btn-primary" [disabled]="registerForm.invalid || isLoading()">
+          Create Account
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <p class="step1-login-link">
+          Already have an account? <a routerLink="/login">Log in</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

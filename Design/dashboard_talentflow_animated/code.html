@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Enterprise HR Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#565c84",
+                        "surface-variant": "#e3e1ea",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "primary-fixed": "#dee0ff",
+                        "on-secondary-container": "#51577f",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#8f4700",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbd9e2",
+                        "secondary-fixed": "#dee0ff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "outline": "#757684",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-container-highest": "#e3e1ea",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#c9cffd",
+                        "primary": "#24389c",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-container": "#3f51b5",
+                        "on-primary-fixed": "#00105c",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "on-secondary-fixed": "#12183d",
+                        "outline-variant": "#c5c5d4",
+                        "surface-container-low": "#f4f2fc",
+                        "on-surface-variant": "#454652",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary": "#6c3400",
+                        "surface-container-high": "#e9e7f0",
+                        "inverse-surface": "#2f3037",
+                        "inverse-primary": "#bac3ff",
+                        "surface-tint": "#4355b9",
+                        "on-surface": "#1a1b22",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf8ff",
+                        "surface-bright": "#fbf8ff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-container": "#efedf6",
+                        "on-tertiary-container": "#ffc7a2",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-primary-container": "#cacfff",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Roboto"], "h1-mobile": ["Roboto"], "h2": ["Roboto"], "h3": ["Roboto"], "body-sm": ["Roboto"], "label": ["Roboto"], "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 4px; }
+        .card-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+        .elevation-high { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes drawIn {
+            from { transform: scaleY(0); transform-origin: bottom; }
+            to { transform: scaleY(1); transform-origin: bottom; }
+        }
+        @keyframes softPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Classes for JS-driven orchestration */
+        .animate-reveal { opacity: 0; }
+        .animate-reveal.active { animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        
+        .animate-slide-left { opacity: 0; }
+        .animate-slide-left.active { animation: slideInLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+        .bar-animate { transform: scaleY(0); transform-origin: bottom; }
+        .bar-animate.active { animation: drawIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+        .pulse-indicator { animation: softPulse 3s ease-in-out infinite; }
+
+        .hover-card-effect {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .hover-card-effect:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(36, 56, 156, 0.15);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .animate-reveal, .animate-slide-left { opacity: 1 !important; transform: none !important; }
+            .bar-animate { transform: scaleY(1) !important; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- Side Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-h2 text-h2 text-primary font-bold">TalentFlow</h1>
+<p class="font-label text-label text-secondary uppercase tracking-widest opacity-70">Enterprise HR</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-primary font-bold border-r-4 border-primary bg-primary-container/10">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">work</span>
+<span class="font-body text-body">Jobs</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-body text-body">Candidates</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">description</span>
+<span class="font-body text-body">Offers</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</div>
+<div class="flex items-center px-md py-sm cursor-pointer transition-all duration-200 text-secondary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-body text-body">Admin</span>
+</div>
+</nav>
+<div class="mt-auto px-md pt-md border-t border-outline-variant flex items-center gap-sm">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Professional studio portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLZoTDh2hR3FB6zNOx5e99F00uW-Khoq4kRZ0MFrhKrAoozxv8jLiH75dUI6bvw0xOHZafGsggiZmz4TVPcDROFP2JTeGwuaWHd93zwRLlbiXkiDKZCMgwpYP8mzxjwPA50ziGc22sUULW5lEmVqDiEicvLDrc8Fb3AdEuSDkW1Vs-BB-V0_1VwDHqvP_dQ3nOtWMCWhEK3YxyuYq84oy-BcLACzv4KlNGKJ3dfzyRmLdZ69HpCAkpD5TYYfsLXEHAyDpKhYeFzDU"/>
+<div class="flex flex-col">
+<span class="font-label text-label font-bold text-on-surface">Alex Rivera</span>
+<span class="font-body-sm text-body-sm text-secondary">System Admin</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="docked full-width top-0 sticky z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter h-16 shadow-sm">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-primary font-body outline-none transition-all" placeholder="Search jobs, candidates, or tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-all relative">
+<span class="material-symbols-outlined text-secondary">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-all">
+<span class="material-symbols-outlined text-secondary">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-sm"></div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-md py-sm rounded transition-all hover:brightness-110 font-body">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Quick Action
+                </button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-gutter space-y-gutter max-w-[1440px] mx-auto">
+<!-- Header Welcome Section -->
+<div class="animate-reveal flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface">Welcome back, Administrator.</h2>
+<p class="font-body text-secondary">Here's what's happening with your recruitment funnel today.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-sm border border-primary text-primary px-md py-2 rounded font-body hover:bg-primary-container/5 transition-all">
+<span class="material-symbols-outlined">person_add</span>
+                        Add Candidate
+                    </button>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-md py-2 rounded font-body hover:shadow-lg transition-all">
+<span class="material-symbols-outlined">post_add</span>
+                        New Job
+                    </button>
+</div>
+</div>
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="animate-reveal bg-surface p-lg rounded-xl card-shadow border border-outline-variant flex flex-col justify-between hover-card-effect">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-secondary uppercase tracking-wider">Open Jobs</span>
+<div class="p-2 bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">work</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-h1 text-h1 kpi-counter" data-value="12">0</h3>
+<div class="flex items-center text-green-600 gap-1 mt-xs pulse-indicator">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label text-label">+2% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="animate-reveal bg-surface p-lg rounded-xl card-shadow border border-outline-variant flex flex-col justify-between hover-card-effect">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-secondary uppercase tracking-wider">Active Candidates</span>
+<div class="p-2 bg-secondary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary">group</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-h1 text-h1 kpi-counter" data-value="145">0</h3>
+<div class="flex items-center text-green-600 gap-1 mt-xs pulse-indicator">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label text-label">+5% increase</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="animate-reveal bg-surface p-lg rounded-xl card-shadow border border-outline-variant flex flex-col justify-between hover-card-effect">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-secondary uppercase tracking-wider">Avg. Time-to-Hire</span>
+<div class="p-2 bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">schedule</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-h1 text-h1"><span class="kpi-counter" data-value="28.5">0</span> <span class="text-h3 font-normal text-secondary">days</span></h3>
+<div class="flex items-center text-green-600 gap-1 mt-xs pulse-indicator">
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+<span class="font-label text-label">-1.2 days improvement</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="animate-reveal bg-surface p-lg rounded-xl card-shadow border border-outline-variant flex flex-col justify-between hover-card-effect">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-secondary uppercase tracking-wider">Offer Acceptance</span>
+<div class="p-2 bg-green-100 rounded-lg">
+<span class="material-symbols-outlined text-green-700">check_circle</span>
+</div>
+</div>
+<div class="mt-md">
+<h3 class="font-h1 text-h1 kpi-counter" data-suffix="%" data-value="87">0%</h3>
+<div class="flex items-center text-green-600 gap-1 mt-xs pulse-indicator">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label text-label">+3% high performance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Pipeline Health (Wide) -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<div class="animate-reveal bg-surface rounded-xl card-shadow border border-outline-variant p-lg">
+<div class="flex justify-between items-center mb-xl">
+<h3 class="font-h2 text-h2">Pipeline Health</h3>
+<button class="text-primary font-label flex items-center hover:underline">
+                                View Detail <span class="material-symbols-outlined text-sm ml-xs">chevron_right</span>
+</button>
+</div>
+<div class="flex items-end gap-xs h-48 mb-lg funnel-chart">
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative transition-all group-hover:bg-primary-container/30 bar-animate" style="height: 100%">
+<span class="absolute top-4 left-1/2 -translate-x-1/2 font-h3 text-primary">60</span>
+</div>
+<span class="mt-md font-label text-secondary">Applied</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary-container/40 rounded-t-lg relative transition-all group-hover:bg-primary-container/50 bar-animate" style="height: 66%">
+<span class="absolute top-4 left-1/2 -translate-x-1/2 font-h3 text-primary">40</span>
+</div>
+<span class="mt-md font-label text-secondary">Screening</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary-container/60 rounded-t-lg relative transition-all group-hover:bg-primary-container/70 bar-animate" style="height: 41%">
+<span class="absolute top-4 left-1/2 -translate-x-1/2 font-h3 text-white">25</span>
+</div>
+<span class="mt-md font-label text-secondary">Interview</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary rounded-t-lg relative transition-all group-hover:brightness-110 bar-animate" style="height: 20%">
+<span class="absolute top-4 left-1/2 -translate-x-1/2 font-h3 text-white">12</span>
+</div>
+<span class="mt-md font-label text-secondary">Offer</span>
+</div>
+</div>
+<div class="grid grid-cols-4 border-t border-outline-variant pt-lg conversion-row">
+<div class="text-center animate-reveal">
+<p class="font-label text-secondary">Conversion</p>
+<p class="font-body font-bold">100%</p>
+</div>
+<div class="text-center animate-reveal">
+<p class="font-label text-secondary">To Screen</p>
+<p class="font-body font-bold">66.7%</p>
+</div>
+<div class="text-center animate-reveal">
+<p class="font-label text-secondary">To Interview</p>
+<p class="font-body font-bold">62.5%</p>
+</div>
+<div class="text-center animate-reveal">
+<p class="font-label text-secondary">To Offer</p>
+<p class="font-body font-bold">48.0%</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="animate-reveal bg-surface rounded-xl card-shadow border border-outline-variant p-lg">
+<div class="flex justify-between items-center mb-xl">
+<h3 class="font-h2 text-h2">Recent Activity</h3>
+<span class="font-label text-secondary">Last 24 Hours</span>
+</div>
+<div class="space-y-lg relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-px before:bg-outline-variant">
+<!-- Activity Item 1 -->
+<div class="flex gap-md relative animate-slide-left activity-item">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center z-10 border border-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">cached</span>
+</div>
+<div class="flex-1 pb-sm border-b border-outline-variant/30">
+<div class="flex justify-between">
+<p class="font-body"><span class="font-bold">Jane Doe</span> moved to <span class="text-primary font-bold">Interview</span> for Product Designer</p>
+<span class="font-label text-secondary">10m ago</span>
+</div>
+<div class="mt-sm flex gap-sm">
+<button class="text-primary font-label hover:underline">View Profile</button>
+<button class="text-primary font-label hover:underline">Schedule</button>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-md relative animate-slide-left activity-item">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center z-10 border border-surface">
+<span class="material-symbols-outlined text-green-700 text-[18px]">add_task</span>
+</div>
+<div class="flex-1 pb-sm border-b border-outline-variant/30">
+<div class="flex justify-between">
+<p class="font-body"><span class="font-bold">New Application:</span> Michael Chen for Senior Frontend Developer</p>
+<span class="font-label text-secondary">2h ago</span>
+</div>
+<p class="font-body-sm text-secondary italic mt-1">"Excellent portfolio with React expertise..."</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-md relative animate-slide-left activity-item">
+<div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center z-10 border border-surface">
+<span class="material-symbols-outlined text-orange-700 text-[18px]">priority_high</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="font-body"><span class="font-bold">Job Status Change:</span> HR Manager marked as <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold uppercase">Urgent</span></p>
+<span class="font-label text-secondary">5h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- My Tasks & Secondary (Right Column) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Tasks Card -->
+<div class="animate-reveal bg-surface rounded-xl card-shadow border border-outline-variant flex flex-col h-full overflow-hidden">
+<div class="p-lg border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-h2 text-h2">My Tasks</h3>
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-1 rounded-full">4 PENDING</span>
+</div>
+<div class="p-lg space-y-md flex-1 overflow-y-auto custom-scrollbar task-container">
+<div class="group flex gap-md items-start p-md rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer hover-card-effect animate-reveal task-item">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">check_box_outline_blank</span>
+</div>
+<div>
+<p class="font-body font-bold text-on-surface">Interview Feedback</p>
+<p class="font-body-sm text-secondary">John Smith (Senior UX)</p>
+<div class="mt-2 flex items-center gap-xs text-error">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label font-bold">Due Today</span>
+</div>
+</div>
+</div>
+<div class="group flex gap-md items-start p-md rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer hover-card-effect animate-reveal task-item">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">check_box_outline_blank</span>
+</div>
+<div>
+<p class="font-body font-bold text-on-surface">Review New Candidates</p>
+<p class="font-body-sm text-secondary">Python Engineer (12 new)</p>
+<div class="mt-2 flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label">Tomorrow</span>
+</div>
+</div>
+</div>
+<div class="group flex gap-md items-start p-md rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer hover-card-effect animate-reveal task-item">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">check_box_outline_blank</span>
+</div>
+<div>
+<p class="font-body font-bold text-on-surface">Finalize Offer Letter</p>
+<p class="font-body-sm text-secondary">Sarah Connor (Sales Lead)</p>
+<div class="mt-2 flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label">Oct 24</span>
+</div>
+</div>
+</div>
+<div class="group flex gap-md items-start p-md rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer hover-card-effect animate-reveal task-item">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">check_box_outline_blank</span>
+</div>
+<div>
+<p class="font-body font-bold text-on-surface">Post-Hire Sync</p>
+<p class="font-body-sm text-secondary">Engineering Team Office</p>
+<div class="mt-2 flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label">Oct 26</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-md text-center bg-surface-container-high font-label text-primary hover:bg-primary-container/10 transition-all border-t border-outline-variant">
+                            VIEW ALL TASKS
+                        </button>
+</div>
+<!-- Small Promotional/Metric Card -->
+<div class="animate-reveal bg-primary text-on-primary rounded-xl p-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transform scale-150 transition-transform group-hover:scale-125">
+<span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h4 class="font-h3 mb-sm relative z-10">AI Sourcing Boost</h4>
+<p class="font-body-sm text-primary-fixed mb-lg relative z-10 opacity-90">Your new AI screening assistant is active and has filtered 420 irrelevant profiles this week.</p>
+<button class="bg-white text-primary px-md py-2 rounded font-label font-bold relative z-10 transition-all hover:bg-primary-fixed">
+                            SEE SAVED HOURS
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Animation Orchestrator
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    
+                    // Main revealing containers
+                    if (el.classList.contains('animate-reveal')) {
+                        el.classList.add('active');
+                        
+                        // If it contains a KPI counter, trigger it
+                        const counters = el.querySelectorAll('.kpi-counter');
+                        counters.forEach(counter => animateCounter(counter));
+                        
+                        // If it's a grid row of conversions, stagger children
+                        if (el.classList.contains('conversion-row')) {
+                           const items = el.querySelectorAll('.animate-reveal');
+                           items.forEach((item, index) => {
+                               setTimeout(() => item.classList.add('active'), 100 * index);
+                           });
+                        }
+                    }
+
+                    // Funnel chart bars
+                    if (el.classList.contains('funnel-chart')) {
+                        const bars = el.querySelectorAll('.bar-animate');
+                        bars.forEach((bar, index) => {
+                            setTimeout(() => bar.classList.add('active'), 200 * index);
+                        });
+                    }
+
+                    // Activity items - stagger slide left
+                    if (el.classList.contains('activity-item') || el.classList.contains('animate-slide-left')) {
+                        const items = el.parentNode.querySelectorAll('.activity-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => item.classList.add('active'), 150 * index);
+                        });
+                    }
+
+                    // Task items - stagger reveal
+                    if (el.classList.contains('task-item')) {
+                        const items = el.parentNode.querySelectorAll('.task-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => item.classList.add('active'), 100 * index);
+                        });
+                    }
+
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        // Register elements
+        document.querySelectorAll('.animate-reveal, .funnel-chart, .activity-item, .task-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // KPI Counter logic
+        function animateCounter(el) {
+            const target = parseFloat(el.getAttribute('data-value'));
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                
+                const current = (target * eased).toFixed(target % 1 === 0 ? 0 : 1);
+                el.innerText = current + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Search Input Focus
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/50');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/50');
+        });
+
+        // Task toggle logic (preserved but enhanced with styles)
+        const tasks = document.querySelectorAll('.task-item');
+        tasks.forEach(task => {
+            task.addEventListener('click', () => {
+                const icon = task.querySelector('.material-symbols-outlined');
+                if (icon.innerText === 'check_box_outline_blank') {
+                    icon.innerText = 'check_box';
+                    icon.classList.add('text-primary');
+                    task.style.opacity = '0.6';
+                    task.querySelector('p').style.textDecoration = 'line-through';
+                } else {
+                    icon.innerText = 'check_box_outline_blank';
+                    icon.classList.remove('text-primary');
+                    task.style.opacity = '1';
+                    task.querySelector('p').style.textDecoration = 'none';
+                }
+            });
+        });
+    });
+</script>
+</body></html>

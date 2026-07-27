@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offer Acceptance Portal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Theme -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-surface": "#1a1b22",
+                        "secondary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "outline-variant": "#c5c5d4",
+                        "on-error-container": "#93000a",
+                        "outline": "#757684",
+                        "surface-container": "#efedf6",
+                        "inverse-surface": "#2f3037",
+                        "primary-fixed": "#dee0ff",
+                        "background": "#fbf8ff",
+                        "on-primary-fixed": "#00105c",
+                        "secondary": "#565c84",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "on-secondary-container": "#51577f",
+                        "on-primary-container": "#cacfff",
+                        "tertiary": "#6c3400",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#3f51b5",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface": "#fbf8ff",
+                        "primary": "#24389c",
+                        "on-secondary-fixed": "#12183d",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e1ea",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary-container": "#ffc7a2",
+                        "inverse-primary": "#bac3ff",
+                        "surface-tint": "#4355b9",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-surface-variant": "#454652",
+                        "surface-container-high": "#e9e7f0",
+                        "surface-dim": "#dbd9e2",
+                        "surface-container-low": "#f4f2fc",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-background": "#1a1b22",
+                        "tertiary-container": "#8f4700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "body": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "h1": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: theme('colors.primary');
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="h-full flex items-center justify-center p-md md:p-margin">
+<!-- Main Container -->
+<main class="w-full max-w-4xl bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden flex flex-col md:flex-row relative z-10">
+<!-- Left Section: Celebration & Image -->
+<div class="md:w-5/12 bg-surface-container-high relative flex flex-col items-center justify-center p-xl overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-multiply" data-alt="A modern, brightly lit office interior with large glass windows overlooking a vibrant city skyline. The scene represents a dynamic tech company environment, emphasizing clean lines, lush indoor plants, and a professional yet welcoming atmosphere. Soft, natural sunlight fills the space, creating a sense of optimism and new beginnings. High-quality corporate aesthetic with subtle blue and gray tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZ-3FVFFalWkQ6JQ1uB0XwWhBp8A-pQ7RIsKIyAEQQZvq59nLjjpQ83mcS9qKqHwrM1oTRkKSBwUrWPWV_OIoojsgCNKhC1ZHinwm_degv8A0ubE8LlH8EKU56TxPI9kf1TYzUKOAvFZDM1cOUqGAPiaK6BLO8EHX3x_HSJ3kqkruKas4kUnbO7eZAWInjVK4exstdgXkNr5gwLUqfX_jDHDo4j1RcOtxgn_FjdcUJd2AE5auwNu4WgvqPzuIBQFpRmaTOGEvQbF0')">
+</div>
+<div class="relative z-10 flex flex-col items-center text-center space-y-md">
+<div class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center shadow-md border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined text-4xl text-on-primary-container" style="font-variation-settings: 'FILL' 1;">
+                        celebration
+                    </span>
+</div>
+<div>
+<h2 class="font-h1 text-h1 text-primary">Congratulations,</h2>
+<h2 class="font-h1 text-h1 text-on-surface">Arthur Pendragon!</h2>
+</div>
+<p class="font-body text-body text-on-surface-variant max-w-xs mt-sm">
+                    We are thrilled to offer you a position at TalentFlow. We believe your skills will be a perfect addition to our team.
+                </p>
+</div>
+</div>
+<!-- Right Section: Offer Details & Actions -->
+<div class="md:w-7/12 p-xl flex flex-col bg-surface-container-lowest">
+<!-- Header -->
+<div class="mb-lg border-b border-outline-variant pb-md">
+<h1 class="font-h2 text-h2 text-on-surface">Offer Details</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-[16px]">work</span>
+                    Senior Backend Engineer
+                </p>
+</div>
+<!-- Bento Grid Details -->
+<div class="grid grid-cols-2 gap-md mb-lg">
+<!-- Salary Card -->
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant flex flex-col">
+<span class="font-label text-label text-on-surface-variant mb-xs uppercase">Base Salary</span>
+<span class="font-h3 text-h3 text-on-surface">$160,000 <span class="font-body-sm text-body-sm text-outline font-normal">/ yr</span></span>
+</div>
+<!-- Equity Card -->
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant flex flex-col">
+<span class="font-label text-label text-on-surface-variant mb-xs uppercase">Equity</span>
+<span class="font-h3 text-h3 text-on-surface">15,000 <span class="font-body-sm text-body-sm text-outline font-normal">RSUs</span></span>
+</div>
+<!-- Start Date Card -->
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant flex flex-col col-span-2 md:col-span-1">
+<span class="font-label text-label text-on-surface-variant mb-xs uppercase">Target Start Date</span>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="font-h3 text-h3 text-on-surface">Oct 23, 2024</span>
+</div>
+</div>
+<!-- Manager Card -->
+<div class="bg-surface-container rounded-lg p-md border border-outline-variant flex flex-col col-span-2 md:col-span-1">
+<span class="font-label text-label text-on-surface-variant mb-xs uppercase">Reporting To</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+<img alt="Manager Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a female engineering manager in a brightly lit modern office. She is smiling confidently, wearing business casual attire. The lighting is soft and flattering, highlighting a welcoming and approachable leadership style. High-resolution corporate portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSURHN3CpLiCbKNGpqL7yuRzbrpBRkWco5kTbKu3HHtae40wHXW3O3HMYPtyMTPMN0WqFjgYX04Bm80WiwlHcdW1vW9irWICDCUxGxrJ5O7ionKh2626ztBce8t6RvXgxxBhB9aTZ6xWMTJ5pKqj27CjYEqzrKZb_4rEzAI7IVO-0-fop7S4YALnCSr6Nnrt3PxnLrHNaK5kN-CgrWjdUMTucLNRku9RMn0WYbU8ZqQpU00nG55oXKONZa0VE1SViUQ0XAjdtvsp0"/>
+</div>
+<span class="font-body text-body text-on-surface font-medium">Guinevere Smith</span>
+</div>
+</div>
+</div>
+<!-- Document Download -->
+<div class="mb-xl bg-surface-container-low rounded-lg border border-outline-variant p-md flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-error-container text-on-error-container rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-body text-body text-on-surface font-medium">Official Offer Letter</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">PDF • 2.4 MB</p>
+</div>
+</div>
+<button aria-label="Download Document" class="text-primary hover:text-primary-container p-sm rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<!-- Actions -->
+<div class="mt-auto flex flex-col sm:flex-row gap-md">
+<button class="flex-1 bg-surface-container border border-outline font-label text-label text-on-surface py-sm px-md rounded hover:bg-surface-variant transition-colors flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+                    Request Changes
+                </button>
+<button class="flex-1 bg-primary font-label text-label text-on-primary py-sm px-md rounded hover:bg-primary-container transition-colors shadow-sm flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    Accept Offer
+                </button>
+</div>
+</div>
+</main>
+</body></html>

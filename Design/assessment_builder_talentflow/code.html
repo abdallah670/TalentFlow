@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Assessment - TalentFlow Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#8f4700",
+                      "surface-container": "#efedf6",
+                      "outline-variant": "#c5c5d4",
+                      "surface-tint": "#4355b9",
+                      "primary-fixed-dim": "#bac3ff",
+                      "inverse-primary": "#bac3ff",
+                      "secondary-fixed": "#dee0ff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-background": "#1a1b22",
+                      "surface": "#fbf8ff",
+                      "on-secondary-container": "#51577f",
+                      "surface-dim": "#dbd9e2",
+                      "primary-fixed": "#dee0ff",
+                      "tertiary": "#6c3400",
+                      "on-secondary-fixed-variant": "#3e446b",
+                      "background": "#fbf8ff",
+                      "on-surface": "#1a1b22",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#ffc7a2",
+                      "surface-container-low": "#f4f2fc",
+                      "primary-container": "#3f51b5",
+                      "outline": "#757684",
+                      "surface-bright": "#fbf8ff",
+                      "inverse-surface": "#2f3037",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "surface-container-highest": "#e3e1ea",
+                      "secondary-container": "#c9cffd",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "primary": "#24389c",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#454652",
+                      "secondary": "#565c84",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#f2eff9",
+                      "surface-container-high": "#e9e7f0",
+                      "on-primary-fixed": "#00105c",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-variant": "#e3e1ea",
+                      "on-secondary-fixed": "#12183d",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "on-tertiary-fixed": "#301400",
+                      "on-primary-container": "#cacfff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "margin": "24px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "h2": [
+                              "Roboto"
+                      ],
+                      "h1": [
+                              "Roboto"
+                      ],
+                      "body": [
+                              "Roboto"
+                      ],
+                      "h1-mobile": [
+                              "Roboto"
+                      ],
+                      "h3": [
+                              "Roboto"
+                      ],
+                      "body-sm": [
+                              "Roboto"
+                      ],
+                      "label": [
+                              "Roboto"
+                      ]
+              },
+              "fontSize": {
+                      "h2": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body": [
+                              "15px",
+                              {
+                                      "lineHeight": "22px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h3": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 flex-col py-md px-sm bg-surface-container-low border-r border-outline-variant z-10 sticky top-0">
+<div class="px-md mb-xl">
+<h2 class="font-h2 text-h2 font-bold text-primary">TalentFlow</h2>
+<p class="font-label text-label text-on-surface-variant">Enterprise HR</p>
+</div>
+<ul class="flex flex-col gap-xs flex-grow overflow-y-auto">
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">work</span>
+                    Jobs
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                    Pipeline
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Candidates
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                    Interviews
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">description</span>
+                    Offers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Analytics
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+                    Admin
+                </a>
+</li>
+</ul>
+<div class="mt-auto border-t border-outline-variant pt-md px-sm">
+<ul class="flex flex-col gap-xs">
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="w-full h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-lg flex-shrink-0 z-10">
+<!-- Mobile Menu Toggle (Visible only on md screens) -->
+<button class="md:hidden p-sm text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Brand Logo (Visible only on md screens) -->
+<div class="md:hidden flex items-center gap-sm">
+<h1 class="font-h1-mobile text-h1-mobile font-black text-primary">TalentFlow</h1>
+</div>
+<!-- Search Bar (Placeholder) -->
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-md py-xs border border-outline-variant focus-within:border-primary w-96 max-w-full">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body font-body ml-sm w-full outline-none text-on-surface" placeholder="Search..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-md">
+<button class="p-xs rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-xs rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden ml-sm border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of an HR administrator, modern corporate style, light studio lighting, neutral background, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_DYjyMoHerl6p9WK-0bVM-mj-q8CPK8oLfegrz2IsxuZiGDpm4pswTFvS8fgXtplD_5JTsqYzTZXx5pFeA5w0Q62XffJXHdBDom9ZfBCZAFdc-e2B67cabG9DWwHmYIBrwyNqamlFaW3zl9jW09zUYIzKydUMUFS6DIif7F97ffSta5eL6qYJ5g2T4GCJJObGhrUxmEKTvjKWCE0HyCBsJLYnGLu3tuCVz0Xh584mkMJ2Idqg-HEV9dB16A3q5BMVCUOkxH52YPg"/>
+</div>
+</div>
+</header>
+<!-- Builder Content -->
+<div class="flex-grow flex flex-col md:flex-row overflow-hidden bg-background">
+<!-- Left Sidebar (Question Types) -->
+<aside class="w-full md:w-64 bg-surface border-r border-outline-variant flex flex-col flex-shrink-0 z-0">
+<div class="p-md border-b border-outline-variant">
+<h3 class="font-h3 text-h3 text-on-surface font-medium">Question Types</h3>
+</div>
+<div class="p-md flex flex-col gap-sm overflow-y-auto">
+<button class="flex items-center gap-md p-sm rounded border border-outline-variant hover:border-primary hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant transition-colors cursor-pointer text-left font-body text-body bg-surface-lowest shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<span class="material-symbols-outlined">radio_button_checked</span>
+                        Multiple Choice
+                    </button>
+<button class="flex items-center gap-md p-sm rounded border border-outline-variant hover:border-primary hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant transition-colors cursor-pointer text-left font-body text-body bg-surface-lowest shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<span class="material-symbols-outlined">short_text</span>
+                        Short Answer
+                    </button>
+<button class="flex items-center gap-md p-sm rounded border border-outline-variant hover:border-primary hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant transition-colors cursor-pointer text-left font-body text-body bg-surface-lowest shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<span class="material-symbols-outlined">notes</span>
+                        Paragraph
+                    </button>
+<button class="flex items-center gap-md p-sm rounded border border-outline-variant hover:border-primary hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant transition-colors cursor-pointer text-left font-body text-body bg-surface-lowest shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<span class="material-symbols-outlined">linear_scale</span>
+                        Rating Scale (1-5)
+                    </button>
+<button class="flex items-center gap-md p-sm rounded border border-outline-variant hover:border-primary hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant transition-colors cursor-pointer text-left font-body text-body bg-surface-lowest shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<span class="material-symbols-outlined">upload_file</span>
+                        File Upload
+                    </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<section class="flex-grow flex flex-col overflow-y-auto bg-surface-container-low p-margin relative">
+<!-- Breadcrumbs & Header Actions -->
+<div class="flex flex-col gap-sm mb-lg max-w-4xl mx-auto w-full">
+<nav class="flex items-center gap-xs font-label text-label text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Admin</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Assessments</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-medium">New Assessment</span>
+</nav>
+<div class="flex justify-between items-center mt-sm">
+<h1 class="font-h1 text-h1 text-on-surface">Create Assessment</h1>
+<div class="flex gap-md">
+<button class="px-md py-sm rounded text-primary border border-primary hover:bg-primary-container transition-colors font-label text-label cursor-pointer">
+                                Save Draft
+                            </button>
+<button class="px-md py-sm rounded bg-primary text-on-primary hover:bg-primary-fixed-variant transition-colors font-label text-label cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+                                Publish
+                            </button>
+</div>
+</div>
+</div>
+<!-- Assessment Builder Area -->
+<div class="max-w-4xl mx-auto w-full flex flex-col gap-margin pb-xl">
+<!-- Assessment Info Section -->
+<div class="bg-surface rounded-xl border border-outline-variant p-lg shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+<div class="flex flex-col gap-md">
+<div>
+<label class="sr-only" for="assessment-title">Assessment Title</label>
+<input class="w-full font-h2 text-h2 text-on-surface border-b-2 border-outline-variant hover:border-primary focus:border-primary bg-transparent outline-none pb-xs transition-colors rounded-none px-0" id="assessment-title" placeholder="Assessment Title" type="text" value="Senior Backend Engineer Technical Screen"/>
+</div>
+<div>
+<label class="sr-only" for="assessment-desc">Assessment Description</label>
+<textarea class="w-full font-body text-body text-on-surface-variant border-b border-outline-variant hover:border-primary focus:border-primary bg-transparent outline-none pb-xs transition-colors resize-none rounded-none px-0 mt-sm" id="assessment-desc" placeholder="Assessment Description (Optional)" rows="2">This assessment evaluates core system design principles, API architecture, and cultural fit for senior backend engineering candidates.</textarea>
+</div>
+</div>
+</div>
+<!-- Questions List -->
+<div class="flex flex-col gap-lg">
+<!-- Sample Question 1: Multiple Choice -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.12)] relative group hover:border-primary transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<!-- Drag Handle (Visual only) -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-6 flex items-center justify-center cursor-move text-outline opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="p-lg pt-xl flex flex-col gap-md">
+<div class="flex justify-between items-start gap-md">
+<div class="flex-grow">
+<input class="w-full font-h3 text-h3 text-on-surface bg-surface-container-low border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary" placeholder="Question Text" type="text" value="In a microservices architecture, what is a primary advantage of using an API Gateway?"/>
+</div>
+<div class="flex-shrink-0 w-48">
+<select class="w-full font-body-sm text-body-sm text-on-surface-variant bg-surface border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary appearance-none cursor-pointer">
+<option selected="" value="multiple_choice">Multiple Choice</option>
+<option value="short_answer">Short Answer</option>
+<option value="paragraph">Paragraph</option>
+<option value="rating">Rating Scale</option>
+<option value="file_upload">File Upload</option>
+</select>
+</div>
+</div>
+<!-- Multiple Choice Options -->
+<div class="flex flex-col gap-sm ml-sm mt-sm">
+<div class="flex items-center gap-sm">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant cursor-not-allowed" disabled="" type="radio"/>
+<input class="flex-grow font-body text-body text-on-surface border-b border-transparent hover:border-outline-variant focus:border-primary bg-transparent outline-none px-xs py-xs transition-colors rounded-none" type="text" value="It completely eliminates network latency between services."/>
+<button class="p-xs text-outline hover:text-error transition-colors cursor-pointer"><span class="material-symbols-outlined text-[20px]">close</span></button>
+</div>
+<div class="flex items-center gap-sm">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant cursor-not-allowed" disabled="" type="radio"/>
+<input class="flex-grow font-body text-body text-on-surface border-b border-transparent hover:border-outline-variant focus:border-primary bg-transparent outline-none px-xs py-xs transition-colors rounded-none" type="text" value="It centralizes cross-cutting concerns like authentication and rate limiting."/>
+<button class="p-xs text-outline hover:text-error transition-colors cursor-pointer"><span class="material-symbols-outlined text-[20px]">close</span></button>
+</div>
+<div class="flex items-center gap-sm">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant cursor-not-allowed" disabled="" type="radio"/>
+<input class="flex-grow font-body text-body text-on-surface border-b border-transparent hover:border-outline-variant focus:border-primary bg-transparent outline-none px-xs py-xs transition-colors rounded-none" type="text" value="It allows all services to share a single, monolithic database securely."/>
+<button class="p-xs text-outline hover:text-error transition-colors cursor-pointer"><span class="material-symbols-outlined text-[20px]">close</span></button>
+</div>
+<div class="flex items-center gap-sm mt-xs">
+<span class="material-symbols-outlined text-outline text-[20px]">radio_button_unchecked</span>
+<button class="font-body text-body text-primary hover:underline bg-transparent border-none outline-none cursor-pointer text-left py-xs px-xs">Add Option</button>
+</div>
+</div>
+</div>
+<!-- Question Actions Toolbar -->
+<div class="border-t border-outline-variant px-lg py-sm flex justify-between items-center bg-surface-bright rounded-b-xl">
+<div class="flex items-center gap-md">
+<label class="flex items-center gap-xs font-label text-label text-on-surface cursor-pointer">
+                                        Required
+                                        <input checked="" class="text-primary focus:ring-primary rounded border-outline-variant cursor-pointer h-4 w-4" type="checkbox"/>
+</label>
+</div>
+<div class="flex gap-sm border-l border-outline-variant pl-md">
+<button class="p-xs text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors cursor-pointer rounded" title="Duplicate">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-error hover:bg-error-container transition-colors cursor-pointer rounded" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sample Question 2: Rating Scale -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.12)] relative group hover:border-primary transition-colors">
+<!-- Drag Handle (Visual only) -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-6 flex items-center justify-center cursor-move text-outline opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="p-lg pt-xl flex flex-col gap-md">
+<div class="flex justify-between items-start gap-md">
+<div class="flex-grow">
+<input class="w-full font-h3 text-h3 text-on-surface bg-surface-container-low border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary" placeholder="Question Text" type="text" value="How comfortable are you working in an agile environment with weekly sprints?"/>
+</div>
+<div class="flex-shrink-0 w-48">
+<select class="w-full font-body-sm text-body-sm text-on-surface-variant bg-surface border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary appearance-none cursor-pointer">
+<option value="multiple_choice">Multiple Choice</option>
+<option value="short_answer">Short Answer</option>
+<option value="paragraph">Paragraph</option>
+<option selected="" value="rating">Rating Scale</option>
+<option value="file_upload">File Upload</option>
+</select>
+</div>
+</div>
+<!-- Rating Scale Options -->
+<div class="flex flex-col gap-sm ml-sm mt-md">
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm">
+<span class="font-body text-body text-on-surface-variant w-4 text-right">1</span>
+<span class="material-symbols-outlined text-outline text-[24px]">radio_button_unchecked</span>
+<input class="font-body-sm text-body-sm text-on-surface border-b border-transparent hover:border-outline-variant focus:border-primary bg-transparent outline-none px-xs py-[2px] transition-colors rounded-none w-32" placeholder="Label (Optional)" type="text" value="Not Comfortable"/>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">horizontal_rule</span>
+<div class="flex items-center gap-sm">
+<span class="font-body text-body text-on-surface-variant w-4 text-right">5</span>
+<span class="material-symbols-outlined text-outline text-[24px]">radio_button_unchecked</span>
+<input class="font-body-sm text-body-sm text-on-surface border-b border-transparent hover:border-outline-variant focus:border-primary bg-transparent outline-none px-xs py-[2px] transition-colors rounded-none w-32" placeholder="Label (Optional)" type="text" value="Very Comfortable"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Question Actions Toolbar -->
+<div class="border-t border-outline-variant px-lg py-sm flex justify-between items-center bg-surface-bright rounded-b-xl">
+<div class="flex items-center gap-md">
+<label class="flex items-center gap-xs font-label text-label text-on-surface cursor-pointer">
+                                        Required
+                                        <input checked="" class="text-primary focus:ring-primary rounded border-outline-variant cursor-pointer h-4 w-4" type="checkbox"/>
+</label>
+</div>
+<div class="flex gap-sm border-l border-outline-variant pl-md">
+<button class="p-xs text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors cursor-pointer rounded" title="Duplicate">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-error hover:bg-error-container transition-colors cursor-pointer rounded" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Question Button -->
+<div class="flex justify-center mt-md">
+<button class="flex items-center gap-sm px-md py-sm rounded-full border border-primary text-primary hover:bg-primary-container transition-colors font-label text-label cursor-pointer bg-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Add Question
+                        </button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar (Settings) -->
+<aside class="w-full md:w-80 bg-surface border-l border-outline-variant flex flex-col flex-shrink-0 z-0">
+<div class="p-md border-b border-outline-variant">
+<h3 class="font-h3 text-h3 text-on-surface font-medium">Assessment Settings</h3>
+</div>
+<div class="p-md flex flex-col gap-lg overflow-y-auto">
+<!-- Scoring -->
+<div class="flex flex-col gap-sm">
+<h4 class="font-label text-label text-on-surface-variant uppercase tracking-wider">Scoring</h4>
+<div class="flex items-center justify-between">
+<label class="font-body text-body text-on-surface" for="total-points">Total Points</label>
+<input class="w-20 font-body text-body text-right border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary bg-surface-container-low text-on-surface" id="total-points" type="number" value="100"/>
+</div>
+<div class="flex items-center justify-between">
+<label class="font-body text-body text-on-surface" for="passing-score">Passing Score (%)</label>
+<input class="w-20 font-body text-body text-right border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary bg-surface-container-low text-on-surface" id="passing-score" type="number" value="75"/>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Time Limit -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<h4 class="font-label text-label text-on-surface-variant uppercase tracking-wider">Time Limit</h4>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-outline-variant rounded-full peer peer-focus:ring-2 peer-focus:ring-primary-fixed peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center gap-sm mt-xs">
+<input class="w-20 font-body text-body text-right border border-outline-variant rounded px-sm py-xs focus:outline-none focus:border-primary bg-surface-container-low text-on-surface" id="time-limit" type="number" value="45"/>
+<span class="font-body text-body text-on-surface">minutes</span>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Instructions -->
+<div class="flex flex-col gap-sm">
+<h4 class="font-label text-label text-on-surface-variant uppercase tracking-wider">Candidate Instructions</h4>
+<textarea class="w-full font-body-sm text-body-sm text-on-surface border border-outline-variant rounded p-sm focus:outline-none focus:border-primary bg-surface-container-low resize-y min-h-[120px]" id="candidate-instructions" placeholder="Enter instructions visible to the candidate before starting...">Please ensure you have a stable internet connection. You will have 45 minutes to complete this assessment. Once started, the timer cannot be paused.</textarea>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

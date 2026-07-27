@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tenant Settings | TalentFlow Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c5c5d4",
+                    "background": "#fbf8ff",
+                    "outline": "#757684",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#bec4f2",
+                    "surface-tint": "#4355b9",
+                    "inverse-primary": "#bac3ff",
+                    "tertiary": "#6c3400",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "secondary-fixed": "#dee0ff",
+                    "surface-container": "#efedf6",
+                    "on-tertiary-container": "#ffc7a2",
+                    "on-tertiary-fixed": "#301400",
+                    "on-primary-container": "#cacfff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f4f2fc",
+                    "on-primary-fixed-variant": "#293ca0",
+                    "surface-dim": "#dbd9e2",
+                    "on-background": "#1a1b22",
+                    "secondary-container": "#c9cffd",
+                    "surface": "#fbf8ff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#3f51b5",
+                    "secondary": "#565c84",
+                    "surface-container-highest": "#e3e1ea",
+                    "surface-container-high": "#e9e7f0",
+                    "inverse-surface": "#2f3037",
+                    "inverse-on-surface": "#f2eff9",
+                    "on-surface": "#1a1b22",
+                    "on-primary-fixed": "#00105c",
+                    "primary": "#24389c",
+                    "on-secondary-fixed": "#12183d",
+                    "primary-fixed": "#dee0ff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#454652",
+                    "primary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#8f4700",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#51577f",
+                    "tertiary-fixed": "#ffdcc6",
+                    "surface-bright": "#fbf8ff",
+                    "on-secondary-fixed-variant": "#3e446b",
+                    "surface-variant": "#e3e1ea",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "24px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "h1": ["Roboto"],
+                    "h3": ["Roboto"],
+                    "h1-mobile": ["Roboto"],
+                    "h2": ["Roboto"],
+                    "body": ["Roboto"],
+                    "label": ["Roboto"],
+                    "body-sm": ["Roboto"]
+            },
+            "fontSize": {
+                    "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #fbf8ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #24389c;
+            box-shadow: 0 0 0 2px rgba(36, 56, 156, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body text-body text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant shadow-sm flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-h2 text-h2 font-bold text-primary">TalentFlow</h1>
+<p class="font-label text-label text-on-surface-variant opacity-70">Enterprise Edition</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer rounded" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-primary font-bold border-r-4 border-primary bg-surface-container-high transition-all cursor-pointer rounded-l" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                    AD
+                </div>
+<div>
+<p class="font-label text-label font-bold text-on-surface">Admin User</p>
+<p class="text-[10px] text-on-surface-variant">Global Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface border-b border-outline-variant shadow-sm flex items-center justify-between px-gutter z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body focus:ring-1 focus:ring-primary focus:outline-none" placeholder="Search settings, users, or help..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional high-resolution headshot of a corporate administrator in a bright, modern office environment. The person is wearing a sharp navy blazer, smiling confidently. The background is a soft-focus corporate lounge with warm timber accents and greenery, reinforcing a professional yet approachable leadership persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9yYvgZGWRmjfYxfZQJeCnupGRiHgFtLhN_T0UhHxHcifrq2ovbdKh8MFJ0-2V996Yka8Yy5VnsYKGpsFyfItbjKfGil0ZbIZErr1QEBKlHcaCxGuS4cFSJaq1ovDIz6YtAls5rKNb5ZYPNIoNfddnYMldGfglWS4zHvfoIVpZnznxxrZ7RdsETLsf77MAbHOwDkb--ivmB_cSHQFID3y-3a9sN-kj96fvAjXzl8vxbN983HCFM91AE_x7KNT5LRPuy2GV8byW5NU"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-margin max-w-[1200px]">
+<div class="flex items-center justify-between mb-8">
+<div>
+<nav class="flex text-label text-on-surface-variant mb-2">
+<span class="hover:text-primary cursor-pointer">Admin</span>
+<span class="mx-2">/</span>
+<span class="font-bold text-on-surface">Tenant Settings</span>
+</nav>
+<h2 class="font-h1 text-h1 text-on-surface">Tenant Settings</h2>
+<p class="text-on-surface-variant mt-1">Manage your enterprise branding, localization, and global preferences.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 border border-outline text-on-surface-variant font-label text-label rounded hover:bg-surface-container-high transition-all">
+                    Discard
+                </button>
+<button class="px-6 py-2 bg-primary-container text-white font-label text-label rounded shadow-sm hover:brightness-110 transition-all">
+                    Save Changes
+                </button>
+</div>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Company Profile Section -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-8 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="business">business</span>
+<h3 class="font-h3 text-h3 text-on-surface">Company Profile</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">Company Name</label>
+<input class="px-4 py-2 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus" type="text" value="TalentFlow Enterprise"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">Legal Entity Identifier (LEI)</label>
+<input class="px-4 py-2 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus" placeholder="Optional" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">Corporate Website</label>
+<div class="flex border border-outline-variant rounded-lg overflow-hidden focus-within:ring-1 focus-within:ring-primary">
+<span class="px-3 py-2 bg-surface-container-high text-on-surface-variant border-r border-outline-variant text-body-sm">https://</span>
+<input class="flex-1 px-4 py-2 border-none font-body text-body bg-surface-container-low focus:ring-0" type="text" value="talentflow.enterprise.io"/>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<label class="font-label text-label text-on-surface-variant block mb-4">Company Logo</label>
+<div class="flex items-start gap-8">
+<div class="w-32 h-32 rounded-lg border-2 border-dashed border-outline-variant flex flex-col items-center justify-center bg-surface-container-low overflow-hidden group hover:border-primary transition-colors cursor-pointer">
+<img class="w-full h-full object-contain" data-alt="A clean, high-contrast vector logo on a white background. The logo features a stylized abstract letter 'T' and 'F' merged into a single geometric shape representing flow and connectivity. The style is modern minimalist corporate, using a deep indigo primary color, perfectly centered within the frame." id="logo-preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOvJyOaK6zcLSw0ntcKUGW86aokioctBBpcO5Zz75NR3wxcnwtMFG3PVGG4x6zqU2yhfB7vkHKef-C1MB6zHbHz0sD1ykT8YZ3qYlO3WPoMzlr2_QyqBiE3Gy3wLHOHjfmxEAhLYRGA7V6hk3b_Lz9tAtCaHYGrRV_I5eLsQ5LcHgnJsmrmRK7teatjNNmSgAj7r3k0qwcDVr_rIDu8Mg7aZizoT5uRQitARVMU2efvP1X1C00eKFiMiNiIhbqHvgDcuFVsJRQHas"/>
+</div>
+<div class="flex-1">
+<p class="text-body-sm text-on-surface-variant mb-4">Recommended size: 512x512px. PNG, JPG or SVG. Max file size 2MB.</p>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded font-label text-label flex items-center gap-2 hover:brightness-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload">upload</span>
+                                        Upload New
+                                    </button>
+<button class="px-4 py-2 text-error font-label text-label hover:bg-error-container/20 rounded transition-all">Remove</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Appearance Section -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-sm flex flex-col">
+<div class="flex items-center gap-3 mb-8 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+<h3 class="font-h3 text-h3 text-on-surface">Brand Identity</h3>
+</div>
+<div class="space-y-8 flex-1">
+<div>
+<label class="font-label text-label text-on-surface-variant block mb-3">Primary Brand Color</label>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary cursor-pointer border border-outline shadow-inner flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]" data-icon="colorize">colorize</span>
+</div>
+<div class="flex-1">
+<input class="w-full px-4 py-2 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus uppercase" type="text" value="#24389C"/>
+</div>
+</div>
+</div>
+<div>
+<label class="font-label text-label text-on-surface-variant block mb-3">Interface Theme</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center gap-2 p-4 border-2 border-primary bg-surface-container rounded-lg group">
+<span class="material-symbols-outlined text-primary" data-icon="light_mode">light_mode</span>
+<span class="font-label text-label font-bold text-on-surface">Light Mode</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 border border-outline-variant bg-inverse-surface rounded-lg group hover:border-outline">
+<span class="material-symbols-outlined text-inverse-on-surface" data-icon="dark_mode">dark_mode</span>
+<span class="font-label text-label text-inverse-on-surface">Dark Mode</span>
+</button>
+</div>
+</div>
+<div class="p-4 bg-surface-container rounded-lg border border-outline-variant">
+<p class="font-label text-label text-on-surface-variant uppercase mb-2">Live Preview</p>
+<div class="h-20 w-full bg-white rounded border border-outline-variant flex items-center justify-center">
+<div class="px-4 py-1 bg-primary text-white text-[10px] font-bold rounded">PRIMARY BUTTON</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Localization Section -->
+<section class="col-span-12 bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-8 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+<h3 class="font-h3 text-h3 text-on-surface">Regional &amp; Localization</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">Default Timezone</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-2 pr-10 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus">
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+00:00) London, Western Europe</option>
+<option>(GMT+01:00) Berlin, Madrid, Paris</option>
+<option>(GMT+05:30) Mumbai, New Delhi</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">System Language</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-2 pr-10 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus">
+<option>English (United States)</option>
+<option>English (United Kingdom)</option>
+<option>German (Deutsch)</option>
+<option>French (Français)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-label text-on-surface-variant">Date Format</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-2 pr-10 border border-outline-variant rounded-lg font-body text-body bg-surface-container-low form-input-focus">
+<option>MM/DD/YYYY</option>
+<option>DD/MM/YYYY</option>
+<option>YYYY-MM-DD</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="col-span-12 p-8 border-2 border-error/20 bg-error-container/5 rounded-xl">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-h3 text-h3 text-error flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+                            Danger Zone
+                        </h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Irreversible actions for your tenant. Use with extreme caution.</p>
+</div>
+<button class="px-6 py-2 border border-error text-error font-label text-label rounded hover:bg-error hover:text-white transition-all">
+                        Deactivate Tenant
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            btn.addEventListener('mouseup', function() {
+                this.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple color input synchronization (preview only)
+        const colorInput = document.querySelector('input[value="#24389C"]');
+        const colorPreview = document.querySelector('.w-12.h-12.bg-primary');
+        const demoButton = document.querySelector('.px-4.py-1.bg-primary');
+
+        if(colorInput) {
+            colorInput.addEventListener('input', (e) => {
+                const color = e.target.value;
+                if(/^#[0-9A-F]{6}$/i.test(color)) {
+                    colorPreview.style.backgroundColor = color;
+                    if(demoButton) demoButton.style.backgroundColor = color;
+                }
+            });
+        }
+    </script>
+</body></html>

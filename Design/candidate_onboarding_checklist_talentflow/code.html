@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Onboarding - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#301400",
+                    "secondary-fixed-dim": "#bec4f2",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#efedf6",
+                    "on-secondary-fixed-variant": "#3e446b",
+                    "on-primary-fixed-variant": "#293ca0",
+                    "surface-tint": "#4355b9",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-background": "#1a1b22",
+                    "on-surface-variant": "#454652",
+                    "inverse-surface": "#2f3037",
+                    "on-tertiary-container": "#ffc7a2",
+                    "on-primary-container": "#cacfff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#00105c",
+                    "primary": "#24389c",
+                    "inverse-primary": "#bac3ff",
+                    "surface-dim": "#dbd9e2",
+                    "on-secondary-fixed": "#12183d",
+                    "on-secondary-container": "#51577f",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcc6",
+                    "secondary-fixed": "#dee0ff",
+                    "surface-bright": "#fbf8ff",
+                    "secondary-container": "#c9cffd",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "tertiary-container": "#8f4700",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e3e1ea",
+                    "on-surface": "#1a1b22",
+                    "surface-variant": "#e3e1ea",
+                    "primary-fixed": "#dee0ff",
+                    "outline-variant": "#c5c5d4",
+                    "background": "#fbf8ff",
+                    "outline": "#757684",
+                    "surface-container-low": "#f4f2fc",
+                    "surface-container-high": "#e9e7f0",
+                    "surface": "#fbf8ff",
+                    "primary-container": "#3f51b5",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f2eff9",
+                    "tertiary": "#6c3400",
+                    "secondary": "#565c84",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#bac3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "unit": "4px",
+                    "margin": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "h3": ["Roboto"],
+                    "body-sm": ["Roboto"],
+                    "h1": ["Roboto"],
+                    "body": ["Roboto"],
+                    "h1-mobile": ["Roboto"],
+                    "label": ["Roboto"],
+                    "h2": ["Roboto"]
+            },
+            "fontSize": {
+                    "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #F5F6FA; }
+        .card-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body text-body min-h-screen">
+<!-- TopNavBar (Nav Shell Suppressed for Transactional/Onboarding Flow as per rules, but showing TopNavBar as it might be a sub-page context. Actually, rules say "Suppress the navigation shell if the page intent is Linear/Transactional: Login, Sign-up, Onboarding...". So I will suppress SideNav and TopNav.) -->
+<!-- Content Canvas Starts Here -->
+<main class="max-w-[1024px] mx-auto px-margin py-xl md:py-[64px]">
+<!-- Welcome Header -->
+<header class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-sm">Welcome aboard, Sarah! 🎉</h1>
+<p class="font-body text-body text-on-surface-variant max-w-2xl">
+                    We're thrilled to have you join the team. Complete the checklist below to get fully set up before your first day.
+                </p>
+</div>
+<div class="flex items-center gap-sm">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm border border-outline-variant" data-alt="A professional corporate headshot of a smiling young woman with short dark hair, wearing a crisp white blouse. The lighting is bright and even, set against a clean, blurred light gray office background. The overall mood is approachable, confident, and highly polished, fitting for an enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaF-amvsJKp9l8CFnoCGgOrhGjeopbdlY9m9xVTzBNrhpssUWDv7xgkoEh-jhsYnHZnlS6CTEjL2WKPYzqY28E99osa_9sGRl-pZmAMTmXt6q6UN-p3BAXyquAajEELdq5ohx0hYs-9pvQRumLKhwh_Zd1XJaWO1sraHwmAWn_S75e-1ym--ByWTMYalnpfPrGsewTteSRJvxaPSA6H6uF4ugzuU0I9rxL64JT3atUS76hG-47IXCaZssRmEMGMLNcUz6tlEvDL4"/>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Sarah Jenkins</span>
+<span class="font-label text-label text-on-surface-variant">Senior Product Designer</span>
+</div>
+</div>
+</header>
+<!-- Progress Overview Bento Box -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+<!-- Main Progress Card -->
+<div class="md:col-span-2 bg-surface rounded-xl p-margin card-shadow border border-outline-variant/30 flex flex-col justify-center">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h2 text-h2 text-on-surface">Onboarding Progress</h2>
+<span class="font-h2 text-h2 text-primary font-bold">60%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-3 mb-xs overflow-hidden">
+<div class="bg-primary h-3 rounded-full transition-all duration-1000 ease-out" style="width: 60%"></div>
+</div>
+<p class="font-label text-label text-on-surface-variant">3 of 5 required tasks completed. Almost there!</p>
+</div>
+<!-- Due Date Card -->
+<div class="bg-primary-container rounded-xl p-margin shadow-sm flex flex-col items-center justify-center text-center text-on-primary-container">
+<span class="material-symbols-outlined text-4xl mb-sm" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<h3 class="font-h3 text-h3 mb-xs text-on-primary">Target Start Date</h3>
+<p class="font-h2 text-h2 font-bold text-on-primary">Mon, Oct 23</p>
+<p class="font-label text-label mt-sm text-inverse-primary">4 days remaining</p>
+</div>
+</section>
+<!-- Checklist Section -->
+<section class="bg-surface rounded-xl card-shadow border border-outline-variant/30 overflow-hidden">
+<div class="p-margin border-b border-outline-variant/50 bg-surface-bright">
+<h2 class="font-h2 text-h2 text-on-surface">Your Action Items</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Please complete these in order to ensure a smooth Day 1.</p>
+</div>
+<div class="flex flex-col">
+<!-- Task 1: Completed -->
+<div class="p-margin flex flex-col md:flex-row gap-md items-start md:items-center border-b border-outline-variant/30 hover:bg-primary-fixed/20 transition-colors group">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#E8F5E9] text-[#2E7D32] shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Personal Information</h3>
+<span class="px-2 py-0.5 rounded-full bg-[#E8F5E9] text-[#2E7D32] font-label text-label border border-[#A5D6A7]">Completed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Emergency contacts, direct deposit, and basic HR profile details.</p>
+</div>
+<button class="shrink-0 px-md py-sm rounded text-primary font-label text-label border border-primary/30 hover:bg-primary/5 transition-colors">
+                        Review
+                    </button>
+</div>
+<!-- Task 2: Pending (Action Required) -->
+<div class="p-margin flex flex-col md:flex-row gap-md items-start md:items-center border-b border-outline-variant/30 hover:bg-primary-fixed/20 transition-colors group bg-surface-container-lowest relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-h3 text-h3 text-on-surface font-bold">IT Hardware Setup</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label text-label border border-outline-variant">Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select your preferred laptop and request necessary peripherals.</p>
+</div>
+<button class="shrink-0 px-md py-sm rounded bg-primary text-on-primary font-label text-label hover:bg-primary/90 transition-colors shadow-sm">
+                        Start Task
+                    </button>
+</div>
+<!-- Task 3: Overdue -->
+<div class="p-margin flex flex-col md:flex-row gap-md items-start md:items-center border-b border-outline-variant/30 hover:bg-primary-fixed/20 transition-colors group bg-[#FFF3E0]/30">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#FBE9E7] text-[#D84315] shrink-0 border border-[#FFCCBC]">
+<span class="material-symbols-outlined">error</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Document Uploads</h3>
+<span class="px-2 py-0.5 rounded-full bg-[#FF6D00] text-white font-label text-label">Urgent</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Upload your signed offer letter and NDA.</p>
+</div>
+<button class="shrink-0 px-md py-sm rounded bg-primary text-on-primary font-label text-label hover:bg-primary/90 transition-colors shadow-sm">
+                        Upload Files
+                    </button>
+</div>
+<!-- Task 4: Locked -->
+<div class="p-margin flex flex-col md:flex-row gap-md items-start md:items-center hover:bg-primary-fixed/20 transition-colors group opacity-60">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-highest text-outline shrink-0">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-h3 text-h3 text-on-surface">Team Intro &amp; Benefits Selection</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Unlocks after completing Document Uploads.</p>
+</div>
+<button class="shrink-0 px-md py-sm rounded text-outline font-label text-label border border-outline cursor-not-allowed" disabled="">
+                        Locked
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

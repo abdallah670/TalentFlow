@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^21.1.4",
+    "@angular/material": "^21.1.4",
+    "@microsoft/signalr": "^10.0.0",
+    "@ngrx/effects": "^21.0.1",
+    "@ngrx/entity": "^21.0.1",
+    "@ngrx/router-store": "^21.0.1",
+    "@ngrx/store": "^21.0.1",
+    "@ngrx/store-devtools": "^21.0.1",
+    "ngx-cookie-service": "^21.1.0",
+    "sweetalert2": "^11.26.24"
+  }
+}

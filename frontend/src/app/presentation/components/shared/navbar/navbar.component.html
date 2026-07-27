@@ -1,0 +1,26 @@
+<header class="top-header">
+  <div class="header-left">
+    <button class="menu-toggle" (click)="toggleSidebar()">☰</button>
+    <h3 class="brand-name">TalentFlow</h3>
+    <div class="header-divider"></div>
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Search jobs, candidates...">
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="icon-btn notification-btn">
+      🔔
+      <span class="notification-badge"></span>
+    </button>
+    <button class="icon-btn">⚙️</button>
+    <div class="header-divider"></div>
+    <div class="user-info">
+      <div class="user-avatar">
+        {{ getUserInitials() }}
+      </div>
+      <span class="user-name">{{ currentUser()?.userName || 'User' }}</span>
+    </div>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+</header>

@@ -8,18 +8,25 @@ import {
   AuthResponse,
   RegistrationRequest,
   RegistrationResponse,
+  CandidateRegistrationRequest,
+  EmployerRegistrationRequest,
   VerifyEmailRequest,
   ResendVerificationRequest,
   ForgotPasswordRequest,
   ResetPasswordRequest,
+  AcceptInvitationRequest,
+  TenantInfo,
 } from '../../data/models/auth.model';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../state/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService{
+export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly cookieService = inject(CookieService);
+  private readonly store = inject(Store);
 
   private readonly apiUrl = `${environment.baseUrl}/Auth`;
 
@@ -38,15 +45,16 @@ export class AuthService{
   }
 
   login(request: AuthRequest): Observable<AuthResponse> {
+    this.store.dispatch(AuthActions.login({ request }));
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, request).pipe(
       tap((response: AuthResponse) => this.handleAuthentication(response))
     );
   }
 
   register(request: RegistrationRequest): Observable<RegistrationResponse> {
+    this.store.dispatch(AuthActions.register({ request }));
     return this.http.post<RegistrationResponse>(`${this.apiUrl}/register`, request).pipe(
       tap((response: RegistrationResponse) => {
-        // Only authenticate if email verification is not required
         if (!response.requiresEmailVerification && response.token) {
           this.handleAuthentication({
             id: response.userId,
@@ -60,7 +68,59 @@ export class AuthService{
     );
   }
 
-  // Email verification methods
+  registerCandidate(request: CandidateRegistrationRequest): Observable<RegistrationResponse> {
+    this.store.dispatch(AuthActions.registerCandidate({ request }));
+    return this.http.post<RegistrationResponse>(`${this.apiUrl}/register-candidate`, request).pipe(
+      tap((response: RegistrationResponse) => {
+        if (!response.requiresEmailVerification && response.token) {
+          this.handleAuthentication({
+            id: response.userId,
+            userName: response.userName,
+            email: response.email,
+            token: response.token,
+            refreshToken: response.refreshToken || '',
+          });
+        }
+      }),
+    );
+  }
+
+  registerEmployer(request: EmployerRegistrationRequest): Observable<RegistrationResponse> {
+    this.store.dispatch(AuthActions.registerEmployer({ request }));
+    return this.http.post<RegistrationResponse>(`${this.apiUrl}/register-employer`, request).pipe(
+      tap((response: RegistrationResponse) => {
+        if (!response.requiresEmailVerification && response.token) {
+          this.handleAuthentication({
+            id: response.userId,
+            userName: response.userName,
+            email: response.email,
+            token: response.token,
+            refreshToken: response.refreshToken || '',
+          });
+        }
+      }),
+    );
+  }
+
+  getAvailableTenants(): Observable<TenantInfo[]> {
+    return this.http.get<TenantInfo[]>(`${this.apiUrl}/tenants`).pipe(
+      tap((tenants) => {
+        this.store.dispatch(AuthActions.setAvailableTenants({ tenants }));
+      }),
+    );
+  }
+
+  selectTenant(tenantId: string): void {
+    this.store.dispatch(AuthActions.selectTenant({ tenantId }));
+  }
+
+  acceptInvitation(request: AcceptInvitationRequest): Observable<AuthResponse> {
+    this.store.dispatch(AuthActions.acceptInvitation({ request }));
+    return this.http.post<AuthResponse>(`${this.apiUrl}/accept-invitation`, request).pipe(
+      tap((response: AuthResponse) => this.handleAuthentication(response))
+    );
+  }
+
   verifyEmail(request: VerifyEmailRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/verify-email`, request);
   }
@@ -69,7 +129,6 @@ export class AuthService{
     return this.http.post(`${this.apiUrl}/resend-verification`, request);
   }
 
-  // Password reset methods
   forgotPassword(request: ForgotPasswordRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/forgot-password`, request);
   }
@@ -78,12 +137,17 @@ export class AuthService{
     return this.http.post(`${this.apiUrl}/reset-password`, request);
   }
 
+  checkEmailStatus(email: string): Observable<{ isRegistered: boolean }> {
+    return this.http.post<{ isRegistered: boolean }>(`${this.apiUrl}/email-status`, { email });
+  }
+
   logout(): void {
     this.cookieService.delete('token', '/');
     this.cookieService.delete('refreshToken', '/');
     this.currentUser.set(null);
     this.isAuthenticated.set(false);
     this.userRoles.set([]);
+    this.store.dispatch(AuthActions.logout());
   }
 
   refreshToken(): Observable<AuthResponse> {
@@ -105,19 +169,13 @@ export class AuthService{
   }
 
   private handleAuthentication(response: AuthResponse): void {
-    // Store in secure cookies
     this.cookieService.set('token', response.token, 7, '/');
     if (response.refreshToken) {
       this.cookieService.set('refreshToken', response.refreshToken, 7, '/');
     }
 
-    console.log('[AuthService] Token stored in cookies:', response.token.substring(0, 20) + '...');
-    console.log('[AuthService] Refresh token stored:', response.refreshToken ? 'Yes' : 'No');
-
-    // Parse roles from JWT token
     const roles = this.parseRolesFromToken(response.token);
     this.userRoles.set(roles);
-    console.log('[AuthService] User roles:', roles);
 
     const payload = this.decodeToken(response.token);
     const emailConfirmed = payload ? (payload['email_confirmed'] === 'true' || payload['email_confirmed'] === true) : false;
@@ -130,7 +188,6 @@ export class AuthService{
       emailConfirmed: emailConfirmed
     });
     this.isAuthenticated.set(true);
-    console.log('[AuthService] isAuthenticated set to:', this.isAuthenticated());
   }
 
   private decodeToken(token: string): any {
@@ -147,7 +204,6 @@ export class AuthService{
     if (!payload) return [];
     
     try {
-      // ASP.NET Identity uses this claim type for roles
       const roleClaim = payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || payload['role'];
       if (Array.isArray(roleClaim)) {
         return roleClaim;
@@ -158,7 +214,6 @@ export class AuthService{
     }
   }
 
-  // Handle OAuth social login callback
   handleSocialLogin(response: AuthResponse): void {
     this.handleAuthentication(response);
   }
@@ -172,7 +227,6 @@ export class AuthService{
         const roles = this.parseRolesFromToken(token);
         this.userRoles.set(roles);
 
-        // Map common JWT claims to our user object
         const userId = payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'] || payload['sub'];
         const userName = payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] || payload['unique_name'];
         const email = payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] || payload['email'];

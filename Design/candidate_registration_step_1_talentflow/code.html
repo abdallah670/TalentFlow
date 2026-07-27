@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Registration - Step 1 | TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #c5c5d4; border-radius: 4px; }
+        
+        /* Floating label transition */
+        .input-container:focus-within label, .input-container input:not(:placeholder-shown) ~ label {
+            transform: translateY(-50%) scale(0.85);
+            top: 0;
+            background-color: white;
+            padding: 0 4px;
+            color: #3f51b5; /* primary-container approx for active state focus */
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex items-center justify-center p-md md:p-lg">
+<!-- Suppression of Navigation: Linear/Transactional intent dictates hiding TopNavBar and SideNavBar -->
+<!-- Main Registration Canvas -->
+<main class="w-full max-w-[480px]">
+<!-- Brand / Header Section -->
+<div class="text-center mb-xl">
+<h1 class="font-h1 text-h1 text-primary font-bold mb-xs">TalentFlow</h1>
+<p class="font-body text-body text-on-surface-variant">Enterprise HR Solutions</p>
+</div>
+<!-- Registration Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
+<div class="mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-xs">Create Account</h2>
+<p class="font-body text-body text-on-surface-variant">Step 1 of 3: Enter your details to get started.</p>
+</div>
+<form action="#" class="space-y-md" method="POST">
+<!-- Name Row (Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- First Name -->
+<div class="relative input-container">
+<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="firstName" name="firstName" placeholder="First Name" required="" type="text"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="firstName">First Name</label>
+</div>
+<!-- Last Name -->
+<div class="relative input-container">
+<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="lastName" name="lastName" placeholder="Last Name" required="" type="text"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="lastName">Last Name</label>
+</div>
+</div>
+<!-- Email -->
+<div class="relative input-container">
+<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="email" name="email" placeholder="Email Address" required="" type="email"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="email">Email Address</label>
+</div>
+<!-- Password -->
+<div class="relative input-container">
+<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="password" name="password" placeholder="Password" required="" type="password"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="password">Password</label>
+<button class="absolute right-sm top-1/2 -translate-y-1/2 p-sm text-on-surface-variant hover:text-primary transition-colors focus:outline-none rounded-full focus:ring-2 focus:ring-primary" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">visibility</span>
+</button>
+</div>
+<!-- Confirm Password -->
+<div class="relative input-container">
+<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required="" type="password"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="confirmPassword">Confirm Password</label>
+</div>
+<!-- Privacy Policy Checkbox -->
+<div class="flex items-start gap-sm pt-sm">
+<div class="flex items-center h-5 mt-[2px]">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-2 focus:ring-offset-1" id="privacy" name="privacy" required="" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="privacy">
+                        I agree to the <a class="text-primary hover:underline font-medium" href="#">Privacy Policy</a> and <a class="text-primary hover:underline font-medium" href="#">Terms of Service</a>.
+                    </label>
+</div>
+<!-- Verification Notice -->
+<div class="flex items-start gap-sm p-sm bg-surface-container-low rounded border border-surface-dim mt-md">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-[2px]" style="font-variation-settings: 'FILL' 1;">mail</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        A verification email will be sent to the address provided upon account creation.
+                    </p>
+</div>
+<!-- Actions -->
+<div class="pt-lg flex flex-col gap-md">
+<button class="w-full bg-[#3F51B5] text-white font-body text-body font-medium h-[48px] rounded flex items-center justify-center gap-sm hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<p class="text-center font-body text-body text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded px-xs" href="#">Log in</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Decorative subtle background elements could go here, but kept clean as per prompt -->
+</main>
+<script>
+        // Simple script to handle password visibility toggle
+        document.querySelectorAll('input[type="password"]').forEach(input => {
+            const btn = input.nextElementSibling.nextElementSibling; // the button after label
+            if(btn && btn.tagName === 'BUTTON') {
+                btn.addEventListener('click', function() {
+                    const icon = this.querySelector('.material-symbols-outlined');
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.textContent = 'visibility_off';
+                    } else {
+                        input.type = 'password';
+                        icon.textContent = 'visibility';
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

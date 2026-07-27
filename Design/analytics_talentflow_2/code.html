@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow Enterprise - Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Roboto', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .funnel-segment {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .funnel-segment:hover {
+            filter: brightness(0.95);
+            transform: scaleX(1.01);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c5c5d4",
+                        "background": "#fbf8ff",
+                        "outline": "#757684",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-tint": "#4355b9",
+                        "inverse-primary": "#bac3ff",
+                        "tertiary": "#6c3400",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary-fixed": "#dee0ff",
+                        "surface-container": "#efedf6",
+                        "on-tertiary-container": "#ffc7a2",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary-container": "#cacfff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f4f2fc",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "surface-dim": "#dbd9e2",
+                        "on-background": "#1a1b22",
+                        "secondary-container": "#c9cffd",
+                        "surface": "#fbf8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#3f51b5",
+                        "secondary": "#565c84",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-container-high": "#e9e7f0",
+                        "inverse-surface": "#2f3037",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-surface": "#1a1b22",
+                        "on-primary-fixed": "#00105c",
+                        "primary": "#24389c",
+                        "on-secondary-fixed": "#12183d",
+                        "primary-fixed": "#dee0ff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#454652",
+                        "primary-fixed-dim": "#bac3ff",
+                        "tertiary-container": "#8f4700",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "surface-variant": "#e3e1ea",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "xl": "32px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "body": ["Roboto"],
+                        "label": ["Roboto"],
+                        "body-sm": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                        "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Side Navigation Shell -->
+<aside class="bg-surface dark:bg-surface-dim h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline shadow-sm flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-10">
+<h2 class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed">TalentFlow</h2>
+<p class="font-label text-label text-on-surface-variant">Enterprise Edition</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Analytics is active -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+<a class="flex items-center px-6 py-3 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary dark:border-primary-fixed-dim bg-surface-container-high transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-outline-variant">
+<a class="flex items-center text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline shadow-sm flex items-center justify-between px-gutter z-40">
+<div class="flex items-center flex-1 max-w-2xl">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-lg pl-10 pr-4 py-2 text-body focus:ring-2 focus:ring-primary" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">help</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">settings</span>
+</div>
+<div class="flex items-center gap-3 border-l border-outline-variant pl-6">
+<div class="text-right">
+<p class="font-label text-label font-bold text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Sr. Recruiter</p>
+</div>
+<img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a Hispanic male recruiter in his late 30s, wearing a modern navy blazer. He has a friendly, confident expression. The background is a blurred high-end corporate office with soft, natural morning light, maintaining a bright and clean professional aesthetic aligned with corporate branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdz8PLtLOuBY24G8IEGkldDU2V0ajxNrX4ofh88e4hnCiZpWOU-0zQbOXTtPPB6vfr5qxncUtaMWPxase200ZYeUDMm3ZNu_lEpWGZayYitcoyYihjJWsAn4BNE1tQiwbDI1RbCrIHgml8P5NxHKRPkWgtszocz6S1XQ1i7AZcN209258tTerfMJ4hmL0xukyjKGYfjtQY7zzr7G8yvqratCNplpzvRzmoq8eqBr5lR6q6zDDYLvwddp31cI_CWPSRqAdPgeJKmqM"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Page Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-1">Talent Acquisition Analytics</h1>
+<p class="font-body text-body text-on-surface-variant">Track recruitment velocity and conversion performance across your organization.</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-lowest p-2 rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center px-3 py-1.5 border-r border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">calendar_month</span>
+<span class="font-label text-label">Last 30 Days</span>
+</div>
+<div class="flex items-center gap-2 px-2">
+<button class="px-4 py-1.5 text-label font-bold text-on-surface hover:bg-surface-container rounded-lg transition-all">CSV</button>
+<button class="px-4 py-1.5 bg-primary text-on-primary text-label font-bold rounded-lg shadow-sm hover:shadow-md transition-all">Export PNG</button>
+</div>
+</div>
+</div>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">schedule</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mb-2">Avg. Time-to-Hire</p>
+<div class="flex items-end gap-3">
+<h2 class="font-h1 text-h1 text-primary">24.5 Days</h2>
+<span class="flex items-center text-[12px] font-bold text-error mb-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> 2.1d
+                        </span>
+</div>
+<div class="w-full h-1 bg-surface-container mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">conversion_path</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mb-2">Overall Conv. Rate</p>
+<div class="flex items-end gap-3">
+<h2 class="font-h1 text-h1 text-primary">12.8%</h2>
+<span class="flex items-center text-[12px] font-bold text-on-tertiary-fixed-variant mb-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> 0.5%
+                        </span>
+</div>
+<div class="w-full h-1 bg-surface-container mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-1/2"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">person_add</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mb-2">Active Candidates</p>
+<div class="flex items-end gap-3">
+<h2 class="font-h1 text-h1 text-primary">1,420</h2>
+<span class="flex items-center text-[12px] font-bold text-on-tertiary-fixed-variant mb-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12%
+                        </span>
+</div>
+<div class="w-full h-1 bg-surface-container mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-4/5"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">attach_money</span>
+</div>
+<p class="font-label text-label text-on-surface-variant mb-2">Cost per Hire</p>
+<div class="flex items-end gap-3">
+<h2 class="font-h1 text-h1 text-primary">$4,280</h2>
+<span class="flex items-center text-[12px] font-bold text-on-tertiary-fixed-variant mb-2">
+<span class="material-symbols-outlined text-sm">trending_down</span> 4%
+                        </span>
+</div>
+<div class="w-full h-1 bg-surface-container mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-3/5"></div>
+</div>
+</div>
+</div>
+<!-- Dashboard Tabs -->
+<div class="border-b border-outline-variant mb-6 flex gap-8">
+<button class="pb-4 font-label text-label font-bold text-on-surface-variant hover:text-primary transition-colors">Time-to-Hire</button>
+<button class="pb-4 font-label text-label font-bold text-primary border-b-2 border-primary">Pipeline Funnel</button>
+<button class="pb-4 font-label text-label font-bold text-on-surface-variant hover:text-primary transition-colors">Source Effectiveness</button>
+<button class="pb-4 font-label text-label font-bold text-on-surface-variant hover:text-primary transition-colors">Recruiter Performance</button>
+</div>
+<!-- Bento Grid Main Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Funnel Chart (Primary View) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Candidate Conversion Funnel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Aggregated across all open positions</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="text-label text-on-surface-variant">Qualified Applicants</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 max-w-3xl mx-auto py-10">
+<!-- Funnel Segment: Applied -->
+<div class="flex items-center group">
+<div class="w-32 text-right pr-4 font-label text-label text-on-surface-variant">Applied</div>
+<div class="flex-1">
+<div class="funnel-segment h-16 bg-primary-container/20 rounded-lg flex items-center justify-center relative overflow-hidden" style="width: 100%">
+<div class="absolute inset-0 bg-primary opacity-20"></div>
+<span class="relative font-bold text-primary">10,245 (100%)</span>
+</div>
+</div>
+<div class="w-24 pl-4 text-xs text-on-surface-variant"></div>
+</div>
+<!-- Funnel Segment: Screened -->
+<div class="flex items-center group">
+<div class="w-32 text-right pr-4 font-label text-label text-on-surface-variant">Screened</div>
+<div class="flex-1">
+<div class="funnel-segment h-16 bg-primary-container/20 rounded-lg flex items-center justify-center relative overflow-hidden mx-auto" style="width: 75%">
+<div class="absolute inset-0 bg-primary opacity-40"></div>
+<span class="relative font-bold text-primary">7,684 (75%)</span>
+</div>
+</div>
+<div class="w-24 pl-4 text-[10px] text-error font-bold">-25% drop</div>
+</div>
+<!-- Funnel Segment: Interviewed -->
+<div class="flex items-center group">
+<div class="w-32 text-right pr-4 font-label text-label text-on-surface-variant">Interviewed</div>
+<div class="flex-1">
+<div class="funnel-segment h-16 bg-primary-container/20 rounded-lg flex items-center justify-center relative overflow-hidden mx-auto" style="width: 45%">
+<div class="absolute inset-0 bg-primary opacity-60"></div>
+<span class="relative font-bold text-primary-fixed">3,458 (34%)</span>
+</div>
+</div>
+<div class="w-24 pl-4 text-[10px] text-error font-bold">-41% drop</div>
+</div>
+<!-- Funnel Segment: Offered -->
+<div class="flex items-center group">
+<div class="w-32 text-right pr-4 font-label text-label text-on-surface-variant">Offered</div>
+<div class="flex-1">
+<div class="funnel-segment h-16 bg-primary-container/20 rounded-lg flex items-center justify-center relative overflow-hidden mx-auto" style="width: 18%">
+<div class="absolute inset-0 bg-primary opacity-80"></div>
+<span class="relative font-bold text-white">412 (4%)</span>
+</div>
+</div>
+<div class="w-24 pl-4 text-[10px] text-error font-bold">-30% drop</div>
+</div>
+<!-- Funnel Segment: Hired -->
+<div class="flex items-center group">
+<div class="w-32 text-right pr-4 font-label text-label text-on-surface-variant">Hired</div>
+<div class="flex-1">
+<div class="funnel-segment h-16 bg-primary rounded-lg flex items-center justify-center relative overflow-hidden mx-auto" style="width: 12%">
+<span class="relative font-bold text-white">285 (2.8%)</span>
+</div>
+</div>
+<div class="w-24 pl-4 text-[10px] text-error font-bold">-1.2% drop</div>
+</div>
+</div>
+</div>
+<!-- Secondary Metric: Bottleneck Radar -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-8 flex flex-col">
+<h3 class="font-h3 text-h3 text-on-surface mb-6">Stage Bottlenecks</h3>
+<div class="flex-1 space-y-6">
+<div class="bg-error-container/20 p-4 rounded-lg border border-error/10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label text-label font-bold text-error">Technical Interview</span>
+<span class="text-[10px] bg-error text-white px-2 py-0.5 rounded uppercase">Critical</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">Avg. delay: 8.4 days compared to 3.2 days benchmark.</p>
+<div class="w-full bg-surface-container h-1.5 rounded-full">
+<div class="bg-error h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label text-label font-bold text-on-surface">Screening Call</span>
+<span class="text-[10px] bg-outline text-white px-2 py-0.5 rounded uppercase">Healthy</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">Processing time improved by 12% this month.</p>
+<div class="w-full bg-surface-container h-1.5 rounded-full">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 35%"></div>
+</div>
+</div>
+<div class="mt-auto bg-primary-container text-on-primary-container p-4 rounded-lg">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-label text-label font-bold">Smart Insight</span>
+</div>
+<p class="text-body-sm leading-relaxed">Reducing the time from Technical Interview to Offer by 48 hours could increase offer acceptance by 15%.</p>
+</div>
+</div>
+</div>
+<!-- Detailed Data Table -->
+<div class="col-span-12 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant flex items-center justify-between bg-surface">
+<h3 class="font-h3 text-h3 text-on-surface">Conversion Breakdown by Department</h3>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 font-label text-label text-on-surface-variant border border-outline-variant px-4 py-2 rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                            </button>
+<button class="flex items-center gap-2 font-label text-label text-on-surface-variant border border-outline-variant px-4 py-2 rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">download</span> Download Report
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Department</th>
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Open Roles</th>
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Applied</th>
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Interviewed</th>
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Hired</th>
+<th class="px-8 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider text-right">Conv. Rate</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">code</span>
+</div>
+<span class="font-body text-body font-bold">Engineering</span>
+</div>
+</td>
+<td class="px-8 py-5 font-body text-body">14</td>
+<td class="px-8 py-5 font-body text-body">2,410</td>
+<td class="px-8 py-5 font-body text-body">248</td>
+<td class="px-8 py-5 font-body text-body">32</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-label">1.32%</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+</div>
+<span class="font-body text-body font-bold">Sales &amp; Marketing</span>
+</div>
+</td>
+<td class="px-8 py-5 font-body text-body">8</td>
+<td class="px-8 py-5 font-body text-body">1,820</td>
+<td class="px-8 py-5 font-body text-body">112</td>
+<td class="px-8 py-5 font-body text-body">18</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-label">0.98%</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">palette</span>
+</div>
+<span class="font-body text-body font-bold">Design</span>
+</div>
+</td>
+<td class="px-8 py-5 font-body text-body">4</td>
+<td class="px-8 py-5 font-body text-body">645</td>
+<td class="px-8 py-5 font-body text-body">42</td>
+<td class="px-8 py-5 font-body text-body">6</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-label">0.93%</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+</div>
+<span class="font-body text-body font-bold">Product Management</span>
+</div>
+</td>
+<td class="px-8 py-5 font-body text-body">6</td>
+<td class="px-8 py-5 font-body text-body">930</td>
+<td class="px-8 py-5 font-body text-body">84</td>
+<td class="px-8 py-5 font-body text-body">12</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-label">1.29%</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">support_agent</span>
+</div>
+<span class="font-body text-body font-bold">Operations &amp; CS</span>
+</div>
+</td>
+<td class="px-8 py-5 font-body text-body">12</td>
+<td class="px-8 py-5 font-body text-body">3,120</td>
+<td class="px-8 py-5 font-body text-body">156</td>
+<td class="px-8 py-5 font-body text-body">45</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-label">1.44%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-surface border-t border-outline-variant flex items-center justify-between">
+<p class="text-body-sm text-on-surface-variant">Showing 5 of 12 departments</p>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for hover effects on table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.cursor = 'pointer';
+            });
+        });
+
+        // Simple mock for the export buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('Export') || btn.innerText.includes('CSV')) {
+                btn.addEventListener('click', () => {
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">sync</span> Processing...';
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        alert('Data exported successfully!');
+                    }, 1200);
+                });
+            }
+        });
+    </script>
+</body></html>

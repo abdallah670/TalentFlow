@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recruiter Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#301400",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efedf6",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "surface-tint": "#4355b9",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-background": "#1a1b22",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-tertiary-container": "#ffc7a2",
+                        "on-primary-container": "#cacfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#00105c",
+                        "primary": "#24389c",
+                        "inverse-primary": "#bac3ff",
+                        "surface-dim": "#dbd9e2",
+                        "on-secondary-fixed": "#12183d",
+                        "on-secondary-container": "#51577f",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc6",
+                        "secondary-fixed": "#dee0ff",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-container": "#c9cffd",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "tertiary-container": "#8f4700",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e3e1ea",
+                        "on-surface": "#1a1b22",
+                        "surface-variant": "#e3e1ea",
+                        "primary-fixed": "#dee0ff",
+                        "outline-variant": "#c5c5d4",
+                        "background": "#fbf8ff",
+                        "outline": "#757684",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-high": "#e9e7f0",
+                        "surface": "#fbf8ff",
+                        "primary-container": "#3f51b5",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2eff9",
+                        "tertiary": "#6c3400",
+                        "secondary": "#565c84",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#bac3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen pb-20">
+<!-- Mobile Top App Bar -->
+<header class="bg-surface sticky top-0 z-20 px-margin py-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-sm">
+<img class="h-8 w-8 rounded-full object-cover" data-alt="A modern, abstract geometric logo mark for an enterprise recruitment software platform. The logo uses deep corporate blue and vibrant white colors, conveying trust and efficiency. The lighting is bright and clean, suitable for a light-mode mobile UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrZn4fKnP-1L2LUwxfiZGZKFI6KerXVvXn4Ie7nn397uNPTjg7QrNMZsZltnoqQsiJIIH6H4q3gMDEHBO4hA92EnUMg-lwFBx_jkCOddpFmRiXF66koA_JWOgDFUIhazNwahQWFUPg6IOJGGtxZ_qb6VsxiyZ4q18r1iyK7pTXqZ-7Klrd_UKoyo3YiW8foI80qmsWzSUA0rUzVW2CyWt8QB3bc5bcHX8mNMz5IArTePAsEjPzf5FjF9ZiYTS1j9hYi_Pfb3am8Jg"/>
+<h1 class="font-h1-mobile text-h1-mobile text-primary font-black tracking-tight">TalentFlow</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors focus:ring-2 focus:ring-primary focus:outline-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<img class="h-8 w-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a female recruiter in her 30s. She is smiling confidently, wearing a modern corporate blazer. The background is a brightly lit, out-of-focus modern office space with glass walls and subtle blue accents, aligning with the platform's color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW3B9EdsIldXf_8h3FcmcMD7xkKAvz_ssC69gxPnMA83avgg-VnErNLLOeco2FeFeVtdhQLrj82VKjEsbAiyQe3NPQvMPf15PY_MNYIHiTL8YqfBjjUc9P6_pgC9_-R1ixzOnVJgXUcINsXtLuId5g3rZ3zUohruhWJOrErNQZFHAGBe12IZLRlt9qQMZAMOMsCCAmLufJHNwqFOIMh9xApregqFtFR_PTKdIhGC_n8jCVfsFvPMnbK1PFxfuIkuqHFQUGrAvNHqU"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin py-md flex flex-col gap-lg">
+<!-- Welcome Section -->
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Good morning, Sarah</h2>
+<p class="font-body text-body text-on-surface-variant">Here's what's happening today.</p>
+</div>
+<!-- Quick Actions Grid -->
+<div class="grid grid-cols-2 gap-sm">
+<button class="bg-primary text-on-primary font-label text-label py-sm px-md rounded flex items-center justify-center gap-xs shadow-sm hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary-fixed focus:outline-none">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Post a Job
+            </button>
+<button class="bg-surface text-primary border border-primary font-label text-label py-sm px-md rounded flex items-center justify-center gap-xs shadow-sm hover:bg-surface-container-low transition-colors focus:ring-2 focus:ring-primary focus:outline-none">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                Add Candidate
+            </button>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-2 gap-sm">
+<!-- Active Jobs -->
+<div class="bg-surface rounded-lg p-md shadow-sm border border-outline-variant">
+<div class="flex items-start justify-between mb-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="bg-surface-container text-on-surface-variant font-label text-label px-2 py-0.5 rounded-full">+2 this week</span>
+</div>
+<div class="font-h1-mobile text-h1-mobile text-on-surface">12</div>
+<div class="font-label text-label text-on-surface-variant">Active Jobs</div>
+</div>
+<!-- Candidates to Review -->
+<div class="bg-surface rounded-lg p-md shadow-sm border border-outline-variant">
+<div class="flex items-start justify-between mb-sm">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="bg-error-container text-on-error-container font-label text-label px-2 py-0.5 rounded-full">Urgent</span>
+</div>
+<div class="font-h1-mobile text-h1-mobile text-on-surface">47</div>
+<div class="font-label text-label text-on-surface-variant">To Review</div>
+</div>
+<!-- Interviews Today (Spans 2 cols) -->
+<div class="bg-primary text-on-primary rounded-lg p-md shadow-sm col-span-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+</div>
+<div class="relative z-10 flex items-center justify-between">
+<div>
+<div class="font-label text-label opacity-80 mb-xs">Interviews Today</div>
+<div class="font-h1-mobile text-h1-mobile">5 Scheduled</div>
+</div>
+<button class="bg-on-primary text-primary font-label text-label px-md py-sm rounded shadow-sm hover:bg-surface-container-lowest transition-colors">
+                        View Schedule
+                    </button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-h3 text-h3 text-on-surface">Recent Activity</h3>
+<button class="font-label text-label text-primary hover:underline">View All</button>
+</div>
+<div class="bg-surface rounded-lg shadow-sm border border-outline-variant divide-y divide-outline-variant">
+<!-- Activity Item 1 -->
+<div class="p-md flex gap-sm">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-secondary bg-secondary-container rounded-full p-1" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-medium">Alex Rivera</span> applied for <span class="font-medium text-primary">Senior Frontend Developer</span>
+</p>
+<p class="font-label text-label text-on-surface-variant mt-xs">10 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="p-md flex gap-sm">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#388E3C] bg-[#C8E6C9] rounded-full p-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-medium">Offer Accepted</span> by <span class="font-medium text-primary">Elena Chen</span> (UX Designer)
+                        </p>
+<p class="font-label text-label text-on-surface-variant mt-xs">2 hours ago</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="p-md flex gap-sm">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[#FF6D00] bg-[#FFE0B2] rounded-full p-1" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-medium">Action Required:</span> Provide feedback for <span class="font-medium text-primary">Marcus Johnson</span> interview.
+                        </p>
+<p class="font-label text-label text-on-surface-variant mt-xs">Yesterday</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Semantic Shell - Destination Root) -->
+<nav class="fixed bottom-0 w-full bg-surface border-t border-outline-variant shadow-[0_-1px_3px_rgba(0,0,0,0.05)] z-20 pb-safe">
+<div class="flex items-center justify-around h-16 px-sm">
+<!-- Active: Dashboard -->
+<button class="flex flex-col items-center justify-center w-full h-full text-primary focus:outline-none">
+<span class="material-symbols-outlined bg-primary-container/20 rounded-full px-4 py-1 mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label text-label">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none">
+<span class="material-symbols-outlined px-4 py-1 mb-1" style="font-variation-settings: 'FILL' 0;">work</span>
+<span class="font-label text-label">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none">
+<span class="material-symbols-outlined px-4 py-1 mb-1" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-label text-label">Candidates</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none">
+<span class="material-symbols-outlined px-4 py-1 mb-1" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label text-label">Interviews</span>
+</button>
+</div>
+</nav>
+<style>
+        /* iOS Safe Area Support */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</body></html>

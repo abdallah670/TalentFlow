@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Set Password - TalentFlow</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS with specific configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto", "sans-serif"],
+                        "body": ["Roboto", "sans-serif"],
+                        "h3": ["Roboto", "sans-serif"],
+                        "h1": ["Roboto", "sans-serif"],
+                        "h1-mobile": ["Roboto", "sans-serif"],
+                        "label": ["Roboto", "sans-serif"],
+                        "h2": ["Roboto", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Left Panel: Asymmetric Branding & Imagery -->
+<div class="hidden md:flex w-full md:w-5/12 lg:w-1/2 relative bg-surface-container-high flex-col justify-between overflow-hidden">
+<div class="absolute inset-0 z-0" data-alt="A modern, bright, light-mode corporate office environment with high-key lighting, featuring subtle geometric architectural details. The scene conveys reliable efficiency and professionalism, using a palette of crisp whites, soft grays, and deep navy blue accents. A feeling of an established, modern HR enterprise setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwYZ_Z9ha2D0A7V6widQD4XZjCogvnQka6VRiowLX5b-BiHdmD8TsoGWIu75cr39uuoBkrXIVRuPdgP4yIRCcU1uiOOL4c-ydVS5KjfGx_JJfSY_d7RT7loM_RDakVD0ad3l4U82pg0nC1uoGhR2wIHExIK3L73HUslk08oxCVlo4VTPK2yUylFc_RnP1CHQZSFOOpAELMjkwnxKPk0ooYORsljYjmxMtfUkSlHqagpe7MVezsgKFnGKx8SJfIRaZlQnOmyn3vXNA'); background-size: cover; background-position: center;">
+<!-- Overlay to ensure text readability -->
+<div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/90 to-transparent"></div>
+</div>
+<div class="relative z-10 p-lg lg:p-xl mt-xl">
+<h1 class="font-h1 text-h1 text-on-primary font-bold mb-xs">TalentFlow</h1>
+<p class="font-body text-body text-primary-fixed-dim">Enterprise HR</p>
+</div>
+<div class="relative z-10 p-lg lg:p-xl mb-xl">
+<h2 class="font-h1 text-h1 text-on-primary mb-md max-w-sm leading-tight">Welcome to the team.</h2>
+<p class="font-body text-body text-secondary-fixed max-w-md opacity-90">Secure your account to access enterprise recruitment tools, pipeline analytics, and candidate management workflows.</p>
+</div>
+</div>
+<!-- Right Panel: Focused Form Area -->
+<div class="w-full md:w-7/12 lg:w-1/2 flex items-center justify-center p-md sm:p-lg lg:p-xl bg-surface min-h-screen">
+<div class="w-full max-w-[480px]">
+<!-- Mobile Branding (Visible only on small screens) -->
+<div class="md:hidden mb-xl text-center">
+<h1 class="font-h1-mobile text-h1-mobile text-primary font-bold">TalentFlow</h1>
+</div>
+<!-- Form Header -->
+<div class="mb-lg lg:mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-xs">Complete Setup</h2>
+<p class="font-body text-body text-on-surface-variant">Please verify your details and set a secure password.</p>
+</div>
+<!-- Read-Only Info Card (Bento-style layout for data density) -->
+<div class="bg-surface-container-low rounded-xl p-md mb-lg border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-md mb-md pb-md border-b border-outline-variant/30">
+<div class="h-12 w-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-h3 text-h3 font-bold">
+                        JD
+                    </div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Jane Doe</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">jane.doe@enterprise.com</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md gap-x-sm">
+<div>
+<span class="block font-label text-label text-secondary mb-[2px] uppercase">First Name</span>
+<span class="block font-body text-body text-on-surface">Jane</span>
+</div>
+<div>
+<span class="block font-label text-label text-secondary mb-[2px] uppercase">Last Name</span>
+<span class="block font-body text-body text-on-surface">Doe</span>
+</div>
+<div class="col-span-2">
+<span class="block font-label text-label text-secondary mb-[2px] uppercase">Assigned Role</span>
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-variant text-on-surface-variant font-body-sm text-body-sm mt-xs">
+<span class="material-symbols-outlined text-[16px]">work</span>
+                            Senior Technical Recruiter
+                        </span>
+</div>
+</div>
+</div>
+<!-- Password Form -->
+<form class="flex flex-col gap-md" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-xs">
+<label class="font-body-sm text-body-sm text-on-surface-variant font-medium" for="new-password">Create Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] font-body text-body text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="new-password" name="new-password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-sm top-1/2 -translate-y-1/2 p-[6px] text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-highest flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-sm text-body-sm text-on-surface-variant font-medium" for="confirm-password">Confirm Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-[10px] font-body text-body text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="confirm-password" name="confirm-password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Password Requirements hints -->
+<div class="mt-xs mb-sm">
+<ul class="flex flex-wrap gap-x-md gap-y-xs font-body-sm text-body-sm text-secondary">
+<li class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">check_circle</span> 8+ characters</li>
+<li class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">check_circle</span> Uppercase letter</li>
+<li class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px] text-outline-variant">radio_button_unchecked</span> Special character</li>
+</ul>
+</div>
+<!-- CTA -->
+<button class="w-full mt-sm bg-primary text-on-primary font-h3 text-h3 rounded-lg py-3 px-lg hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.12)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] flex justify-center items-center gap-sm" type="submit">
+                    Complete Setup
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</body></html>

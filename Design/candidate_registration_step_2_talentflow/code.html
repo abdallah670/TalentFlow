@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Candidate Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    fontSize: {
+                        "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0", fontWeight: "400" }],
+                        "body": ["15px", { lineHeight: "22px", letterSpacing: "0", fontWeight: "400" }],
+                        "h3": ["18px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "500" }],
+                        "h1": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "500" }],
+                        "h1-mobile": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+                        "label": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+                        "h2": ["22px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+        .input-ring:focus-within { box-shadow: 0 0 0 2px #24389c; border-color: transparent; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex antialiased">
+<!-- Left Branding Panel (Hidden on Mobile) -->
+<div class="hidden lg:flex w-[40%] bg-surface-container relative flex-col justify-between p-xl border-r border-outline-variant overflow-hidden">
+<div class="z-10">
+<h1 class="font-h1 text-h1 text-primary font-bold tracking-tight">TalentFlow</h1>
+<p class="font-body text-body text-secondary mt-sm">Enterprise HR Recruitment</p>
+</div>
+<div class="z-10 mt-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Build your professional narrative.</h2>
+<p class="font-body text-body text-on-surface-variant">Step 2 focuses on your recent experience and online presence to help our algorithms match you with the perfect role.</p>
+</div>
+<div class="absolute inset-0 z-0 opacity-40">
+<div class="w-full h-full bg-cover bg-center object-cover" data-alt="A modern, abstract architectural detail of a glass and steel corporate building interior. Soft, high-key natural lighting floods the space, creating a bright, optimistic, and reliable enterprise aesthetic. The color palette features whites, light grays, and subtle cool blue reflections, conveying professional scale and efficiency." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCM-iUwUaDBMwk6jLB1vJTSEeWLp00dbLdyk05tB39xu9yZ7V62yAbPXax0NUV7QvGCMcv14J9vyIXa2KMt3VXTjPz_dvU6CKzM5Dq94Yvla-uTj-YMpeVqWWveGB_5U9VBm-nPmI-2Va5yu85m4UwIiz5Bm3J1VPxZjdsbYRJdbAZKQkYd3qA6MZ0A8W1TJ1LQy67at_Hm8flLRUQw5f6t3Giz80YLKBhIUTb9JX8Aa5MRmg64VOiqHdkGjZu824iG2kcoC_i2muE')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/80 to-transparent"></div>
+</div>
+</div>
+<!-- Right Form Panel -->
+<div class="flex-1 flex flex-col h-screen overflow-y-auto bg-surface-bright">
+<!-- Header / Stepper -->
+<div class="w-full max-w-3xl mx-auto pt-xl px-gutter pb-md sticky top-0 bg-surface-bright/90 backdrop-blur-sm z-10 border-b border-surface-variant">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex flex-col">
+<span class="font-label text-label text-primary font-bold uppercase tracking-wider">Step 2 of 4</span>
+<h2 class="font-h2 text-h2 text-on-surface">Professional Profile</h2>
+</div>
+</div>
+<!-- Progress Tracker -->
+<div class="flex items-center w-full">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center relative flex-1">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center mb-sm z-10">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-primary"></div>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center relative flex-1">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container border-2 border-primary flex items-center justify-center mb-sm z-10 font-label font-bold">
+                        2
+                    </div>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-surface-variant"></div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex flex-col items-center relative flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center mb-sm z-10 font-label">
+                        3
+                    </div>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-surface-variant"></div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex flex-col items-center relative flex-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center mb-sm z-10 font-label">
+                        4
+                    </div>
+</div>
+</div>
+</div>
+<!-- Form Content -->
+<div class="w-full max-w-3xl mx-auto px-gutter py-xl pb-[120px]">
+<!-- Section: Contact -->
+<div class="bg-surface-container-lowest custom-shadow rounded-xl border border-outline-variant p-lg mb-lg transition-colors hover:bg-surface-bright">
+<h3 class="font-h3 text-h3 text-on-surface mb-md">Contact Information</h3>
+<div class="flex flex-col">
+<label class="font-label text-label text-on-surface-variant mb-xs">Phone Number</label>
+<div class="flex rounded-lg border border-outline-variant bg-surface-container-lowest input-ring overflow-hidden">
+<!-- Country Picker Mock -->
+<div class="flex items-center px-sm bg-surface-container border-r border-outline-variant cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-body text-body text-on-surface mr-xs">🇺🇸</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">+1</span>
+<span class="material-symbols-outlined text-secondary text-[16px] ml-xs">arrow_drop_down</span>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface p-sm" placeholder="(555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Section: Current Experience (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-lg">
+<!-- Job Title & Company -->
+<div class="md:col-span-2 bg-surface-container-lowest custom-shadow rounded-xl border border-outline-variant p-lg transition-colors hover:bg-surface-bright">
+<h3 class="font-h3 text-h3 text-on-surface mb-md">Current Role</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col">
+<label class="font-label text-label text-on-surface-variant mb-xs">Current Job Title</label>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Senior Software Engineer" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label text-label text-on-surface-variant mb-xs">Current Company</label>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Acme Corp" type="text"/>
+</div>
+</div>
+</div>
+<!-- Experience Metric -->
+<div class="bg-surface-container-lowest custom-shadow rounded-xl border border-outline-variant p-lg flex flex-col justify-center items-start transition-colors hover:bg-surface-bright relative overflow-hidden group">
+<div class="absolute right-[-20px] top-[-20px] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm relative z-10">Total Experience</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md relative z-10">Years of professional experience.</p>
+<div class="flex flex-col w-full relative z-10">
+<label class="font-label text-label text-on-surface-variant mb-xs">Years (Numeric)</label>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" max="50" min="0" placeholder="0" type="number"/>
+</div>
+</div>
+<!-- Blank spacer for bento aesthetic on md screens -->
+<div class="hidden md:block bg-surface-container-low rounded-xl border border-dashed border-outline-variant p-lg flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined text-outline-variant text-[32px]">post_add</span>
+</div>
+</div>
+<!-- Section: Web Links -->
+<div class="bg-surface-container-lowest custom-shadow rounded-xl border border-outline-variant p-lg transition-colors hover:bg-surface-bright">
+<h3 class="font-h3 text-h3 text-on-surface mb-md">Online Presence</h3>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col">
+<label class="font-label text-label text-on-surface-variant mb-xs">LinkedIn URL</label>
+<div class="flex items-center rounded-lg border border-outline-variant bg-surface-container-lowest input-ring overflow-hidden px-sm focus-within:bg-surface-bright">
+<span class="material-symbols-outlined text-secondary mr-sm">link</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://linkedin.com/in/username" type="url"/>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="font-label text-label text-on-surface-variant mb-xs">Portfolio / GitHub URL</label>
+<div class="flex items-center rounded-lg border border-outline-variant bg-surface-container-lowest input-ring overflow-hidden px-sm focus-within:bg-surface-bright">
+<span class="material-symbols-outlined text-secondary mr-sm">code</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://github.com/username" type="url"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-0 right-0 w-full lg:w-[60%] bg-surface border-t border-outline-variant p-md flex items-center justify-between z-20 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<button class="font-body text-body text-primary font-medium px-lg py-sm rounded-lg hover:bg-surface-container-high transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                Back
+            </button>
+<button class="font-body text-body text-on-primary bg-primary font-medium px-xl py-sm rounded-lg hover:bg-on-primary-fixed-variant transition-colors custom-shadow flex items-center gap-xs">
+                Save &amp; Continue
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Email Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#c9cffd",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "inverse-primary": "#bac3ff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#12183d",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "primary-fixed": "#dee0ff",
+                      "outline": "#757684",
+                      "surface-dim": "#dbd9e2",
+                      "secondary": "#565c84",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#4355b9",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2f3037",
+                      "tertiary": "#6c3400",
+                      "on-surface-variant": "#454652",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e9e7f0",
+                      "secondary-fixed": "#dee0ff",
+                      "on-tertiary-container": "#ffc7a2",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1a1b22",
+                      "tertiary-fixed": "#ffdcc6",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "on-primary-fixed": "#00105c",
+                      "surface-container-low": "#f4f2fc",
+                      "surface": "#fbf8ff",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-container": "#3f51b5",
+                      "surface-bright": "#fbf8ff",
+                      "outline-variant": "#c5c5d4",
+                      "primary-fixed-dim": "#bac3ff",
+                      "surface-variant": "#e3e1ea",
+                      "primary": "#24389c",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#cacfff",
+                      "on-surface": "#1a1b22",
+                      "tertiary-container": "#8f4700",
+                      "background": "#fbf8ff",
+                      "surface-container": "#efedf6",
+                      "surface-container-highest": "#e3e1ea",
+                      "on-secondary-container": "#51577f",
+                      "inverse-on-surface": "#f2eff9",
+                      "on-secondary-fixed-variant": "#3e446b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "unit": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "h1-mobile": ["Roboto"],
+                      "h2": ["Roboto"],
+                      "body": ["Roboto"],
+                      "label": ["Roboto"],
+                      "h3": ["Roboto"],
+                      "h1": ["Roboto"],
+                      "body-sm": ["Roboto"]
+              },
+              "fontSize": {
+                      "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Ambient subtle grid background for the transactional page to add depth without clutter */
+        body {
+            background-image: radial-gradient(var(--tw-colors-surface-variant) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-md md:p-gutter antialiased">
+<!-- Linear/Transactional Page: Global Navigation is intentionally suppressed. -->
+<main class="w-full max-w-[480px] bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden flex flex-col items-center text-center">
+<!-- Branding Header -->
+<header class="w-full py-lg px-xl border-b border-outline-variant/50 flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 28px; font-variation-settings: 'FILL' 1;">all_inclusive</span>
+<span class="font-h2 text-h2 text-primary font-bold tracking-tight">TalentFlow</span>
+</header>
+<div class="px-xl py-xl w-full flex flex-col items-center">
+<!-- Illustration -->
+<div class="w-48 h-48 mb-lg rounded-full overflow-hidden border-4 border-surface-container-low bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, minimalist 3D rendering of an open envelope with a bright glowing checkmark hovering above it. The scene is illuminated by soft, high-key studio lighting, emphasizing a clean white and deep navy blue (#3F51B5) color palette. The aesthetic is modern corporate, conveying reliable efficiency and successful digital transmission. High-resolution, precise geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAigRuKwe3oVh0LhPo1wC1_NrmuHPwKSdwymFXOSJElrJvIUvzvUqUE1ifZFSmFtqKapf_uZvdRswpB6IKdLNrwbz1VowYtvWZYNWuPEJDh6MegnFs6BFj79ONwWJSR7AIuoBHrtQjyKTB-wWa0-jEqigYO-IffrEW0KzjwmyqBpSW_2eNMgevnVrU5tSPpbnz6Kz2ionyD-1mGIwT0KjLb1KnsUPKrx7pEMEXxeL0sphYm85MIVYHK0QyAjQtfT87pSfNxCVJkGYc"/>
+</div>
+<!-- Content -->
+<h1 class="font-h1 text-h1 text-on-surface mb-md">Check your inbox</h1>
+<p class="font-body text-body text-on-surface-variant mb-xl max-w-[320px]">
+                We've sent a verification link to your email. Please click the link to activate your account.
+            </p>
+<!-- Actions -->
+<div class="flex flex-col gap-sm w-full max-w-[320px]">
+<button class="w-full bg-primary-container text-on-primary font-label text-label py-sm px-lg rounded flex items-center justify-center gap-sm hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">outgoing_mail</span>
+                    Resend Email
+                </button>
+<button class="w-full border border-outline text-primary font-label text-label py-sm px-lg rounded flex items-center justify-center hover:bg-surface-container-low transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button">
+                    Change Email
+                </button>
+</div>
+</div>
+<!-- Footer / Support Context -->
+<footer class="w-full py-md px-xl bg-surface-container-lowest border-t border-outline-variant/50">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Didn't receive the email? Check your spam folder or <a class="text-primary-container hover:underline font-medium" href="#">contact IT support</a>.
+            </p>
+</footer>
+</main>
+</body></html>

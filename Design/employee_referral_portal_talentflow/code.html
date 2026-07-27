@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Referral Portal - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "outline-variant": "#c5c5d4",
+                        "on-secondary-fixed": "#12183d",
+                        "on-surface": "#1a1b22",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-primary-fixed": "#00105c",
+                        "primary-container": "#3f51b5",
+                        "inverse-primary": "#bac3ff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-container-low": "#f4f2fc",
+                        "surface": "#fbf8ff",
+                        "surface-tint": "#4355b9",
+                        "secondary-fixed": "#dee0ff",
+                        "on-secondary-container": "#51577f",
+                        "on-primary-container": "#cacfff",
+                        "tertiary-container": "#8f4700",
+                        "surface-variant": "#e3e1ea",
+                        "surface-container-high": "#e9e7f0",
+                        "surface-container": "#efedf6",
+                        "surface-bright": "#fbf8ff",
+                        "inverse-surface": "#2f3037",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-tertiary-container": "#ffc7a2",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "outline": "#757684",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e1ea",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1a1b22",
+                        "secondary-container": "#c9cffd",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-fixed": "#dee0ff",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbd9e2",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "tertiary": "#6c3400",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "primary": "#24389c",
+                        "on-surface-variant": "#454652",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen">
+<!-- TopNavBar (Employee Simplified) -->
+<nav class="fixed top-0 left-0 right-0 h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-lg z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-h3 text-h3 text-primary font-bold">TalentFlow</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-xs">Employee Portal</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-sm" data-alt="A small, circular avatar portrait of a young professional smiling warmly. The lighting is bright and even, set against a neutral, light-colored background. The person has short dark hair and is wearing a smart-casual collared shirt. The image should look like a standard corporate profile picture, friendly and approachable, fitting within a modern web application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuhJBgMWG8rPPdyO9sVobkNRtb2qhYzGt5P9i1aonRMluEId6CC15j0qSPRE1NfeZHdrQd4HKZFSbSCn-FmFBTZHx2D_MGXZh-4Kt6ikHwrR8O67QJQUEHSz6xzAyYzzRUg0PIbDXNXsUQOXYzPIso_aK4QKfXzqU86FPnqO6MUttG_BMo2byVRWTTJ1b_-rLyYqCtsykmruEB1ADlZ4slRGKQ_Ka7uk3xnG5GqR7M0502q_NjNYQ_5gsb8aOmDvkRpcyxDWsZVY"/>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin max-w-[1440px] mx-auto pb-xl">
+<!-- Header -->
+<header class="mb-margin flex justify-between items-end flex-wrap gap-md">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">Employee Referral Portal</h1>
+<p class="font-body text-body text-on-surface-variant mt-sm">Help us build our team and earn rewards for successful hires.</p>
+</div>
+<button class="bg-primary text-on-primary font-label text-label px-md py-sm rounded hover:bg-primary/90 transition-colors flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Submit a Referral
+            </button>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Submit Referral Form (Span 4) -->
+<div class="md:col-span-4 bg-surface rounded-xl shadow-sm border border-outline-variant p-margin flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<h2 class="font-h2 text-h2 text-on-surface">Submit a Referral</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-margin">Know someone great? Let us know.</p>
+<form class="flex flex-col gap-md flex-grow">
+<div>
+<label class="block font-label text-label text-on-surface-variant mb-xs">Candidate Name</label>
+<input class="w-full border border-outline-variant rounded px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body text-body" placeholder="e.g. Jane Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label text-label text-on-surface-variant mb-xs">Email Address</label>
+<input class="w-full border border-outline-variant rounded px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body text-body" placeholder="jane.doe@example.com" type="email"/>
+</div>
+<div>
+<label class="block font-label text-label text-on-surface-variant mb-xs">LinkedIn Profile URL</label>
+<input class="w-full border border-outline-variant rounded px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body text-body" placeholder="https://linkedin.com/in/janedoe" type="url"/>
+</div>
+<div class="flex-grow">
+<label class="block font-label text-label text-on-surface-variant mb-xs">Why are you referring them?</label>
+<textarea class="w-full h-24 border border-outline-variant rounded px-sm py-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body text-body resize-none" placeholder="Briefly describe their strengths..."></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-label text-label px-md py-sm rounded hover:bg-primary/90 transition-colors shadow-sm mt-sm" type="button">
+                        Submit Candidate
+                    </button>
+</form>
+</div>
+<!-- Middle Column: Bonus & Open Roles (Span 8) -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<!-- Referral Bonus Summary -->
+<div class="bg-surface rounded-xl shadow-sm border border-outline-variant p-margin relative overflow-hidden group">
+<!-- Decorative Background Elements -->
+<div class="absolute -right-10 -top-10 w-48 h-48 bg-tertiary-fixed opacity-30 rounded-full blur-3xl group-hover:opacity-50 transition-opacity duration-500"></div>
+<div class="absolute -left-10 -bottom-10 w-32 h-32 bg-primary-container opacity-20 rounded-full blur-2xl group-hover:opacity-40 transition-opacity duration-500"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">redeem</span>
+<h2 class="font-h2 text-h2 text-on-surface">Your Rewards</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Earn up to $5,000 for successful engineering referrals this quarter!</p>
+</div>
+<div class="flex gap-md w-full md:w-auto">
+<div class="bg-surface-container-low rounded-lg p-sm min-w-[120px] border border-surface-variant flex-1 md:flex-none">
+<p class="font-label text-label text-on-surface-variant">Pending Bonuses</p>
+<p class="font-h1 text-h1 text-on-surface mt-xs">$1,500</p>
+<p class="font-label text-label text-outline mt-xs">1 candidate processing</p>
+</div>
+<div class="bg-primary-container/10 rounded-lg p-sm min-w-[120px] border border-primary/20 flex-1 md:flex-none">
+<p class="font-label text-label text-on-surface-variant">Total Earned YTD</p>
+<p class="font-h1 text-h1 text-primary mt-xs">$3,000</p>
+<p class="font-label text-label text-primary mt-xs">2 successful hires</p>
+</div>
+</div>
+</div>
+</div>
+<!-- High-Priority Open Roles -->
+<div class="bg-surface rounded-xl shadow-sm border border-outline-variant p-margin flex-grow flex flex-col">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+<h2 class="font-h2 text-h2 text-on-surface">High-Priority Roles</h2>
+</div>
+<a class="font-label text-label text-primary hover:underline" href="#">View All Roles</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Role Card 1 -->
+<div class="border border-outline-variant rounded-lg p-md hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary transition-colors">Senior React Developer</h3>
+<p class="font-label text-label text-on-surface-variant">Engineering • Remote (US)</p>
+</div>
+<span class="bg-[#FF6D00] text-on-primary font-label text-[10px] px-2 py-1 rounded-full uppercase tracking-wider">Urgent</span>
+</div>
+<div class="flex justify-between items-center mt-md">
+<span class="font-label text-label text-tertiary-container flex items-center gap-xs bg-tertiary-fixed/50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                                    $5k Bonus
+                                </span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+<!-- Role Card 2 -->
+<div class="border border-outline-variant rounded-lg p-md hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary transition-colors">Product Designer</h3>
+<p class="font-label text-label text-on-surface-variant">Design • New York / Hybrid</p>
+</div>
+</div>
+<div class="flex justify-between items-center mt-md">
+<span class="font-label text-label text-secondary flex items-center gap-xs bg-secondary-fixed/50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                                    $3k Bonus
+                                </span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- My Referrals Table (Span 12) -->
+<div class="md:col-span-12 bg-surface rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="p-margin border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+<h2 class="font-h2 text-h2 text-on-surface">My Referrals</h2>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant">
+<th class="font-label text-label text-on-surface-variant py-sm px-margin font-medium">Candidate Name</th>
+<th class="font-label text-label text-on-surface-variant py-sm px-margin font-medium">Role Applied For</th>
+<th class="font-label text-label text-on-surface-variant py-sm px-margin font-medium">Date Submitted</th>
+<th class="font-label text-label text-on-surface-variant py-sm px-margin font-medium">Pipeline Stage</th>
+<th class="font-label text-label text-on-surface-variant py-sm px-margin font-medium text-right">Bonus Status</th>
+</tr>
+</thead>
+<tbody class="font-body text-body">
+<tr class="border-b border-outline-variant hover:bg-primary-container/10 transition-colors h-[56px]">
+<td class="py-sm px-margin font-medium text-on-surface">Michael Chen</td>
+<td class="py-sm px-margin text-on-surface-variant">Backend Engineer</td>
+<td class="py-sm px-margin text-on-surface-variant">Oct 12, 2023</td>
+<td class="py-sm px-margin">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-on-surface">Interviewing</span>
+</div>
+</td>
+<td class="py-sm px-margin text-right">
+<span class="font-label text-label text-outline bg-surface-variant px-2 py-1 rounded-full">Pending Hire</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-primary-container/10 transition-colors h-[56px]">
+<td class="py-sm px-margin font-medium text-on-surface">Sarah Jenkins</td>
+<td class="py-sm px-margin text-on-surface-variant">Marketing Manager</td>
+<td class="py-sm px-margin text-on-surface-variant">Sep 28, 2023</td>
+<td class="py-sm px-margin">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-[#4CAF50]"></div>
+<span class="text-on-surface">Hired</span>
+</div>
+</td>
+<td class="py-sm px-margin text-right">
+<span class="font-label text-label text-[#2E7D32] bg-[#E8F5E9] px-2 py-1 rounded-full flex items-center justify-end gap-xs w-fit ml-auto">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                        Paid ($2,000)
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/10 transition-colors h-[56px]">
+<td class="py-sm px-margin font-medium text-on-surface">David Rodriguez</td>
+<td class="py-sm px-margin text-on-surface-variant">Sales Development Rep</td>
+<td class="py-sm px-margin text-on-surface-variant">Nov 01, 2023</td>
+<td class="py-sm px-margin">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="text-on-surface-variant">Application Review</span>
+</div>
+</td>
+<td class="py-sm px-margin text-right">
+<span class="font-label text-label text-outline bg-surface-variant px-2 py-1 rounded-full">Not Eligible Yet</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

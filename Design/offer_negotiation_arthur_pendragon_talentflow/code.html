@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offer Negotiation - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#454652",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "inverse-surface": "#2f3037",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "surface-container": "#efedf6",
+                        "on-secondary-fixed": "#12183d",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-container-high": "#e9e7f0",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary-container": "#ffc7a2",
+                        "tertiary": "#6c3400",
+                        "secondary-container": "#c9cffd",
+                        "on-primary-container": "#cacfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#51577f",
+                        "secondary": "#565c84",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-tint": "#4355b9",
+                        "primary-fixed-dim": "#bac3ff",
+                        "surface-container-low": "#f4f2fc",
+                        "on-primary-fixed": "#00105c",
+                        "surface-bright": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#bac3ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "background": "#fbf8ff",
+                        "primary": "#24389c",
+                        "surface-dim": "#dbd9e2",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dee0ff",
+                        "primary-container": "#3f51b5",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8f4700",
+                        "on-surface": "#1a1b22",
+                        "on-background": "#1a1b22",
+                        "surface-container-highest": "#e3e1ea",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "outline-variant": "#c5c5d4",
+                        "inverse-on-surface": "#f2eff9",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body text-body h-full flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-full w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex-col py-lg px-md z-20">
+<div class="mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[32px]">group_work</span>
+<span class="text-h2 font-h2 text-primary">TalentFlow</span>
+</div>
+<div class="flex-1 flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-secondary-container text-on-secondary-container font-medium cursor-pointer transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-sm rounded-lg font-body text-body mb-xl hover:opacity-90 transition-opacity">
+            Create Job
+        </button>
+<div class="flex flex-col gap-sm border-t border-outline-variant pt-md">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body text-body">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full">
+<!-- TopNavBar -->
+<header class="hidden md:flex fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface-container-lowest shadow-sm flex justify-between items-center px-lg z-10">
+<div class="flex-1 flex items-center">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary text-body font-body text-on-surface placeholder:text-on-surface-variant" placeholder="Search offers, candidates..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all duration-150">
+<span class="material-symbols-outlined">help</span>
+</button>
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant cursor-pointer ml-sm" data-alt="A small circular avatar of a professional woman with brown hair smiling against a neutral grey background, representing a user profile picture in a corporate software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoyFHZ-IB1wDM7qDmX_RdZD5X5qG64pzEqx185lkjTgh8Mf_gkrYo0dTiNu4TwwpxjYq13Gxa9ZJsT4qGmxClNDE10I-Ar8QAd5f-PB2nE3FdS3gLoQcpAXXUAvM0hWMkxODHDM3VH_x6QfDw22r1A_-HremzRX7gHLaBFx-56DTo0E1we_uT0AnZVtZQ7DHoETTQ4z_Xijw_ETuuemmfAMU1FoMlfMs4UWvUnbOcvPuMjN2roI7wAJGB6VhS7Mo0fsqnK2BcJsds"/>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-margin mt-0 md:mt-16 overflow-y-auto overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-xl gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="text-label font-label text-on-surface-variant uppercase tracking-wider">Offer Negotiation</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="text-label font-label text-primary">Senior Staff Engineer</span>
+</div>
+<h1 class="text-h1 font-h1 text-on-surface">Arthur Pendragon</h1>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-error text-error rounded-lg font-body text-body hover:bg-error-container transition-colors">
+                        Withdraw Offer
+                    </button>
+<button class="px-md py-sm border border-outline text-on-surface rounded-lg font-body text-body hover:bg-surface-container-high transition-colors">
+                        Save Draft
+                    </button>
+<button class="px-md py-sm bg-primary-container text-on-primary rounded-lg font-body text-body flex items-center gap-xs hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                        Send Revised Offer
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-margin">
+<!-- Left Column: Negotiation Context -->
+<div class="lg:col-span-4 flex flex-col gap-margin">
+<!-- Candidate Context Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<img class="w-16 h-16 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of Arthur Pendragon, a male software engineer with short dark hair, wearing a casual button-down shirt, neutral grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCPEL0gOxYTYCNmXAYqVyynjtu1POrgg4CHGSps9PBVv87bNYEn5bW-XvE0E2s_GzW_j2vZAjVCaFO4Ur6Prmh1cYRck5Qsq2AV8BAA6XKXmk6DiTiNji6KjKPKLCVPDSuHAEjUNpUXn265vyve1W0yfiOg39lUfsEwooM6XA-M27AuqXHS_aBm6xNUHM9CtZs15w5j0m9D0rDHopiRAG4IOQoqiaU9rt9V9yM1l9LugRXm80zFzxB0hV2brqk8ANZr6fog7XgwlA"/>
+<div>
+<h3 class="text-h3 font-h3 text-on-surface">Arthur Pendragon</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">San Francisco, CA (Hybrid)</p>
+</div>
+</div>
+<div class="pt-sm border-t border-outline-variant">
+<div class="flex justify-between items-center py-xs">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Status</span>
+<span class="px-sm py-[2px] bg-[#FFECB3] text-[#F57F17] rounded-full text-label font-label">Counter-Offer Received</span>
+</div>
+<div class="flex justify-between items-center py-xs">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Recruiter</span>
+<span class="text-body-sm font-body-sm text-on-surface">Sarah Jenkins</span>
+</div>
+<div class="flex justify-between items-center py-xs">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Hiring Manager</span>
+<span class="text-body-sm font-body-sm text-on-surface">David Chen</span>
+</div>
+</div>
+</div>
+<!-- Candidate Comments / Feedback -->
+<div class="bg-[#f0f4ff] rounded-xl p-lg border border-[#c5cae9] shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-sm opacity-10">
+<span class="material-symbols-outlined text-[64px] text-primary">forum</span>
+</div>
+<h3 class="text-h3 font-h3 text-primary mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">mark_chat_unread</span>
+                            Candidate Comments
+                        </h3>
+<div class="bg-surface-container-lowest rounded-lg p-md text-body-sm font-body-sm text-on-surface italic border-l-4 border-primary">
+                            "I'm very excited about the opportunity to join the team. However, given my current compensation structure, I was hoping to see a higher base salary. If we could get closer to $215k on the base, and slightly bump the sign-on to help with relocation expenses, I would be ready to sign immediately."
+                        </div>
+<p class="text-label font-label text-on-surface-variant mt-sm text-right">Received Oct 24, 2023</p>
+</div>
+<!-- Negotiation History Timeline -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-sm flex-1">
+<h3 class="text-h3 font-h3 text-on-surface mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">history</span>
+                            Negotiation History
+                        </h3>
+<div class="relative pl-sm">
+<div class="absolute left-[11px] top-2 bottom-0 w-[2px] bg-surface-variant"></div>
+<div class="relative pl-xl mb-md">
+<div class="absolute left-0 top-1 w-6 h-6 bg-surface-container-lowest border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+<h4 class="text-body font-body text-on-surface font-medium">Drafting V2</h4>
+<p class="text-label font-label text-on-surface-variant">Currently editing</p>
+</div>
+<div class="relative pl-xl mb-md">
+<div class="absolute left-0 top-1 w-6 h-6 bg-surface-container-lowest border-2 border-outline-variant rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-outline-variant">mail</span>
+</div>
+<h4 class="text-body font-body text-on-surface">Candidate Countered</h4>
+<p class="text-label font-label text-on-surface-variant">Oct 24, 2023 - 2:45 PM</p>
+</div>
+<div class="relative pl-xl mb-md">
+<div class="absolute left-0 top-1 w-6 h-6 bg-surface-container-lowest border-2 border-[#81C784] rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-[#4CAF50]">check</span>
+</div>
+<h4 class="text-body font-body text-on-surface">Initial Offer (V1) Sent</h4>
+<p class="text-label font-label text-on-surface-variant">Oct 22, 2023 - 10:15 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Offer Comparison & Editing -->
+<div class="lg:col-span-8 flex flex-col gap-margin">
+<!-- Side-by-Side Comparison Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col flex-1">
+<!-- Header Row -->
+<div class="flex border-b border-outline-variant bg-surface-container-low">
+<div class="w-1/2 p-md border-r border-outline-variant flex items-center justify-between">
+<h3 class="text-h3 font-h3 text-on-surface-variant">Original Offer (V1)</h3>
+<span class="px-sm py-xs bg-surface-variant text-on-surface-variant rounded text-label font-label">Declined</span>
+</div>
+<div class="w-1/2 p-md flex items-center justify-between bg-surface-bright">
+<h3 class="text-h3 font-h3 text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+                                    Revised Offer (V2)
+                                </h3>
+<span class="px-sm py-xs bg-primary-fixed text-on-primary-fixed rounded text-label font-label">Draft</span>
+</div>
+</div>
+<!-- Data Rows -->
+<div class="flex-1 flex flex-col">
+<!-- Base Salary -->
+<div class="flex border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-1/2 p-md border-r border-outline-variant">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Base Salary</label>
+<p class="text-body font-body text-on-surface">$200,000 <span class="text-body-sm text-on-surface-variant">/ yr</span></p>
+</div>
+<div class="w-1/2 p-md">
+<label class="text-label font-label text-primary block mb-xs">Revised Base Salary</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full pl-lg pr-sm py-sm rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body font-body text-on-surface bg-surface-container-lowest" type="text" value="215,000"/>
+</div>
+<p class="text-label font-label text-[#4CAF50] mt-xs flex items-center gap-[2px]"><span class="material-symbols-outlined text-[14px]">trending_up</span> +$15,000 (7.5%)</p>
+</div>
+</div>
+<!-- Equity -->
+<div class="flex border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-1/2 p-md border-r border-outline-variant">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Equity (RSUs)</label>
+<p class="text-body font-body text-on-surface">$300,000 <span class="text-body-sm text-on-surface-variant">over 4 yrs</span></p>
+</div>
+<div class="w-1/2 p-md">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Revised Equity</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full pl-lg pr-sm py-sm rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body font-body text-on-surface bg-surface-container-lowest" type="text" value="300,000"/>
+</div>
+<p class="text-label font-label text-on-surface-variant mt-xs">No change</p>
+</div>
+</div>
+<!-- Sign-on Bonus -->
+<div class="flex border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-1/2 p-md border-r border-outline-variant">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Sign-on Bonus</label>
+<p class="text-body font-body text-on-surface">$20,000 <span class="text-body-sm text-on-surface-variant">one-time</span></p>
+</div>
+<div class="w-1/2 p-md">
+<label class="text-label font-label text-primary block mb-xs">Revised Sign-on Bonus</label>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full pl-lg pr-sm py-sm rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body font-body text-on-surface bg-surface-container-lowest" type="text" value="30,000"/>
+</div>
+<p class="text-label font-label text-[#4CAF50] mt-xs flex items-center gap-[2px]"><span class="material-symbols-outlined text-[14px]">trending_up</span> +$10,000</p>
+</div>
+</div>
+<!-- Target Start Date -->
+<div class="flex hover:bg-surface-container-low transition-colors">
+<div class="w-1/2 p-md border-r border-outline-variant">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Target Start Date</label>
+<p class="text-body font-body text-on-surface">Nov 13, 2023</p>
+</div>
+<div class="w-1/2 p-md">
+<label class="text-label font-label text-on-surface-variant block mb-xs">Revised Start Date</label>
+<div class="relative">
+<input class="w-full px-sm py-sm rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body font-body text-on-surface bg-surface-container-lowest" type="date" value="2023-11-13"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes to Approver -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-sm">
+<label class="text-body font-body text-on-surface font-medium block mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">notes</span>
+                            Notes to Approver
+                        </label>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-md">These notes will be attached to the approval request for the revised offer.</p>
+<textarea class="w-full p-sm rounded border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body font-body text-on-surface bg-surface-container-lowest resize-none" placeholder="Explain the rationale for the increased base and sign-on bonus..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Bottom padding for scroll -->
+<div class="h-xl"></div>
+</main>
+</div>
+</body></html>

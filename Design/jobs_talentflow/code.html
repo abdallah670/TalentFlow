@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Jobs Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#565c84",
+                      "surface-variant": "#e3e1ea",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "primary-fixed": "#dee0ff",
+                      "on-secondary-container": "#51577f",
+                      "inverse-on-surface": "#f2eff9",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#8f4700",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#dbd9e2",
+                      "secondary-fixed": "#dee0ff",
+                      "primary-fixed-dim": "#bac3ff",
+                      "outline": "#757684",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-container-highest": "#e3e1ea",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#c9cffd",
+                      "primary": "#24389c",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-container": "#3f51b5",
+                      "on-primary-fixed": "#00105c",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "on-secondary-fixed": "#12183d",
+                      "outline-variant": "#c5c5d4",
+                      "surface-container-low": "#f4f2fc",
+                      "on-surface-variant": "#454652",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1a1b22",
+                      "on-secondary-fixed-variant": "#3e446b",
+                      "tertiary": "#6c3400",
+                      "surface-container-high": "#e9e7f0",
+                      "inverse-surface": "#2f3037",
+                      "inverse-primary": "#bac3ff",
+                      "surface-tint": "#4355b9",
+                      "on-surface": "#1a1b22",
+                      "error": "#ba1a1a",
+                      "surface": "#fbf8ff",
+                      "surface-bright": "#fbf8ff",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "surface-container": "#efedf6",
+                      "on-tertiary-container": "#ffc7a2",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-primary-container": "#cacfff",
+                      "on-error-container": "#93000a",
+                      "background": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "h1": ["Roboto"],
+                      "h2": ["Roboto"],
+                      "h3": ["Roboto"],
+                      "body": ["Roboto"],
+                      "label": ["Roboto"]
+              },
+              "fontSize": {
+                      "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                      "h2": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                      "h3": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+                      "body": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+                      "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto', sans-serif; background-color: #fbf8ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c5c5d4; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-h2 text-h2 text-primary font-bold tracking-tight">TalentFlow</h1>
+<p class="text-label text-secondary opacity-70">Enterprise HR</p>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto custom-scrollbar">
+<!-- Navigation Items Mapping from JSON -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<!-- Active Tab: Jobs -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+</nav>
+<div class="px-md pt-md mt-auto border-t border-outline-variant">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary hover:bg-surface-container-high transition-colors mb-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+<div class="flex items-center gap-md p-sm rounded-lg bg-surface-container-low border border-outline-variant/30">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a middle-aged male HR executive with a warm smile, wearing a sharp navy blue blazer against a soft-focus office background. The lighting is bright and natural, reflecting a clean and professional corporate environment with a soft bokeh effect. The overall aesthetic is trustworthy and reliable, matching the modern corporate design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSkpkDleACuAX6yVjHmKgKjSUDT7z9ABK6OIFkgP8XUunpZUc0Msb-XJqIjr03P9jsgS9jZ-95QRK8_qPK9QW2u2SSlpO3nz9XHu6Z7jO71YRjJaYxGhhyCUGrvzhIvj-13RNSaoDrgW8RMpSOzWMUO7h2_mYuIkV0vZ2Gvq0IcgeZLd5vz0Q1wY3-2KT6PhqXgHkJJFQIXIKFz8vQZQSe_2LibQzi8Uic5LGwZxSP9f8UoecswqUrK3HtxxwGoko86FKaJCK3Zs"/>
+<div class="flex-1 min-w-0">
+<p class="text-label font-bold text-on-surface truncate">Admin User</p>
+<p class="text-[10px] text-secondary truncate">admin@talentflow.hr</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 w-full h-16 bg-surface flex justify-between items-center px-gutter border-b border-outline-variant shadow-sm glass-panel">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search across all modules..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-variant/30 p-1 pr-3 rounded-full transition-all">
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A small circular avatar placeholder showing a modern geometric brand icon in TalentFlow primary blue and white colors, symbolizing the corporate administrator identity. The style is flat, professional, and integrates seamlessly with the clean UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx66elWsrhp0CXCaJG6uHUaHdA7ogFTRM5gPJ0G6t5sRRYkleFl6OmgVL__l5nPJs5idqwCkH29MvMaz3AQQFuNJxkawYpjYqif2-wQVoRUFa3BxzVGcTpOjbvADaNcFywyhtkPaWD9d5C7hmJU2IZODOkuRedE0MFwexaoL0joOTJHcK59mnAUTFABK0XPBtY8ybBHl2OdoIL5xSzwBySB5vosDCnF3Ucyxc7fJsSLtBqBOj5YcFj8q_5iv8tf1L5OQRJLjchi0U"/>
+<span class="text-label text-on-surface-variant">HR Portal</span>
+</div>
+</div>
+</header>
+<!-- Page Header -->
+<section class="p-gutter">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<nav class="flex items-center gap-xs text-label text-secondary mb-xs">
+<span>Organization</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Jobs</span>
+</nav>
+<h2 class="font-h1 text-h1 text-on-surface">Jobs</h2>
+<p class="text-body text-secondary">Manage and track your organization's active recruitment positions.</p>
+</div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-sm rounded-lg shadow-sm hover:brightness-110 active:scale-95 transition-all font-label">
+<span class="material-symbols-outlined">add</span>
+                    NEW JOB
+                </button>
+</div>
+<!-- Dashboard KPIs for Context -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label text-secondary uppercase tracking-wider mb-xs">Total Active</p>
+<div class="flex items-baseline gap-sm">
+<span class="text-h1 font-bold text-on-surface">24</span>
+<span class="text-green-600 text-label flex items-center"><span class="material-symbols-outlined text-[14px]">trending_up</span> +3%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label text-secondary uppercase tracking-wider mb-xs">Avg. Time to Fill</p>
+<div class="flex items-baseline gap-sm">
+<span class="text-h1 font-bold text-on-surface">18d</span>
+<span class="text-secondary text-label">Target: 20d</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label text-secondary uppercase tracking-wider mb-xs">Active Candidates</p>
+<div class="flex items-baseline gap-sm">
+<span class="text-h1 font-bold text-on-surface">412</span>
+<span class="text-error text-label flex items-center"><span class="material-symbols-outlined text-[14px]">trending_down</span> -2%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<p class="text-label text-secondary uppercase tracking-wider mb-xs">Success Rate</p>
+<div class="flex items-baseline gap-sm">
+<span class="text-h1 font-bold text-on-surface">92%</span>
+<div class="h-1 flex-1 bg-surface-variant rounded-full ml-md relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-[92%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white border border-outline-variant rounded-xl p-md mb-lg flex flex-wrap items-center gap-md shadow-sm">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full border border-outline-variant rounded-lg py-2 pl-10 pr-4 text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Filter by title, location or hiring manager..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<label class="text-label text-secondary whitespace-nowrap">Status:</label>
+<select class="border border-outline-variant rounded-lg py-2 px-md text-body-sm focus:border-primary outline-none bg-surface">
+<option>All Statuses</option>
+<option>Open</option>
+<option>Closed</option>
+<option>Draft</option>
+<option>On Hold</option>
+</select>
+</div>
+<div class="flex items-center gap-sm">
+<label class="text-label text-secondary whitespace-nowrap">Department:</label>
+<div class="flex items-center gap-xs px-md py-2 border border-outline-variant rounded-lg bg-surface min-w-[160px] justify-between cursor-pointer group">
+<span class="text-body-sm">All Departments</span>
+<span class="material-symbols-outlined text-[18px] group-hover:text-primary transition-colors">expand_more</span>
+</div>
+</div>
+<button class="flex items-center gap-xs text-primary font-label hover:bg-primary/5 px-md py-2 rounded-lg transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+                    ADVANCED
+                </button>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<button class="p-2 text-outline hover:text-primary">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="px-lg py-md text-label text-secondary uppercase font-bold">Title</th>
+<th class="px-lg py-md text-label text-secondary uppercase font-bold">Department</th>
+<th class="px-lg py-md text-label text-secondary uppercase font-bold">Status</th>
+<th class="px-lg py-md text-label text-secondary uppercase font-bold text-center">Candidates</th>
+<th class="px-lg py-md text-label text-secondary uppercase font-bold">Created Date</th>
+<th class="px-lg py-md text-label text-secondary uppercase font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-container/5 transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div>
+<p class="font-body font-bold text-on-surface group-hover:text-primary transition-colors">Senior Software Engineer</p>
+<p class="text-label text-secondary">Remote • Full-time</p>
+</div>
+</td>
+<td class="px-lg py-md text-body">Engineering</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 rounded-full text-[11px] font-bold bg-green-100 text-green-700 border border-green-200">OPEN</span>
+</td>
+<td class="px-lg py-md text-center">
+<span class="bg-surface-variant/50 px-md py-1 rounded-full font-label text-on-surface-variant">45</span>
+</td>
+<td class="px-lg py-md text-body-sm text-secondary">Oct 12, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-all">
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-container/5 transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div>
+<p class="font-body font-bold text-on-surface group-hover:text-primary transition-colors">Marketing Manager</p>
+<p class="text-label text-secondary">New York • Hybrid</p>
+</div>
+</td>
+<td class="px-lg py-md text-body">Marketing</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 rounded-full text-[11px] font-bold bg-surface-container-high text-secondary border border-outline-variant">DRAFT</span>
+</td>
+<td class="px-lg py-md text-center">
+<span class="bg-surface-variant/50 px-md py-1 rounded-full font-label text-on-surface-variant">0</span>
+</td>
+<td class="px-lg py-md text-body-sm text-secondary">Oct 15, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-all">
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-container/5 transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div>
+<p class="font-body font-bold text-on-surface group-hover:text-primary transition-colors">Product Designer (L3)</p>
+<p class="text-label text-secondary">London • On-site</p>
+</div>
+</td>
+<td class="px-lg py-md text-body">Design</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 rounded-full text-[11px] font-bold bg-tertiary-fixed text-tertiary border border-tertiary/20">URGENT</span>
+</td>
+<td class="px-lg py-md text-center">
+<span class="bg-surface-variant/50 px-md py-1 rounded-full font-label text-on-surface-variant">128</span>
+</td>
+<td class="px-lg py-md text-body-sm text-secondary">Oct 18, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-all">
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary-container/5 transition-colors cursor-pointer group">
+<td class="px-lg py-md">
+<div>
+<p class="font-body font-bold text-on-surface group-hover:text-primary transition-colors">Sales Representative</p>
+<p class="text-label text-secondary">Remote • Commission</p>
+</div>
+</td>
+<td class="px-lg py-md text-body">Sales</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700 border border-orange-200">ON HOLD</span>
+</td>
+<td class="px-lg py-md text-center">
+<span class="bg-surface-variant/50 px-md py-1 rounded-full font-label text-on-surface-variant">12</span>
+</td>
+<td class="px-lg py-md text-body-sm text-secondary">Oct 20, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-all">
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary-container/5 transition-colors cursor-pointer group opacity-60">
+<td class="px-lg py-md">
+<div>
+<p class="font-body font-bold text-on-surface line-through">HR Coordinator</p>
+<p class="text-label text-secondary">Berlin • Full-time</p>
+</div>
+</td>
+<td class="px-lg py-md text-body">Human Resources</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 rounded-full text-[11px] font-bold bg-error-container text-error border border-error/20">CLOSED</span>
+</td>
+<td class="px-lg py-md text-center">
+<span class="bg-surface-variant/50 px-md py-1 rounded-full font-label text-on-surface-variant">89</span>
+</td>
+<td class="px-lg py-md text-body-sm text-secondary">Sep 30, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-all">
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="bg-surface-container-low px-lg py-md flex justify-between items-center border-t border-outline-variant">
+<div class="flex items-center gap-md">
+<p class="text-label text-secondary">Showing 1 to 5 of 24 results</p>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-xs">
+<label class="text-label text-secondary">Per page:</label>
+<select class="bg-transparent border-none text-label font-bold text-primary focus:ring-0 cursor-pointer">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<p class="text-label text-on-surface font-medium mr-md">Page 1 of 5</p>
+<button class="p-1 rounded border border-outline-variant text-outline hover:bg-surface-variant transition-all cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-variant text-on-surface font-label">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-variant text-on-surface font-label">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-outline">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-variant text-on-surface font-label">5</button>
+</div>
+<button class="p-1 rounded border border-outline-variant text-primary hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Contextual FAB (Hidden on Table view but available for specific triggers if needed) -->
+<button class="fixed bottom-xl right-xl w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all md:hidden">
+<span class="material-symbols-outlined">add</span>
+</button>
+</main>
+<script>
+        // Micro-interactions and subtle state management
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Future implementation: Navigate to detail view
+                console.log('Row clicked');
+            });
+        });
+
+        // Search Bar Focus Effect
+        const mainSearch = document.querySelector('header input');
+        mainSearch.addEventListener('focus', () => {
+            mainSearch.parentElement.classList.add('scale-[1.01]');
+        });
+        mainSearch.addEventListener('blur', () => {
+            mainSearch.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - User Invite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "error": "#ba1a1a",
+                  "inverse-on-surface": "#f2eff9",
+                  "on-surface": "#1a1b22",
+                  "secondary-fixed": "#dee0ff",
+                  "secondary-container": "#c9cffd",
+                  "outline-variant": "#c5c5d4",
+                  "on-error-container": "#93000a",
+                  "outline": "#757684",
+                  "surface-container": "#efedf6",
+                  "inverse-surface": "#2f3037",
+                  "primary-fixed": "#dee0ff",
+                  "background": "#fbf8ff",
+                  "on-primary-fixed": "#00105c",
+                  "secondary": "#565c84",
+                  "secondary-fixed-dim": "#bec4f2",
+                  "on-primary-fixed-variant": "#293ca0",
+                  "on-error": "#ffffff",
+                  "primary-fixed-dim": "#bac3ff",
+                  "on-secondary-container": "#51577f",
+                  "on-primary-container": "#cacfff",
+                  "tertiary": "#6c3400",
+                  "surface-container-lowest": "#ffffff",
+                  "primary-container": "#3f51b5",
+                  "surface-container-highest": "#e3e1ea",
+                  "surface": "#fbf8ff",
+                  "primary": "#24389c",
+                  "on-secondary-fixed": "#12183d",
+                  "tertiary-fixed": "#ffdcc6",
+                  "on-tertiary": "#ffffff",
+                  "tertiary-fixed-dim": "#ffb784",
+                  "on-primary": "#ffffff",
+                  "on-secondary": "#ffffff",
+                  "surface-variant": "#e3e1ea",
+                  "surface-bright": "#fbf8ff",
+                  "on-tertiary-fixed": "#301400",
+                  "on-tertiary-container": "#ffc7a2",
+                  "inverse-primary": "#bac3ff",
+                  "surface-tint": "#4355b9",
+                  "on-tertiary-fixed-variant": "#713700",
+                  "on-surface-variant": "#454652",
+                  "surface-container-high": "#e9e7f0",
+                  "surface-dim": "#dbd9e2",
+                  "surface-container-low": "#f4f2fc",
+                  "error-container": "#ffdad6",
+                  "on-secondary-fixed-variant": "#3e446b",
+                  "on-background": "#1a1b22",
+                  "tertiary-container": "#8f4700"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "unit": "4px",
+                  "md": "16px",
+                  "margin": "24px",
+                  "xs": "4px",
+                  "lg": "24px",
+                  "gutter": "24px",
+                  "xl": "32px",
+                  "sm": "8px"
+          },
+          "fontFamily": {
+                  "label": [
+                          "Roboto"
+                  ],
+                  "h2": [
+                          "Roboto"
+                  ],
+                  "h3": [
+                          "Roboto"
+                  ],
+                  "h1-mobile": [
+                          "Roboto"
+                  ],
+                  "body": [
+                          "Roboto"
+                  ],
+                  "body-sm": [
+                          "Roboto"
+                  ],
+                  "h1": [
+                          "Roboto"
+                  ]
+          },
+          "fontSize": {
+                  "label": [
+                          "12px",
+                          {
+                                  "lineHeight": "16px",
+                                  "letterSpacing": "0.02em",
+                                  "fontWeight": "500"
+                          }
+                  ],
+                  "h2": [
+                          "22px",
+                          {
+                                  "lineHeight": "28px",
+                                  "letterSpacing": "0",
+                                  "fontWeight": "500"
+                          }
+                  ],
+                  "h3": [
+                          "18px",
+                          {
+                                  "lineHeight": "24px",
+                                  "letterSpacing": "0",
+                                  "fontWeight": "500"
+                          }
+                  ],
+                  "h1-mobile": [
+                          "24px",
+                          {
+                                  "lineHeight": "32px",
+                                  "fontWeight": "500"
+                          }
+                  ],
+                  "body": [
+                          "15px",
+                          {
+                                  "lineHeight": "22px",
+                                  "letterSpacing": "0",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "body-sm": [
+                          "13px",
+                          {
+                                  "lineHeight": "18px",
+                                  "letterSpacing": "0",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "h1": [
+                          "28px",
+                          {
+                                  "lineHeight": "36px",
+                                  "letterSpacing": "-0.01em",
+                                  "fontWeight": "500"
+                          }
+                  ]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Responsive email utilities - though Tailwind is primary, keeping generic styles clean */
+    @media (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center py-xl px-md font-body text-body text-on-surface">
+<!-- Email Wrapper -->
+<div class="email-container max-w-[600px] w-full bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<!-- Header -->
+<div class="py-xl px-margin text-center border-b border-surface-container-high">
+<h1 class="font-h1 text-h1 text-primary font-bold tracking-tight">TalentFlow</h1>
+</div>
+<!-- Body Content -->
+<div class="px-margin py-xl text-center flex flex-col items-center">
+<!-- Icon/Illustration placeholder -->
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">
+            mark_email_read
+         </span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface mb-md">You've been invited to join TalentFlow!</h2>
+<p class="font-body text-body text-on-surface-variant max-w-[400px] mx-auto mb-xl">
+        Alex from HR has invited you to collaborate in their workspace. Join your team to streamline your hiring process, manage candidates, and track performance efficiently.
+      </p>
+<!-- Primary Action -->
+<a class="inline-flex items-center justify-center px-lg py-[12px] bg-primary-container text-on-primary rounded font-label text-label hover:bg-primary-container/90 transition-colors shadow-[0_1px_3px_rgba(0,0,0,0.12)]" href="#">
+        Join Workspace
+      </a>
+<p class="font-body-sm text-body-sm text-outline mt-lg">
+        This link expires in 48 hours. If you did not expect this invitation, you can safely ignore this email.
+      </p>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-surface-container-high"></div>
+<!-- Footer -->
+<div class="bg-surface-container py-lg px-margin text-center">
+<div class="flex items-center justify-center gap-md mb-md">
+<a class="font-label text-label text-primary hover:underline" href="#">Help Center</a>
+<span class="text-outline-variant">•</span>
+<a class="font-label text-label text-primary hover:underline" href="#">Privacy Policy</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        © 2024 TalentFlow Inc. All rights reserved.<br/>
+        123 Corporate Blvd, Suite 400, San Francisco, CA 94105
+      </p>
+</div>
+</div>
+</body></html>

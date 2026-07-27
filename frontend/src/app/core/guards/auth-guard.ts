@@ -1,16 +1,16 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
+import { Store } from '@ngrx/store';
 import Swal from 'sweetalert2';
+import { selectAuthState } from '../state/auth/auth.selectors';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
+  const store = inject(Store);
   const router = inject(Router);
 
-  // Access the signal value correctly by calling it
-  const isAuth = authService.isAuthenticated();
+  const authState = store.selectSignal(selectAuthState)();
 
-  if (!isAuth) {
+  if (!authState.isAuthenticated) {
     Swal.fire({
       icon: 'warning',
       title: 'Not Authorized',
@@ -21,32 +21,27 @@ export const authGuard: CanActivateFn = (route, state) => {
     return false;
   }
 
-  // Check if email is confirmed
-  const isEmailConfirmed = authService.isEmailConfirmed();
-  if (!isEmailConfirmed) {
+  if (!authState.user?.emailConfirmed) {
     Swal.fire({
       icon: 'info',
       title: 'Email Verification Required',
       text: 'Please verify your email address to continue using the application.',
       confirmButtonColor: '#3085d6',
     });
-    const email = authService.currentUser()?.email || '';
-    router.navigate(['/verify-email'], { queryParams: { email: email } });
+    const email = authState.user?.email || '';
+    router.navigate(['/verify-email'], { queryParams: { email } });
     return false;
   }
 
-  // Check if user has at least Planner role for regular content access
+  // Multi-tenant check: if user belongs to multiple tenants and hasn't selected one, redirect to workspace picker
+  if (authState.availableTenants.length > 1 && !authState.selectedTenantId) {
+    router.navigate(['/select-workspace']);
+    return false;
+  }
 
-  const isAdmin = authService.isAdmin();
-  
-  if (!isAdmin) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Access Denied',
-      text: 'You need a Planner or Admin role to access this page.',
-      confirmButtonColor: '#3085d6',
-    });
-    router.navigateByUrl('/login');
+  // Invited user check: if user is invited but hasn't set up account, redirect to setup
+  if (authState.isInvited) {
+    router.navigate(['/setup-account']);
     return false;
   }
 

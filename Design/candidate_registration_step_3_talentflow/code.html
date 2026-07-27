@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Registration - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto', sans-serif; }
+        .drag-active { border-color: #3f51b5; background-color: rgba(63, 81, 181, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top App Bar (Simplified for Transactional Screen) -->
+<header class="bg-surface border-b border-outline-variant h-16 flex items-center px-gutter justify-center sticky top-0 z-40">
+<h1 class="font-h2 text-h2 text-primary font-bold">TalentFlow</h1>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex justify-center py-xl px-md sm:px-lg">
+<div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
+<!-- Progress Stepper -->
+<div class="mb-xl">
+<div class="flex items-center justify-between mb-sm relative">
+<div class="absolute left-0 top-1/2 w-full h-[2px] bg-outline-variant -z-10 -translate-y-1/2"></div>
+<div class="absolute left-0 top-1/2 w-2/3 h-[2px] bg-primary -z-10 -translate-y-1/2"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">
+<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
+</div>
+<span class="font-label text-label text-on-surface-variant mt-sm">Basic Info</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">
+<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
+</div>
+<span class="font-label text-label text-on-surface-variant mt-sm">Experience</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center border-2 border-primary font-label text-label bg-surface-container-lowest">
+                            3
+                        </div>
+<span class="font-label text-label text-primary mt-sm font-bold">Resume &amp; Skills</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant font-label text-label">
+                            4
+                        </div>
+<span class="font-label text-label text-on-surface-variant mt-sm">Review</span>
+</div>
+</div>
+</div>
+<!-- Header -->
+<div class="mb-lg">
+<h2 class="font-h1 text-h1 text-on-surface mb-xs hidden md:block">Upload Resume &amp; Add Skills</h2>
+<h2 class="font-h1-mobile text-h1-mobile text-on-surface mb-xs md:hidden">Upload Resume &amp; Add Skills</h2>
+<p class="font-body text-body text-on-surface-variant">Provide your latest resume and highlight your core competencies to match with the best opportunities.</p>
+</div>
+<!-- Form Area -->
+<form class="space-y-lg">
+<!-- Resume Upload -->
+<div>
+<label class="block font-h3 text-h3 text-on-surface mb-sm">Resume Document <span class="text-error">*</span></label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-xl flex flex-col items-center justify-center transition-colors cursor-pointer hover:bg-surface-container-low group" id="drop-zone">
+<span class="material-symbols-outlined text-outline group-hover:text-primary mb-sm" style="font-size: 48px; font-variation-settings: 'FILL' 1;">upload_file</span>
+<p class="font-body text-body text-on-surface mb-xs text-center">Drag &amp; drop your file here, or <span class="text-primary font-medium">browse</span></p>
+<p class="font-body-sm text-body-sm text-outline text-center">Supports PDF, DOCX (Max 10MB)</p>
+<input accept=".pdf,.doc,.docx" class="hidden" id="file-input" type="file"/>
+</div>
+</div>
+<!-- Skills Section -->
+<div>
+<label class="block font-h3 text-h3 text-on-surface mb-sm">Key Skills</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Add up to 10 technical or soft skills relevant to your desired role.</p>
+<div class="border border-outline-variant rounded-DEFAULT p-sm bg-surface focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all flex flex-wrap gap-sm items-center min-h-[56px]">
+<!-- Chips -->
+<div class="flex items-center bg-primary-container text-on-primary-container rounded-full px-3 py-1 font-body-sm text-body-sm">
+                            React
+                            <button class="ml-2 text-on-primary-container hover:text-on-primary-fixed focus:outline-none flex items-center" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</div>
+<div class="flex items-center bg-primary-container text-on-primary-container rounded-full px-3 py-1 font-body-sm text-body-sm">
+                            TypeScript
+                            <button class="ml-2 text-on-primary-container hover:text-on-primary-fixed focus:outline-none flex items-center" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</div>
+<div class="flex items-center bg-primary-container text-on-primary-container rounded-full px-3 py-1 font-body-sm text-body-sm">
+                            UI/UX Design
+                            <button class="ml-2 text-on-primary-container hover:text-on-primary-fixed focus:outline-none flex items-center" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</div>
+<!-- Input -->
+<input class="flex-grow border-none focus:ring-0 bg-transparent font-body text-body p-0 min-w-[200px]" placeholder="Type a skill and press Enter..." type="text"/>
+</div>
+<!-- Autocomplete Suggestions (Simulated) -->
+<div class="mt-xs hidden">
+<div class="bg-surface rounded-DEFAULT shadow-md border border-outline-variant max-h-48 overflow-y-auto">
+<div class="px-md py-sm hover:bg-surface-container-high cursor-pointer font-body text-body">Node.js</div>
+<div class="px-md py-sm hover:bg-surface-container-high cursor-pointer font-body text-body">Python</div>
+<div class="px-md py-sm hover:bg-surface-container-high cursor-pointer font-body text-body">GraphQL</div>
+</div>
+</div>
+</div>
+<!-- Cover Letter -->
+<div>
+<label class="block font-h3 text-h3 text-on-surface mb-sm">Cover Letter (Optional)</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Introduce yourself and explain why you'd be a great fit.</p>
+<textarea class="w-full border border-outline-variant rounded-DEFAULT p-md font-body text-body bg-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-y" placeholder="Write or paste your cover letter here..." rows="5"></textarea>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-center gap-md pt-lg border-t border-outline-variant mt-xl">
+<button class="w-full sm:w-auto px-lg py-sm rounded-DEFAULT border border-outline font-label text-label text-on-surface hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                        Back
+                    </button>
+<button class="w-full sm:w-auto px-lg py-sm rounded-DEFAULT bg-primary font-label text-label text-on-primary hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-2" type="submit">
+                        Save &amp; Continue
+                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<script>
+        // Simple drag and drop visual feedback
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('drag-active');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('drag-active');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EEO &amp; Compliance Reporting | TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-surface-variant": "#454652",
+                            "on-primary-fixed-variant": "#293ca0",
+                            "inverse-surface": "#2f3037",
+                            "on-tertiary-fixed-variant": "#713700",
+                            "surface-container": "#efedf6",
+                            "on-secondary-fixed": "#12183d",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "surface-container-high": "#e9e7f0",
+                            "on-tertiary-fixed": "#301400",
+                            "on-tertiary-container": "#ffc7a2",
+                            "tertiary": "#6c3400",
+                            "secondary-container": "#c9cffd",
+                            "on-primary-container": "#cacfff",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-container": "#51577f",
+                            "secondary": "#565c84",
+                            "on-secondary-fixed-variant": "#3e446b",
+                            "on-primary": "#ffffff",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-tint": "#4355b9",
+                            "primary-fixed-dim": "#bac3ff",
+                            "surface-container-low": "#f4f2fc",
+                            "on-primary-fixed": "#00105c",
+                            "surface-bright": "#fbf8ff",
+                            "error": "#ba1a1a",
+                            "inverse-primary": "#bac3ff",
+                            "on-secondary": "#ffffff",
+                            "surface-variant": "#e3e1ea",
+                            "secondary-fixed": "#dee0ff",
+                            "background": "#fbf8ff",
+                            "primary": "#24389c",
+                            "surface-dim": "#dbd9e2",
+                            "on-error": "#ffffff",
+                            "primary-fixed": "#dee0ff",
+                            "primary-container": "#3f51b5",
+                            "on-error-container": "#93000a",
+                            "tertiary-container": "#8f4700",
+                            "on-surface": "#1a1b22",
+                            "on-background": "#1a1b22",
+                            "surface-container-highest": "#e3e1ea",
+                            "secondary-fixed-dim": "#bec4f2",
+                            "outline-variant": "#c5c5d4",
+                            "inverse-on-surface": "#f2eff9",
+                            "surface": "#fbf8ff",
+                            "outline": "#757684",
+                            "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "sm": "8px",
+                            "margin": "24px",
+                            "xs": "4px",
+                            "xl": "32px",
+                            "unit": "4px",
+                            "md": "16px",
+                            "lg": "24px",
+                            "gutter": "24px"
+                    },
+                    "fontFamily": {
+                            "label": ["Roboto"],
+                            "h1-mobile": ["Roboto"],
+                            "h2": ["Roboto"],
+                            "h3": ["Roboto"],
+                            "h1": ["Roboto"],
+                            "body-sm": ["Roboto"],
+                            "body": ["Roboto"]
+                    },
+                    "fontSize": {
+                            "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                            "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                            "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                            "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                            "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                            "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        /* Base styles */
+        body { @apply bg-background text-on-background antialiased h-full; }
+        
+        /* Utility for chart bars to use theme colors */
+        .chart-bar-primary { @apply bg-primary; }
+        .chart-bar-secondary { @apply bg-secondary; }
+        .chart-bar-tertiary { @apply bg-tertiary; }
+        .chart-bar-primary-container { @apply bg-primary-container; }
+        .chart-bar-secondary-container { @apply bg-secondary-container; }
+        
+        /* Subtle scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { @apply bg-outline-variant rounded-full; }
+        ::-webkit-scrollbar-thumb:hover { @apply bg-outline; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-background font-body text-body text-on-background">
+<!-- SideNavBar (From JSON) -->
+<nav class="bg-surface dark:bg-inverse-surface h-full w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col py-lg px-md z-20">
+<!-- Brand Logo -->
+<div class="mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">dataset</span>
+<div>
+<h1 class="text-h2 font-h2 text-primary dark:text-primary-fixed-dim">TalentFlow</h1>
+<p class="font-label text-label text-on-surface-variant">Enterprise HR</p>
+</div>
+</div>
+<!-- Main Navigation Tabs -->
+<ul class="flex flex-col gap-xs flex-grow">
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+</li>
+<!-- Active Tab: Admin (EEO Compliance is typically under Admin/Settings) -->
+<li>
+<a class="flex items-center gap-sm px-md py-sm bg-secondary-container text-on-secondary-container font-medium rounded-lg cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</li>
+</ul>
+<!-- CTA -->
+<button class="w-full bg-primary-container text-on-primary font-label text-label py-sm px-md rounded mt-lg shadow-sm hover:bg-primary transition-colors">
+            Create Job
+        </button>
+<!-- Footer Tabs -->
+<ul class="flex flex-col gap-xs mt-lg pt-lg border-t border-outline-variant">
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">Settings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-high hover:bg-primary-container/10 transition-colors cursor-pointer duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body text-body">Support</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Wrapper (Accounts for SideNav and TopNav) -->
+<div class="ml-64 flex flex-col flex-grow w-full relative">
+<!-- TopNavBar (From JSON) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16 w-full z-10 sticky top-0">
+<!-- Search Bar (on_left) -->
+<div class="flex-1 max-w-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-full font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-150" placeholder="Search..." type="text"/>
+</div>
+</div>
+<!-- Trailing Icons & Profile -->
+<div class="flex items-center gap-md">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden ml-sm cursor-pointer hover:ring-2 hover:ring-primary transition-all duration-150">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional corporate headshot of a person looking forward, neutral background, high resolution, soft lighting, enterprise software aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM9F018lYAOmcmJABNjur-z5IFB_giviuZ9QAnScF4JHDc9Cv4pRuimRF3FwCoh3OrXaa8duVPlTQjViPzvmw-bMZjGNZRb7GKaoDS503lfxM_O469nDG1hXtI0qSdB7m1qJghmLYapY9kNteD9-lYouJwMsPH2LgRmTX5pFPpTsQSqBXx2TdihnHv-4h8lNudJQNTEpXd1b2nPUMD3cqlk1_3xFgGDgX5QPyZGc1RdcnJaj5LbRlc0sydC2fF_l5cp7pl7ScFNz4"/>
+</div>
+</div>
+</header>
+<!-- Page Content Canvas -->
+<main class="flex-grow p-margin overflow-y-auto bg-background">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-margin gap-md">
+<div>
+<h1 class="font-h1 text-h1 text-on-background md:hidden">EEO &amp; Compliance</h1>
+<h1 class="font-h1 text-h1 text-on-background hidden md:block">EEO &amp; Compliance Reporting</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Monitor equal employment opportunity metrics and audit status.</p>
+</div>
+<div class="flex flex-wrap items-center gap-md">
+<!-- Filters -->
+<div class="flex gap-sm">
+<select class="bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm py-sm px-md focus:border-primary focus:ring-1 focus:ring-primary outline-none text-on-surface">
+<option>YTD (Jan - Oct 2023)</option>
+<option>Q3 2023</option>
+<option>Q2 2023</option>
+<option>FY 2022</option>
+</select>
+<select class="bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm py-sm px-md focus:border-primary focus:ring-1 focus:ring-primary outline-none text-on-surface">
+<option>All Departments</option>
+<option>Engineering</option>
+<option>Sales</option>
+<option>Marketing</option>
+</select>
+</div>
+<!-- Export Button -->
+<button class="flex items-center gap-xs bg-surface-container-lowest border border-primary text-primary font-label text-label py-sm px-md rounded shadow-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export Report (PDF/CSV)
+                    </button>
+</div>
+</div>
+<!-- KPI Cards & Summary Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-margin mb-margin">
+<!-- Summary Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex flex-col justify-between h-full relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-primary/5 rounded-full blur-xl"></div>
+<div>
+<h2 class="font-label text-label text-on-surface-variant uppercase tracking-wider mb-sm">Selected Period Summary</h2>
+<div class="grid grid-cols-2 gap-md mt-md">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Total Applicants</p>
+<p class="font-h1 text-h1 text-primary">12,450</p>
+<p class="font-label text-label text-secondary mt-xs flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">trending_up</span> +8% YoY</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Total Hires</p>
+<p class="font-h1 text-h1 text-primary">842</p>
+<p class="font-label text-label text-secondary mt-xs flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">trending_flat</span> 0% YoY</p>
+</div>
+</div>
+</div>
+</div>
+<!-- EEO Completion Rate -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex flex-col justify-between">
+<div>
+<h2 class="font-label text-label text-on-surface-variant uppercase tracking-wider mb-sm">Voluntary EEO Form Completion</h2>
+<div class="flex items-end gap-md mt-md">
+<p class="font-h1 text-h1 text-on-surface">87.5%</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant pb-1">of applicants provided data</p>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-variant h-2 rounded-full mt-lg overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 87.5%"></div>
+</div>
+</div>
+</div>
+<!-- Action Required -->
+<div class="bg-surface-container-lowest border border-error/30 rounded-lg p-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-error/5 rounded-full blur-xl"></div>
+<div>
+<h2 class="font-label text-label text-error uppercase tracking-wider mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">warning</span> Action Required
+                        </h2>
+<div class="mt-md">
+<p class="font-h1 text-h1 text-on-surface">14</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hires missing mandatory EEO justification documentation in current period.</p>
+</div>
+</div>
+<button class="mt-md text-primary font-label text-label hover:underline text-left">View Audit List →</button>
+</div>
+</div>
+<!-- Bento Grid: Charts & Analytics -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-margin mb-margin">
+<!-- Gender Distribution (2 columns wide) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-h3 text-h3 text-on-surface">Gender Distribution</h2>
+<span class="font-label text-label text-on-surface-variant bg-surface-container-low px-sm py-xs rounded">Applicants vs Hires</span>
+</div>
+<!-- Faux Bar Chart -->
+<div class="flex h-48 items-end gap-lg mt-md pl-8 relative">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between font-label text-label text-on-surface-variant text-right w-6 pb-6">
+<span>100%</span>
+<span>50%</span>
+<span>0%</span>
+</div>
+<!-- Grid lines -->
+<div class="absolute left-8 right-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-outline-variant/30 w-full"></div>
+<div class="border-t border-outline-variant/30 w-full"></div>
+<div class="border-t border-outline-variant/30 w-full border-b-0"></div>
+</div>
+<!-- Bar Groups -->
+<div class="flex-1 flex justify-around items-end h-full z-10 pb-6 relative">
+<!-- Group 1: Male -->
+<div class="flex flex-col items-center gap-sm">
+<div class="flex items-end gap-xs h-32 w-16">
+<div class="w-1/2 bg-primary rounded-t-sm h-[52%] relative group cursor-pointer">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-on-primary text-xs p-1 rounded whitespace-nowrap">App: 52%</div>
+</div>
+<div class="w-1/2 bg-primary-fixed-dim rounded-t-sm h-[48%] relative group cursor-pointer">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-on-primary text-xs p-1 rounded whitespace-nowrap">Hire: 48%</div>
+</div>
+</div>
+<span class="absolute bottom-0 font-body-sm text-body-sm text-on-surface-variant">Male</span>
+</div>
+<!-- Group 2: Female -->
+<div class="flex flex-col items-center gap-sm">
+<div class="flex items-end gap-xs h-32 w-16">
+<div class="w-1/2 bg-primary rounded-t-sm h-[45%] relative group cursor-pointer"></div>
+<div class="w-1/2 bg-primary-fixed-dim rounded-t-sm h-[49%] relative group cursor-pointer"></div>
+</div>
+<span class="absolute bottom-0 font-body-sm text-body-sm text-on-surface-variant">Female</span>
+</div>
+<!-- Group 3: Non-binary/Other -->
+<div class="flex flex-col items-center gap-sm">
+<div class="flex items-end gap-xs h-32 w-16">
+<div class="w-1/2 bg-primary rounded-t-sm h-[3%] relative group cursor-pointer"></div>
+<div class="w-1/2 bg-primary-fixed-dim rounded-t-sm h-[3%] relative group cursor-pointer"></div>
+</div>
+<span class="absolute bottom-0 font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap text-center">Non-Binary / <br/>Not Disclosed</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex justify-center gap-lg mt-md">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 bg-primary rounded-sm"></div>
+<span class="font-label text-label text-on-surface-variant">Applicants</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 bg-primary-fixed-dim rounded-sm"></div>
+<span class="font-label text-label text-on-surface-variant">Hires</span>
+</div>
+</div>
+</div>
+<!-- Veteran Status (1 column wide) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<h2 class="font-h3 text-h3 text-on-surface mb-lg">Veteran Status</h2>
+<div class="flex flex-col gap-md">
+<!-- Stat row -->
+<div class="flex items-center justify-between p-sm bg-surface-container-low rounded">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">military_tech</span>
+<span class="font-body-sm text-body-sm text-on-surface">Protected Veterans</span>
+</div>
+<span class="font-h2 text-h2 text-primary">6.2%</span>
+</div>
+<!-- Donut Chart representation -->
+<div class="relative w-32 h-32 mx-auto mt-md">
+<!-- SVG Donut -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-surface-variant" cx="18" cy="18" fill="none" r="15.915" stroke-width="4"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="15.915" stroke-dasharray="6.2 93.8" stroke-dashoffset="0" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-h3 text-h3 text-on-surface">6.2%</span>
+<span class="font-label text-label text-on-surface-variant">Hires</span>
+</div>
+</div>
+<p class="text-center font-label text-label text-on-surface-variant mt-sm">Benchmark Target: 5.9%</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-margin mb-margin">
+<!-- Race/Ethnicity -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<h2 class="font-h3 text-h3 text-on-surface mb-lg">Race/Ethnicity Distribution</h2>
+<div class="space-y-md">
+<!-- Row -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs text-on-surface">
+<span>White (Not Hispanic or Latino)</span>
+<span>45%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Row -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs text-on-surface">
+<span>Asian</span>
+<span>22%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 22%"></div>
+</div>
+</div>
+<!-- Row -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs text-on-surface">
+<span>Hispanic or Latino</span>
+<span>15%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 15%"></div>
+</div>
+</div>
+<!-- Row -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs text-on-surface">
+<span>Black or African American</span>
+<span>12%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 12%"></div>
+</div>
+</div>
+<!-- Row -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs text-on-surface">
+<span>Two or More Races / Other</span>
+<span>6%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-outline h-full" style="width: 6%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Disability & Source Diversity Stack -->
+<div class="flex flex-col gap-margin">
+<!-- Disability Status -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex-1">
+<h2 class="font-h3 text-h3 text-on-surface mb-md">Disability Status (Section 503)</h2>
+<div class="flex items-center gap-lg">
+<div class="flex-1">
+<p class="font-h1 text-h1 text-primary mb-xs">8.4%</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Individuals with Disabilities (Hires)</p>
+</div>
+<div class="w-px h-12 bg-outline-variant hidden sm:block"></div>
+<div class="flex-1">
+<p class="font-label text-label text-on-surface-variant mb-xs uppercase">Target</p>
+<p class="font-h2 text-h2 text-on-surface">7.0%</p>
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-surface-container-low text-primary font-label text-[10px]">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> Goal Met
+                                </span>
+</div>
+</div>
+</div>
+<!-- Source Diversity (Horizontal stacked bar) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex-1">
+<h2 class="font-h3 text-h3 text-on-surface mb-md">Candidate Source Diversity Focus</h2>
+<div class="w-full h-8 flex rounded overflow-hidden mt-sm">
+<div class="bg-primary h-full flex items-center justify-center text-on-primary font-label text-[10px]" style="width: 40%" title="University Partnerships: 40%">Univ.</div>
+<div class="bg-secondary h-full flex items-center justify-center text-on-secondary font-label text-[10px]" style="width: 30%" title="Diversity Job Boards: 30%">Div. Boards</div>
+<div class="bg-tertiary h-full flex items-center justify-center text-on-tertiary font-label text-[10px]" style="width: 20%" title="Internal Referrals: 20%">Ref.</div>
+<div class="bg-outline h-full flex items-center justify-center text-on-surface font-label text-[10px]" style="width: 10%" title="Other: 10%">Other</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Compliance Audit Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden mb-xl">
+<div class="px-lg py-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<div>
+<h2 class="font-h3 text-h3 text-on-surface">Recent Hiring Actions &amp; Compliance Audit</h2>
+<p class="font-label text-label text-on-surface-variant">Showing latest 5 hired candidates</p>
+</div>
+<button class="text-primary font-label text-label hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant">
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium">Candidate ID</th>
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium">Role</th>
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium">Recruiter</th>
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium">Hire Date</th>
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium">EEO Form Status</th>
+<th class="py-sm px-lg font-label text-label text-on-surface-variant font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y divide-outline-variant">
+<tr class="hover:bg-primary-fixed-dim/20 transition-colors group">
+<td class="py-md px-lg font-medium text-on-surface">#CAN-8492</td>
+<td class="py-md px-lg text-on-surface-variant">Senior Frontend Engineer</td>
+<td class="py-md px-lg text-on-surface">Sarah Jenkins</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 24, 2023</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-[#E8F5E9] text-[#2E7D32] font-label text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Completed
+                                    </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed-dim/20 transition-colors group bg-error/5">
+<td class="py-md px-lg font-medium text-on-surface">#CAN-8491</td>
+<td class="py-md px-lg text-on-surface-variant">Account Executive</td>
+<td class="py-md px-lg text-on-surface">Mike Ross</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 22, 2023</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-error-container text-on-error-container font-label text-[11px]">
+<span class="material-symbols-outlined text-[14px]">warning</span> Missing Justification
+                                    </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-primary font-label text-label hover:underline">Resolve</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed-dim/20 transition-colors group">
+<td class="py-md px-lg font-medium text-on-surface">#CAN-8488</td>
+<td class="py-md px-lg text-on-surface-variant">Data Analyst</td>
+<td class="py-md px-lg text-on-surface">Elena Rodriguez</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 20, 2023</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-[#E8F5E9] text-[#2E7D32] font-label text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Completed
+                                    </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed-dim/20 transition-colors group">
+<td class="py-md px-lg font-medium text-on-surface">#CAN-8485</td>
+<td class="py-md px-lg text-on-surface-variant">Product Manager</td>
+<td class="py-md px-lg text-on-surface">Sarah Jenkins</td>
+<td class="py-md px-lg text-on-surface-variant">Oct 18, 2023</td>
+<td class="py-md px-lg">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-[#E8F5E9] text-[#2E7D32] font-label text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Completed
+                                    </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</body></html>

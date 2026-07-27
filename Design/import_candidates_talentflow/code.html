@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Import - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1a1b22",
+                        "on-secondary-container": "#51577f",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "primary-container": "#3f51b5",
+                        "on-secondary-fixed": "#12183d",
+                        "background": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-tertiary-container": "#ffc7a2",
+                        "inverse-on-surface": "#f2eff9",
+                        "surface-container-low": "#f4f2fc",
+                        "secondary": "#565c84",
+                        "inverse-primary": "#bac3ff",
+                        "primary": "#24389c",
+                        "on-surface-variant": "#454652",
+                        "on-primary-fixed": "#00105c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "secondary-fixed": "#dee0ff",
+                        "tertiary": "#6c3400",
+                        "outline-variant": "#c5c5d4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-tint": "#4355b9",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "secondary-container": "#c9cffd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-variant": "#e3e1ea",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#efedf6",
+                        "surface-container-high": "#e9e7f0",
+                        "primary-fixed-dim": "#bac3ff",
+                        "on-background": "#1a1b22",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf8ff",
+                        "on-primary-container": "#cacfff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbd9e2",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#8f4700",
+                        "inverse-surface": "#2f3037",
+                        "primary-fixed": "#dee0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "24px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h2": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "label": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .file-upload-hover {
+            border-color: #3f51b5;
+            background-color: #f4f2fc;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body overflow-x-hidden">
+<!-- Top Navigation (Shell suppressed for this focused task flow, showing simple header) -->
+<header class="bg-surface w-full h-16 border-b border-outline-variant flex justify-between items-center px-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+<span class="font-h2 text-h2 font-bold text-primary">TalentFlow</span>
+<span class="text-on-surface-variant ml-sm border-l border-outline-variant pl-sm">Candidate Import</span>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined">close</span>
+<span class="font-label text-label">Cancel Import</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-lg py-xl">
+<div class="mb-lg">
+<h1 class="font-h1 text-h1 text-on-surface mb-xs">Import Candidates</h1>
+<p class="font-body text-body text-on-surface-variant">Upload a CSV or Excel file to map external candidate data into TalentFlow.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="flex items-center gap-sm mb-xl">
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">1</div>
+<span class="font-label text-label text-primary">Upload</span>
+</div>
+<div class="w-12 h-px bg-primary"></div>
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">2</div>
+<span class="font-label text-label text-primary">Map Fields</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center gap-xs opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-label text-label">3</div>
+<span class="font-label text-label text-on-surface">Review &amp; Import</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Upload & Status -->
+<div class="lg:col-span-1 space-y-lg">
+<!-- Success State File Upload Area -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-300">
+<div class="absolute inset-0 bg-primary-container opacity-10 pointer-events-none"></div>
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-md text-primary">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">File Uploaded Successfully</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">engineering_candidates_q3.csv (45 KB)</p>
+<button class="border border-outline text-on-surface hover:bg-surface-container-high px-md py-sm rounded font-label text-label transition-colors">
+                        Replace File
+                    </button>
+</div>
+<!-- Info Panel -->
+<div class="bg-surface-container rounded-xl p-lg">
+<h4 class="font-h3 text-h3 text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">info</span>
+                        Mapping Guide
+                    </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-sm">
+                        TalentFlow has auto-detected several fields based on column headers. Please review the mappings and assign any unmapped columns.
+                    </p>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-xs list-disc list-inside">
+<li>Required fields are marked with <span class="text-error">*</span></li>
+<li>Unmapped columns will be ignored during import.</li>
+<li>Date formats are auto-resolved.</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Mapping Interface -->
+<div class="lg:col-span-2 space-y-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center bg-surface">
+<h2 class="font-h2 text-h2 text-on-surface">Map Columns</h2>
+<span class="bg-surface-container-high text-on-surface px-sm py-xs rounded text-label font-label">
+                            24 Rows Detected
+                        </span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label text-label text-on-surface-variant font-medium w-1/3">File Column Header</th>
+<th class="p-md font-label text-label text-on-surface-variant font-medium w-1/3">TalentFlow Field</th>
+<th class="p-md font-label text-label text-on-surface-variant font-medium w-1/3">Preview (Row 1)</th>
+</tr>
+</thead>
+<tbody>
+<!-- Mapped Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-[#C5CAE9]/20 transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">data_object</span>
+<span class="font-body text-body text-on-surface">first_name</span>
+</div>
+</td>
+<td class="p-md">
+<select class="w-full bg-surface border border-outline-variant rounded p-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option selected="" value="first_name">First Name *</option>
+<option value="last_name">Last Name *</option>
+<option value="email">Email Address *</option>
+<option value="ignore">-- Ignore --</option>
+</select>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant italic">
+                                        "Sarah"
+                                    </td>
+</tr>
+<!-- Mapped Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-[#C5CAE9]/20 transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">data_object</span>
+<span class="font-body text-body text-on-surface">last_name</span>
+</div>
+</td>
+<td class="p-md">
+<select class="w-full bg-surface border border-outline-variant rounded p-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option value="first_name">First Name *</option>
+<option selected="" value="last_name">Last Name *</option>
+<option value="email">Email Address *</option>
+<option value="ignore">-- Ignore --</option>
+</select>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant italic">
+                                        "Jenkins"
+                                    </td>
+</tr>
+<!-- Mapped Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-[#C5CAE9]/20 transition-colors">
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">data_object</span>
+<span class="font-body text-body text-on-surface">contact_email</span>
+</div>
+</td>
+<td class="p-md">
+<select class="w-full bg-surface border border-outline-variant rounded p-sm font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option value="first_name">First Name *</option>
+<option value="last_name">Last Name *</option>
+<option selected="" value="email">Email Address *</option>
+<option value="ignore">-- Ignore --</option>
+</select>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant italic">
+                                        "s.jenkins@example.com"
+                                    </td>
+</tr>
+<!-- Unmapped Row -->
+<tr class="border-b border-outline-variant hover:bg-[#C5CAE9]/20 transition-colors bg-error-container/20">
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">warning</span>
+<span class="font-body text-body text-on-surface">github_url</span>
+</div>
+</td>
+<td class="p-md">
+<select class="w-full bg-surface border border-error rounded p-sm font-body text-body text-on-surface focus:border-error focus:ring-1 focus:ring-error">
+<option disabled="" selected="" value="">Select Field...</option>
+<option value="portfolio">Portfolio URL</option>
+<option value="linkedin">LinkedIn URL</option>
+<option value="github">GitHub URL</option>
+<option value="ignore">-- Ignore --</option>
+</select>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant italic">
+                                        "github.com/sjenkins"
+                                    </td>
+</tr>
+<!-- Ignored Row -->
+<tr class="hover:bg-[#C5CAE9]/20 transition-colors opacity-60">
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">visibility_off</span>
+<span class="font-body text-body text-on-surface line-through">internal_id</span>
+</div>
+</td>
+<td class="p-md">
+<select class="w-full bg-surface-container border border-outline-variant rounded p-sm font-body text-body text-on-surface-variant" disabled="">
+<option selected="" value="ignore">-- Ignore --</option>
+</select>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant italic">
+                                        "847291"
+                                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex justify-end gap-md pt-md border-t border-outline-variant mt-lg">
+<button class="px-lg py-sm rounded border border-primary text-primary font-label text-label hover:bg-primary-container/10 transition-colors">
+                        Back to Upload
+                    </button>
+<button class="px-lg py-sm rounded bg-primary text-on-primary font-label text-label shadow-sm hover:bg-primary-fixed-dim transition-colors flex items-center gap-sm">
+                        Continue to Review
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

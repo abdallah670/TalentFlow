@@ -1,0 +1,58 @@
+<div class="step3-page">
+  <div class="step3-container">
+    <!-- Progress Stepper -->
+    <div class="step3-stepper">
+      <div class="stepper-item completed">
+        <div class="stepper-circle"><span class="material-symbols-outlined">check</span></div>
+        <span class="stepper-label">Basic Info</span>
+      </div>
+      <div class="stepper-item completed">
+        <div class="stepper-circle"><span class="material-symbols-outlined">check</span></div>
+        <span class="stepper-label">Experience</span>
+      </div>
+      <div class="stepper-item active">
+        <div class="stepper-circle">3</div>
+        <span class="stepper-label">Resume & Skills</span>
+      </div>
+      <div class="stepper-item">
+        <div class="stepper-circle">4</div>
+        <span class="stepper-label">Review</span>
+      </div>
+    </div>
+
+    <div class="step3-form-header">
+      <h2>Upload Resume & Add Skills</h2>
+      <p>Step 3 of 4: Showcase your experience and expertise.</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Resume Upload</label>
+        <div class="resume-upload">
+          <span class="material-symbols-outlined">upload_file</span>
+          <p>Drag & drop your resume here</p>
+          <p class="resume-hint">PDF, DOCX up to 10MB</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="skills">Skills</label>
+        <input id="skills" type="text" formControlName="skills" placeholder="React, TypeScript, UI/UX Design" />
+        <p class="form-hint">Separate skills with commas</p>
+      </div>
+
+      <div class="form-group">
+        <label for="coverLetter">Cover Letter</label>
+        <textarea id="coverLetter" formControlName="coverLetter" placeholder="Tell us why you're a great fit..." rows="4"></textarea>
+      </div>
+
+      <div class="step3-actions">
+        <button type="button" class="btn-secondary" (click)="onBack()">Back</button>
+        <button type="submit" class="btn-primary" [disabled]="registerForm.invalid">
+          Save & Continue
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

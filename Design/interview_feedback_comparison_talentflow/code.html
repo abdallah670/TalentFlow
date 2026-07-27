@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feedback Comparison: Arthur Pendragon - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb784",
+                      "secondary": "#565c84",
+                      "outline-variant": "#c5c5d4",
+                      "on-secondary-fixed": "#12183d",
+                      "on-surface": "#1a1b22",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f2eff9",
+                      "on-primary-fixed": "#00105c",
+                      "primary-container": "#3f51b5",
+                      "inverse-primary": "#bac3ff",
+                      "primary-fixed-dim": "#bac3ff",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-container-low": "#f4f2fc",
+                      "surface": "#fbf8ff",
+                      "surface-tint": "#4355b9",
+                      "secondary-fixed": "#dee0ff",
+                      "on-secondary-container": "#51577f",
+                      "on-primary-container": "#cacfff",
+                      "tertiary-container": "#8f4700",
+                      "surface-variant": "#e3e1ea",
+                      "surface-container-high": "#e9e7f0",
+                      "surface-container": "#efedf6",
+                      "surface-bright": "#fbf8ff",
+                      "inverse-surface": "#2f3037",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-secondary-fixed-variant": "#3e446b",
+                      "on-tertiary-container": "#ffc7a2",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "outline": "#757684",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e3e1ea",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1a1b22",
+                      "secondary-container": "#c9cffd",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-fixed": "#dee0ff",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#dbd9e2",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fbf8ff",
+                      "tertiary": "#6c3400",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "primary": "#24389c",
+                      "on-surface-variant": "#454652",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "margin": "24px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "h2": ["Roboto"],
+                      "h1": ["Roboto"],
+                      "body-sm": ["Roboto"],
+                      "h3": ["Roboto"],
+                      "h1-mobile": ["Roboto"],
+                      "label": ["Roboto"],
+                      "body": ["Roboto"]
+              },
+              "fontSize": {
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F6FA; /* Overriding for specific layout depth */
+        }
+    </style>
+</head>
+<body class="font-body text-body text-on-surface antialiased bg-background">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-surface-dim border-r border-outline-variant dark:border-outline shadow-sm flex-col h-full py-md px-sm z-20">
+<div class="mb-xl px-sm pt-sm">
+<h2 class="font-h2 text-h2 text-primary dark:text-primary-fixed-dim font-bold tracking-tight">TalentFlow</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Enterprise Recruitment</p>
+</div>
+<button class="mb-lg mx-sm bg-primary-container text-on-primary w-[calc(100%-16px)] py-sm px-md rounded font-label text-label flex items-center justify-center gap-sm shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+            Post New Job
+        </button>
+<ul class="flex flex-col gap-xs flex-1 overflow-y-auto">
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-primary-fixed-dim bg-primary-container/10 dark:bg-primary-container/20 font-bold active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+</li>
+<li class="mt-auto">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 active:scale-95 transition-transform border-t border-outline-variant pt-md mt-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex fixed top-0 right-0 left-64 h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm justify-between items-center px-lg z-10">
+<div class="flex items-center gap-md w-1/3">
+<div class="relative w-full max-w-md focus-within:ring-2 focus-within:ring-primary rounded-lg transition-shadow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body text-body text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary" placeholder="Search candidates, jobs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 ml-sm rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate user, smiling slightly, set against a clean, well-lit modern office background. High quality, light mode aesthetic, soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2WXbwwkcioeMgT9wSekLQKTa4WMePwr5hBetewnkrSf92ZSrNgtizNAhj01APZfVa5_K88FpWalt-gWoZ1NRmDPg89eAQLQcLcfrGp2CGgRPvRpwh-DlKzsZHy0hJ2mrw5c-B5cp-lEZkUHHebU6gnOipRc0fG2kibFJ_ttKq_FNoNycz9PZ9nmPKRPozdt-HtW3mlCCkTPq5jw5qr4QPJQ2rdr20_GETD09v3K3uvwaZsK4xVUfapr_0v3veLBZuiTvd3xBgg_Q"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-16 min-h-screen p-margin lg:p-xl pb-24 md:pb-xl flex flex-col gap-margin">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+                        Back to Pipeline
+                    </a>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface">Feedback Comparison: Arthur Pendragon</h1>
+<p class="font-h3 text-h3 text-on-surface-variant mt-1">Senior Backend Engineer</p>
+</div>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none px-md py-sm border border-outline-variant rounded font-label text-label text-on-surface hover:bg-surface-container transition-colors">
+                    Download PDF
+                </button>
+<button class="flex-1 md:flex-none px-md py-sm bg-primary-container text-on-primary rounded font-label text-label shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" style="font-size: 16px;">gavel</span>
+                    Final Decision
+                </button>
+</div>
+</div>
+<!-- Dashboard Layout Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-margin">
+<!-- Left Column: Consolidated Feedback -->
+<div class="xl:col-span-3 flex flex-col gap-margin">
+<!-- Consolidated Score Card -->
+<div class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] p-margin border border-surface-variant flex flex-col items-center text-center">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Consolidated Rating</h2>
+<div class="w-32 h-32 rounded-full border-8 border-primary-container flex items-center justify-center mb-md relative">
+<span class="font-h1 text-h1 text-primary-container absolute">4.2</span>
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="84, 100" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex gap-xs text-[#FFC107] mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<div class="mt-sm">
+<span class="inline-block px-sm py-xs bg-[#E8F5E9] text-[#2E7D32] rounded-full font-label text-label font-bold border border-[#C8E6C9]">
+                            Strong Hire Recommended
+                        </span>
+</div>
+</div>
+<!-- Competency Breakdown -->
+<div class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] p-margin border border-surface-variant">
+<h3 class="font-h3 text-h3 text-on-surface mb-md">Competency Breakdown</h3>
+<div class="flex flex-col gap-sm">
+<div>
+<div class="flex justify-between font-label text-label mb-xs text-on-surface-variant">
+<span>Technical Skills</span>
+<span>4.5/5</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label text-label mb-xs text-on-surface-variant">
+<span>System Architecture</span>
+<span>4.0/5</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[80%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label text-label mb-xs text-on-surface-variant">
+<span>Culture Fit</span>
+<span>4.8/5</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[96%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label text-label mb-xs text-on-surface-variant">
+<span>Communication</span>
+<span>3.5/5</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[70%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Interviewer Comparison Grid -->
+<div class="xl:col-span-9">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Reviewer 1 -->
+<div class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] border border-surface-variant overflow-hidden flex flex-col h-full">
+<!-- Reviewer Header -->
+<div class="p-md bg-surface-container-low border-b border-surface-variant flex items-start justify-between">
+<div class="flex items-center gap-sm">
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant shrink-0">
+<img alt="Sarah Jenkins" class="w-full h-full object-cover" data-alt="Professional headshot of a female engineering manager in a modern tech office setting. Bright, clear, light mode aesthetic, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtvIHQXA1oCTXD-H_L-QlUThXPe1kQWhSTHkN0StTOGRZiIrVHw7QNOGaHeur-QigQt09pDVIVmvRnCNZBmHozwhs1ct7vjD3vveSfEN8K5Zh3Gr1enEifexse3GxBvWoFjWD5HBoZuD2wVtJbq_rV_d9WcwnTXd3fdbAjDamKMsppzm2p-cyzEzwO42_ngFkJPh11f7OzQwhtkyBWs0V1RcC1KRUK6t1A4JgJJKuKRzokp5vMsK3Ib5gUSdomjjDeoxy-rIBq1jg"/>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-surface leading-tight">Sarah Jenkins</h4>
+<p class="font-label text-label text-on-surface-variant">Technical Round</p>
+</div>
+</div>
+<span class="inline-block px-2 py-1 bg-[#E8F5E9] text-[#2E7D32] rounded font-label text-[10px] uppercase font-bold tracking-wider">
+                                Hire
+                            </span>
+</div>
+<!-- Reviewer Content -->
+<div class="p-md flex-1 flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface-variant">Overall Rating</span>
+<div class="flex gap-xs text-[#FFC107]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[#2E7D32] text-[16px]">add_circle</span>
+                                    Strengths
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Exceptional grasp of Go and Python. Solved the algorithm challenge efficiently and optimized for edge cases without prompting.
+                                </p>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">remove_circle</span>
+                                    Areas for Improvement
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Could communicate thought process more clearly while coding. Tended to go silent during complex parts.
+                                </p>
+</div>
+</div>
+<!-- Reviewer Footer -->
+<div class="p-md border-t border-surface-variant bg-surface-bright mt-auto">
+<p class="font-body-sm text-body-sm text-on-surface italic">"Strong technical foundation, would be a great asset to the backend team."</p>
+</div>
+</div>
+<!-- Reviewer 2 -->
+<div class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] border border-surface-variant overflow-hidden flex flex-col h-full">
+<div class="p-md bg-surface-container-low border-b border-surface-variant flex items-start justify-between">
+<div class="flex items-center gap-sm">
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant shrink-0">
+<img alt="Marcus Chen" class="w-full h-full object-cover" data-alt="Professional headshot of a male software architect in a bright, modern corporate environment. Light mode aesthetic, professional attire, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvbkI7JAwXHjonl_yOSXUwhG68NGgMB3vxr76BHI5uDBwV65Ge2FQHeAU2vxKGuLIQq9PyWdy0f-DwxTJPU-C3kgAm0c8Lu0GlFBSGT-uamW_4EKLL2PdZ_U36BujSL4Svvj1jdX-2XnQtcqi8nIiOVAWyOOL1e4NsWtdYzrRWOzPxMTblqFZQqe-CZbi0HtIOMbs-CY7U4Fqiw54wKIGq5gcbOERzqO3icKPqU9X0SHkLv5qs6M0Req-aEae6QAM1HW4WH1I9KhI"/>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-surface leading-tight">Marcus Chen</h4>
+<p class="font-label text-label text-on-surface-variant">Architecture</p>
+</div>
+</div>
+<span class="inline-block px-2 py-1 bg-[#E8F5E9] text-[#2E7D32] rounded font-label text-[10px] uppercase font-bold tracking-wider">
+                                Hire
+                            </span>
+</div>
+<div class="p-md flex-1 flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface-variant">Overall Rating</span>
+<div class="flex gap-xs text-[#FFC107]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]">star_outline</span>
+</div>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[#2E7D32] text-[16px]">add_circle</span>
+                                    Strengths
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Solid understanding of microservices and distributed systems. Proposed a highly scalable database schema for the system design scenario.
+                                </p>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">remove_circle</span>
+                                    Areas for Improvement
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Underestimated the operational overhead of managing multiple Kafka clusters in his proposed design.
+                                </p>
+</div>
+</div>
+<div class="p-md border-t border-surface-variant bg-surface-bright mt-auto">
+<p class="font-body-sm text-body-sm text-on-surface italic">"Good architectural intuition, though needs some guidance on operational realities."</p>
+</div>
+</div>
+<!-- Reviewer 3 -->
+<div class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] border border-surface-variant overflow-hidden flex flex-col h-full">
+<div class="p-md bg-surface-container-low border-b border-surface-variant flex items-start justify-between">
+<div class="flex items-center gap-sm">
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant shrink-0">
+<img alt="Alex Rivera" class="w-full h-full object-cover" data-alt="Professional headshot of a non-binary product manager in a casual but professional startup office setting. Natural lighting, light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpC5gR-FWDatlflC-Jd1dFX_1F3jhoL6GH-4UXwNLYaL02k4ItkMF8pIEsoOgKXZuzIdNxEVF0aPc-HHMMNXxfIAoyAwWC3ao61Q8sZcJLhDoZVaqf-tcbJesxNBuhqVeeUIa6Gn8x9FAFNs-xL9_Yz2t_eBFBlB5QIQfKL2QHmBQOgs6gEaVgJudCEM_6kO03ZEgmLkyEseXm_prl2TP5KoNYcPXJ2mpTHdxSeYSCBHdM_p7Dgc5sloQC5I7EKOlfRG4IHjOHGKQ"/>
+</div>
+<div>
+<h4 class="font-h3 text-h3 text-on-surface leading-tight">Alex Rivera</h4>
+<p class="font-label text-label text-on-surface-variant">Culture Fit</p>
+</div>
+</div>
+<span class="inline-block px-2 py-1 bg-[#E3F2FD] text-[#1565C0] rounded font-label text-[10px] uppercase font-bold tracking-wider">
+                                Strong Hire
+                            </span>
+</div>
+<div class="p-md flex-1 flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-on-surface-variant">Overall Rating</span>
+<div class="flex gap-xs text-[#FFC107]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[#2E7D32] text-[16px]">add_circle</span>
+                                    Strengths
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Highly collaborative and empathetic. Showed great examples of mentoring junior engineers and resolving team conflicts constructively.
+                                </p>
+</div>
+<div>
+<h5 class="font-label text-label text-on-surface font-bold mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">remove_circle</span>
+                                    Areas for Improvement
+                                </h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    None significant. Fits perfectly with our core values of 'Empathy First'.
+                                </p>
+</div>
+</div>
+<div class="p-md border-t border-surface-variant bg-surface-bright mt-auto">
+<p class="font-body-sm text-body-sm text-on-surface italic">"An absolute joy to talk to. Will elevate the team's culture immediately."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

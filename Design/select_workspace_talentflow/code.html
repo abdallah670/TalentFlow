@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Select Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#fbf8ff",
+                      "on-secondary-fixed": "#12183d",
+                      "on-primary-fixed": "#00105c",
+                      "on-surface": "#1a1b22",
+                      "on-secondary-fixed-variant": "#3e446b",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "secondary": "#565c84",
+                      "on-surface-variant": "#454652",
+                      "inverse-surface": "#2f3037",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "on-primary-container": "#cacfff",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#f4f2fc",
+                      "surface-container-highest": "#e3e1ea",
+                      "surface-dim": "#dbd9e2",
+                      "primary-container": "#3f51b5",
+                      "background": "#fbf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "surface-container": "#efedf6",
+                      "surface-variant": "#e3e1ea",
+                      "secondary-fixed": "#dee0ff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "inverse-primary": "#bac3ff",
+                      "on-tertiary-container": "#ffc7a2",
+                      "primary": "#24389c",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e9e7f0",
+                      "tertiary": "#6c3400",
+                      "inverse-on-surface": "#f2eff9",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#301400",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#51577f",
+                      "tertiary-container": "#8f4700",
+                      "primary-fixed-dim": "#bac3ff",
+                      "primary-fixed": "#dee0ff",
+                      "secondary-container": "#c9cffd",
+                      "surface-tint": "#4355b9",
+                      "outline-variant": "#c5c5d4",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface": "#fbf8ff",
+                      "outline": "#757684",
+                      "on-background": "#1a1b22"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "lg": "24px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Roboto"],
+                      "body": ["Roboto"],
+                      "h3": ["Roboto"],
+                      "h1": ["Roboto"],
+                      "h1-mobile": ["Roboto"],
+                      "label": ["Roboto"],
+                      "h2": ["Roboto"]
+              },
+              "fontSize": {
+                      "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex items-center justify-center p-md sm:p-gutter">
+<main class="w-full max-w-2xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant flex flex-col min-h-[600px] overflow-hidden">
+<!-- Header -->
+<header class="p-lg border-b border-outline-variant bg-surface-container-lowest sticky top-0 z-10">
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h1 class="font-h1 text-h1 text-primary font-bold">TalentFlow</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Select a workspace to continue</p>
+</div>
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate user looking friendly and confident. Clear lighting, high resolution, modern office background slightly blurred. The style is clean, corporate, and polished, fitting a modern HR software aesthetic with a primary color palette of deep blues and bright whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDddlWla1hhRDBBc4EV77O2bBzrOfQXloGhzFN_h-ih7ovH1ThEUOZHpiuGm7mfrQdwM47CN5fIJnfjogS1S7lCjyRYeYSYKJ1N46NT9Bl5oaDKbIrYDYZmbpnnQBhsQH0i-xpxVuZmhhvfVl7WZvPxa3s05oGH3UpkxEAEBXSzh80J5ddre-_0XNfeWZfLOtCvGLI6WVDkPImw8AknvoUfsfw0EAQITrZnDN7X2Mzqrgt7mrSqI8EG1aQQwwhmSlLhGaemy3lGKX0"/>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body text-body text-on-surface placeholder-on-surface-variant transition-all outline-none" placeholder="Search workspaces..." type="text"/>
+</div>
+</header>
+<!-- Workspace List -->
+<div class="flex-1 overflow-y-auto p-lg bg-surface-bright space-y-md">
+<!-- Workspace Card 1 -->
+<button class="w-full flex items-center p-md bg-surface-container-lowest rounded-lg border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all group text-left shadow-sm">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center mr-md shrink-0 border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-xl">business</span>
+</div>
+<div class="flex-1">
+<h2 class="font-h3 text-h3 text-on-surface group-hover:text-primary transition-colors">Acme Corp Global</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center mt-xs">
+<span class="inline-flex items-center px-sm py-[2px] rounded-full bg-primary-container text-on-primary-container font-label text-label mr-sm">Admin</span>
+                        1,240 active jobs
+                    </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors ml-md">chevron_right</span>
+</button>
+<!-- Workspace Card 2 -->
+<button class="w-full flex items-center p-md bg-surface-container-lowest rounded-lg border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all group text-left shadow-sm">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center mr-md shrink-0 border border-tertiary-container/20">
+<span class="material-symbols-outlined text-tertiary text-xl">rocket_launch</span>
+</div>
+<div class="flex-1">
+<h2 class="font-h3 text-h3 text-on-surface group-hover:text-primary transition-colors">TechFlow Startups</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center mt-xs">
+<span class="inline-flex items-center px-sm py-[2px] rounded-full bg-surface-variant text-on-surface-variant font-label text-label mr-sm">Recruiter</span>
+                        42 active jobs
+                    </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors ml-md">chevron_right</span>
+</button>
+<!-- Workspace Card 3 -->
+<button class="w-full flex items-center p-md bg-surface-container-lowest rounded-lg border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all group text-left shadow-sm">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/10 flex items-center justify-center mr-md shrink-0 border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary text-xl">medication</span>
+</div>
+<div class="flex-1">
+<h2 class="font-h3 text-h3 text-on-surface group-hover:text-primary transition-colors">HealthPlus Network</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center mt-xs">
+<span class="inline-flex items-center px-sm py-[2px] rounded-full bg-surface-variant text-on-surface-variant font-label text-label mr-sm">Viewer</span>
+                        856 active jobs
+                    </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors ml-md">chevron_right</span>
+</button>
+<!-- Create New Workspace Action -->
+<button class="w-full flex items-center p-md bg-transparent rounded-lg border border-dashed border-outline hover:border-primary hover:bg-surface-container-low transition-all group text-left mt-lg">
+<div class="w-12 h-12 rounded-lg bg-surface-variant/50 flex items-center justify-center mr-md shrink-0 group-hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">add</span>
+</div>
+<div class="flex-1">
+<h2 class="font-h3 text-h3 text-on-surface-variant group-hover:text-primary transition-colors">Create New Workspace</h2>
+</div>
+</button>
+</div>
+<!-- Footer -->
+<footer class="p-md border-t border-outline-variant bg-surface-container-lowest flex justify-center">
+<button class="flex items-center text-on-surface-variant hover:text-error transition-colors font-label text-label px-md py-sm rounded-lg hover:bg-error-container/20">
+<span class="material-symbols-outlined mr-sm text-[18px]">logout</span>
+                Logout
+            </button>
+</footer>
+</main>
+</body></html>

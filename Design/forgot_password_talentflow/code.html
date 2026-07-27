@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password - TalentFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#c9cffd",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#bec4f2",
+                      "inverse-primary": "#bac3ff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#12183d",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "primary-fixed": "#dee0ff",
+                      "outline": "#757684",
+                      "surface-dim": "#dbd9e2",
+                      "secondary": "#565c84",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#4355b9",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2f3037",
+                      "tertiary": "#6c3400",
+                      "on-surface-variant": "#454652",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e9e7f0",
+                      "secondary-fixed": "#dee0ff",
+                      "on-tertiary-container": "#ffc7a2",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1a1b22",
+                      "tertiary-fixed": "#ffdcc6",
+                      "on-primary-fixed-variant": "#293ca0",
+                      "on-primary-fixed": "#00105c",
+                      "surface-container-low": "#f4f2fc",
+                      "surface": "#fbf8ff",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-container": "#3f51b5",
+                      "surface-bright": "#fbf8ff",
+                      "outline-variant": "#c5c5d4",
+                      "primary-fixed-dim": "#bac3ff",
+                      "surface-variant": "#e3e1ea",
+                      "primary": "#24389c",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#cacfff",
+                      "on-surface": "#1a1b22",
+                      "tertiary-container": "#8f4700",
+                      "background": "#fbf8ff",
+                      "surface-container": "#efedf6",
+                      "surface-container-highest": "#e3e1ea",
+                      "on-secondary-container": "#51577f",
+                      "inverse-on-surface": "#f2eff9",
+                      "on-secondary-fixed-variant": "#3e446b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "unit": "4px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "h1-mobile": ["Roboto"],
+                      "h2": ["Roboto"],
+                      "body": ["Roboto"],
+                      "label": ["Roboto"],
+                      "h3": ["Roboto"],
+                      "h1": ["Roboto"],
+                      "body-sm": ["Roboto"]
+              },
+              "fontSize": {
+                      "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                      "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+      </style>
+</head>
+<body class="bg-background h-full flex items-center justify-center p-md sm:p-gutter">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-xl flex flex-col gap-lg">
+<div class="text-center flex flex-col items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+<h1 class="font-h1 text-h1 text-on-surface">Forgot Password</h1>
+<p class="font-body text-body text-on-surface-variant">
+                Enter your email address and we'll send you a link to reset your password.
+            </p>
+</div>
+<form class="flex flex-col gap-md" onsubmit="event.preventDefault(); document.getElementById('success-message').classList.remove('hidden'); this.reset();">
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-on-surface" for="email">Email Address</label>
+<input class="w-full h-12 px-md border border-outline-variant rounded-DEFAULT font-body text-body text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest transition-colors" id="email" name="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary rounded-DEFAULT font-label text-label hover:bg-primary-container hover:text-on-primary-container transition-colors mt-sm" type="submit">
+                Send Reset Link
+            </button>
+</form>
+<div class="hidden flex items-start gap-sm p-sm bg-surface-container-low rounded-DEFAULT border border-primary-fixed-dim" id="success-message">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-1">
+                 If an account exists for that email, a reset link will be sent shortly. Please check your spam folder if you don't see it.
+             </p>
+</div>
+<div class="text-center pt-md border-t border-outline-variant">
+<a class="font-label text-label text-primary hover:text-primary-container transition-colors flex items-center justify-center gap-xs inline-flex" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                Back to Login
+            </a>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management | TalentFlow Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c5c5d4",
+                    "background": "#fbf8ff",
+                    "outline": "#757684",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#bec4f2",
+                    "surface-tint": "#4355b9",
+                    "inverse-primary": "#bac3ff",
+                    "tertiary": "#6c3400",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "secondary-fixed": "#dee0ff",
+                    "surface-container": "#efedf6",
+                    "on-tertiary-container": "#ffc7a2",
+                    "on-tertiary-fixed": "#301400",
+                    "on-primary-container": "#cacfff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f4f2fc",
+                    "on-primary-fixed-variant": "#293ca0",
+                    "surface-dim": "#dbd9e2",
+                    "on-background": "#1a1b22",
+                    "secondary-container": "#c9cffd",
+                    "surface": "#fbf8ff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#3f51b5",
+                    "secondary": "#565c84",
+                    "surface-container-highest": "#e3e1ea",
+                    "surface-container-high": "#e9e7f0",
+                    "inverse-surface": "#2f3037",
+                    "inverse-on-surface": "#f2eff9",
+                    "on-surface": "#1a1b22",
+                    "on-primary-fixed": "#00105c",
+                    "primary": "#24389c",
+                    "on-secondary-fixed": "#12183d",
+                    "primary-fixed": "#dee0ff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#454652",
+                    "primary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#8f4700",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#51577f",
+                    "tertiary-fixed": "#ffdcc6",
+                    "surface-bright": "#fbf8ff",
+                    "on-secondary-fixed-variant": "#3e446b",
+                    "surface-variant": "#e3e1ea",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin": "24px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "h1": ["Roboto"],
+                    "h3": ["Roboto"],
+                    "h1-mobile": ["Roboto"],
+                    "h2": ["Roboto"],
+                    "body": ["Roboto"],
+                    "label": ["Roboto"],
+                    "body-sm": ["Roboto"]
+            },
+            "fontSize": {
+                    "h1": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "h3": ["18px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "body": ["15px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f5f6fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for data density */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c5c5d4; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #757684; }
+
+        /* Status Toggle Style */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 36px;
+            height: 20px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px; width: 14px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #3F51B5; }
+        input:checked + .slider:before { transform: translateX(16px); }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant shadow-sm flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<h2 class="font-h2 text-h2 font-bold text-primary">TalentFlow</h2>
+<p class="text-label font-label text-on-surface-variant">Enterprise Edition</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Admin is Active for User Management -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body text-body">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">work</span>
+<span class="font-body text-body">Jobs</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">account_tree</span>
+<span class="font-body text-body">Pipeline</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-body text-body">Candidates</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">calendar_today</span>
+<span class="font-body text-body">Interviews</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="font-body text-body">Offers</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="font-body text-body">Analytics</span>
+</a>
+<!-- Active State Logic Applied -->
+<a class="flex items-center px-6 py-3 text-primary font-bold border-r-4 border-primary bg-surface-container-high cursor-pointer" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body text-body">Admin</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center p-2 rounded-lg bg-surface-container">
+<img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a corporate administrator in a bright, modern office setting. The person is smiling warmly, wearing a crisp navy blue suit. Soft cinematic lighting illuminates the scene with a high-key, professional light-mode aesthetic. The background features a blurred modern office interior with glass walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC96fz1vccPnHozpRc64FdS8ewgW-2eDEgnnjzzp5ejtP8sqdNKUEOf42sSLZ3jodc6fAyv237Ywvslpb2a1Y4zkKVcOgYnRGe4Q16PzN44ggU7xNPKuY3bTcNsFCBjNdYTNYXE5rK-u7joSKHQeyuzx4CXvywrDEO2XtdlevM4mbGxJ4oA1T0rjup3bVM0w6aYWv_F6uDUfDTnTq7T0xeTpAcB9JYnBpPjUITtjsfkhRyccj0n-NWEueMR1QTxHU4RK8sCkmFKt4"/>
+<div class="ml-3 overflow-hidden">
+<p class="text-label font-bold text-on-surface truncate">Admin User</p>
+<p class="text-[10px] text-on-surface-variant truncate">admin@talentflow.io</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface border-b border-outline-variant shadow-sm z-40 flex items-center justify-between px-gutter">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body font-body focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="Search users, roles, or departments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-gutter">
+<!-- Page Header Area -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">User Management</h1>
+<p class="font-body text-body text-on-surface-variant">Manage your organization's members, their roles, and system access.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-6 py-2.5 rounded shadow-sm hover:opacity-90 transition-all font-label text-label uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                    Invite User
+                </button>
+</div>
+<!-- Stats Overview - Bento Grid style -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-label font-label text-on-surface-variant uppercase">Total Users</p>
+<h2 class="text-h2 font-h2 text-on-surface">1,248</h2>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<p class="text-label font-label text-on-surface-variant uppercase">Admins</p>
+<h2 class="text-h2 font-h2 text-on-surface">12</h2>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<div>
+<p class="text-label font-label text-on-surface-variant uppercase">Recruiters</p>
+<h2 class="text-h2 font-h2 text-on-surface">84</h2>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">person_off</span>
+</div>
+<div>
+<p class="text-label font-label text-on-surface-variant uppercase">Inactive</p>
+<h2 class="text-h2 font-h2 text-on-surface">31</h2>
+</div>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="bg-surface rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="flex items-center border border-outline-variant rounded-lg px-3 py-1.5 bg-surface-container-lowest">
+<span class="text-label font-label text-on-surface-variant mr-2">Filter by Role:</span>
+<select class="bg-transparent border-none text-label font-label focus:ring-0 cursor-pointer">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Recruiter</option>
+<option>Hiring Manager</option>
+</select>
+</div>
+<button class="flex items-center gap-1 text-label font-label text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Advanced Filters
+                        </button>
+</div>
+<div class="text-label font-label text-on-surface-variant">
+                        Showing <span class="font-bold text-on-surface">1-10</span> of 1,248 users
+                    </div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Name</th>
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Email</th>
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Role</th>
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider text-center">Status</th>
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider">Last Login</th>
+<th class="px-6 py-4 font-label text-label text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A close-up professional headshot of a female executive with dark curly hair, wearing a white blouse and glasses. She is set against a clean, minimal white background with soft, natural daylight. The image has a polished, high-resolution aesthetic suitable for an enterprise user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_d1bfAKrchWbjAIYO8EvwOYMbUNxFmrPz0u9yr7T73echJPAQo9VuGWa7TmKvRtjoRXMpfKAYmm7NPC0NTEtiY0Ex_3EdmpSxJj-exlDvBf7CbMd-DkOa81qSM7g5j_l5LCltJa0M863DGZcr5gvwDFCM_rTdxnCa3D5A-mUIH4d4esTAlbfN3mkIsdM2SwIc1SS7KX2sj2LwZzA9jAHqf11FDC7FyWPsOIXOx5v29bH-qFHGOUk6TtUWNSdrMKKGo2bAci_uoPo"/>
+<span class="font-body text-body font-medium text-on-surface">Eleanor P. Shellstrop</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body text-body text-on-surface-variant">e.shellstrop@talentflow.io</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-fixed text-on-primary-fixed-variant">
+                                        Admin
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center">
+<label class="toggle-switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</td>
+<td class="px-6 py-4 font-body text-body-sm text-on-surface-variant">2 mins ago</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a middle-aged man with short salt-and-pepper hair and a beard, wearing a charcoal grey turtleneck. The lighting is soft and even, highlighting a confident yet approachable expression. Background is a neutral light grey with a modern corporate feel, emphasizing high-end professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9dAMnJx_rmCoRD78v_LBfjVizoLFXiB-1VNSp3kHBaM_ozu23oqJp9FjXm1-q3-9WKGdujIFnypd73DcvT43c34d4iVQZ9QI7eIEX8ht-yBCGhqcCZDMdUOPglCvNq-sX40OLp8ZuX-XbCP1JtlrKZQdD6kBKJjjZxHxHkZFBLFJVczjOqL3tBfGbYm1ivq_WLXUYJQEUCclGOiEGGDYHZZ9z-N8N2UWXXRVYhagIRAKuOeqGxRtys_Bv6lYtMAyJ3EDhT1B2ATA"/>
+<span class="font-body text-body font-medium text-on-surface">Chidi Anagonye</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body text-body text-on-surface-variant">c.anagonye@talentflow.io</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed text-on-secondary-fixed-variant">
+                                        Recruiter
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center">
+<label class="toggle-switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</td>
+<td class="px-6 py-4 font-body text-body-sm text-on-surface-variant">Yesterday, 4:15 PM</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a young professional man with a friendly smile, short black hair, and a light blue dress shirt. He is photographed in a bright, airy environment with hints of indoor greenery in the soft-focus background. The overall aesthetic is clean, modern, and energetic, conveying trust and efficiency in a corporate context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn3IjMlvsVsEr8gqJZWiVfCrE9EwB1OguldBf0amphJXPVJWO-KHRqLVB_VE_dz1NtQCF7hg9vN2pWZMxd42jDHG3or5euhNZNiEKAYlA2KR0sL9BkL_XPdA2Bi-008u-sMMC368hIryLxx7O0Wimdj7DwZpNGLHRH4XG3Djt7mmCF0eicR0sDXh55goSY5dhfe-3fRa-bQts_2HSKFqmTpgA51qezksgOjE-zR4lT5CMWBpygFCayS9k2EzCTce4jNARCv7KTz9U"/>
+<span class="font-body text-body font-medium text-on-surface">Jason Mendoza</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body text-body text-on-surface-variant">j.mendoza@talentflow.io</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant">
+                                        Hiring Manager
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center">
+<label class="toggle-switch">
+<input type="checkbox"/>
+<span class="slider"></span>
+</label>
+</td>
+<td class="px-6 py-4 font-body text-body-sm text-on-surface-variant">3 days ago</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A high-quality headshot of a sophisticated woman with long blonde hair, wearing a structured emerald green blazer. The lighting is sharp yet flattering, with a modern office window backdrop providing soft bokeh. The style is professional, vibrant, and established, representing a high-level manager in a tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaZW0YOEw1ijPq2iwSfeNNm84JDAmaDMsBvJxjuNmYUbPIGXhxJDv4EGAb2lc79Stu9yIxIzMZoFbrlDfV-Gvwyc_iJdgvM48ooIt74UiObYprfKOPjPydmsFICbzJN4ENDKvFUTwmltiJy0XDiMKjVRhlsT63Ql1ebqbkcQwExh1HZySkQRUMKM0T-Yq0Ku5pHZr-YOQKfgrns3LpCp6TsHQ3EqUGQS-p_cJNckTqPXS_GgPlebn1gzlSJfkeJZDqJB6HpvShgBk"/>
+<span class="font-body text-body font-medium text-on-surface">Tahani Al-Jamil</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body text-body text-on-surface-variant">t.aljamil@talentflow.io</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed text-on-secondary-fixed-variant">
+                                        Recruiter
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center">
+<label class="toggle-switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</td>
+<td class="px-6 py-4 font-body text-body-sm text-on-surface-variant">1 hour ago</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a serene woman with a futuristic, almost artificial intelligence aesthetic. She has sleek black hair and is wearing a minimalist high-collared blue uniform. The lighting is cool-toned and ethereal, set against a pristine, glowing white backdrop. The overall mood is hyper-modern, efficient, and technologically superior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRs5LHJDvWMvoGjkEVVdMHMYsu-b6MThdFQ1s5Aex84VY5I5OQcf7Xtsw4TfOqu3Gpfp0i27VgdX_LRFK_HtOemhNpiTkP4oiMGaUu6V3TaMeVMRf0lsg8fSTFLca3iyV_fRvi9I-XVW92AhPxt1XG9TwJnsEqYQbnqe5kmyGqa7Sxh7ZddMUzS3RDNvJLiyQLwmqVlOtUlNLNgIQee0bODN3z_DmTwEoNCRj_Jf8V9DZU90qWVk8nSeHMWbNdR-p7kRHS_kS8hpw"/>
+<span class="font-body text-body font-medium text-on-surface">Janet .</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body text-body text-on-surface-variant">janet@talentflow.io</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-fixed text-on-primary-fixed-variant">
+                                        Admin
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center">
+<label class="toggle-switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</td>
+<td class="px-6 py-4 font-body text-body-sm text-on-surface-variant">Active Now</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-6 bg-surface-container-low border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="text-label font-label text-on-surface-variant">Rows per page:</span>
+<select class="bg-transparent border border-outline-variant rounded px-2 py-1 text-label font-label focus:ring-0">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-1 text-on-surface-variant hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">first_page</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label text-label">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant font-label text-label transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant font-label text-label transition-colors">3</button>
+<span class="px-1">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant font-label text-label transition-colors">125</button>
+</div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">last_page</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Branding -->
+<footer class="mt-8 px-gutter py-12 bg-surface-container-highest flex flex-col md:flex-row justify-between items-center opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">security</span>
+<p class="font-label text-label uppercase tracking-widest text-on-surface">TalentFlow Governance Engine</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-4 md:mt-0">© 2024 TalentFlow Enterprise Edition. All rights reserved.</p>
+</footer>
+</main>
+<!-- Micro-interaction for table hover tracking -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.style.boxShadow = 'inset 4px 0 0 0 #3F51B5';
+                });
+                row.addEventListener('mouseleave', () => {
+                    row.style.boxShadow = 'none';
+                });
+            });
+
+            // Simple Search Mock
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const tableRows = document.querySelectorAll('tbody tr');
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(term) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body></html>

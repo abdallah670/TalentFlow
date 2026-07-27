@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Registration: Step 4 (Preferences)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom toggle switch styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3f51b5;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3f51b5;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex items-center justify-center p-md sm:p-lg md:p-xl">
+<div class="w-full max-w-[800px] bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.12)] border border-outline-variant overflow-hidden flex flex-col md:flex-row relative">
+<!-- Sidebar / Progress Indicator (Hidden on very small screens) -->
+<div class="hidden sm:flex flex-col bg-surface-container-low w-[240px] p-lg border-r border-outline-variant flex-shrink-0">
+<div class="mb-xl">
+<h2 class="font-h2 text-h2 text-primary font-bold">TalentFlow</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-xs">Candidate Onboarding</p>
+</div>
+<nav aria-label="Progress" class="flex-grow">
+<ol class="overflow-hidden" role="list">
+<li class="relative pb-lg">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-primary"></div>
+<a class="relative flex items-center group" href="#">
+<span class="h-8 w-8 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-on-primary text-[16px]">check</span>
+</span>
+<span class="ml-sm font-label text-label text-on-surface">Basic Info</span>
+</a>
+</li>
+<li class="relative pb-lg">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-primary"></div>
+<a class="relative flex items-center group" href="#">
+<span class="h-8 w-8 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-on-primary text-[16px]">check</span>
+</span>
+<span class="ml-sm font-label text-label text-on-surface">Experience</span>
+</a>
+</li>
+<li class="relative pb-lg">
+<div aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-primary"></div>
+<a class="relative flex items-center group" href="#">
+<span class="h-8 w-8 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-on-primary text-[16px]">check</span>
+</span>
+<span class="ml-sm font-label text-label text-on-surface">Skills</span>
+</a>
+</li>
+<li class="relative">
+<a aria-current="step" class="relative flex items-center group" href="#">
+<span class="h-8 w-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center ring-4 ring-surface">
+<span class="h-2.5 w-2.5 rounded-full bg-primary"></span>
+</span>
+<span class="ml-sm font-label text-label text-primary font-bold">Preferences</span>
+</a>
+</li>
+</ol>
+</nav>
+<div class="mt-auto">
+<div class="rounded-lg bg-surface-container p-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-sm">Need help?</p>
+<a class="font-label text-label text-primary flex items-center gap-xs hover:underline" href="#">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+                        Contact Support
+                    </a>
+</div>
+</div>
+</div>
+<!-- Main Form Area -->
+<div class="flex-1 p-lg md:p-xl flex flex-col min-h-[600px] relative">
+<div class="mb-lg">
+<h1 class="font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-xs">Work Preferences</h1>
+<p class="font-body text-body text-on-surface-variant">Tell us what you're looking for so we can match you with the right opportunities.</p>
+</div>
+<!-- Form -->
+<form class="flex-grow flex flex-col gap-lg" id="preferencesForm">
+<!-- Location & Remote -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md items-end">
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-on-surface" for="location">Preferred Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[20px]">location_on</span>
+<input class="w-full pl-xl pr-sm py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body text-body focus:ring-2 focus:ring-primary focus:border-primary transition-shadow h-[40px]" id="location" name="location" placeholder="e.g. San Francisco, CA" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm pb-sm h-[40px]">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-surface border-4 appearance-none cursor-pointer transition-all duration-300 ease-in-out border-outline-variant" id="remoteOnly" name="remoteOnly" style="top: 2px; left: 2px; z-index: 1;" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-300 ease-in-out" for="remoteOnly"></label>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface cursor-pointer select-none" for="remoteOnly">Remote Only</label>
+</div>
+</div>
+<!-- Salary Expectations -->
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-on-surface">Salary Expectation (Annual)</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-secondary font-body text-body">$</span>
+<input class="w-full pl-[28px] pr-sm py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body text-body focus:ring-2 focus:ring-primary focus:border-primary transition-shadow h-[40px]" id="salaryMin" name="salaryMin" placeholder="Min" type="number"/>
+</div>
+<div class="relative">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-secondary font-body text-body">$</span>
+<input class="w-full pl-[28px] pr-sm py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body text-body focus:ring-2 focus:ring-primary focus:border-primary transition-shadow h-[40px]" id="salaryMax" name="salaryMax" placeholder="Max" type="number"/>
+</div>
+</div>
+</div>
+<!-- Availability & Authorization -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-on-surface" for="availability">Available From</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[20px]">calendar_month</span>
+<input class="w-full pl-xl pr-sm py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body text-body focus:ring-2 focus:ring-primary focus:border-primary transition-shadow h-[40px]" id="availability" name="availability" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label text-label text-on-surface" for="workAuth">Work Authorization</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[20px]">badge</span>
+<select class="w-full pl-xl pr-sm py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body text-body focus:ring-2 focus:ring-primary focus:border-primary transition-shadow h-[40px] appearance-none" id="workAuth" name="workAuth">
+<option disabled="" selected="" value="">Select status...</option>
+<option value="citizen">U.S. Citizen / Permanent Resident</option>
+<option value="h1b">H-1B Visa</option>
+<option value="opt">OPT / CPT</option>
+<option value="other">Other / Need Sponsorship</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-secondary text-[20px] pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Spacer to push buttons to bottom -->
+<div class="flex-grow"></div>
+<!-- Actions -->
+<div class="flex items-center justify-between pt-md border-t border-outline-variant mt-md">
+<button class="font-label text-label text-secondary hover:text-primary transition-colors flex items-center gap-xs h-[40px] px-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Back
+                    </button>
+<button class="bg-primary-container text-on-primary font-label text-label rounded h-[40px] px-lg flex items-center justify-center gap-sm hover:bg-primary transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-primary" id="completeBtn" type="button">
+                        Complete Profile
+                        <span class="material-symbols-outlined text-[18px]">done_all</span>
+</button>
+</div>
+</form>
+<!-- Success Overlay (Hidden initially) -->
+<div class="absolute inset-0 bg-surface z-10 flex flex-col items-center justify-center p-xl text-center opacity-0 pointer-events-none transition-opacity duration-500" id="successOverlay">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[32px] filled-icon">celebration</span>
+</div>
+<h2 class="font-h1 text-h1 text-on-surface mb-sm">Profile Complete!</h2>
+<p class="font-body text-body text-on-surface-variant max-w-[400px] mb-lg">
+                    Your preferences have been saved. Our AI matching engine is now scanning for roles that fit your profile.
+                </p>
+<div class="w-full max-w-[300px] bg-surface-container rounded-lg p-md border border-outline-variant text-left mb-xl">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary text-[16px]">rocket_launch</span>
+<span class="font-label text-label text-on-surface">Next Steps</span>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1 list-disc pl-5">
+<li>Review suggested matches on your dashboard.</li>
+<li>Keep your availability updated.</li>
+</ul>
+</div>
+<button class="bg-primary-container text-on-primary font-label text-label rounded h-[40px] px-xl flex items-center justify-center hover:bg-primary transition-colors shadow-sm" onclick="window.location.reload()" type="button">
+                    Go to Dashboard
+                </button>
+</div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const completeBtn = document.getElementById('completeBtn');
+            const successOverlay = document.getElementById('successOverlay');
+            const form = document.getElementById('preferencesForm');
+
+            // Toggle logic visual enhancement
+            const toggleCheckbox = document.getElementById('remoteOnly');
+            const toggleLabel = document.querySelector('.toggle-label');
+            const locationInput = document.getElementById('location');
+
+            toggleCheckbox.addEventListener('change', (e) => {
+                if(e.target.checked) {
+                    toggleLabel.style.backgroundColor = '#3f51b5';
+                    // Optional: dim or disable location if remote only
+                    locationInput.classList.add('opacity-50');
+                } else {
+                    toggleLabel.style.backgroundColor = '#e3e1ea';
+                    locationInput.classList.remove('opacity-50');
+                }
+            });
+
+            // Handle Completion
+            completeBtn.addEventListener('click', () => {
+                // Basic validation visual feedback
+                let valid = true;
+                const reqFields = [document.getElementById('salaryMin'), document.getElementById('workAuth')];
+                
+                reqFields.forEach(field => {
+                    if(!field.value) {
+                        field.classList.remove('border-outline-variant');
+                        field.classList.add('border-error');
+                        valid = false;
+                    } else {
+                        field.classList.add('border-outline-variant');
+                        field.classList.remove('border-error');
+                    }
+                });
+
+                // For demo purposes, we'll show success anyway after a brief moment, simulating an API call
+                completeBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Saving...';
+                completeBtn.disabled = true;
+                completeBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+                setTimeout(() => {
+                    form.style.opacity = '0';
+                    successOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    successOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                }, 800);
+            });
+            
+            // Remove error styling on input
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.add('border-outline-variant');
+                    input.classList.remove('border-error');
+                });
+            });
+        });
+    </script>
+</body></html>

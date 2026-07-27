@@ -1,0 +1,60 @@
+<div class="select-workspace-page">
+  <main class="select-workspace-main">
+    <header class="select-workspace-header">
+      <div class="select-workspace-header-top">
+        <div class="select-workspace-brand">
+          <span class="material-symbols-outlined filled" style="font-size: 24px; color: var(--primary);">work</span>
+          <h1>TalentFlow</h1>
+        </div>
+        <div class="select-workspace-header-bottom">
+          <p>Select a workspace to continue</p>
+        </div>
+      </div>
+      <div class="select-workspace-header-actions">
+        <div class="search-box">
+          <span class="material-symbols-outlined">search</span>
+          <input type="text" placeholder="Search workspaces..." />
+        </div>
+        <div class="user-avatar">
+          {{ (authService.currentUser()?.userName || 'U').charAt(0).toUpperCase() }}
+        </div>
+      </div>
+    </header>
+
+    <div class="select-workspace-list">
+      @for (workspace of workspaces; track workspace.id) {
+        <button class="workspace-card" (click)="selectWorkspace(workspace.id)">
+          <div class="workspace-icon" [class.primary]="workspace.color === 'primary'" [class.secondary]="workspace.color === 'secondary'" [class.tertiary]="workspace.color === 'tertiary'">
+            <span class="material-symbols-outlined">{{ workspace.icon }}</span>
+          </div>
+          <div class="workspace-info">
+            <h3>{{ workspace.name }}</h3>
+            <p>
+              <span class="role-badge" [class.primary]="workspace.color === 'primary'" [class.secondary]="workspace.color === 'secondary'" [class.tertiary]="workspace.color === 'tertiary'">
+                {{ workspace.role }}
+              </span>
+              {{ workspace.jobCount | number }} active jobs
+            </p>
+          </div>
+          <span class="material-symbols-outlined workspace-arrow">chevron_right</span>
+        </button>
+      }
+
+      <button class="workspace-card create-new">
+        <div class="workspace-icon create-icon">
+          <span class="material-symbols-outlined">add</span>
+        </div>
+        <div class="workspace-info">
+          <h3>Create New Workspace</h3>
+        </div>
+      </button>
+    </div>
+
+    <footer class="select-workspace-footer">
+      <button class="logout-btn" (click)="logout()">
+        <span class="material-symbols-outlined">logout</span>
+        Logout
+      </button>
+    </footer>
+  </main>
+</div>

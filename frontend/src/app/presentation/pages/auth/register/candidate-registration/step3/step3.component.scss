@@ -1,0 +1,185 @@
+/* ========================================
+   Candidate Registration Step 3 Styles
+   ======================================== */
+
+.step3-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.step3-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px;
+}
+
+.step3-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.step3-stepper::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--outline-variant);
+  z-index: 0;
+}
+
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.stepper-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--surface-container-highest);
+  color: var(--on-surface-variant);
+  border: 2px solid var(--outline-variant);
+  transition: all 0.2s;
+}
+
+.stepper-item.completed .stepper-circle {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+
+.stepper-item.active .stepper-circle {
+  background: var(--surface-container-lowest);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.stepper-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  text-align: center;
+}
+
+.step3-form-header {
+  margin-bottom: 24px;
+}
+
+.step3-form-header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  margin: 0 0 4px;
+}
+
+.step3-form-header p {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: var(--font-family-body);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(36, 56, 156, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--on-surface-variant);
+  margin-top: 4px;
+}
+
+.resume-upload {
+  border: 2px dashed var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.resume-upload:hover {
+  border-color: var(--primary);
+  background: var(--surface-container-low);
+}
+
+.resume-upload .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.resume-upload p {
+  margin: 4px 0;
+  color: var(--on-surface-variant);
+}
+
+.resume-hint {
+  font-size: 0.8rem;
+  color: var(--outline);
+}
+
+.step3-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--outline-variant);
+}

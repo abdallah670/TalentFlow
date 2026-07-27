@@ -1,0 +1,46 @@
+<div class="auth-container">
+  <div class="auth-card verify-card">
+    <header class="verify-header">
+      <span class="material-symbols-outlined filled verify-header-icon">all_inclusive</span>
+      <span class="verify-header-brand">TalentFlow</span>
+    </header>
+
+    <div class="verify-content">
+      <div class="verify-illustration">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAigRuKwe3oVh0LhPo1wC1_NrmuHPwKSdwymFXOSJElrJvIUvzvUqUE1ifZFSmFtqKapf_uZvdRswpB6IKdLNrwbz1VowYtvWZYNWuPEJDh6MegnFs6BFj79ONwWJSR7AIuoBHrtQjyKTB-wWa0-jEqigYO-IffrEW0KzjwmyqBpSW_2eNMgevnVrU5tSPpbnz6Kz2ionyD-1mGIwT0KjLb1KnsUPKrx7pEMEXxeL0sphYm85MIVYHK0QyAjQtfT87pSfNxCVJkGYc"
+          alt="Email verification illustration"
+        />
+      </div>
+
+      <h2>Check your inbox</h2>
+      <p class="subtitle">We've sent a verification link to your email. Please click the link to activate your account.</p>
+
+      @if (isVerified()) {
+        <div class="alert alert-success">Your email has been verified! Redirecting to dashboard...</div>
+      }
+
+      @if (errorMessage()) {
+        <div class="alert alert-error">{{ errorMessage() }}</div>
+      }
+
+      <div class="verify-actions-row">
+        <button class="btn-primary" (click)="resendVerification()" [disabled]="isLoading()">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+          } @else {
+            <span class="material-symbols-outlined">outgoing_mail</span>
+            <span>Resend Email</span>
+          }
+        </button>
+        <button class="btn-secondary-outline" (click)="changeEmail()">
+          Change Email
+        </button>
+      </div>
+    </div>
+
+    <footer class="verify-footer">
+      <p class="subtitle">Didn't receive the email? Check your spam folder or <a href="#" class="auth-link">contact IT support</a>.</p>
+    </footer>
+  </div>
+</div>

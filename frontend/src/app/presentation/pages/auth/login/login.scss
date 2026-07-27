@@ -1,0 +1,337 @@
+/* ========================================
+   Login Page - Split Screen Styles
+   ======================================== */
+
+.login-split {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.login-split-left {
+  display: none;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
+  background: var(--surface-variant);
+  overflow: hidden;
+}
+
+.login-split-left-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGUryuTjPYrr2FczqW8NE_XbyM_d21kRNmvmwVs8SlJwwnPVarWYRdTnhUCIsbUJTcYaGyjvmQsGC5U6LO8kjOrQU0JcGFUPTjuAR57Cn3Y7u7dKTs5vRutoDJle1-ZYD0fRi_LsDuclL19ahj5ZuokjRZyvEDtI2C0r457IoO0N_iaoSl1GZIQi98n-Bvrl8YsuFjFu--7bj_dW3SB1Gi1XsqS4Atvj78dBXNW6E44OdE_MAJyKq7m9Up0jaoPhltcrHOK7sL29g');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-split-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(36, 56, 156, 0.8), rgba(36, 56, 156, 0.4));
+}
+
+.login-split-left-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-split-left-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-primary);
+}
+
+.login-split-left-quote {
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+}
+
+.login-split-left-quote p {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--on-primary);
+  margin: 0 0 16px;
+}
+
+.login-split-left-quote-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-split-left-quote-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-primary);
+}
+
+.login-split-left-quote-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-primary);
+}
+
+.login-split-left-quote-role {
+  font-size: 0.75rem;
+  color: var(--primary-fixed);
+}
+
+.login-split-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: var(--surface-container-lowest);
+}
+
+.login-split-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-split-mobile-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.login-split-mobile-brand-icon {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.login-split-mobile-brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.login-split-header {
+  margin-bottom: 32px;
+}
+
+.login-split-header h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--on-surface);
+  margin: 0 0 8px;
+}
+
+.login-split-header p {
+  font-size: 0.95rem;
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.login-split-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-input-group {
+  position: relative;
+}
+
+.login-input-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.login-input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 44px;
+  font-size: 0.95rem;
+  font-family: var(--font-family-body);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.login-input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(36, 56, 156, 0.12);
+}
+
+.login-input-group input::placeholder {
+  color: var(--outline);
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--outline);
+  pointer-events: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-group.has-label .login-input-icon {
+  top: 62%;
+}
+
+.login-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--outline);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.login-password-toggle:hover {
+  color: var(--on-surface);
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-remember input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.login-remember label {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+}
+
+.login-forgot {
+  font-size: 0.875rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-forgot:hover {
+  text-decoration: underline;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  color: var(--on-surface-variant);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--outline-variant);
+}
+
+.login-divider span {
+  padding: 0 12px;
+}
+
+.login-sso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.login-sso-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  color: var(--on-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: var(--font-family-body);
+}
+
+.login-sso-btn:hover {
+  background: var(--surface-container-low);
+}
+
+.login-support {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+}
+
+.login-support a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-support a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+
+@media (min-width: 768px) {
+  .login-split-left {
+    display: flex;
+  }
+
+  .login-split-mobile-brand {
+    display: none;
+  }
+}

@@ -1,0 +1,200 @@
+/* ========================================
+   Candidate Registration Step 4 Styles
+   ======================================== */
+
+.step4-page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--background);
+}
+
+.step4-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.step4-sidebar {
+  display: none;
+  width: 240px;
+  background: var(--surface-container-low);
+  border-right: 1px solid var(--outline-variant);
+  padding: 24px;
+  flex-shrink: 0;
+}
+
+.step4-sidebar-brand {
+  margin-bottom: 48px;
+}
+
+.step4-sidebar-brand h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+
+.step4-sidebar-brand p {
+  font-size: 0.875rem;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.step4-progress ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.step4-progress li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  position: relative;
+}
+
+.step4-progress li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 36px;
+  width: 2px;
+  height: calc(100% - 24px);
+  background: var(--primary);
+}
+
+.progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--on-primary);
+  border: 2px solid var(--surface);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.step4-progress li:not(.completed):not(.active) .progress-dot {
+  background: var(--surface-container-highest);
+  color: var(--on-surface-variant);
+  border-color: var(--outline-variant);
+}
+
+.step4-progress li span {
+  font-size: 0.875rem;
+  color: var(--on-surface);
+}
+
+.step4-form-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.step4-form-header {
+  margin-bottom: 24px;
+}
+
+.step4-form-header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  margin: 0 0 4px;
+}
+
+.step4-form-header p {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: var(--font-family-body);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(36, 56, 156, 0.12);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-group label {
+  font-size: 0.875rem;
+  color: var(--on-surface);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.toggle-group input {
+  width: 40px;
+  height: 20px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.step4-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 1024px) {
+  .step4-sidebar {
+    display: block;
+  }
+}

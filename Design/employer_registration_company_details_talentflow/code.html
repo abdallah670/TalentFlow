@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalentFlow - Employer Registration: Company Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "on-secondary-fixed": "#12183d",
+                        "on-primary-fixed": "#00105c",
+                        "on-surface": "#1a1b22",
+                        "on-secondary-fixed-variant": "#3e446b",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "secondary": "#565c84",
+                        "on-surface-variant": "#454652",
+                        "inverse-surface": "#2f3037",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-primary-container": "#cacfff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f2fc",
+                        "surface-container-highest": "#e3e1ea",
+                        "surface-dim": "#dbd9e2",
+                        "primary-container": "#3f51b5",
+                        "background": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bec4f2",
+                        "surface-container": "#efedf6",
+                        "surface-variant": "#e3e1ea",
+                        "secondary-fixed": "#dee0ff",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-primary": "#bac3ff",
+                        "on-tertiary-container": "#ffc7a2",
+                        "primary": "#24389c",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e7f0",
+                        "tertiary": "#6c3400",
+                        "inverse-on-surface": "#f2eff9",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#301400",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#51577f",
+                        "tertiary-container": "#8f4700",
+                        "primary-fixed-dim": "#bac3ff",
+                        "primary-fixed": "#dee0ff",
+                        "secondary-container": "#c9cffd",
+                        "surface-tint": "#4355b9",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#fbf8ff",
+                        "outline": "#757684",
+                        "on-background": "#1a1b22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Roboto"],
+                        "body": ["Roboto"],
+                        "h3": ["Roboto"],
+                        "h1": ["Roboto"],
+                        "h1-mobile": ["Roboto"],
+                        "label": ["Roboto"],
+                        "h2": ["Roboto"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body": ["15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--color-outline-variant);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+        }
+        
+        .input-field {
+            @apply w-full rounded border-outline-variant bg-surface-container-lowest px-md py-sm text-on-surface font-body text-body transition-colors focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none;
+        }
+
+        .input-label {
+            @apply mb-xs block text-on-surface-variant font-label text-label;
+        }
+    </style>
+</head>
+<body class="h-full bg-background font-body text-body text-on-surface antialiased flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+<!-- Ambient Background Elements -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary-container/10 blur-[100px]"></div>
+<div class="absolute top-[60%] -right-[10%] w-[40%] h-[40%] rounded-full bg-secondary-container/15 blur-[120px]"></div>
+</div>
+<!-- Registration Container -->
+<div class="w-full max-w-3xl z-10 glass-panel rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
+<!-- Header Section -->
+<div class="bg-surface px-lg py-xl border-b border-outline-variant/50 text-center relative overflow-hidden">
+<!-- Decorative Top Bar -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-container to-secondary"></div>
+<div class="font-h2 text-h2 text-primary font-bold mb-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+                TalentFlow
+            </div>
+<h1 class="font-h1 text-h1 text-on-surface mb-xs">Set up your company profile</h1>
+<p class="font-body text-body text-on-surface-variant">Step 2 of 3: Provide details about your organization.</p>
+<!-- Progress Indicators -->
+<div class="flex items-center justify-center gap-3 mt-lg">
+<div class="w-8 h-2 rounded-full bg-primary-container"></div>
+<div class="w-8 h-2 rounded-full bg-primary"></div>
+<div class="w-8 h-2 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<!-- Form Section -->
+<div class="p-xl bg-surface-container-lowest">
+<form action="#" class="space-y-lg" method="POST">
+<!-- Company Name -->
+<div>
+<label class="input-label" for="company-name">Company Name *</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">apartment</span>
+</div>
+<input class="input-field pl-10" id="company-name" name="company-name" placeholder="e.g., Acme Corporation" required="" type="text"/>
+</div>
+</div>
+<!-- Size & Industry Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Company Size -->
+<div>
+<label class="input-label" for="company-size">Company Size *</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">groups</span>
+</div>
+<select class="input-field pl-10 appearance-none bg-no-repeat bg-right pr-10" id="company-size" name="company-size" required="" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23757684\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option disabled="" selected="" value="">Select size</option>
+<option value="1-10">1-10 employees</option>
+<option value="11-50">11-50 employees</option>
+<option value="51-200">51-200 employees</option>
+<option value="201-500">201-500 employees</option>
+<option value="501-1000">501-1000 employees</option>
+<option value="1000+">1000+ employees</option>
+</select>
+</div>
+</div>
+<!-- Industry -->
+<div>
+<label class="input-label" for="industry">Industry *</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">domain</span>
+</div>
+<select class="input-field pl-10 appearance-none bg-no-repeat bg-right pr-10" id="industry" name="industry" required="" style="background-image: url('data:image/svg+xml;utf8,&lt;svg fill=\'%23757684\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;path d=\'M7 10l5 5 5-5z\'/&gt;&lt;path d=\'M0 0h24v24H0z\' fill=\'none\'/&gt;&lt;/svg&gt;');">
+<option disabled="" selected="" value="">Select industry</option>
+<option value="tech">Technology</option>
+<option value="finance">Finance &amp; Banking</option>
+<option value="healthcare">Healthcare</option>
+<option value="manufacturing">Manufacturing</option>
+<option value="retail">Retail</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Digital Presence Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Website URL -->
+<div>
+<label class="input-label" for="website">Company Website URL</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">language</span>
+</div>
+<input class="input-field pl-10" id="website" name="website" placeholder="https://www.example.com" type="url"/>
+</div>
+</div>
+<!-- LinkedIn URL -->
+<div>
+<label class="input-label" for="linkedin">LinkedIn Company URL</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">link</span>
+</div>
+<input class="input-field pl-10" id="linkedin" name="linkedin" placeholder="https://linkedin.com/company/..." type="url"/>
+</div>
+</div>
+</div>
+<!-- Office Location -->
+<div>
+<label class="input-label" for="location">Primary Office Location *</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">location_on</span>
+</div>
+<input class="input-field pl-10" id="location" name="location" placeholder="City, State, Country" required="" type="text"/>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-md pt-lg border-t border-outline-variant mt-xl">
+<button class="px-lg py-sm rounded border border-primary text-primary font-h3 text-h3 hover:bg-primary/5 transition-colors focus:ring-2 focus:ring-primary focus:outline-none" type="button">
+                        Back
+                    </button>
+<button class="px-lg py-sm rounded bg-primary text-on-primary font-h3 text-h3 hover:bg-primary-fixed-variant transition-colors shadow-sm focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none flex items-center gap-2" type="submit">
+                        Continue
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</body></html>
