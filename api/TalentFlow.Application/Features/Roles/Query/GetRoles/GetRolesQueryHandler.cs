@@ -13,7 +13,7 @@ namespace TalentFlow.Application.Features.Roles.Query.GetRoles
     {
         private readonly RoleManager<Domain.Entities.IdentityModule.Role> roleManager;
 
-        public GetRolesQueryHandler(RoleManager<Domain.Entities.IdentityModule.r> roleManager)
+        public GetRolesQueryHandler(RoleManager<Domain.Entities.IdentityModule.Role> roleManager)
         {
             this.roleManager = roleManager;
         }

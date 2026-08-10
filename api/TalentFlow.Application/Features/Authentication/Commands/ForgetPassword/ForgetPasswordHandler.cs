@@ -51,7 +51,6 @@ namespace TalentFlow.Application.Features.Authentication.Commands.ForgetPassword
             return new BaseCommandResponse
             {
                 Success = true,
-                Data=token,
                 Message = "If an account with this email exists, a reset link has been sent."
             };
         }

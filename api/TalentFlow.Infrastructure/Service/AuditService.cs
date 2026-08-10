@@ -3,24 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TalentFlow.Application.Interfaces;
 using TalentFlow.Domain.Entities.AuditModule;
-using TalentFlow.Persistence;
 
 namespace TalentFlow.Infrastructure.Service
 {
     public class AuditService : IAuditService
     {
-        private readonly AppDbContext _context;
         private readonly ICurrentUserService _currentUserService;
 
-        public AuditService(
-            AppDbContext context,
-            ICurrentUserService currentUserService)
+        public AuditService(ICurrentUserService currentUserService)
         {
-            _context = context;
             _currentUserService = currentUserService;
         }
 
-        public async Task CreateAuditLogsAsync(ChangeTracker changeTracker)
+        public List<AuditLog> BuildAuditLogs(ChangeTracker changeTracker)
         {
             var auditLogs = new List<AuditLog>();
 
@@ -59,7 +54,6 @@ namespace TalentFlow.Infrastructure.Service
                         entry.OriginalValues.Properties.ToDictionary(
                             p => p.Name,
                             p => entry.OriginalValues[p]));
-
                     audit.NewValues = JsonSerializer.Serialize(
                         entry.CurrentValues.Properties.ToDictionary(
                             p => p.Name,
@@ -77,10 +71,7 @@ namespace TalentFlow.Infrastructure.Service
                 auditLogs.Add(audit);
             }
 
-            if (auditLogs.Any())
-            {
-                await _context.AuditLogs.AddRangeAsync(auditLogs);
-            }
+            return auditLogs;
         }
     }
 }

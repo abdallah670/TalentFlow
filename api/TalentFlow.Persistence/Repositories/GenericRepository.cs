@@ -21,6 +21,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         return await _dbContext.Set<T>().FindAsync(id);
     }
+    public virtual async Task<int> SaveAsync(CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.SaveChangesAsync(cancellationToken);
+    }
 
     public virtual async Task<IReadOnlyList<T>> GetAllAsync()
     {

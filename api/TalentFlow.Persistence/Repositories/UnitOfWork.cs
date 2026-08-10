@@ -20,7 +20,6 @@ public class UnitOfWork : IUnitOfWork
     private ISkillRepository? _skillRepository;
     private IJobRepository? _jobRepository;
     private IJobSkillRepository? _jobskillRepository;
-    private ICandidateRepository? _candidateRepository;
     private ICandidateSkillRepository? _candidateskillRepository;
     private ICandidateExperienceRepository? _candidateexperienceRepository;
     private ICandidateEducationRepository? _candidateeducationRepository;
@@ -44,6 +43,9 @@ public class UnitOfWork : IUnitOfWork
     private INotificationRepository? _notificationRepository;
     private INotificationTemplateRepository? _notificationtemplateRepository;
     private IAuditLogRepository? _auditlogRepository;
+    private IcandidateProfileRepo? candidateProfileRepo ;
+    private ICandidateProfileSkillRepo? candidateProfileSkillRepo;
+    private IInvitationRepository? InvitationRepository ;
 
     public UnitOfWork(AppDbContext dbContext)
     {
@@ -61,7 +63,6 @@ public class UnitOfWork : IUnitOfWork
     public ISkillRepository Skills => _skillRepository ??= new SkillRepository(_dbContext);
     public IJobRepository Jobs => _jobRepository ??= new JobRepository(_dbContext);
     public IJobSkillRepository JobSkills => _jobskillRepository ??= new JobSkillRepository(_dbContext);
-    public ICandidateRepository Candidates => _candidateRepository ??= new CandidateRepository(_dbContext);
     public ICandidateSkillRepository CandidateSkills => _candidateskillRepository ??= new CandidateSkillRepository(_dbContext);
     public ICandidateExperienceRepository CandidateExperiences => _candidateexperienceRepository ??= new CandidateExperienceRepository(_dbContext);
     public ICandidateEducationRepository CandidateEducations => _candidateeducationRepository ??= new CandidateEducationRepository(_dbContext);
@@ -85,6 +86,9 @@ public class UnitOfWork : IUnitOfWork
     public INotificationRepository Notifications => _notificationRepository ??= new NotificationRepository(_dbContext);
     public INotificationTemplateRepository NotificationTemplates => _notificationtemplateRepository ??= new NotificationTemplateRepository(_dbContext);
     public IAuditLogRepository AuditLogs => _auditlogRepository ??= new AuditLogRepository(_dbContext);
+    public IcandidateProfileRepo Candidateprofiles => candidateProfileRepo ??= new CandidateProfileRepo(_dbContext);
+    public ICandidateProfileSkillRepo CandidateprofileSkilss => candidateProfileSkillRepo ??= new CandidateProfileSkillRepo(_dbContext);
+    public IInvitationRepository Invitations => InvitationRepository ??= new InvitationRepository(_dbContext);
 
     public async Task<int> CompleteAsync()
     {

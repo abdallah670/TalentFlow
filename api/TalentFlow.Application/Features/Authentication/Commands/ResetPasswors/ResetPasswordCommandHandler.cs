@@ -1,38 +1,46 @@
-﻿using MediatR;
+﻿
+using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using TalentFlow.Application.Features.Authentication.Commands.ResetPasswors;
 using TalentFlow.Application.Interfaces;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
-namespace TalentFlow.Application.Features.Authentication.Commands.ResetPasswors
+namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
 {
     public class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordCommand, BaseCommandResponse>
     {
-        private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IRefreshTokenService refreshTokenService;
+        private readonly UserManager<User> _userManager;
+        private readonly IRefreshTokenService _refreshTokenService;
+        private readonly ILogger<ResetPasswordCommandHandler> _logger;
 
-        public ResetPasswordCommandHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, IRefreshTokenService refreshTokenService)
+        public ResetPasswordCommandHandler(
+            UserManager<User> userManager,
+            IRefreshTokenService refreshTokenService,
+            ILogger<ResetPasswordCommandHandler> logger)
         {
-            this.userManager = userManager;
-            _currentUserService = currentUserService;
-            this.refreshTokenService = refreshTokenService;
+            _userManager = userManager;
+            _refreshTokenService = refreshTokenService;
+            _logger = logger;
         }
 
         public async Task<BaseCommandResponse> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
         {
-            var user=await userManager.FindByEmailAsync(request.Email);
+            var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
+                _logger.LogWarning($"Reset password failed: User not found with email {request.Email}");
                 return new BaseCommandResponse
                 {
-                    Success = true,
-                    Message = "If an account with this email exists, a reset link has been sent."
+                    Success = false,
+                    Message = "User not found"
                 };
             }
+
             if (request.NewPassword != request.ConfirmPassword)
             {
                 return new BaseCommandResponse
@@ -41,16 +49,34 @@ namespace TalentFlow.Application.Features.Authentication.Commands.ResetPasswors
                     Message = "Passwords do not match."
                 };
             }
-          var result=  await userManager.ResetPasswordAsync(user,request.Token,request.NewPassword);
+
+            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.NewPassword);
+
             if (!result.Succeeded)
             {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                _logger.LogWarning($"Reset password failed for user {request.Email}: {errors}");
                 return new BaseCommandResponse
                 {
                     Success = false,
-                    Message = string.Join(", ", result.Errors.Select(x => x.Description))
+                    Message = errors
                 };
             }
-            await refreshTokenService.RevokeRefreshTokenAsync(user.Id.ToString());
+
+            try
+            {
+
+                 await _refreshTokenService.RevokeRefreshTokenAsync(user.Id.ToString());
+
+                _logger.LogInformation($"Refresh tokens revoked for user {user.Email}");
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogWarning(ex, $"Failed to revoke refresh tokens for user {user.Email}");
+            }
+
+            _logger.LogInformation($"Password reset successfully for user {request.Email}");
+
             return new BaseCommandResponse
             {
                 Success = true,

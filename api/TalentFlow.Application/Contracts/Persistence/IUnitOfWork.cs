@@ -16,7 +16,6 @@ public interface IUnitOfWork : IDisposable
     ISkillRepository Skills { get; }
     IJobRepository Jobs { get; }
     IJobSkillRepository JobSkills { get; }
-    ICandidateRepository Candidates { get; }
     ICandidateSkillRepository CandidateSkills { get; }
     ICandidateExperienceRepository CandidateExperiences { get; }
     ICandidateEducationRepository CandidateEducations { get; }
@@ -31,6 +30,7 @@ public interface IUnitOfWork : IDisposable
     IInterviewCriteriaRepository InterviewCriterias { get; }
     IInterviewFeedbackRepository InterviewFeedbacks { get; }
     IInterviewScoreRepository InterviewScores { get; }
+    IInvitationRepository Invitations { get; }
     IAssessmentRepository Assessments { get; }
     IQuestionRepository Questions { get; }
     IQuestionOptionRepository QuestionOptions { get; }
@@ -40,5 +40,7 @@ public interface IUnitOfWork : IDisposable
     INotificationRepository Notifications { get; }
     INotificationTemplateRepository NotificationTemplates { get; }
     IAuditLogRepository AuditLogs { get; }
+    IcandidateProfileRepo Candidateprofiles { get; }
+    ICandidateProfileSkillRepo CandidateprofileSkilss { get; }
     Task<int> CompleteAsync();
 }

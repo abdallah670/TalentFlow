@@ -26,7 +26,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.UpdateTenantSettings
 
         public async Task<BaseCommandResponse> Handle(UpdateTenantSettingsCommand request, CancellationToken cancellationToken)
         {
-            var tenants = await tenantRepository.FindAsync(x => x.TenantId == currentUserService.TenantId);
+            var tenants = await tenantRepository.FindAsync(x => x.Id == currentUserService.TenantId);
             var tenant = tenants.FirstOrDefault();
 
             var tenantSettings = await tenantSettingRepository.FindAsync(x => x.TenantId == currentUserService.TenantId);

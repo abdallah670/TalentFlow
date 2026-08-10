@@ -21,6 +21,8 @@ namespace TalentFlow.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.Configure<EmailSettings>(
      configuration.GetSection("EmailSettings"));
+            services.Configure<AppUrlSettings>(configuration.GetSection("AppUrlSettings"));
+
             services.Configure<AppUrlSettings>(configuration.GetSection("AppSettings"));
 
 

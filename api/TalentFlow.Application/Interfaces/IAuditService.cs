@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using TalentFlow.Domain.Entities.AuditModule;
 
 namespace TalentFlow.Application.Interfaces
 {
     public interface IAuditService
     {
-        Task CreateAuditLogsAsync(ChangeTracker changeTracker);
+        List<AuditLog> BuildAuditLogs(ChangeTracker changeTracker);
     }
 }

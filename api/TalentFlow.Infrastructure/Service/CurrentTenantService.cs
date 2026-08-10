@@ -19,12 +19,13 @@ namespace TalentFlow.Infrastructure.Service
         {
             get
             {
-                var tenantId = _httpContextAccessor.HttpContext?
-                    .User?
+                var tenantId = _httpContextAccessor.HttpContext?.User?
                     .FindFirst("TenantId")?
                     .Value;
 
-                return Guid.Parse(tenantId!);
+                return Guid.TryParse(tenantId, out var parsedId)
+                    ? parsedId
+                    : Guid.Empty;  
             }
         }
     }

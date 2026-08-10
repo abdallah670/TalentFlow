@@ -9,7 +9,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
     {
         public TenantRegisterComandValiators()
         {
-            RuleFor(x => x.TentantName).NotEmpty().WithMessage("Tenant Name Is Required").MaximumLength(200);
+            RuleFor(x => x.TenantName).NotEmpty().WithMessage("Tenant Name Is Required").MaximumLength(200);
             RuleFor(x => x.FirstName).NotEmpty().WithMessage("First Name Is Required").MaximumLength(200);
             RuleFor(x => x.LastName).NotEmpty().WithMessage("First Name Is Required").MaximumLength(200);
             RuleFor(x => x.Email).NotEmpty().WithMessage("Email Is Required").EmailAddress().WithMessage("Invalid email format").MaximumLength(200);
