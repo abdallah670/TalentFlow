@@ -49,7 +49,7 @@ namespace TalentFlow.Api.Controller
             return Ok(response);
 
         }
-      
+
 
         [HttpPost("RefreshToken")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenCommand command)
@@ -115,6 +115,49 @@ namespace TalentFlow.Api.Controller
         public async Task<ActionResult<UserProfileDto>> GetProfile()
         {
             return Ok(await mediator.Send(new GetProfileQuery()));
+        }
+
+        [HttpGet("ResetPasswordForm")]
+        public IActionResult ResetPasswordForm([FromQuery] string email, [FromQuery] string token)
+        {
+            var html = $@"
+<!DOCTYPE html>
+<html>
+<head><title>Reset Password</title></head>
+<body>
+    <h2>Reset Your Password</h2>
+    <form id='resetForm'>
+        <input type='hidden' id='email' value='{System.Net.WebUtility.HtmlEncode(email)}' />
+        <input type='hidden' id='token' value='{System.Net.WebUtility.HtmlEncode(token)}' />
+        <label>New Password:</label><br/>
+        <input type='password' id='newPassword' required /><br/><br/>
+        <label>Confirm Password:</label><br/>
+        <input type='password' id='confirmPassword' required /><br/><br/>
+        <button type='submit'>Reset Password</button>
+    </form>
+    <p id='result'></p>
+
+    <script>
+        document.getElementById('resetForm').addEventListener('submit', async function(e) {{
+            e.preventDefault();
+            const response = await fetch('/api/Auth/reset-password', {{
+                method: 'POST',
+                headers: {{ 'Content-Type': 'application/json' }},
+                body: JSON.stringify({{
+                    email: document.getElementById('email').value,
+                    token: document.getElementById('token').value,
+                    newPassword: document.getElementById('newPassword').value,
+                    confirmPassword: document.getElementById('confirmPassword').value
+                }})
+            }});
+            const data = await response.json();
+            document.getElementById('result').innerText = data.message;
+        }});
+    </script>
+</body>
+</html>";
+
+            return Content(html, "text/html");
         }
     }
 }

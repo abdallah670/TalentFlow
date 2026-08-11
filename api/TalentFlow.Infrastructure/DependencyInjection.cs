@@ -6,6 +6,7 @@ using TalentFlow.Application.Interfaces;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Models.Authentication;
 using TalentFlow.Infrastructure.Service;
+using TalentFlow.Infrastructure.Services;
 using TalentFlow.Persistence;
 
 namespace TalentFlow.Infrastructure;
@@ -23,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<ICurrentUserService, CurrentUserService>();
        services.AddScoped<ICurrentTenantService, CurrentTenantService>();
         services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<IFileStorageService, LocalFileStorageService>();
 
         return services;
     }

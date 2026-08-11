@@ -189,9 +189,13 @@ builder.Services.AddHangfire(config => config
     .UseRecommendedSerializerSettings()
     .UseSqlServerStorage(
         builder.Configuration.GetConnectionString("TalentFlowConnection")));
+builder. Services.Configure<DataProtectionTokenProviderOptions>(options =>
+{
+    options.TokenLifespan = TimeSpan.FromHours(1);
+});
 
 builder.Services.AddHangfireServer();
-
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 
@@ -223,6 +227,7 @@ options.SwaggerEndpoint("/swagger/v1/swagger.json", "TalentFlow API v1");
 options.RoutePrefix = string.Empty;
 });
 }
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 

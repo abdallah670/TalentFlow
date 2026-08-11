@@ -23,7 +23,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
         private readonly AppUrlSettings _appUrlSettings;
 
         public RegisterCommandHandler(
-            UserManager<Domain.Entities.IdentityModule.User> userManager,
+            UserManager<Domain.Entities.IdentityModule.User> userManager,   
             IJWTService jWTService,
             IRefreshTokenService refreshTokenService,
             IOptions<JwtSettings> jwtSettings,
@@ -69,12 +69,9 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
                 };
             }
 
-            await userManager.AddToRoleAsync(user, Roles.Candidate.ToString());
+            await userManager.AddToRoleAsync(user, Domain.Enums.Roles.Candidate.ToString());
             var roles = await userManager.GetRolesAsync(user);
-            var JwtToken = await jWTService.CreateJwtToken(user, roles);
-            var accessToken = new JwtSecurityTokenHandler().WriteToken(JwtToken);
-            var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
-
+       
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
             var encodedToken = Uri.EscapeDataString(token);
 
@@ -89,13 +86,8 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
                 Id = user.Id.ToString(),
                 UserName = user.UserName!,
                 Email = user.Email!,
-                IsAuthenticated = true,
-                Roles = roles.ToList(),
-                Message = "Registered successfully. Please check your email to confirm your account.",
-                Token = accessToken,
-                TokenExpiration = JwtToken.ValidTo,
-                RefreshToken = refreshToken,
-                RefreshTokenExpiration = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays)
+                IsAuthenticated = false,
+                Message = "Registered successfully. Please check your email to confirm your account."
             };
         }
     }

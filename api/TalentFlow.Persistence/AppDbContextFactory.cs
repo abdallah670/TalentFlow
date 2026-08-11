@@ -1,23 +1,39 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
+using TalentFlow.Application.Interfaces;
+using TalentFlow.Domain.Entities.AuditModule;
 
-namespace TalentFlow.Persistence;
-
-public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+namespace TalentFlow.Persistence
 {
-    public AppDbContext CreateDbContext(string[] args)
+    public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../TalentFlow.Api"))
-            .AddJsonFile("appsettings.json")
-            .Build();
+        public AppDbContext CreateDbContext(string[] args)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../TalentFlow.Api"))
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-        var builder = new DbContextOptionsBuilder<AppDbContext>();
-        var connectionString = configuration.GetConnectionString("TalentFlowConnection");
+            var builder = new DbContextOptionsBuilder<AppDbContext>();
+            var connectionString = configuration.GetConnectionString("TalentFlowConnection");
+            builder.UseSqlServer(connectionString);
 
-        builder.UseSqlServer(connectionString);
+            return new AppDbContext(
+                builder.Options,
+                new DesignTimeCurrentTenantService(),
+                new DesignTimeAuditService());
+        }
+    }
 
-        return new AppDbContext(builder.Options);
+    internal class DesignTimeCurrentTenantService : ICurrentTenantService
+    {
+        public Guid TenantId => Guid.Empty;
+    }
+
+    internal class DesignTimeAuditService : IAuditService
+    {
+        public List<AuditLog> BuildAuditLogs(ChangeTracker changeTracker) => new List<AuditLog>();
     }
 }

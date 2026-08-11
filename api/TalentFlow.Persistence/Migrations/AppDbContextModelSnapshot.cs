@@ -386,6 +386,174 @@ namespace TalentFlow.Persistence.Migrations
                     b.ToTable("AuditLog", (string)null);
                 });
 
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AvailableFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Currency")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CurrentCompany")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("CurrentJobTitle")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LinkedInUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<decimal?>("MaxSalaryExpectation")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("MinSalaryExpectation")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("PortfolioUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("PreferredLocation")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("RemoteOnly")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ResumeFileName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("ResumeUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("TotalYearsOfExperience")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("WorkAuthorization")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("CandidateProfiles");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfileSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CandidateProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("SkillId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SkillId");
+
+                    b.HasIndex("CandidateProfileId", "SkillId")
+                        .IsUnique();
+
+                    b.ToTable("CandidateProfileSkills");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.Invitation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InvitedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("invitations");
+                });
+
             modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.Permission", b =>
                 {
                     b.Property<Guid>("Id")
@@ -978,7 +1146,7 @@ namespace TalentFlow.Persistence.Migrations
                     b.Property<DateTime>("AppliedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CandidateId")
+                    b.Property<Guid>("CandidateProfileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -1016,74 +1184,9 @@ namespace TalentFlow.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CandidateProfileId");
+
                     b.ToTable("Application", (string)null);
-                });
-
-            modelBuilder.Entity("TalentFlow.Domain.Entities.RecruitmentModule.Candidate", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CurrentPosition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GithubUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkedInUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PortfolioUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("YearsOfExperience")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Candidate", (string)null);
                 });
 
             modelBuilder.Entity("TalentFlow.Domain.Entities.RecruitmentModule.CandidateDocument", b =>
@@ -1405,16 +1508,30 @@ namespace TalentFlow.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CompanySize")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Industry")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
+                    b.Property<string>("LinkedInUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfficeLocation")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
@@ -1422,13 +1539,14 @@ namespace TalentFlow.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubscriptionPlan")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1659,6 +1777,36 @@ namespace TalentFlow.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", b =>
+                {
+                    b.HasOne("TalentFlow.Domain.Entities.IdentityModule.User", "User")
+                        .WithOne()
+                        .HasForeignKey("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfileSkill", b =>
+                {
+                    b.HasOne("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", "CandidateProfile")
+                        .WithMany("Skills")
+                        .HasForeignKey("CandidateProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TalentFlow.Domain.Entities.RecruitmentModule.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CandidateProfile");
+
+                    b.Navigation("Skill");
+                });
+
             modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.RefreshToken", b =>
                 {
                     b.HasOne("TalentFlow.Domain.Entities.IdentityModule.User", "User")
@@ -1668,6 +1816,22 @@ namespace TalentFlow.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.RecruitmentModule.Application", b =>
+                {
+                    b.HasOne("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", "CandidateProfile")
+                        .WithMany()
+                        .HasForeignKey("CandidateProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CandidateProfile");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", b =>
+                {
+                    b.Navigation("Skills");
                 });
 
             modelBuilder.Entity("TalentFlow.Domain.Entities.IdentityModule.User", b =>

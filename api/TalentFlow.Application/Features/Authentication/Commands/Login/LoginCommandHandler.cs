@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Interfaces;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
@@ -17,14 +18,15 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
         private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
         private readonly IRefreshTokenService refreshTokenService;
         private readonly JwtSettings jwtSettings;
-
-        public LoginCommandHandler(IJWTService jWTService, UserManager<Domain.Entities.IdentityModule.User> userManager, IRefreshTokenService refreshTokenService, IOptions<JwtSettings> jwtSettings)
+        private readonly IcandidateProfileRepo candidateProfileRepo;
+        public LoginCommandHandler(IJWTService jWTService, UserManager<Domain.Entities.IdentityModule.User> userManager, IRefreshTokenService refreshTokenService, IOptions<JwtSettings> jwtSettings, IcandidateProfileRepo candidateProfileRepo)
 
         {
             this.jWTService = jWTService;
             this.userManager = userManager;
             this.refreshTokenService = refreshTokenService;
             this.jwtSettings = jwtSettings.Value;
+            this.candidateProfileRepo = candidateProfileRepo;
         }
         public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
@@ -39,17 +41,33 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
                     Message = "Invalid Email or Password"
                 };
             }
-            var isPasswordCorrect = await userManager.CheckPasswordAsync(user, request.Password);
 
-            if (!isPasswordCorrect)
+            if (await userManager.IsLockedOutAsync(user))
             {
+                var lockoutEnd = await userManager.GetLockoutEndDateAsync(user);
+
+                var minutes = Math.Ceiling(
+                    (lockoutEnd.Value.UtcDateTime - DateTime.UtcNow).TotalMinutes);
+
                 return new AuthResponse
                 {
                     IsAuthenticated = false,
-                    Message = "Invalid Email or Password"
+                    Message = $"Too many failed attempts. Try again after {minutes} minute(s)."
+                };
+            }
+            var result = await userManager.CheckPasswordAsync(user, request.Password);
+            if (!result)
+            {
+                await userManager.AccessFailedAsync(user);
+
+                return new AuthResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "Invalid email or password."
                 };
             }
 
+            await userManager.ResetAccessFailedCountAsync(user);
             if (!user.IsActive)
             {
                 return new AuthResponse
@@ -72,6 +90,35 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
 
             var accessToken = new JwtSecurityTokenHandler().WriteToken(jwtToken);
             var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
+            var profile = await candidateProfileRepo
+    .FindAsync(x => x.UserId == user.Id);
+
+            var candidateProfile = profile.FirstOrDefault();
+            int currentStep = 2;
+
+            if (candidateProfile != null)
+            {
+                bool professional =
+                    !string.IsNullOrWhiteSpace(candidateProfile.PhoneNumber);
+
+                bool resume =
+                    !string.IsNullOrWhiteSpace(candidateProfile.ResumeUrl);
+
+                bool skills =
+                    candidateProfile.Skills.Any();
+
+                bool preferences =
+                    !string.IsNullOrWhiteSpace(candidateProfile.PreferredLocation);
+
+                if (!professional)
+                    currentStep = 2;
+                else if (!resume || !skills)
+                    currentStep = 3;
+                else if (!preferences)
+                    currentStep = 4;
+                else
+                    currentStep = 5;
+            }
             return new AuthResponse
             {
                 Id = user.Id.ToString(),
@@ -85,7 +132,10 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
 
                 RefreshToken = refreshToken,
                 RefreshTokenExpiration =
-        DateTime.UtcNow.AddDays(jwtSettings.RefreshTokenDurationInDays)
+         DateTime.UtcNow.AddDays(jwtSettings.RefreshTokenDurationInDays),
+
+                CurrentStep = currentStep,
+                OnboardingCompleted = currentStep == 5
             };
         }
 

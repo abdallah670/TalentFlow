@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,6 @@ public static class DependencyInjection
         services.AddScoped<ISkillRepository, SkillRepository>();
         services.AddScoped<IJobRepository, JobRepository>();
         services.AddScoped<IJobSkillRepository, JobSkillRepository>();
-        services.AddScoped<ICandidateRepository, CandidateRepository>();
         services.AddScoped<ICandidateSkillRepository, CandidateSkillRepository>();
         services.AddScoped<ICandidateExperienceRepository, CandidateExperienceRepository>();
         services.AddScoped<ICandidateEducationRepository, CandidateEducationRepository>();
@@ -53,6 +53,15 @@ public static class DependencyInjection
         services.AddScoped<IPermissionRepository, PermissionRepository>();
         services.AddScoped<IUserRoleRepository, UserRoleRepository>();
         services.AddScoped<IRolePermissionRepository, RolePermissionRepository>();
+        services.AddScoped<IcandidateProfileRepo, CandidateProfileRepo>();
+        services.AddScoped<ICandidateProfileSkillRepo, CandidateProfileSkillRepo>();
+        services.AddScoped<IInvitationRepository, InvitationRepository>();
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.AllowedForNewUsers = true;
+        });
 
         return services;
     }

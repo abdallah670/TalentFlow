@@ -11,28 +11,67 @@ public static class SeedUser
         UserManager<User> userManager,
         AppDbContext context)
     {
-        var tenant = await context.Tenants.FirstOrDefaultAsync(t => t.Slug == "demo-company");
+        var tenant = await context.Tenants
+            .FirstOrDefaultAsync(t => t.Slug == "demo-company");
+
         if (tenant is null)
         {
             tenant = new Tenant
             {
                 Name = "Demo Company",
                 Slug = "demo-company",
+                CompanySize = "11-50",
+                Industry = "Technology",
                 SubscriptionPlan = "Free",
-                IsActive = true,
-                
+                IsActive = true
             };
+
             context.Tenants.Add(tenant);
+
             await context.SaveChangesAsync();
         }
 
         var usersToSeed = new List<(string Email, string FirstName, string LastName, string Role, Guid? TenantId)>
         {
-            ("systemadmin@talentflow.com", "System", "Admin", nameof(Roles.SystemAdmin), null),
-            ("tenantadmin@demo.com",       "Tenant", "Admin", nameof(Roles.TenantAdmin), tenant.Id),
-            ("recruiter@demo.com",         "Sara",   "Recruiter", nameof(Roles.Recruiter), tenant.Id),
-            ("hiringmanager@demo.com",     "Omar",   "Manager", nameof(Roles.HiringManager), tenant.Id),
-            ("interviewer@demo.com",       "Laila",  "Interviewer", nameof(Roles.Interviewer), tenant.Id),
+            (
+                "systemadmin@talentflow.com",
+                "System",
+                "Admin",
+                nameof(Roles.SystemAdmin),
+                null
+            ),
+
+            (
+                "tenantadmin@demo.com",
+                "Tenant",
+                "Admin",
+                nameof(Roles.TenantAdmin),
+                tenant.Id
+            ),
+
+            (
+                "recruiter@demo.com",
+                "Sara",
+                "Recruiter",
+                nameof(Roles.Recruiter),
+                tenant.Id
+            ),
+
+            (
+                "hiringmanager@demo.com",
+                "Omar",
+                "Manager",
+                nameof(Roles.HiringManager),
+                tenant.Id
+            ),
+
+            (
+                "interviewer@demo.com",
+                "Laila",
+                "Interviewer",
+                nameof(Roles.Interviewer),
+                tenant.Id
+            )
         };
 
         const string defaultPassword = "P@ssw0rd123!";
@@ -40,6 +79,7 @@ public static class SeedUser
         foreach (var u in usersToSeed)
         {
             var existingUser = await userManager.FindByEmailAsync(u.Email);
+
             if (existingUser is not null)
                 continue;
 
@@ -50,20 +90,28 @@ public static class SeedUser
                 EmailConfirmed = true,
                 FirstName = u.FirstName,
                 LastName = u.LastName,
-                TenantId = u.TenantId ?? Guid.Empty, 
+                TenantId = u.TenantId ?? Guid.Empty,
                 IsActive = true
             };
 
-            var result = await userManager.CreateAsync(user, defaultPassword);
+            var result = await userManager.CreateAsync(
+                user,
+                defaultPassword);
 
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, u.Role);
+                await userManager.AddToRoleAsync(
+                    user,
+                    u.Role);
             }
             else
             {
-                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                Console.WriteLine($"Failed to seed user {u.Email}: {errors}");
+                var errors = string.Join(
+                    ", ",
+                    result.Errors.Select(e => e.Description));
+
+                Console.WriteLine(
+                    $"Failed to seed user {u.Email}: {errors}");
             }
         }
     }

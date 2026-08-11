@@ -11,6 +11,9 @@
     public string Email { get; set; } = string.Empty;
 
     public List<string> Roles { get; set; } = new();
+    public int CurrentStep { get; set; }
+
+    public bool OnboardingCompleted { get; set; }
 
     public string Token { get; set; } = string.Empty;
 

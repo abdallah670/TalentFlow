@@ -7,6 +7,7 @@ using TalentFlow.Application.Interfaces;
 using TalentFlow.Domain.Common;
 using TalentFlow.Domain.Entities.AssessmentModule;
 using TalentFlow.Domain.Entities.AuditModule;
+using TalentFlow.Domain.Entities.CandidateModule;
 using TalentFlow.Domain.Entities.IdentityModule;
 using TalentFlow.Domain.Entities.InterviewModule;
 using TalentFlow.Domain.Entities.NotificationModule;
@@ -37,7 +38,6 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
     public DbSet<Skill> Skills { get; set; } = null!;
     public DbSet<Job> Jobs { get; set; } = null!;
     public DbSet<JobSkill> JobSkills { get; set; } = null!;
-    public DbSet<Candidate> Candidates { get; set; } = null!;
     public DbSet<CandidateSkill> CandidateSkills { get; set; } = null!;
     public DbSet<CandidateExperience> CandidateExperiences { get; set; } = null!;
     public DbSet<CandidateEducation> CandidateEducations { get; set; } = null!;
@@ -64,6 +64,9 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
     public DbSet<RefreshToken> RefreshTokens { get; set; } = default!;
     public DbSet<Offer>  offers { get; set; } = default!;
     public DbSet<OfferApproval> offerApprovals { get; set; } = default!;
+    public DbSet<CandidateProfile> CandidateProfiles { get; set; }
+    public DbSet<CandidateProfileSkill> CandidateProfileSkills { get; set; } = null!;
+    public DbSet<Invitation> invitations { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -74,9 +77,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
         builder.Entity<Job>()
     .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
 
-        builder.Entity<Candidate>()
-            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
-
+  
         builder.Entity<Department>()
             .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
         builder.Entity<Offer>()
@@ -97,7 +98,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
           .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
 
         builder.Entity<Tenant>()
-    .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+    .HasQueryFilter(x => x.Id == _currentTenantService.TenantId);
 
         builder.Entity<TenantSetting>()
             .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
@@ -107,10 +108,6 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
 
         builder.Entity<Job>()
             .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
-
-        builder.Entity<Candidate>()
-            .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
-
 
         builder.Entity<Pipeline>()
             .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
@@ -204,8 +201,11 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
                 softDeleteEntity.DeletedAt = DateTime.UtcNow;
             }
         }
-        await _auditService.CreateAuditLogsAsync(ChangeTracker);
-
+        var auditLogs = _auditService.BuildAuditLogs(ChangeTracker);
+        if (auditLogs.Any())
+        {
+            AuditLogs.AddRange(auditLogs);
+        }
         return await base.SaveChangesAsync(cancellationToken);
     }
 }
