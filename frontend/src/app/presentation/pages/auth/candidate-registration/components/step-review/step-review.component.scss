@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+.step-header {
+  @apply mb-6;
+  .step-subtitle { @apply text-xs font-bold text-[#24389c] uppercase tracking-wider mb-2 block; }
+  .step-title { @apply text-[22px] font-medium text-[#1a1b22]; }
+}
+.review-card {
+  @apply bg-[#ffffff] rounded-lg border border-[#c5c5d4] p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[400px];
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  
+  .success-icon-container {
+    @apply w-20 h-20 rounded-full bg-[#f4f2fc] text-[#3f51b5] flex items-center justify-center mb-6;
+  }
+  .title { @apply text-[22px] font-medium text-[#1a1b22] mb-3; }
+  .description { @apply text-[15px] text-[#454652] max-w-md leading-relaxed; }
+}

@@ -1,0 +1,40 @@
+@reference "tailwindcss";
+.step-header {
+  @apply mb-6;
+  .step-subtitle { @apply text-xs font-bold text-[#24389c] uppercase tracking-wider mb-2 block; }
+  .step-title { @apply text-[22px] font-medium text-[#1a1b22]; }
+}
+.card {
+  @apply bg-[#ffffff] rounded-lg border border-[#c5c5d4] p-6 md:p-8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  .card-description { @apply text-[15px] text-[#454652] mb-8; }
+}
+.form-label {
+  @apply block text-[18px] font-medium text-[#1a1b22] mb-3;
+  &.small-mb { @apply mb-1; }
+}
+.upload-zone {
+  @apply border-2 border-dashed border-[#c5c5d4] rounded-lg p-8 flex flex-col items-center justify-center transition-colors cursor-pointer hover:bg-[#f4f2fc] bg-white h-[200px];
+  
+  &:hover .icon-container {
+    @apply bg-[#dbd9e2];
+  }
+  
+  .icon-container { @apply w-14 h-14 rounded bg-[#e9e7f0] text-[#454652] flex items-center justify-center mb-4 transition-colors; }
+  .primary-text { @apply text-[15px] text-[#1a1b22] mb-1; span { @apply text-[#24389c] font-medium hover:underline; } }
+  .secondary-text { @apply text-[13px] text-[#757684]; }
+}
+.section-desc { @apply text-[13px] text-[#454652] mb-4; }
+.skills-input-container {
+  @apply border border-[#c5c5d4] rounded p-2 bg-white focus-within:border-[#24389c] focus-within:ring-1 focus-within:ring-[#24389c] transition-all flex flex-wrap gap-2 items-center min-h-[56px];
+}
+.skill-chip {
+  @apply flex items-center bg-[#3f51b5] text-white rounded-full pl-3 pr-1 py-[6px] text-[13px];
+  button { @apply ml-1 w-5 h-5 rounded-full flex items-center justify-center hover:bg-black/20 focus:outline-none transition-colors; }
+}
+.skill-input {
+  @apply flex-grow border-none focus:ring-0 bg-transparent text-[15px] p-2 min-w-[200px] outline-none placeholder-[#757684];
+}
+.cover-letter-input {
+  @apply w-full border border-[#c5c5d4] rounded p-4 text-[15px] bg-white focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c] transition-all resize-y placeholder-[#757684];
+}

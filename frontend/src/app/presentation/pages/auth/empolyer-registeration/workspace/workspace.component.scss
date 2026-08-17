@@ -1,0 +1,54 @@
+@reference "../../../../../styles.scss";
+.workspace-card {
+  @apply w-full max-w-[600px] bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm mt-[64px];
+  box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0,0,0,0.12);
+}
+.card-header-line {
+  @apply h-2 w-full bg-primary-container;
+}
+.card-body {
+  @apply p-xl sm:p-[48px];
+}
+.page-header {
+  @apply mb-xl;
+}
+.page-title {
+  @apply font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-sm;
+}
+.page-subtitle {
+  @apply font-body text-body text-on-surface-variant leading-relaxed;
+}
+.form-container {
+  @apply space-y-xl;
+}
+.form-group {
+  @apply relative;
+}
+.input-help-text {
+  @apply font-body-sm text-body-sm text-on-surface-variant mb-sm;
+}
+.url-input-wrapper {
+  @apply flex rounded border border-outline focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all overflow-hidden bg-surface-container-lowest;
+}
+.url-prefix {
+  @apply inline-flex items-center px-md bg-surface-container-low border-r border-outline text-on-surface-variant font-body text-body select-none;
+}
+.url-input {
+  @apply flex-1 h-12 px-md bg-transparent text-on-surface font-body text-body placeholder:text-outline/70 focus:outline-none border-none ring-0;
+}
+.custom-input {
+  @apply w-full rounded border-outline-variant bg-surface-container-lowest py-sm text-on-surface font-body text-body transition-colors focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none border border-outline h-12;
+  padding-left: 16px !important;
+}
+.form-actions {
+  @apply flex items-center justify-between pt-lg mt-xl border-t border-outline-variant/50;
+}
+.btn-back {
+  @apply h-10 px-lg rounded font-label text-label text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2;
+}
+.btn-primary {
+  @apply h-10 px-xl bg-primary-container text-on-primary rounded font-label text-label shadow-sm hover:opacity-90 active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 flex items-center gap-sm;
+}
+.btn-icon {
+  @apply text-[18px];
+}

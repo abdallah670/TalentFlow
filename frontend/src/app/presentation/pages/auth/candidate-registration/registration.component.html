@@ -1,0 +1,54 @@
+<div class="registration-layout">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+      <div class="content-container">
+        <div class="mobile-branding">
+           <h1 class="logo">TalentFlow</h1>
+           <p class="tagline">Enterprise HR Recruitment</p>
+        </div>
+
+        @switch (currentStep()) {
+          @case (1) {
+            <app-step-personal></app-step-personal>
+          }
+          @case (2) {
+            <app-step-professional></app-step-professional>
+          }
+          @case (3) {
+            <app-step-skills></app-step-skills>
+          }
+          @case (4) {
+            <app-step-review></app-step-review>
+          }
+        }
+      </div>
+  </main>
+</div>
+
+<div class="bottom-bar">
+  @if (currentStep() > 1) {
+     <button type="button" class="btn-back" (click)="prevStep()">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        Back
+     </button>
+  } @else {
+     <div></div>
+  }
+  
+  <div class="actions-group">
+     @if (currentStep() === 1) {
+        <span class="login-prompt">Already have an account? <a routerLink="/login">Log in</a></span>
+     }
+     
+     <button type="button" class="btn-primary" (click)="nextStep()" [disabled]="isLoading()">
+        @if (isLoading()) {
+           <span class="spinner"></span>
+           Submitting...
+        } @else {
+           {{ currentStep() === 4 ? 'Submit Profile' : 'Save & Continue' }}
+           <span class="material-symbols-outlined text-[20px]">{{ currentStep() === 4 ? 'send' : 'arrow_forward' }}</span>
+        }
+     </button>
+  </div>
+</div>

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>TalentFlow - Candidate Registration</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -107,61 +105,84 @@
 </head>
 <body class="bg-surface text-on-surface font-body min-h-screen flex antialiased">
 <!-- Left Branding Panel (Hidden on Mobile) -->
-<div class="hidden lg:flex w-[40%] bg-surface-container relative flex-col justify-between p-xl border-r border-outline-variant overflow-hidden">
-<div class="z-10">
-<h1 class="font-h1 text-h1 text-primary font-bold tracking-tight">TalentFlow</h1>
-<p class="font-body text-body text-secondary mt-sm">Enterprise HR Recruitment</p>
-</div>
-<div class="z-10 mt-xl">
-<h2 class="font-h2 text-h2 text-on-surface mb-md">Build your professional narrative.</h2>
-<p class="font-body text-body text-on-surface-variant">Step 2 focuses on your recent experience and online presence to help our algorithms match you with the perfect role.</p>
-</div>
-<div class="absolute inset-0 z-0 opacity-40">
-<div class="w-full h-full bg-cover bg-center object-cover" data-alt="A modern, abstract architectural detail of a glass and steel corporate building interior. Soft, high-key natural lighting floods the space, creating a bright, optimistic, and reliable enterprise aesthetic. The color palette features whites, light grays, and subtle cool blue reflections, conveying professional scale and efficiency." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCM-iUwUaDBMwk6jLB1vJTSEeWLp00dbLdyk05tB39xu9yZ7V62yAbPXax0NUV7QvGCMcv14J9vyIXa2KMt3VXTjPz_dvU6CKzM5Dq94Yvla-uTj-YMpeVqWWveGB_5U9VBm-nPmI-2Va5yu85m4UwIiz5Bm3J1VPxZjdsbYRJdbAZKQkYd3qA6MZ0A8W1TJ1LQy67at_Hm8flLRUQw5f6t3Giz80YLKBhIUTb9JX8Aa5MRmg64VOiqHdkGjZu824iG2kcoC_i2muE')"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/80 to-transparent"></div>
-</div>
+<div class="hidden lg:flex w-[40%] bg-surface-container relative flex-col p-xl border-r border-outline-variant overflow-hidden">
+    <div class="z-10 mb-xl">
+        <h1 class="font-h1 text-h1 text-primary font-bold tracking-tight">TalentFlow</h1>
+        <p class="font-body text-body text-secondary mt-sm">Enterprise HR Recruitment</p>
+    </div>
+    
+    <div class="z-10 flex-1">
+        <nav class="flex flex-col gap-xl">
+            <!-- Step 1: Complete -->
+            <div class="flex items-start gap-md group">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10">
+                        <span class="material-symbols-outlined text-[18px]">check</span>
+                    </div>
+                    <div class="w-[2px] h-12 bg-primary mt-xs"></div>
+                </div>
+                <div class="pt-1">
+                    <p class="font-label text-label text-primary font-bold uppercase tracking-wider">Step 1</p>
+                    <p class="font-h3 text-h3 text-on-surface">Personal Details</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Active -->
+            <div class="flex items-start gap-md group">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container border-2 border-primary flex items-center justify-center z-10 font-label font-bold">
+                        2
+                    </div>
+                    <div class="w-[2px] h-12 bg-surface-variant mt-xs"></div>
+                </div>
+                <div class="pt-1">
+                    <p class="font-label text-label text-primary font-bold uppercase tracking-wider">Step 2</p>
+                    <p class="font-h3 text-h3 text-on-surface">Professional Profile</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Pending -->
+            <div class="flex items-start gap-md group opacity-50">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center z-10 font-label">
+                        3
+                    </div>
+                    <div class="w-[2px] h-12 bg-surface-variant mt-xs"></div>
+                </div>
+                <div class="pt-1">
+                    <p class="font-label text-label text-on-surface-variant font-bold uppercase tracking-wider">Step 3</p>
+                    <p class="font-h3 text-h3 text-on-surface">Skills &amp; Expertise</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Pending -->
+            <div class="flex items-start gap-md group opacity-50">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center z-10 font-label">
+                        4
+                    </div>
+                </div>
+                <div class="pt-1">
+                    <p class="font-label text-label text-on-surface-variant font-bold uppercase tracking-wider">Step 4</p>
+                    <p class="font-h3 text-h3 text-on-surface">Review &amp; Submit</p>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="absolute inset-0 z-0 opacity-5">
+        <div class="w-full h-full bg-cover bg-center object-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCM-iUwUaDBMwk6jLB1vJTSEeWLp00dbLdyk05tB39xu9yZ7V62yAbPXax0NUV7QvGCMcv14J9vyIXa2KMt3VXTjPz_dvU6CKzM5Dq94Yvla-uTj-YMpeVqWWveGB_5U9VBm-nPmI-2Va5yu85m4UwIiz5Bm3J1VPxZjdsbYRJdbAZKQkYd3qA6MZ0A8W1TJ1LQy67at_Hm8flLRUQw5f6t3Giz80YLKBhIUTb9JX8Aa5MRmg64VOiqHdkGjZu824iG2kcoC_i2muE')"></div>
+    </div>
 </div>
 <!-- Right Form Panel -->
 <div class="flex-1 flex flex-col h-screen overflow-y-auto bg-surface-bright">
 <!-- Header / Stepper -->
-<div class="w-full max-w-3xl mx-auto pt-xl px-gutter pb-md sticky top-0 bg-surface-bright/90 backdrop-blur-sm z-10 border-b border-surface-variant">
-<div class="flex items-center justify-between mb-lg">
-<div class="flex flex-col">
-<span class="font-label text-label text-primary font-bold uppercase tracking-wider">Step 2 of 4</span>
-<h2 class="font-h2 text-h2 text-on-surface">Professional Profile</h2>
-</div>
-</div>
-<!-- Progress Tracker -->
-<div class="flex items-center w-full">
-<!-- Step 1: Complete -->
-<div class="flex flex-col items-center relative flex-1">
-<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center mb-sm z-10">
-<span class="material-symbols-outlined text-[18px]">check</span>
-</div>
-<div class="absolute top-4 left-1/2 w-full h-[2px] bg-primary"></div>
-</div>
-<!-- Step 2: Active -->
-<div class="flex flex-col items-center relative flex-1">
-<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container border-2 border-primary flex items-center justify-center mb-sm z-10 font-label font-bold">
-                        2
-                    </div>
-<div class="absolute top-4 left-1/2 w-full h-[2px] bg-surface-variant"></div>
-</div>
-<!-- Step 3: Pending -->
-<div class="flex flex-col items-center relative flex-1">
-<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center mb-sm z-10 font-label">
-                        3
-                    </div>
-<div class="absolute top-4 left-1/2 w-full h-[2px] bg-surface-variant"></div>
-</div>
-<!-- Step 4: Pending -->
-<div class="flex flex-col items-center relative flex-1">
-<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary flex items-center justify-center mb-sm z-10 font-label">
-                        4
-                    </div>
-</div>
-</div>
-</div>
+<div class="w-full max-w-3xl mx-auto pt-xl px-gutter pb-md sticky top-0 bg-surface-bright/90 backdrop-blur-sm z-10 border-b border-surface-variant"><div class="flex items-center justify-between">
+    <div class="flex flex-col">
+        <span class="font-label text-label text-primary font-bold uppercase tracking-wider">Step 2 of 4</span>
+        <h2 class="font-h2 text-h2 text-on-surface">Professional Profile</h2>
+    </div>
+</div></div>
 <!-- Form Content -->
 <div class="w-full max-w-3xl mx-auto px-gutter py-xl pb-[120px]">
 <!-- Section: Contact -->
@@ -176,7 +197,7 @@
 <span class="font-body-sm text-body-sm text-on-surface-variant">+1</span>
 <span class="material-symbols-outlined text-secondary text-[16px] ml-xs">arrow_drop_down</span>
 </div>
-<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface p-sm" placeholder="(555) 000-0000" type="tel"/>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface p-sm" placeholder="(555) 000-0000" type="tel">
 </div>
 </div>
 </div>
@@ -188,11 +209,11 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
 <div class="flex flex-col">
 <label class="font-label text-label text-on-surface-variant mb-xs">Current Job Title</label>
-<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Senior Software Engineer" type="text"/>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Senior Software Engineer" type="text">
 </div>
 <div class="flex flex-col">
 <label class="font-label text-label text-on-surface-variant mb-xs">Current Company</label>
-<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Acme Corp" type="text"/>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" placeholder="e.g. Acme Corp" type="text">
 </div>
 </div>
 </div>
@@ -205,7 +226,7 @@
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-md relative z-10">Years of professional experience.</p>
 <div class="flex flex-col w-full relative z-10">
 <label class="font-label text-label text-on-surface-variant mb-xs">Years (Numeric)</label>
-<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" max="50" min="0" placeholder="0" type="number"/>
+<input class="w-full rounded-lg border border-outline-variant bg-surface-container-lowest p-sm font-body text-body text-on-surface input-ring focus:outline-none transition-shadow" max="50" min="0" placeholder="0" type="number">
 </div>
 </div>
 <!-- Blank spacer for bento aesthetic on md screens -->
@@ -221,14 +242,14 @@
 <label class="font-label text-label text-on-surface-variant mb-xs">LinkedIn URL</label>
 <div class="flex items-center rounded-lg border border-outline-variant bg-surface-container-lowest input-ring overflow-hidden px-sm focus-within:bg-surface-bright">
 <span class="material-symbols-outlined text-secondary mr-sm">link</span>
-<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://linkedin.com/in/username" type="url"/>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://linkedin.com/in/username" type="url">
 </div>
 </div>
 <div class="flex flex-col">
 <label class="font-label text-label text-on-surface-variant mb-xs">Portfolio / GitHub URL</label>
 <div class="flex items-center rounded-lg border border-outline-variant bg-surface-container-lowest input-ring overflow-hidden px-sm focus-within:bg-surface-bright">
 <span class="material-symbols-outlined text-secondary mr-sm">code</span>
-<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://github.com/username" type="url"/>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body text-body text-on-surface py-sm" placeholder="https://github.com/username" type="url">
 </div>
 </div>
 </div>
@@ -246,4 +267,6 @@
 </button>
 </div>
 </div>
+
+
 </body></html>

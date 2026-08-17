@@ -1,0 +1,105 @@
+<app-layout>
+  <div class="form-card">
+    <div class="card-header-line"></div>
+    <div class="card-body">
+      <app-step-indicator [currentStep]="1" [totalSteps]="4"></app-step-indicator>
+      
+      <div class="page-header">
+        <h1 class="page-title">Set up your company profile</h1>
+        <p class="page-subtitle">Provide details about your organization.</p>
+      </div>
+
+      <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-group group">
+          <label for="name" class="input-label group-focus-within:text-primary-container transition-colors">Company Name *</label>
+          <div class="input-wrapper">
+            <div class="icon-wrapper">
+              <span class="input-icon material-symbols-outlined">apartment</span>
+            </div>
+            <input id="name" formControlName="name" class="custom-input" [ngClass]="{'border-error': companyForm.get('name')?.invalid && companyForm.get('name')?.touched}" placeholder="e.g., Acme Corporation" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group group">
+            <label for="size" class="input-label group-focus-within:text-primary-container transition-colors">Company Size *</label>
+            <div class="input-wrapper">
+              <div class="icon-wrapper">
+                <span class="input-icon material-symbols-outlined">groups</span>
+              </div>
+              <select id="size" formControlName="size" class="custom-select" [ngClass]="{'border-error': companyForm.get('size')?.invalid && companyForm.get('size')?.touched}">
+                <option value="" disabled>Select size</option>
+                <option value="1-10">1-10 employees</option>
+                <option value="11-50">11-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-500">201-500 employees</option>
+                <option value="501-1000">501-1000 employees</option>
+                <option value="1000+">1000+ employees</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group group">
+            <label for="industry" class="input-label group-focus-within:text-primary-container transition-colors">Industry *</label>
+            <div class="input-wrapper">
+              <div class="icon-wrapper">
+                <span class="input-icon material-symbols-outlined">domain</span>
+              </div>
+              <select id="industry" formControlName="industry" class="custom-select" [ngClass]="{'border-error': companyForm.get('industry')?.invalid && companyForm.get('industry')?.touched}">
+                <option value="" disabled>Select industry</option>
+                <option value="tech">Technology</option>
+                <option value="finance">Finance & Banking</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="retail">Retail</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group group">
+            <label for="website" class="input-label group-focus-within:text-primary-container transition-colors">Company Website URL</label>
+            <div class="input-wrapper">
+              <div class="icon-wrapper">
+                <span class="input-icon material-symbols-outlined">language</span>
+              </div>
+              <input id="website" formControlName="website" class="custom-input" placeholder="https://www.example.com" type="url"/>
+            </div>
+          </div>
+
+          <div class="form-group group">
+            <label for="linkedin" class="input-label group-focus-within:text-primary-container transition-colors">LinkedIn Company URL</label>
+            <div class="input-wrapper">
+              <div class="icon-wrapper">
+                <span class="input-icon material-symbols-outlined">link</span>
+              </div>
+              <input id="linkedin" formControlName="linkedin" class="custom-input" placeholder="https://linkedin.com/company/..." type="url"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group group">
+          <label for="location" class="input-label group-focus-within:text-primary-container transition-colors">Primary Office Location *</label>
+          <div class="input-wrapper">
+            <div class="icon-wrapper">
+              <span class="input-icon material-symbols-outlined">location_on</span>
+            </div>
+            <input id="location" formControlName="location" class="custom-input" [ngClass]="{'border-error': companyForm.get('location')?.invalid && companyForm.get('location')?.touched}" placeholder="City, State, Country" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-back" (click)="goBack()">
+            Back
+          </button>
+          <button type="submit" class="btn-primary">
+            Continue
+            <span class="btn-icon material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-layout>

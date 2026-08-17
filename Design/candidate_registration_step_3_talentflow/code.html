@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Candidate Registration - TalentFlow</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -111,39 +109,47 @@
 <h1 class="font-h2 text-h2 text-primary font-bold">TalentFlow</h1>
 </header>
 <!-- Main Content -->
-<main class="flex-grow flex justify-center py-xl px-md sm:px-lg">
-<div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
+<main class="flex-grow flex justify-center py-xl px-md sm:px-lg md:grid md:grid-cols-[280px_1fr] md:gap-xl md:items-start">
+<aside class="hidden md:flex flex-col gap-lg sticky top-24">
+    <div class="flex items-center gap-md">
+        <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+            <span class="material-symbols-outlined">check</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="font-label text-label text-on-surface-variant">Step 1</span>
+            <span class="font-body text-body font-medium">Basic Info</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-md">
+        <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+            <span class="material-symbols-outlined">check</span>
+        </div>
+        <div class="flex flex-col">
+            <span class="font-label text-label text-on-surface-variant">Step 2</span>
+            <span class="font-body text-body font-medium">Experience</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-md">
+        <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center border-2 border-primary">
+            3
+        </div>
+        <div class="flex flex-col">
+            <span class="font-label text-label text-primary font-bold">Step 3</span>
+            <span class="font-body text-body font-bold text-primary">Resume &amp; Skills</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-md opacity-50">
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
+            4
+        </div>
+        <div class="flex flex-col">
+            <span class="font-label text-label text-on-surface-variant">Step 4</span>
+            <span class="font-body text-body">Review</span>
+        </div>
+    </div>
+</aside><div class="w-full bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
 <!-- Progress Stepper -->
-<div class="mb-xl">
-<div class="flex items-center justify-between mb-sm relative">
-<div class="absolute left-0 top-1/2 w-full h-[2px] bg-outline-variant -z-10 -translate-y-1/2"></div>
-<div class="absolute left-0 top-1/2 w-2/3 h-[2px] bg-primary -z-10 -translate-y-1/2"></div>
-<div class="flex flex-col items-center">
-<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">
-<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
-</div>
-<span class="font-label text-label text-on-surface-variant mt-sm">Basic Info</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label text-label">
-<span class="material-symbols-outlined" style="font-size: 16px;">check</span>
-</div>
-<span class="font-label text-label text-on-surface-variant mt-sm">Experience</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center border-2 border-primary font-label text-label bg-surface-container-lowest">
-                            3
-                        </div>
-<span class="font-label text-label text-primary mt-sm font-bold">Resume &amp; Skills</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant font-label text-label">
-                            4
-                        </div>
-<span class="font-label text-label text-on-surface-variant mt-sm">Review</span>
-</div>
-</div>
-</div>
+
 <!-- Header -->
 <div class="mb-lg">
 <h2 class="font-h1 text-h1 text-on-surface mb-xs hidden md:block">Upload Resume &amp; Add Skills</h2>
@@ -159,7 +165,7 @@
 <span class="material-symbols-outlined text-outline group-hover:text-primary mb-sm" style="font-size: 48px; font-variation-settings: 'FILL' 1;">upload_file</span>
 <p class="font-body text-body text-on-surface mb-xs text-center">Drag &amp; drop your file here, or <span class="text-primary font-medium">browse</span></p>
 <p class="font-body-sm text-body-sm text-outline text-center">Supports PDF, DOCX (Max 10MB)</p>
-<input accept=".pdf,.doc,.docx" class="hidden" id="file-input" type="file"/>
+<input accept=".pdf,.doc,.docx" class="hidden" id="file-input" type="file">
 </div>
 </div>
 <!-- Skills Section -->
@@ -187,7 +193,7 @@
 </button>
 </div>
 <!-- Input -->
-<input class="flex-grow border-none focus:ring-0 bg-transparent font-body text-body p-0 min-w-[200px]" placeholder="Type a skill and press Enter..." type="text"/>
+<input class="flex-grow border-none focus:ring-0 bg-transparent font-body text-body p-0 min-w-[200px]" placeholder="Type a skill and press Enter..." type="text">
 </div>
 <!-- Autocomplete Suggestions (Simulated) -->
 <div class="mt-xs hidden">
@@ -250,4 +256,6 @@
             dropZone.classList.remove('drag-active');
         }
     </script>
+
+
 </body></html>

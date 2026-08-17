@@ -2,7 +2,10 @@
   <div class="setup-account-layout">
     <!-- Left Panel: Branding -->
     <div class="setup-account-branding">
+      <div class="setup-account-branding-bg"></div>
+      <div class="setup-account-branding-overlay"></div>
       <div class="setup-account-branding-content">
+        <span class="material-symbols-outlined filled" style="font-size: 32px; color: var(--on-primary);">group</span>
         <h1>TalentFlow</h1>
         <p>Enterprise HR</p>
       </div>
@@ -38,12 +41,12 @@
           <label for="password">Create Password</label>
           <input
             id="password"
-            [type]="showPassword() ? 'text' : 'password'"
+            [type]="showPassword ? 'text' : 'password'"
             formControlName="password"
             placeholder="••••••••"
           />
           <button type="button" class="password-toggle" (click)="togglePassword()">
-            <span class="material-symbols-outlined">{{ showPassword() ? 'visibility_off' : 'visibility' }}</span>
+            <span class="material-symbols-outlined">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
           </button>
         </div>
 
@@ -51,12 +54,12 @@
           <label for="confirmPassword">Confirm Password</label>
           <input
             id="confirmPassword"
-            [type]="showConfirmPassword() ? 'text' : 'password'"
+            [type]="showConfirmPassword ? 'text' : 'password'"
             formControlName="confirmPassword"
             placeholder="••••••••"
           />
           <button type="button" class="password-toggle" (click)="toggleConfirmPassword()">
-            <span class="material-symbols-outlined">{{ showConfirmPassword() ? 'visibility_off' : 'visibility' }}</span>
+            <span class="material-symbols-outlined">{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</span>
           </button>
         </div>
 

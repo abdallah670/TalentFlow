@@ -1,0 +1,8 @@
+<div class="step-container">
+  <div class="step-bars">
+    @for (step of steps(); track step) {
+      <div class="step-bar" [class.step-bar-active]="step <= currentStep" [class.step-bar-inactive]="step > currentStep"></div>
+    }
+  </div>
+  <span class="step-label">Step {{ currentStep }} of {{ totalSteps }}</span>
+</div>

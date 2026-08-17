@@ -20,7 +20,7 @@ export class Login {
 
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
-  showPassword = signal(false);
+  showPassword = false;
 
   loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,7 +28,7 @@ export class Login {
   });
 
   togglePassword(): void {
-    this.showPassword.update(value => !value);
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit(): void {

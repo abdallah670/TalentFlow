@@ -1,0 +1,19 @@
+@reference "../../../../styles.scss";
+.step-container {
+  @apply flex items-center gap-sm mb-lg;
+}
+.step-bars {
+  @apply flex gap-1;
+}
+.step-bar {
+  @apply w-8 h-1.5 rounded-full;
+}
+.step-bar-active {
+  @apply bg-primary-container;
+}
+.step-bar-inactive {
+  @apply bg-surface-variant;
+}
+.step-label {
+  @apply font-label text-label text-on-surface-variant tracking-wider uppercase ml-2;
+}

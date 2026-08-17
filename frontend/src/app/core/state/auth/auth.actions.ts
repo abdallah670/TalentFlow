@@ -4,11 +4,9 @@ import {
   AuthResponse,
   RegistrationRequest,
   RegistrationResponse,
-  CandidateRegistrationRequest,
-  EmployerRegistrationRequest,
-  AcceptInvitationRequest,
-  TenantInfo,
+
 } from '../../../data/models/auth.model';
+import { AcceptInvitationRequest, CandidateRegistrationRequest, EmployerRegistrationRequest, TenantInfo } from '../../../data/models/registration.model';
 
 export const AuthActions = createActionGroup({
   source: 'Auth',

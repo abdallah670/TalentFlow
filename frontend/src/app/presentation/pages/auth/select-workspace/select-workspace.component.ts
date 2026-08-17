@@ -41,6 +41,8 @@ export class SelectWorkspaceComponent {
     },
   ];
 
+  userAvatarUrl = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDddlWla1hhRDBBc4EV77O2bBzrOfQXloGhzFN_h-ih7ovH1ThEUOZHpiuGm7mfrQdwM47CN5fIJnfjogS1S7lCjyRYeYSYKJ1N46NT9Bl5oaDKbIrYDYZmbpnnQBhsQH0i-xpxVuZmhhvfVl7WZvPxa3s05oGH3UpkxEAEBXSzh80J5ddre-_0XNfeWZfLOtCvGLI6WVDkPImw8AknvoUfsfw0EAQITrZnDN7X2Mzqrgt7mrSqI8EG1aQQwwhmSlLhGaemy3lGKX0';
+
   selectWorkspace(workspaceId: string): void {
     this.authService.selectTenant(workspaceId);
     this.router.navigate(['/']);

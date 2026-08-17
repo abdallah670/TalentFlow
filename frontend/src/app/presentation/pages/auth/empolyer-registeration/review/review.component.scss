@@ -1,0 +1,92 @@
+@reference "../../../../../styles.scss";
+.review-card {
+  @apply w-full max-w-[800px] bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm mt-[64px];
+  box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0,0,0,0.12);
+}
+.card-header-line {
+  @apply h-2 w-full bg-primary-container;
+}
+.card-body {
+  @apply p-xl sm:p-[48px];
+}
+.page-header {
+  @apply mb-xl;
+}
+.page-title {
+  @apply font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-sm;
+}
+.page-subtitle {
+  @apply font-body text-body text-on-surface-variant leading-relaxed;
+}
+.sections-container {
+  @apply flex-1 flex flex-col gap-lg;
+}
+.section-card {
+  @apply bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg relative overflow-hidden;
+}
+.edit-btn-wrapper {
+  @apply absolute top-0 right-0 p-md opacity-0 group-hover:opacity-100 transition-opacity;
+}
+.edit-btn {
+  @apply text-primary font-label text-label flex items-center gap-xs hover:underline cursor-pointer;
+}
+.edit-icon {
+  @apply text-[16px];
+}
+.section-header {
+  @apply flex items-center gap-sm mb-md border-b border-outline-variant pb-sm;
+}
+.section-icon {
+  @apply text-primary;
+}
+.section-title {
+  @apply font-h3 text-h3 text-on-surface;
+}
+.details-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-md;
+}
+.detail-label {
+  @apply font-label text-label text-on-surface-variant;
+}
+.detail-value {
+  @apply font-body text-body text-on-surface mt-xs;
+}
+.plan-card {
+  @apply flex items-center justify-between p-md bg-surface-container-low rounded-lg border border-primary-fixed;
+}
+.plan-info {
+  @apply flex items-center gap-md;
+}
+.plan-icon-wrapper {
+  @apply w-12 h-12 bg-primary-container rounded-full flex items-center justify-center;
+}
+.plan-icon {
+  @apply text-on-primary-container;
+}
+.plan-name {
+  @apply font-h3 text-h3 text-on-surface;
+}
+.plan-billing {
+  @apply font-label text-label text-on-surface-variant;
+}
+.plan-price-info {
+  @apply text-right;
+}
+.plan-price {
+  @apply font-h2 text-h2 text-primary font-bold;
+}
+.plan-period {
+  @apply font-label text-label text-on-surface-variant;
+}
+.form-actions {
+  @apply flex items-center justify-between pt-lg mt-xl border-t border-outline-variant/50;
+}
+.btn-back {
+  @apply h-10 px-lg rounded font-label text-label text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2;
+}
+.btn-primary {
+  @apply h-10 px-xl bg-primary-container text-on-primary rounded font-label text-label shadow-sm hover:opacity-90 active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 flex items-center gap-sm cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed;
+}
+.btn-icon {
+  @apply text-[18px];
+}

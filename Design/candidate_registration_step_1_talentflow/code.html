@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Candidate Registration - Step 1 | TalentFlow</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -116,100 +114,123 @@
         }
     </style>
 </head>
-<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex items-center justify-center p-md md:p-lg">
-<!-- Suppression of Navigation: Linear/Transactional intent dictates hiding TopNavBar and SideNavBar -->
-<!-- Main Registration Canvas -->
-<main class="w-full max-w-[480px]">
-<!-- Brand / Header Section -->
-<div class="text-center mb-xl">
-<h1 class="font-h1 text-h1 text-primary font-bold mb-xs">TalentFlow</h1>
-<p class="font-body text-body text-on-surface-variant">Enterprise HR Solutions</p>
-</div>
-<!-- Registration Card -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
-<div class="mb-lg">
-<h2 class="font-h2 text-h2 text-on-surface mb-xs">Create Account</h2>
-<p class="font-body text-body text-on-surface-variant">Step 1 of 3: Enter your details to get started.</p>
-</div>
-<form action="#" class="space-y-md" method="POST">
-<!-- Name Row (Grid) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
-<!-- First Name -->
-<div class="relative input-container">
-<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="firstName" name="firstName" placeholder="First Name" required="" type="text"/>
-<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="firstName">First Name</label>
-</div>
-<!-- Last Name -->
-<div class="relative input-container">
-<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="lastName" name="lastName" placeholder="Last Name" required="" type="text"/>
-<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="lastName">Last Name</label>
-</div>
-</div>
-<!-- Email -->
-<div class="relative input-container">
-<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="email" name="email" placeholder="Email Address" required="" type="email"/>
-<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="email">Email Address</label>
-</div>
-<!-- Password -->
-<div class="relative input-container">
-<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="password" name="password" placeholder="Password" required="" type="password"/>
-<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="password">Password</label>
-<button class="absolute right-sm top-1/2 -translate-y-1/2 p-sm text-on-surface-variant hover:text-primary transition-colors focus:outline-none rounded-full focus:ring-2 focus:ring-primary" type="button">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">visibility</span>
-</button>
-</div>
-<!-- Confirm Password -->
-<div class="relative input-container">
-<input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required="" type="password"/>
-<label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="confirmPassword">Confirm Password</label>
-</div>
-<!-- Privacy Policy Checkbox -->
-<div class="flex items-start gap-sm pt-sm">
-<div class="flex items-center h-5 mt-[2px]">
-<input class="w-4 h-4 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-2 focus:ring-offset-1" id="privacy" name="privacy" required="" type="checkbox"/>
-</div>
-<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="privacy">
-                        I agree to the <a class="text-primary hover:underline font-medium" href="#">Privacy Policy</a> and <a class="text-primary hover:underline font-medium" href="#">Terms of Service</a>.
-                    </label>
-</div>
-<!-- Verification Notice -->
-<div class="flex items-start gap-sm p-sm bg-surface-container-low rounded border border-surface-dim mt-md">
-<span class="material-symbols-outlined text-secondary text-[20px] mt-[2px]" style="font-variation-settings: 'FILL' 1;">mail</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-                        A verification email will be sent to the address provided upon account creation.
-                    </p>
-</div>
-<!-- Actions -->
-<div class="pt-lg flex flex-col gap-md">
-<button class="w-full bg-[#3F51B5] text-white font-body text-body font-medium h-[48px] rounded flex items-center justify-center gap-sm hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="submit">
-                        Create Account
-                        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
-</button>
-<p class="text-center font-body text-body text-on-surface-variant">
-                        Already have an account? 
-                        <a class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded px-xs" href="#">Log in</a>
-</p>
-</div>
-</form>
-</div>
-<!-- Decorative subtle background elements could go here, but kept clean as per prompt -->
-</main>
-<script>
-        // Simple script to handle password visibility toggle
-        document.querySelectorAll('input[type="password"]').forEach(input => {
-            const btn = input.nextElementSibling.nextElementSibling; // the button after label
-            if(btn && btn.tagName === 'BUTTON') {
-                btn.addEventListener('click', function() {
-                    const icon = this.querySelector('.material-symbols-outlined');
-                    if (input.type === 'password') {
-                        input.type = 'text';
-                        icon.textContent = 'visibility_off';
-                    } else {
-                        input.type = 'password';
-                        icon.textContent = 'visibility';
-                    }
-                });
-            }
-        });
-    </script>
-</body></html>
+<body class="bg-surface font-body text-body text-on-surface antialiased min-h-screen flex md:p-lg"><div class="flex min-h-screen w-full bg-surface">
+    <!-- Left Panel: Branding & Stepper -->
+    <aside class="hidden lg:flex lg:w-[320px] xl:w-[400px] bg-surface-container-low border-r border-outline-variant flex-col p-xl">
+        <div class="mb-xl">
+            <h1 class="font-h1 text-h1 text-primary font-bold">TalentFlow</h1>
+            <p class="font-body-sm text-on-surface-variant">Enterprise HR Solutions</p>
+        </div>
+        <nav class="flex-1">
+            <ul class="space-y-xl relative">
+                <!-- Vertical Line Connector -->
+                <div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant"></div>
+                
+                <!-- Step 1: Active -->
+                <li class="relative flex items-center gap-md">
+                    <div class="relative z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold">1</div>
+                    <div>
+                        <p class="font-medium text-primary">Personal Details</p>
+                        <p class="text-body-sm text-on-surface-variant">Step 1 of 4</p>
+                    </div>
+                </li>
+
+                <!-- Step 2: Pending -->
+                <li class="relative flex items-center gap-md">
+                    <div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface-variant text-[12px] font-bold">2</div>
+                    <div>
+                        <p class="font-medium text-on-surface-variant">Professional Profile</p>
+                        <p class="text-body-sm text-on-surface-variant">Step 2 of 4</p>
+                    </div>
+                </li>
+
+                <!-- Step 3: Pending -->
+                <li class="relative flex items-center gap-md">
+                    <div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface-variant text-[12px] font-bold">3</div>
+                    <div>
+                        <p class="font-medium text-on-surface-variant">Skills &amp; Expertise</p>
+                        <p class="text-body-sm text-on-surface-variant">Step 3 of 4</p>
+                    </div>
+                </li>
+
+                <!-- Step 4: Pending -->
+                <li class="relative flex items-center gap-md">
+                    <div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface-variant text-[12px] font-bold">4</div>
+                    <div>
+                        <p class="font-medium text-on-surface-variant">Review &amp; Submit</p>
+                        <p class="text-body-sm text-on-surface-variant">Step 4 of 4</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Right Panel: Form Content -->
+    <main class="flex-1 flex items-center justify-center p-md md:p-xl overflow-y-auto">
+        <div class="w-full max-w-[480px]">
+            <!-- Mobile Branding (Visible only on small screens) -->
+            <div class="lg:hidden text-center mb-xl">
+                <h1 class="font-h1 text-h1 text-primary font-bold mb-xs">TalentFlow</h1>
+                <p class="font-body text-body text-on-surface-variant">Enterprise HR Solutions</p>
+            </div>
+
+            <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg md:p-xl">
+                <div class="mb-lg">
+                    <h2 class="font-h2 text-h2 text-on-surface mb-xs">Create Account</h2>
+                    <p class="font-body text-body text-on-surface-variant">Step 1 of 4: Enter your details to get started.</p>
+                </div>
+                <form action="#" class="space-y-md" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                        <div class="relative input-container">
+                            <input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="firstName" name="firstName" placeholder="First Name" required="" type="text">
+                            <label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="firstName">First Name</label>
+                        </div>
+                        <div class="relative input-container">
+                            <input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="lastName" name="lastName" placeholder="Last Name" required="" type="text">
+                            <label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="lastName">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="relative input-container">
+                        <input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent" id="email" name="email" placeholder="Email Address" required="" type="email">
+                        <label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="email">Email Address</label>
+                    </div>
+                    <div class="relative input-container">
+                        <input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="password" name="password" placeholder="Password" required="" type="password">
+                        <label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="password">Password</label>
+                        <button class="absolute right-sm top-1/2 -translate-y-1/2 p-sm text-on-surface-variant hover:text-primary transition-colors focus:outline-none rounded-full focus:ring-2 focus:ring-primary" type="button">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">visibility</span>
+                        </button>
+                    </div>
+                    <div class="relative input-container">
+                        <input class="peer w-full h-[56px] px-md py-sm border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-transparent pr-12" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required="" type="password">
+                        <label class="absolute left-md top-1/2 -translate-y-1/2 font-body text-body text-on-surface-variant transition-all duration-200 pointer-events-none" for="confirmPassword">Confirm Password</label>
+                    </div>
+                    <div class="flex items-start gap-sm pt-sm">
+                        <div class="flex items-center h-5 mt-[2px]">
+                            <input class="w-4 h-4 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-2 focus:ring-offset-1" id="privacy" name="privacy" required="" type="checkbox">
+                        </div>
+                        <label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="privacy">
+                            I agree to the <a class="text-primary hover:underline font-medium" href="#">Privacy Policy</a> and <a class="text-primary hover:underline font-medium" href="#">Terms of Service</a>.
+                        </label>
+                    </div>
+                    <div class="flex items-start gap-sm p-sm bg-surface-container-low rounded border border-surface-dim mt-md">
+                        <span class="material-symbols-outlined text-secondary text-[20px] mt-[2px]" style="font-variation-settings: 'FILL' 1;">mail</span>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            A verification email will be sent to the address provided upon account creation.
+                        </p>
+                    </div>
+                    <div class="pt-lg flex flex-col gap-md">
+                        <button class="w-full bg-[#3F51B5] text-white font-body text-body font-medium h-[48px] rounded flex items-center justify-center gap-sm hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="submit">
+                            Create Account
+                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+                        </button>
+                        <p class="text-center font-body text-body text-on-surface-variant">
+                            Already have an account? 
+                            <a class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded px-xs" href="#">Log in</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div></body></html>

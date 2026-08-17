@@ -125,3 +125,16 @@ packages/
 # IDE
 .vscode/
 .idea/
+
+# Design and AI folders
+Design/
+AI/
+
+# Kilo config
+.kilo/
+
+# Images in wwwroot
+wwwroot/
+# Important files
+important.md
+*.txt

@@ -16,26 +16,24 @@ export const routes: Routes = [
   },
   { 
     path: 'register', 
-    loadComponent: () => import('./presentation/pages/auth/register/register').then(m => m.Register) 
+    pathMatch: 'full',
+    loadComponent: () => import('./presentation/pages/auth/register/register-choice/register-choice.component').then(m => m.RegisterChoiceComponent) 
+  },
+  { 
+    path: 'register/employer', 
+    loadComponent: () => import('./presentation/pages/auth/empolyer-registeration/company-setup/company-setup.component').then(m => m.CompanySetupComponent) 
   },
   {
-    path: 'register/company-details',
-    loadComponent: () => import('./presentation/pages/auth/register/company-details/company-details.component').then(m => m.CompanyDetailsComponent)
+    path: 'register/workspace',
+    loadComponent: () => import('./presentation/pages/auth/empolyer-registeration/workspace/workspace.component').then(m => m.WorkspaceComponent)
   },
   {
-    path: 'register/select-plan',
-    loadComponent: () => import('./presentation/pages/auth/register/select-plan/select-plan.component').then(m => m.SelectPlanComponent)
+    path: 'register/subscription',
+    loadComponent: () => import('./presentation/pages/auth/empolyer-registeration/subscription/subscription.component').then(m => m.SubscriptionComponent)
   },
   {
-    path: 'register/candidate',
-    loadComponent: () => import('./presentation/pages/auth/register/candidate-registration/candidate-registration.component').then(m => m.CandidateRegistrationComponent),
-    children: [
-      { path: 'step1', loadComponent: () => import('./presentation/pages/auth/register/candidate-registration/step1/step1.component').then(m => m.Step1Component) },
-      { path: 'step2', loadComponent: () => import('./presentation/pages/auth/register/candidate-registration/step2/step2.component').then(m => m.Step2Component) },
-      { path: 'step3', loadComponent: () => import('./presentation/pages/auth/register/candidate-registration/step3/step3.component').then(m => m.Step3Component) },
-      { path: 'step4', loadComponent: () => import('./presentation/pages/auth/register/candidate-registration/step4/step4.component').then(m => m.Step4Component) },
-      { path: '', redirectTo: 'step1', pathMatch: 'full' },
-    ]
+    path: 'register/review',
+    loadComponent: () => import('./presentation/pages/auth/empolyer-registeration/review/review.component').then(m => m.ReviewComponent)
   },
   { 
     path: 'verify-email', 
@@ -43,11 +41,11 @@ export const routes: Routes = [
   },
   { 
     path: 'forgot-password', 
-    loadComponent: () => import('./presentation/pages/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent) 
+    loadComponent: () => import('./presentation/pages/auth/password/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent) 
   },
   { 
     path: 'reset-password', 
-    loadComponent: () => import('./presentation/pages/auth/reset-password/reset-password.component').then(m => m.ResetPasswordComponent) 
+    loadComponent: () => import('./presentation/pages/auth/password/reset-password/reset-password.component').then(m => m.ResetPasswordComponent) 
   },
   {
     path: 'setup-account',

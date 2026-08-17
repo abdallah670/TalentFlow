@@ -1,0 +1,33 @@
+@reference "tailwindcss";
+.registration-layout {
+  @apply flex min-h-screen w-full bg-[#fbf8ff];
+}
+.main-content {
+  @apply flex-1 flex flex-col h-screen overflow-y-auto bg-[#fbf8ff];
+}
+.content-container {
+  @apply w-full max-w-3xl mx-auto pt-10 px-6 lg:px-8 pb-32;
+}
+.mobile-branding {
+  @apply lg:hidden text-center mb-8;
+  .logo { @apply text-[28px] font-medium text-[#24389c] tracking-tight mb-1; }
+  .tagline { @apply text-[15px] text-[#454652]; }
+}
+.bottom-bar {
+  @apply fixed bottom-0 right-0 w-full lg:w-[calc(100% - 320px)] xl:w-[calc(100% - 400px)] bg-white border-t border-[#c5c5d4] p-4 px-6 lg:px-8 flex items-center justify-between z-20;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+}
+.btn-back {
+  @apply text-[15px] text-[#24389c] font-medium px-4 py-2 rounded flex items-center gap-2 hover:bg-[#f4f2fc] transition-colors;
+}
+.actions-group {
+  @apply flex items-center gap-6;
+}
+.login-prompt {
+  @apply text-[15px] text-[#454652] hidden sm:block;
+  a { @apply text-[#24389c] font-medium hover:underline ml-1; }
+}
+.btn-primary {
+  @apply text-[15px] text-white bg-[#3f51b5] font-medium px-6 py-[10px] rounded flex items-center gap-2 hover:bg-[#293ca0] transition-colors;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}

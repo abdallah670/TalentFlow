@@ -1,24 +1,23 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable, tap, catchError, of } from 'rxjs';
+import { Observable, tap, catchError, of, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {
   AuthRequest,
   AuthResponse,
   RegistrationRequest,
   RegistrationResponse,
-  CandidateRegistrationRequest,
-  EmployerRegistrationRequest,
+
   VerifyEmailRequest,
   ResendVerificationRequest,
   ForgotPasswordRequest,
   ResetPasswordRequest,
-  AcceptInvitationRequest,
-  TenantInfo,
+ 
 } from '../../data/models/auth.model';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../state/auth/auth.actions';
+import { AcceptInvitationRequest, CandidateRegistrationRequest, EmployerRegistrationRequest, TenantInfo } from '../../data/models/registration.model';
 
 @Injectable({
   providedIn: 'root',
@@ -53,9 +52,10 @@ export class AuthService {
 
   register(request: RegistrationRequest): Observable<RegistrationResponse> {
     this.store.dispatch(AuthActions.register({ request }));
-    return this.http.post<RegistrationResponse>(`${this.apiUrl}/register`, request).pipe(
+    return this.http.post<any>(`${this.apiUrl}/register`, request).pipe(
+      map((response: any) => this.mapAuthResponse(response)),
       tap((response: RegistrationResponse) => {
-        if (!response.requiresEmailVerification && response.token) {
+        if (response.token) {
           this.handleAuthentication({
             id: response.userId,
             userName: response.userName,
@@ -70,9 +70,10 @@ export class AuthService {
 
   registerCandidate(request: CandidateRegistrationRequest): Observable<RegistrationResponse> {
     this.store.dispatch(AuthActions.registerCandidate({ request }));
-    return this.http.post<RegistrationResponse>(`${this.apiUrl}/register-candidate`, request).pipe(
+    return this.http.post<any>(`${this.apiUrl}/register-candidate`, request).pipe(
+      map((response: any) => this.mapAuthResponse(response)),
       tap((response: RegistrationResponse) => {
-        if (!response.requiresEmailVerification && response.token) {
+        if (response.token) {
           this.handleAuthentication({
             id: response.userId,
             userName: response.userName,
@@ -87,9 +88,10 @@ export class AuthService {
 
   registerEmployer(request: EmployerRegistrationRequest): Observable<RegistrationResponse> {
     this.store.dispatch(AuthActions.registerEmployer({ request }));
-    return this.http.post<RegistrationResponse>(`${this.apiUrl}/register-employer`, request).pipe(
+    return this.http.post<any>(`${this.apiUrl}/register-employer`, request).pipe(
+      map((response: any) => this.mapAuthResponse(response)),
       tap((response: RegistrationResponse) => {
-        if (!response.requiresEmailVerification && response.token) {
+        if (response.token) {
           this.handleAuthentication({
             id: response.userId,
             userName: response.userName,
@@ -166,6 +168,24 @@ export class AuthService {
         return of(null as any);
       }),
     );
+  }
+
+  private mapAuthResponse(response: any): RegistrationResponse {
+    const isAuthenticated = response?.isAuthenticated ?? response?.IsAuthenticated ?? false;
+    const message = response?.message ?? response?.Message ?? '';
+
+    if (!isAuthenticated) {
+      throw { error: { message: message || 'Registration failed. Please try again.' } };
+    }
+
+    return {
+      userId: response?.id ?? response?.Id ?? '',
+      token: response?.token ?? response?.Token ?? undefined,
+      refreshToken: response?.refreshToken ?? response?.RefreshToken ?? undefined,
+      email: response?.email ?? response?.Email ?? '',
+      userName: response?.userName ?? response?.UserName ?? '',
+      requiresEmailVerification: true,
+    };
   }
 
   private handleAuthentication(response: AuthResponse): void {

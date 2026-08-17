@@ -1,0 +1,52 @@
+<div class="auth-container">
+  <div class="auth-pattern"></div>
+
+  <div class="auth-card signup-card">
+
+    <header class="text-center mb-lg">
+      <h1 class="signup-title">Join TalentFlow</h1>
+      <p class="subtitle">Choose your account type to get started</p>
+    </header>
+
+    <div class="option-grid">
+
+      <!-- Candidate -->
+      <a class="option option--candidate" (click)="navigateToCandidate()">
+        <span class="option__icon">
+          <span class="material-symbols-outlined">person</span>
+        </span>
+
+        <span class="option__eyebrow">Path one</span>
+        <h2 class="option__title">Candidate</h2>
+        <p class="option__desc">Looking for job opportunities and career growth</p>
+
+        <span class="option__cta">
+          Get started
+          <span class="material-symbols-outlined option__arrow">arrow_forward</span>
+        </span>
+      </a>
+
+      <!-- Employer -->
+      <a class="option option--employer"  (click)="navigateToEmployer()">
+        <span class="option__icon">
+          <span class="material-symbols-outlined">apartment</span>
+        </span>
+
+        <span class="option__eyebrow">Path two</span>
+        <h2 class="option__title">Employer</h2>
+        <p class="option__desc">Hiring talent and building your team</p>
+
+        <span class="option__cta">
+          Get started
+          <span class="material-symbols-outlined option__arrow">arrow_forward</span>
+        </span>
+      </a>
+
+    </div>
+
+    <p class="auth-link-row text-center mt-lg">
+      Already have an account? <a class="auth-link" routerLink="/login">Log in</a>
+    </p>
+
+  </div>
+</div>

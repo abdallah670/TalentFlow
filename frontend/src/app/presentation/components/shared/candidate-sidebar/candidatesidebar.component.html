@@ -1,0 +1,29 @@
+<aside class="sidebar">
+   <div class="branding">
+      <h1 class="logo">TalentFlow</h1>
+      <p class="tagline">Enterprise HR Recruitment</p>
+   </div>
+   <nav class="stepper">
+      @for (step of steps; track step.id; let last = $last) {
+        <div class="step-item" [class.is-past]="currentStep() > step.id" [class.is-current]="currentStep() === step.id" [class.is-future]="currentStep() < step.id">
+          @if (!last) {
+             <div class="step-connector"></div>
+          }
+          <div class="step-circle">
+             @if (currentStep() > step.id) {
+                <span class="material-symbols-outlined check-icon">check</span>
+             } @else {
+                <span class="step-number">{{step.id}}</span>
+             }
+          </div>
+          <div class="step-labels">
+            <span class="step-label">{{step.label}}</span>
+            <span class="step-title">{{step.title}}</span>
+          </div>
+        </div>
+      }
+    </nav>
+    <div class="background-pattern">
+       <div class="bg-image"></div>
+    </div>
+</aside>

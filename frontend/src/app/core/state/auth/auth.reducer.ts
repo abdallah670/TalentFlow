@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { AuthActions } from './auth.actions';
-import { TenantInfo } from '../../../data/models/auth.model';
+import { TenantInfo } from '../../../data/models/registration.model';
+
 
 export interface AuthState {
   user: { id: string; email: string; username: string; roles: string[]; emailConfirmed: boolean } | null;

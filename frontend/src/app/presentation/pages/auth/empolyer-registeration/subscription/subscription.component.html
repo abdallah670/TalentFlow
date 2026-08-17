@@ -1,0 +1,125 @@
+<app-layout>
+  <div class="subscription-container">
+    <div class="header-section">
+      <h1 class="page-title">Select Subscription Plan</h1>
+      <p class="page-subtitle">Choose the perfect plan to scale your hiring process. Upgrade, downgrade, or cancel at any time.</p>
+    </div>
+
+    <div class="subscription-actions">
+      <button type="button" (click)="goBack()" class="btn-back">
+        Back
+      </button>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Free Tier -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <h2 class="plan-name">Free</h2>
+          <p class="plan-description">For startups and small teams.</p>
+          <div class="plan-price-wrapper">
+            <span class="plan-price">$0</span>
+            <span class="plan-period">/month</span>
+          </div>
+        </div>
+        
+        <ul class="features-list">
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Up to 3 Active Jobs</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Basic Candidate Management</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Standard Analytics Dashboard</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon-disabled material-symbols-outlined">close</span>
+            <span class="feature-text-disabled">Advanced Reporting</span>
+          </li>
+        </ul>
+        
+        <button (click)="selectPlan('free')" class="btn-select">Select Free</button>
+      </div>
+
+      <!-- Pro Tier -->
+      <div class="plan-card-pro">
+        <div class="plan-badge">
+          Recommended
+        </div>
+        <div class="plan-header-pro">
+          <h2 class="plan-name-pro">Pro</h2>
+          <p class="plan-description">For growing companies scaling fast.</p>
+          <div class="plan-price-wrapper">
+            <span class="plan-price">$49</span>
+            <span class="plan-period">/month</span>
+          </div>
+        </div>
+        
+        <ul class="features-list">
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text-bold">Unlimited Active Jobs</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text-bold">Advanced Candidate Pipelines</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Custom Analytics & Reporting</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Automated Email Workflows</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Team Collaboration Tools</span>
+          </li>
+        </ul>
+        
+        <button (click)="selectPlan('pro')" class="btn-select-pro">Select Pro</button>
+      </div>
+
+      <!-- Enterprise Tier -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <h2 class="plan-name">Enterprise</h2>
+          <p class="plan-description">Tailored solutions for large organizations.</p>
+          <div class="plan-price-wrapper">
+            <span class="plan-price">Custom</span>
+          </div>
+        </div>
+        
+        <ul class="features-list">
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Everything in Pro</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Single Sign-On (SSO) Integration</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Dedicated Account Manager</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">Custom API Access</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon material-symbols-outlined">check</span>
+            <span class="feature-text">SLA Guarantee</span>
+          </li>
+        </ul>
+        
+        <button (click)="selectPlan('enterprise')" class="btn-select-enterprise">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+</app-layout>

@@ -4,7 +4,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, map, catchError, tap, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthActions } from './auth.actions';
-import { AuthResponse, RegistrationResponse, TenantInfo } from '../../../data/models/auth.model';
+import { AuthResponse, RegistrationResponse } from '../../../data/models/auth.model';
+import { TenantInfo } from '../../../data/models/registration.model';
 
 export const login$ = createEffect(
   (actions$ = inject(Actions), authService = inject(AuthService)) => {

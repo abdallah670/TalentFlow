@@ -1,0 +1,52 @@
+@reference "tailwindcss";
+.step-header {
+  @apply mb-6;
+  .step-subtitle { @apply text-xs font-bold text-[#24389c] uppercase tracking-wider mb-2 block; }
+  .step-title { @apply text-[22px] font-medium text-[#1a1b22]; }
+}
+.cards-container {
+  @apply flex flex-col gap-6;
+}
+.card {
+  @apply bg-[#ffffff] rounded-lg border border-[#c5c5d4] p-6 md:p-8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  .card-title { @apply text-[18px] font-medium text-[#1a1b22] mb-4; }
+}
+.form-group {
+  @apply flex flex-col gap-1;
+  .form-label { @apply text-[13px] font-medium text-[#454652]; }
+}
+.phone-input-group {
+  @apply flex mt-1;
+  .country-selector {
+    @apply flex items-center gap-1 border border-[#c5c5d4] border-r-0 rounded-l px-3 bg-[#f4f2fc] h-12 shrink-0 cursor-pointer hover:bg-[#efedf6];
+  }
+  .phone-input {
+    @apply h-12 w-full px-4 border border-[#c5c5d4] rounded-r bg-white text-[15px] focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c];
+  }
+}
+.form-grid { @apply grid grid-cols-1 md:grid-cols-2 gap-4; }
+.form-input {
+  @apply h-12 px-4 mt-1 border border-[#c5c5d4] rounded bg-white text-[15px] focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c];
+}
+.two-col-cards {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+.experience-card {
+  @apply bg-[#ffffff] rounded-lg border border-[#c5c5d4] p-6 relative overflow-hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  .bg-icon { @apply absolute -right-4 -top-2 text-[120px] text-[#f4f2fc] select-none pointer-events-none; }
+  .title { @apply text-[18px] font-medium text-[#1a1b22] mb-2 relative z-10; }
+  .description { @apply text-[13px] text-[#454652] mb-4 relative z-10; }
+}
+.add-card {
+  @apply bg-[#fbf8ff] border border-dashed border-[#c5c5d4] rounded-lg p-6 flex flex-col items-center justify-center text-[#757684] cursor-pointer hover:bg-[#f4f2fc] transition-colors;
+}
+.url-group {
+  @apply flex flex-col gap-4;
+  .input-wrapper {
+    @apply relative mt-1;
+    .icon { @apply absolute left-3 top-3 text-[#757684]; }
+    .url-input { @apply w-full h-12 pl-10 pr-4 border border-[#c5c5d4] rounded bg-white text-[15px] focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c]; }
+  }
+}

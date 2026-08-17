@@ -1,0 +1,156 @@
+// Signup — Account Type Selector
+// Relies entirely on the global token system defined in styles.scss
+// (--primary, --tertiary, --surface-*, --radius-*, --text-*, --card-shadow*)
+// No new colors or fonts are introduced here.
+
+:host {
+  display: block;
+}
+
+.mt-lg {
+  margin-top: 24px;
+}
+
+// Widen the shared .auth-card just for this page — two options need more room
+.auth-card.signup-card {
+  max-width: 760px;
+  padding: var(--xl) var(--lg);
+}
+
+.signup-title {
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  font-size: var(--text-h1);
+  color: var(--on-surface);
+  margin: 0 0 4px;
+}
+
+.auth-link-row {
+  color: var(--on-surface-variant);
+  font-size: var(--text-body-sm);
+}
+
+// ---------------------------------------------------------------------------
+// Option grid
+// ---------------------------------------------------------------------------
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--md);
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--on-surface);
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--xl) var(--lg) var(--lg);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-elevated);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: var(--md);
+
+    .material-symbols-outlined {
+      font-size: 28px;
+    }
+  }
+
+  &__eyebrow {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: var(--xs);
+  }
+
+  &__title {
+    font-family: var(--font-family-body);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    color: var(--on-surface);
+    margin: 0 0 var(--xs);
+  }
+
+  &__desc {
+    font-size: var(--text-body-sm);
+    line-height: 1.5;
+    color: var(--on-surface-variant);
+    margin: 0 0 var(--lg);
+    max-width: 30ch;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--xs);
+    font-weight: 500;
+    font-size: var(--text-body-sm);
+  }
+
+  &__arrow {
+    font-size: 18px !important;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover &__arrow,
+  &:focus-visible &__arrow {
+    transform: translateX(4px);
+  }
+
+  // --- Candidate: tertiary token (warm accent) ---
+  &--candidate {
+    .option__icon {
+      background: var(--tertiary-fixed);
+      color: var(--tertiary);
+    }
+    .option__eyebrow,
+    .option__cta {
+      color: var(--tertiary);
+    }
+    &:hover {
+      border-color: var(--tertiary);
+    }
+  }
+
+  // --- Employer: primary token (core brand) ---
+  &--employer {
+    .option__icon {
+      background: var(--primary-fixed);
+      color: var(--primary);
+    }
+    .option__eyebrow,
+    .option__cta {
+      color: var(--primary);
+    }
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+}

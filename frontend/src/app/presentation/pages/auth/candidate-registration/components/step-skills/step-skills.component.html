@@ -1,0 +1,48 @@
+<div class="step-header">
+  <span class="step-subtitle">Step 3 of 4</span>
+  <h2 class="step-title">Skills & Expertise</h2>
+</div>
+
+<div class="card">
+  <p class="card-description">Provide your latest resume and highlight your core competencies to match with the best opportunities.</p>
+  
+  <form class="space-y-8">
+      <div>
+        <label for="resumeUpload" class="form-label">Resume Document <span class="text-[#ba1a1a]">*</span></label>
+        <div class="upload-zone">
+            <div class="icon-container">
+              <span class="material-symbols-outlined text-[32px]">upload_file</span>
+            </div>
+            <p class="primary-text">Drag & drop your file here, or <span>browse</span></p>
+            <p class="secondary-text">Supports PDF, DOCX (Max 10MB)</p>
+            <input type="file" id="resumeUpload" class="hidden" accept=".pdf,.doc,.docx" />
+        </div>
+      </div>
+      
+      <div>
+        <label for="skillInput" class="form-label small-mb">Key Skills</label>
+        <p class="section-desc">Add up to 10 technical or soft skills relevant to your desired role.</p>
+        
+        <div class="skills-input-container">
+            @for (skill of skills().skills; track skill) {
+              <div class="skill-chip">
+                  <span>{{skill}}</span>
+                  <button type="button" aria-label="Remove skill" (click)="removeSkill(skill)">
+                    <span class="material-symbols-outlined text-[14px]">close</span>
+                  </button>
+              </div>
+            }
+            <input type="text" id="skillInput" class="skill-input" placeholder="Type a skill and press Enter..." (keydown)="addSkill($event)">
+        </div>
+      </div>
+      
+      <div>
+        <label for="coverLetter" class="form-label small-mb">Cover Letter (Optional)</label>
+        <p class="section-desc">Introduce yourself and explain why you'd be a great fit.</p>
+        <textarea id="coverLetter" rows="6" class="cover-letter-input" placeholder="Write or paste your cover letter here..." (input)="onCoverLetterChange($event)">{{ coverLetter }}</textarea>
+        <div class="char-counter">
+          <span [class.warning]="remainingChars < 200">{{ remainingChars }}</span> / {{ maxCoverLetterLength }}
+        </div>
+      </div>
+  </form>
+</div>

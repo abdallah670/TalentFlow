@@ -1,0 +1,42 @@
+@reference "tailwindcss";
+.sidebar {
+  @apply hidden lg:flex w-[320px] xl:w-[400px] bg-[#efedf6] border-r border-[#c5c5d4] flex-col p-8 xl:p-10 relative overflow-hidden shrink-0 h-full min-h-screen;
+}
+.branding {
+  @apply z-10 mb-10;
+  .logo { @apply text-[28px] font-medium text-[#24389c] tracking-tight leading-tight; }
+  .tagline { @apply text-[15px] text-[#565c84] mt-2; }
+}
+.stepper {
+  @apply flex flex-col gap-10 z-10 flex-1;
+}
+.step-item {
+  @apply flex items-start gap-4 relative;
+  &.is-future { @apply opacity-50; }
+}
+.step-connector {
+  @apply absolute left-[15px] top-[36px] bottom-[-44px] w-[2px] bg-[#c5c5d4];
+  .is-past & { @apply bg-[#24389c]; }
+}
+.step-circle {
+  @apply w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10 border-2 transition-colors;
+  .is-current & { @apply bg-[#3f51b5] border-[#24389c] text-[#ffffff]; }
+  .is-past & { @apply bg-[#24389c] border-[#24389c] text-[#ffffff]; }
+  .is-future & { @apply bg-[#e3e1ea] border-[#e3e1ea] text-[#454652]; }
+}
+.check-icon { @apply text-[18px]; }
+.step-number { @apply text-xs font-bold; }
+.step-labels { @apply flex flex-col pt-1; }
+.step-label {
+  @apply text-xs font-bold uppercase tracking-wider transition-colors;
+  .is-past &, .is-current & { @apply text-[#24389c]; }
+  .is-future & { @apply text-[#454652]; }
+}
+.step-title { @apply text-[18px] font-medium text-[#1a1b22]; }
+.background-pattern {
+  @apply absolute inset-0 z-0 opacity-5 pointer-events-none;
+  .bg-image {
+    @apply w-full h-full bg-cover bg-center object-cover;
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCM-iUwUaDBMwk6jLB1vJTSEeWLp00dbLdyk05tB39xu9yZ7V62yAbPXax0NUV7QvGCMcv14J9vyIXa2KMt3VXTjPz_dvU6CKzM5Dq94Yvla-uTj-YMpeVqWWveGB_5U9VBm-nPmI-2Va5yu85m4UwIiz5Bm3J1VPxZjdsbYRJdbAZKQkYd3qA6MZ0A8W1TJ1LQy67at_Hm8flLRUQw5f6t3Giz80YLKBhIUTb9JX8Aa5MRmg64VOiqHdkGjZu824iG2kcoC_i2muE');
+  }
+}

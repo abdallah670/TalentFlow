@@ -1,0 +1,46 @@
+<app-layout>
+  <div class="workspace-card">
+    <div class="card-header-line"></div>
+    <div class="card-body">
+      <app-step-indicator [currentStep]="2" [totalSteps]="4"></app-step-indicator>
+
+      <div class="page-header">
+        <h1 class="page-title">Create Your First Workspace</h1>
+        <p class="page-subtitle">
+          Workspaces help you organize different branches, departments, or geographical locations within your company. Establishing a logical structure early ensures a smoother experience for your recruiting teams. You can always add more later.
+        </p>
+      </div>
+
+      <form [formGroup]="workspaceForm" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="form-group group">
+          <label for="name" class="input-label group-focus-within:text-primary-container transition-colors">Workspace Name</label>
+          <div class="relative">
+            <input id="name" formControlName="name" class="custom-input" [ngClass]="{'border-error': workspaceForm.get('name')?.invalid && workspaceForm.get('name')?.touched}" placeholder="e.g., Engineering, London Office" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group group">
+          <label for="url" class="input-label group-focus-within:text-primary-container transition-colors">Workspace URL</label>
+          <p class="input-help-text">This unique URL is where your team will log in to access this specific workspace.</p>
+          <div class="url-input-wrapper"
+               [ngClass]="{'border-error': workspaceForm.get('url')?.invalid && workspaceForm.get('url')?.touched}">
+            <span class="url-prefix">
+              talentflow.io/
+            </span>
+            <input id="url" formControlName="url" (input)="onUrlEdit()" class="url-input" placeholder="acme-engineering" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" (click)="goBack()" class="btn-back">
+            Back
+          </button>
+          <button type="submit" class="btn-primary">
+            Continue
+            <span class="btn-icon material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-layout>

@@ -1,0 +1,79 @@
+@reference "../../../../../styles.scss";
+.subscription-container {
+  @apply flex flex-col items-center justify-start w-full bg-background pt-[64px] px-md sm:px-xl lg:px-[64px];
+}
+.header-section {
+  @apply text-center mb-xl max-w-2xl mx-auto w-full;
+}
+.page-title {
+  @apply font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-on-background mb-sm;
+}
+.page-subtitle {
+  @apply font-body text-body text-on-surface-variant;
+}
+.plans-grid {
+  @apply grid grid-cols-1 xl:grid-cols-3 gap-lg max-w-6xl w-full;
+}
+.plan-card {
+  @apply bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm flex flex-col hover:shadow-md transition-shadow;
+}
+.plan-card-pro {
+  @apply bg-surface-container-lowest rounded-xl border-2 border-primary-container p-lg shadow-lg relative flex flex-col transform md:-translate-y-2;
+}
+.plan-badge {
+  @apply absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary-container text-on-primary font-label text-label px-sm py-[2px] rounded-full shadow-sm;
+}
+.plan-header {
+  @apply mb-lg;
+}
+.plan-header-pro {
+  @apply mb-lg mt-sm;
+}
+.plan-name {
+  @apply font-h2 text-h2 text-on-surface mb-xs;
+}
+.plan-name-pro {
+  @apply font-h2 text-h2 text-primary-container mb-xs;
+}
+.plan-description {
+  @apply font-body-sm text-body-sm text-on-surface-variant mb-md;
+}
+.plan-price-wrapper {
+  @apply flex items-baseline mb-sm;
+}
+.plan-price {
+  @apply font-h1 text-h1 text-on-surface;
+}
+.plan-period {
+  @apply font-body text-body text-on-surface-variant ml-xs;
+}
+.features-list {
+  @apply flex-grow space-y-sm mb-lg;
+}
+.feature-item {
+  @apply flex items-start;
+}
+.feature-icon {
+  @apply text-primary text-[16px] mr-sm;
+}
+.feature-icon-disabled {
+  @apply text-outline text-[16px] mr-sm opacity-50;
+}
+.feature-text {
+  @apply font-body-sm text-body-sm text-on-surface;
+}
+.feature-text-bold {
+  @apply font-body-sm text-body-sm text-on-surface font-medium;
+}
+.feature-text-disabled {
+  @apply font-body-sm text-body-sm text-on-surface-variant opacity-75;
+}
+.btn-select {
+  @apply w-full py-sm rounded border border-primary-container text-primary-container font-label text-label hover:bg-surface-container-highest transition-colors;
+}
+.btn-select-pro {
+  @apply w-full py-sm rounded bg-primary-container text-on-primary font-label text-label hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-colors shadow-sm;
+}
+.btn-select-enterprise {
+  @apply w-full py-sm rounded border border-outline text-on-surface font-label text-label hover:bg-surface-container-highest transition-colors;
+}

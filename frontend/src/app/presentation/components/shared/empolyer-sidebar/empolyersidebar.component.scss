@@ -1,0 +1,46 @@
+@reference "../../../../styles.scss";
+.sidebar {
+  @apply h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface-container-low flex flex-col py-xl px-md z-10 hidden md:flex;
+}
+.sidebar-header {
+  @apply mb-xl px-md;
+}
+.sidebar-title {
+  @apply font-h3 text-h3 font-medium text-on-surface;
+}
+.sidebar-subtitle {
+  @apply font-label text-label text-on-surface-variant mt-xs;
+}
+.sidebar-nav {
+  @apply flex-1 flex flex-col gap-xs;
+}
+.nav-item {
+  @apply flex items-center gap-md p-md mb-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-xl transition-all;
+}
+.nav-item-active {
+  @apply bg-secondary-container text-on-secondary-container opacity-100;
+}
+.nav-item-disabled {
+  @apply opacity-60;
+}
+.nav-icon {
+  /* removed apply */
+}
+.nav-icon-completed {
+  @apply text-primary;
+}
+.nav-label {
+  @apply font-label text-label font-medium;
+}
+.sidebar-footer {
+  @apply mt-auto px-md flex items-center gap-sm opacity-50;
+}
+.logo-wrapper {
+  @apply w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary;
+}
+.logo-icon {
+  @apply text-[18px];
+}
+.logo-text {
+  @apply font-label text-label text-on-surface-variant;
+}

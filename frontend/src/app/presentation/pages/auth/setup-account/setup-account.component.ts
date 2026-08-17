@@ -20,8 +20,8 @@ export class SetupAccountComponent {
 
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
-  showPassword = signal(false);
-  showConfirmPassword = signal(false);
+  showPassword = false;
+  showConfirmPassword = false;
 
   email = signal('');
   firstName = signal('');
@@ -45,11 +45,11 @@ export class SetupAccountComponent {
   }
 
   togglePassword(): void {
-    this.showPassword.update((value: boolean) => !value);
+    this.showPassword = !this.showPassword;
   }
 
   toggleConfirmPassword(): void {
-    this.showConfirmPassword.update((value: boolean) => !value);
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   isPasswordValid(criterion: 'length' | 'uppercase' | 'special'): boolean {

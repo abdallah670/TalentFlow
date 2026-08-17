@@ -1,0 +1,7 @@
+@reference "../../../../styles.scss";
+.layout-wrapper {
+  @apply min-h-screen flex selection:bg-primary-container selection:text-on-primary w-full;
+}
+.layout-main {
+  @apply md:ml-64 flex-1 relative flex items-start justify-center p-md sm:p-xl lg:p-[64px] overflow-y-auto;
+}

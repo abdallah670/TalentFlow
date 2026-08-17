@@ -1,0 +1,78 @@
+<div class="step-header">
+  <span class="step-subtitle">Step 4 of 4</span>
+  <h2 class="step-title">Review & Submit</h2>
+</div>
+
+<div class="review-card">
+  <div class="success-icon-container">
+      <span class="material-symbols-outlined text-[40px]">check_circle</span>
+  </div>
+  <h3 class="title">Almost Done!</h3>
+  <p class="description">Please review your information below. When you're ready, submit your profile to join the TalentFlow network.</p>
+</div>
+
+<div class="review-sections">
+  <div class="review-section">
+    <h4 class="section-title">Personal Details</h4>
+    <div class="review-grid">
+      <div class="review-item">
+        <span class="review-label">Full Name</span>
+        <span class="review-value">{{ profile.firstName }} {{ profile.lastName }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Email</span>
+        <span class="review-value">{{ profile.email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-section">
+    <h4 class="section-title">Professional Profile</h4>
+    <div class="review-grid">
+      <div class="review-item">
+        <span class="review-label">Job Title</span>
+        <span class="review-value">{{ profile.currentJobTitle || 'Not provided' }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Company</span>
+        <span class="review-value">{{ profile.currentCompany || 'Not provided' }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Phone</span>
+        <span class="review-value">{{ profile.phoneNumber || 'Not provided' }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Experience</span>
+        <span class="review-value">{{ experienceLabel }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">LinkedIn</span>
+        <span class="review-value">{{ profile.linkedinUrl || 'Not provided' }}</span>
+      </div>
+      <div class="review-item">
+        <span class="review-label">Portfolio</span>
+        <span class="review-value">{{ profile.portfolioUrl || 'Not provided' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-section">
+    <h4 class="section-title">Skills & Expertise</h4>
+    <div class="review-item full-width">
+      <span class="review-label">Skills</span>
+      <div class="review-skills">
+        @if (skills.length > 0) {
+          @for (skill of skills; track skill) {
+            <span class="skill-chip">{{ skill }}</span>
+          }
+        } @else {
+          <span class="review-value">No skills added</span>
+        }
+      </div>
+    </div>
+    <div class="review-item full-width">
+      <span class="review-label">Cover Letter</span>
+      <span class="review-value">{{ profile.coverLetter || 'Not provided' }}</span>
+    </div>
+  </div>
+</div>

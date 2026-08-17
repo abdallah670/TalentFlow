@@ -1,0 +1,111 @@
+<app-layout>
+  <div class="review-card">
+    <div class="card-header-line"></div>
+    <div class="card-body">
+      
+      <div class="page-header">
+        <h1 class="page-title">Review & Finish</h1>
+        <p class="page-subtitle">
+          Please review your setup details before launching your workspace.
+        </p>
+      </div>
+
+      <div class="sections-container">
+        
+        <!-- Company Details Card -->
+        <section class="section-card group">
+          <div class="edit-btn-wrapper">
+            <button (click)="editStep('/register/company-setup')" class="edit-btn">
+              <span class="edit-icon material-symbols-outlined">edit</span> Edit
+            </button>
+          </div>
+          <div class="section-header">
+            <span class="section-icon material-symbols-outlined">business</span>
+            <h2 class="section-title">Company Information</h2>
+          </div>
+          <div class="details-grid">
+            <div>
+              <p class="detail-label">Company Name</p>
+              <p class="detail-value">{{ profile.companyName || 'Not provided' }}</p>
+            </div>
+            <div>
+              <p class="detail-label">Industry</p>
+              <p class="detail-value">{{ profile.industry || 'Not provided' }}</p>
+            </div>
+            <div>
+              <p class="detail-label">Company Size</p>
+              <p class="detail-value">{{ profile.companySize || 'Not provided' }}</p>
+            </div>
+            <div>
+              <p class="detail-label">Website</p>
+              <p class="detail-value">{{ profile.websiteUrl || 'Not provided' }}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Workspace Details Card -->
+        <section class="section-card group">
+          <div class="edit-btn-wrapper">
+            <button (click)="editStep('/register/workspace')" class="edit-btn">
+              <span class="edit-icon material-symbols-outlined">edit</span> Edit
+            </button>
+          </div>
+          <div class="section-header">
+            <span class="section-icon material-symbols-outlined">domain</span>
+            <h2 class="section-title">Workspace Information</h2>
+          </div>
+          <div class="details-grid">
+            <div>
+              <p class="detail-label">Workspace Name</p>
+              <p class="detail-value">{{ profile.workspaceName || 'Not provided' }}</p>
+            </div>
+            <div>
+              <p class="detail-label">Workspace URL</p>
+              <p class="detail-value">talentflow.io/{{ profile.workspaceUrl || '' }}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Subscription Card -->
+        <section class="section-card group">
+          <div class="edit-btn-wrapper">
+            <button (click)="editStep('/register/subscription')" class="edit-btn">
+              <span class="edit-icon material-symbols-outlined">edit</span> Edit
+            </button>
+          </div>
+          <div class="section-header">
+            <span class="section-icon material-symbols-outlined">payments</span>
+            <h2 class="section-title">Selected Plan</h2>
+          </div>
+          <div class="plan-card">
+            <div class="plan-info">
+              <div class="plan-icon-wrapper">
+                <span class="plan-icon material-symbols-outlined fill">rocket_launch</span>
+              </div>
+              <div>
+                <p class="plan-name">{{ selectedPlan | titlecase }} Plan</p>
+                <p class="plan-billing">Billed monthly</p>
+              </div>
+            </div>
+            <div class="plan-price-info">
+              <p class="plan-price">{{ getPlanPrice(selectedPlan) }}</p>
+              <p class="plan-period">/month</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="goBack()" class="btn-back">
+          Back
+        </button>
+        <button type="button" (click)="confirm()" class="btn-primary" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Launching...' : 'Confirm & Launch Workspace' }}
+          <span class="btn-icon material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</app-layout>

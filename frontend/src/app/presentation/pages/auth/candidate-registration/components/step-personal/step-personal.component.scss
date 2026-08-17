@@ -1,0 +1,43 @@
+@reference "tailwindcss";
+.step-header {
+  @apply mb-6;
+  .step-subtitle { @apply text-xs font-bold text-[#24389c] uppercase tracking-wider mb-2 block; }
+  .step-title { @apply text-[22px] font-medium text-[#1a1b22]; }
+}
+.card {
+  @apply bg-[#ffffff] rounded-lg border border-[#c5c5d4] p-6 md:p-8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  .card-description { @apply text-[15px] text-[#454652] mb-6; }
+}
+.form-grid { @apply grid grid-cols-1 md:grid-cols-2 gap-4; }
+.form-group {
+  @apply flex flex-col relative;
+}
+.form-input {
+  @apply h-14 px-4 border border-[#c5c5d4] rounded bg-white text-[15px] focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c] transition-colors;
+  &.has-icon { @apply pr-12; }
+}
+.form-label {
+  @apply absolute left-4 top-1/2 -translate-y-1/2 text-[15px] text-[#454652] transition-all duration-200 pointer-events-none origin-left;
+  
+  .form-input:focus ~ &,
+  .form-input:not(:placeholder-shown) ~ & {
+    @apply top-0 scale-[0.85] -translate-y-1/2 bg-white px-1 text-[#3f51b5];
+  }
+}
+.password-toggle {
+  @apply absolute right-3 top-[10px] p-2 text-[#757684] hover:text-[#24389c] focus:outline-none rounded-full;
+}
+.checkbox-group {
+  @apply flex items-start gap-2 pt-2;
+  .checkbox { @apply mt-1 w-4 h-4 text-[#3f51b5] bg-white border-[#c5c5d4] rounded focus:ring-[#3f51b5] focus:ring-offset-1; }
+  .checkbox-label {
+    @apply text-[13px] text-[#454652] cursor-pointer;
+    a { @apply text-[#24389c] hover:underline font-medium; }
+  }
+}
+.info-box {
+  @apply flex items-start gap-3 p-4 bg-[#f4f2fc] rounded border border-[#e3e1ea] mt-4;
+  .info-icon { @apply text-[#565c84] text-[20px] mt-[2px]; }
+  .info-text { @apply text-[13px] text-[#454652] leading-tight; }
+}

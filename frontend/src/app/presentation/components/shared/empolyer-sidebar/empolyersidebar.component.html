@@ -1,0 +1,51 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2 class="sidebar-title">Onboarding</h2>
+    <p class="sidebar-subtitle">Setup progress</p>
+  </div>
+
+  <div class="sidebar-nav">
+    <a routerLink="/register/company-setup" routerLinkActive="nav-item-active" [routerLinkActiveOptions]="{exact: true}" 
+       class="nav-item"
+       [class.nav-item-disabled]="!isCompleted('/register/company-setup') && router.url !== '/register/company-setup'">
+      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/company-setup')" [style.font-variation-settings]="router.url === '/register/company-setup' ? '\'FILL\' 1' : '\'FILL\' 0'">
+        {{ isCompleted('/register/company-setup') ? 'check_circle' : 'business' }}
+      </span>
+      <span class="nav-label">Company Setup</span>
+    </a>
+    
+    <a routerLink="/register/workspace" routerLinkActive="nav-item-active"
+       class="nav-item"
+       [class.nav-item-disabled]="!isCompleted('/register/workspace') && router.url !== '/register/workspace'">
+      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/workspace')" [style.font-variation-settings]="router.url === '/register/workspace' ? '\'FILL\' 1' : '\'FILL\' 0'">
+        {{ isCompleted('/register/workspace') ? 'check_circle' : 'domain' }}
+      </span>
+      <span class="nav-label">Workspace</span>
+    </a>
+    
+    <a routerLink="/register/subscription" routerLinkActive="nav-item-active"
+       class="nav-item"
+       [class.nav-item-disabled]="!isCompleted('/register/subscription') && router.url !== '/register/subscription'">
+      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/subscription')" [style.font-variation-settings]="router.url === '/register/subscription' ? '\'FILL\' 1' : '\'FILL\' 0'">
+        {{ isCompleted('/register/subscription') ? 'check_circle' : 'payments' }}
+      </span>
+      <span class="nav-label">Subscription</span>
+    </a>
+    
+    <a routerLink="/register/review" routerLinkActive="nav-item-active"
+       class="nav-item"
+       [class.nav-item-disabled]="router.url !== '/register/review'">
+      <span class="nav-icon material-symbols-outlined" [style.font-variation-settings]="router.url === '/register/review' ? '\'FILL\' 1' : '\'FILL\' 0'">
+        fact_check
+      </span>
+      <span class="nav-label">Review</span>
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="logo-wrapper">
+      <span class="logo-icon material-symbols-outlined">group_work</span>
+    </div>
+    <span class="logo-text">TalentFlow</span>
+  </div>
+</nav>

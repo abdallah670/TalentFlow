@@ -1,0 +1,61 @@
+@reference "../../../../../styles.scss";
+.form-card {
+  @apply w-full max-w-3xl mt-0 md:mt-0 bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm;
+  box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0,0,0,0.12);
+}
+.card-header-line {
+  @apply h-2 w-full bg-primary-container;
+}
+.card-body {
+  @apply p-xl sm:p-[48px];
+}
+.page-header {
+  @apply mb-xl;
+}
+.page-title {
+  @apply font-h1-mobile md:font-h1 text-h1-mobile md:text-h1 text-on-surface mb-sm;
+}
+.page-subtitle {
+  @apply font-body text-body text-on-surface-variant leading-relaxed;
+}
+.form-container {
+  @apply space-y-lg;
+}
+.form-group {
+  @apply relative;
+}
+.input-wrapper {
+  @apply relative;
+}
+.icon-wrapper {
+  @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
+}
+.input-icon {
+  @apply text-on-surface-variant text-[20px] transition-colors group-focus-within:text-primary-container;
+}
+.custom-input {
+  @apply w-full rounded border-outline-variant bg-surface-container-lowest py-sm text-on-surface font-body text-body transition-colors focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none border border-outline h-12;
+  padding-left: 44px !important;
+}
+.custom-select {
+  @apply w-full rounded border-outline-variant bg-surface-container-lowest py-sm text-on-surface font-body text-body transition-colors focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none border border-outline h-12 appearance-none bg-no-repeat bg-right pr-10;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23757684" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+.form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-lg;
+}
+.form-actions {
+  @apply flex items-center justify-between pt-lg mt-xl border-t border-outline-variant/50;
+}
+.btn-back {
+  @apply h-10 px-lg rounded font-label text-label text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2;
+}
+.btn-primary {
+  @apply h-10 px-xl bg-primary-container text-on-primary rounded font-label text-label shadow-sm hover:opacity-90 active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 flex items-center gap-sm;
+}
+.btn-icon {
+  @apply text-[18px];
+}
+.custom-select {
+  padding-left: 44px !important;
+}

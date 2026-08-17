@@ -1,98 +1,256 @@
 /* ========================================
-   Verify Email Page Styles
+   Verify Email Page - Exact Reference Design Match
+   Reference: Design/verify_email_talentflow/code.html
    ======================================== */
 
-.verify-card {
+/* Page background with subtle dot pattern */
+.verify-main {
+  width: 100%;
   max-width: 480px;
-  padding: 0;
+  background: var(--surface-container-lowest, #ffffff);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--outline-variant);
   overflow: hidden;
-}
-
-.verify-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 24px;
-  border-bottom: 1px solid var(--outline-variant);
-  background: var(--surface-container-lowest);
-}
-
-.verify-header-icon {
-  font-size: 28px;
-  color: var(--primary-container);
-}
-
-.verify-header-brand {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.verify-content {
-  padding: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: auto;
 }
 
+/* ========================================
+   Header Section
+   ======================================== */
+
+.verify-header {
+  width: 100%;
+  padding: var(--lg) var(--xl);
+  border-bottom: 1px solid var(--outline-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--sm);
+  background: var(--surface-container-lowest, #ffffff);
+}
+
+.verify-header-icon {
+  font-size: 28px;
+  color: var(--primary-container, #3f51b5);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.verify-header-brand {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--primary, #24389c);
+  letter-spacing: -0.01em;
+  font-family: var(--font-family-body);
+}
+
+/* ========================================
+   Body / Content Section
+   ======================================== */
+
+.verify-body {
+  padding: var(--xl);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Illustration */
 .verify-illustration {
   width: 192px;
   height: 192px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--surface-container-low);
-  background: var(--surface-container);
+  border: 4px solid var(--surface-container-low, #f4f2fc);
+  background: var(--surface-container, #efedf6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: var(--lg);
 }
 
 .verify-illustration img {
   width: 100%;
   height: 100%;
-  object: cover;
+  object-fit: cover;
 }
 
-.verify-content h2 {
-  font-size: 1.5rem;
+/* Typography */
+.verify-title {
+  font-size: var(--text-h1);
+  line-height: 36px;
   font-weight: 500;
-  color: var(--on-surface);
-  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+  color: var(--on-surface, #1a1b22);
+  margin: 0 0 var(--md);
+  font-family: var(--font-family-body);
 }
 
-.verify-actions-row {
+.verify-subtitle {
+  font-size: var(--text-body);
+  line-height: 22px;
+  color: var(--on-surface-variant, #454652);
+  margin: 0 0 var(--xl);
+  max-width: 320px;
+  font-family: var(--font-family-body);
+}
+
+/* ========================================
+   Actions / Buttons
+   ======================================== */
+
+.verify-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--sm);
   width: 100%;
   max-width: 320px;
-  margin-top: 24px;
 }
 
-.btn-secondary-outline {
+.btn-primary {
   width: 100%;
-  padding: 12px;
-  font-size: 0.95rem;
+  padding: var(--sm) var(--lg);
+  font-size: var(--text-label);
   font-weight: 500;
-  color: var(--primary);
-  background: transparent;
-  border: 1px solid var(--outline-variant);
+  color: var(--on-primary-container, #cacfff);
+  background: var(--primary-container, #3f51b5);
+  border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sm);
+  transition: background 0.2s, color 0.2s;
+  font-family: var(--font-family-body);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary, #24389c);
+  color: var(--on-primary, #ffffff);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface-container-lowest), 0 0 0 4px var(--primary, #24389c);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary Outline Button */
+.btn-secondary {
+  width: 100%;
+  padding: var(--sm) var(--lg);
+  font-size: var(--text-label);
+  font-weight: 500;
+  color: var(--primary, #24389c);
+  background: transparent;
+  border: 1px solid var(--outline, #757684);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sm);
   transition: background 0.2s;
   font-family: var(--font-family-body);
 }
 
-.btn-secondary-outline:hover {
-  background: var(--surface-container-low);
+.btn-secondary:hover {
+  background: var(--surface-container-low, #f4f2fc);
 }
 
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface-container-lowest), 0 0 0 4px var(--primary, #24389c);
+}
+
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Footer Section
+   ======================================== */
+
 .verify-footer {
-  padding: 16px 32px;
+  width: 100%;
+  padding: var(--md) var(--xl);
   border-top: 1px solid var(--outline-variant);
-  background: var(--surface-container-lowest);
+  background: var(--surface-container-lowest, #ffffff);
   text-align: center;
+}
+
+.verify-footer p {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-body-sm);
+  line-height: 18px;
+  color: var(--on-surface-variant, #454652);
+  font-family: var(--font-family-body);
+}
+
+/* Links */
+.verify-footer a {
+  color: var(--primary, #24389c);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.verify-footer a:hover {
+  color: var(--primary-container, #3f51b5);
+  text-decoration: underline;
+}
+
+/* ========================================
+   Alerts
+   ======================================== */
+
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  border-left: 4px solid transparent;
+  text-align: left;
+  width: 100%;
+  max-width: 320px;
+  font-family: var(--font-family-body);
+}
+
+.alert-error {
+  background: var(--error-container, #ffdad6);
+  color: var(--on-error-container, #93000a);
+  border-left-color: var(--error, #ba1a1a);
+}
+
+.alert-success {
+  background: #f0fdf4;
+  color: #166534;
+  border-left-color: #22c55e;
 }

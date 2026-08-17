@@ -34,14 +34,10 @@
 }
 
 .select-workspace-header-top {
-  margin-bottom: 16px;
-}
-
-.select-workspace-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .select-workspace-brand h1 {
@@ -51,16 +47,16 @@
   margin: 0;
 }
 
-.select-workspace-header-bottom p {
-  font-size: 0.875rem;
-  color: var(--on-surface-variant);
-  margin: 0;
-}
-
 .select-workspace-header-actions {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.select-workspace-header-bottom p {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+  margin: 0;
 }
 
 .search-box {
@@ -111,6 +107,12 @@
   font-weight: 600;
   color: var(--on-surface);
   flex-shrink: 0;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .select-workspace-list {

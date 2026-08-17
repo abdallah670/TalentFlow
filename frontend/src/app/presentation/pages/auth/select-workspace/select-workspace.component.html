@@ -3,21 +3,20 @@
     <header class="select-workspace-header">
       <div class="select-workspace-header-top">
         <div class="select-workspace-brand">
-          <span class="material-symbols-outlined filled" style="font-size: 24px; color: var(--primary);">work</span>
           <h1>TalentFlow</h1>
         </div>
-        <div class="select-workspace-header-bottom">
-          <p>Select a workspace to continue</p>
+        <div class="select-workspace-header-actions">
+          <div class="search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Search workspaces..." />
+          </div>
+          <div class="user-avatar">
+            <img [src]="userAvatarUrl" alt="Administrator Profile" />
+          </div>
         </div>
       </div>
-      <div class="select-workspace-header-actions">
-        <div class="search-box">
-          <span class="material-symbols-outlined">search</span>
-          <input type="text" placeholder="Search workspaces..." />
-        </div>
-        <div class="user-avatar">
-          {{ (authService.currentUser()?.userName || 'U').charAt(0).toUpperCase() }}
-        </div>
+      <div class="select-workspace-header-bottom">
+        <p>Select a workspace to continue</p>
       </div>
     </header>
 
