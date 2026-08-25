@@ -61,6 +61,7 @@ namespace TalentFlow.Api.Controller
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(Guid id,UpdateUserCommand command)
         {
+            command.Id = id;
             var result = await mediator.Send(command);
 
             
