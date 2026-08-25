@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TalentFlow.Application.Features.Departments.Commands.CreateDepartment;
@@ -9,7 +10,9 @@ using TalentFlow.Application.Features.Departments.Queries.GetDepartments;
 
 namespace TalentFlow.Api.Controller
 {
-    [Route("api/[controller]")]
+    [Authorize(Roles = "TenantAdmin")]
+
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
