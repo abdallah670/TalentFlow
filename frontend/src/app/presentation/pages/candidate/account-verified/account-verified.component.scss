@@ -1,0 +1,246 @@
+@use '../../../components/shared/variables' as *;
+
+.av-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $surface;
+  color: $on-surface;
+  font-family: 'Roboto', system-ui, sans-serif;
+
+  // Header
+  .av-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 48px;
+    z-index: 10;
+
+    .av-brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: $primary;
+    }
+  }
+
+  // Main
+  .av-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 96px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .av-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    pointer-events: none;
+    background-image: radial-gradient($outline-variant 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .av-bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: rgba(222, 224, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  // Card
+  .av-card {
+    background: $surface;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(197, 197, 212, 0.3);
+    padding: 40px;
+    max-width: 448px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: av-fade-in-up 0.5s ease both;
+  }
+
+  // Success icon
+  .av-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    .av-icon-glyph {
+      font-size: 48px;
+      font-variation-settings: 'FILL' 1;
+    }
+  }
+
+  .av-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: $on-surface;
+    margin-bottom: 8px;
+  }
+
+  .av-subtitle {
+    font-size: 15px;
+    color: $on-surface-variant;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+
+  // Next steps
+  .av-next-steps {
+    width: 100%;
+    background: var(--surface-container-lowest);
+    border-radius: 8px;
+    border: 1px solid $outline-variant;
+    padding: 20px;
+    margin-bottom: 32px;
+    text-align: left;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    .av-next-steps-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: $on-surface;
+      margin-bottom: 16px;
+    }
+
+    .av-steps-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .av-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      .av-step-icon {
+        color: $primary;
+        margin-top: 2px;
+        font-variation-settings: 'FILL' 0;
+      }
+
+      .av-step-title {
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        color: $on-surface;
+      }
+
+      .av-step-desc {
+        font-size: 13px;
+        color: $on-surface-variant;
+      }
+    }
+  }
+
+  // CTA
+  .av-cta {
+    width: 100%;
+    background-color: $primary-container;
+    color: var(--on-primary);
+    font-weight: 500;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      background-color: darken(#3f51b5, 5%);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    .av-cta-arrow {
+      font-size: 18px;
+    }
+  }
+
+  // Footer
+  .av-footer {
+    background: var(--surface-container-lowest);
+    border-top: 1px solid $outline-variant;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    margin-top: auto;
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .av-footer-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: $on-surface;
+    }
+
+    .av-footer-copy,
+    .av-footer-links a {
+      font-size: 13px;
+      color: $on-surface-variant;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .av-footer-links a:hover {
+      color: $primary;
+    }
+
+    .av-footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
+
+@keyframes av-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
