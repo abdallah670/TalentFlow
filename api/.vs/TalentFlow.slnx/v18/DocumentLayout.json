@@ -1,0 +1,177 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Progects .NET\\TalentFlow\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobsforcandidate\\getjobsforcandidatevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobscompany\\getjobscompanyvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobbyidcompany\\getjobbyidcandidatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobbyidcompany\\getjobbyidcandidatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\dtos\\getjobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\dtos\\getjobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|d:\\progects .net\\talentflow\\api\\talentflow.application\\features\\job\\queries\\getjobbyidcandidate\\getjobbyidcompanyqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1859E33-38E0-BAA8-B2D0-4156EF1740BD}|TalentFlow.Application\\TalentFlow.Application.csproj|solutionrelative:talentflow.application\\features\\job\\queries\\getjobbyidcandidate\\getjobbyidcompanyqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetJobsForCandidateQuery.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQuery.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQuery.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQuery.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQuery.cs",
+              "ViewState": "AgIAAAoAAABAMjMzMzMrwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:37:21.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetJobsForCandidateQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateQueryHandler.cs",
+              "ViewState": "AgIAACIAAABAZGZmZuYrwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:36:57.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetJobsForCandidateValidator.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateValidator.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateValidator.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateValidator.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsForCandidate\\GetJobsForCandidateValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:36:02.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetJobsCompanyValidator.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyValidator.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyValidator.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyValidator.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:33:16.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetJobByIdCompanyQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCandidate\\GetJobByIdCompanyQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCandidate\\GetJobByIdCompanyQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCandidate\\GetJobByIdCompanyQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCandidate\\GetJobByIdCompanyQueryHandler.cs",
+              "ViewState": "AgIAABMAAABgyczMzMwmwB0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:10:24.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetJobByIdCandidateQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCompany\\GetJobByIdCandidateQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCompany\\GetJobByIdCandidateQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCompany\\GetJobByIdCandidateQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobByIdCompany\\GetJobByIdCandidateQueryHandler.cs",
+              "ViewState": "AgIAABMAAAAAyszMzMwmwB8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T12:09:55.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetJobsCompanyQueryHandler.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQueryHandler.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQueryHandler.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQueryHandler.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T11:57:24.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetJobsCompanyQuery.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQuery.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQuery.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQuery.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\Queries\\GetJobsCompany\\GetJobsCompanyQuery.cs",
+              "ViewState": "AgIAAAcAAADAMTMzMzMbwAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T11:56:59.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetJobDto.cs",
+              "DocumentMoniker": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\DTOs\\GetJobDto.cs",
+              "RelativeDocumentMoniker": "TalentFlow.Application\\Features\\Job\\DTOs\\GetJobDto.cs",
+              "ToolTip": "D:\\Progects .NET\\TalentFlow\\api\\TalentFlow.Application\\Features\\Job\\DTOs\\GetJobDto.cs",
+              "RelativeToolTip": "TalentFlow.Application\\Features\\Job\\DTOs\\GetJobDto.cs",
+              "ViewState": "AgIAAAYAAADAy8zMzMw5wA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-25T10:02:14.955Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

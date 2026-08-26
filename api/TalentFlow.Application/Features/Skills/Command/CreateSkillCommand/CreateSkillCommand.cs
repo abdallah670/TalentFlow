@@ -1,0 +1,15 @@
+﻿using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using TalentFlow.Application.Responses;
+
+namespace TalentFlow.Application.Features.Skills.Command.CreateSkillCommand
+{
+    public class CreateSkillCommand : IRequest <BaseCommandResponse>
+    {
+        public string Name { get; set; } = default!;
+
+
+    }
+}
