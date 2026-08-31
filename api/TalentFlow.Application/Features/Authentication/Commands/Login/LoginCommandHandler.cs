@@ -68,20 +68,20 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
             }
 
             await userManager.ResetAccessFailedCountAsync(user);
-            if (!user.IsActive)
-            {
-                return new AuthResponse
-                {
-                    IsAuthenticated = false,
-                    Message = "Your account is inactive"
-                };
-            }
             if (!user.EmailConfirmed)
             {
                 return new AuthResponse
                 {
                     IsAuthenticated = false,
                     Message = "Your Must Conferm Email"
+                };
+            }
+            if (!user.IsActive)
+            {
+                return new AuthResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "Your account is inactive"
                 };
             }
             var roles = await userManager.GetRolesAsync(user);

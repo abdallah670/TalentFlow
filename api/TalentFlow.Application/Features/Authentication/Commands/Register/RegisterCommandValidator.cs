@@ -26,9 +26,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
                 .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter")
                 .Matches("[0-9]").WithMessage("Password must contain at least one number");
 
-            RuleFor(x => x.CompanyName)
-                .NotEmpty().WithMessage("Company name is required")
-                .MaximumLength(200);
+            
         }
 
     }

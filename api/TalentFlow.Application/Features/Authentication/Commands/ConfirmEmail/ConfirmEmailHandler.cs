@@ -39,6 +39,12 @@ namespace TalentFlow.Application.Features.Authentication.Commands.ConfermEmail
                     Success = false
                 };
 
+            if (!user.IsActive)
+            {
+                user.IsActive = true;
+                await _userManager.UpdateAsync(user);
+            }
+
             return new BaseCommandResponse
             {
                 Message = "Email confirmed successfully.",

@@ -100,11 +100,25 @@ builder.Services.AddIdentity<User, Role>(options =>
     options.Password.RequireNonAlphanumeric = false;
 
     options.User.RequireUniqueEmail = true;
-    options.SignIn.RequireConfirmedEmail = true;  
 
+    options.SignIn.RequireConfirmedEmail = false;
+
+    options.Tokens.EmailConfirmationTokenProvider = "EmailConfirmation";
 })
 .AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+.AddDefaultTokenProviders()
+.AddTokenProvider<DataProtectorTokenProvider<User>>("EmailConfirmation");
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
+{
+    options.TokenLifespan = TimeSpan.FromHours(1);
+});
+
+// Email confirmation tokens = 24 ساعة
+builder.Services.Configure<DataProtectionTokenProviderOptions>("EmailConfirmation", options =>
+{
+    options.TokenLifespan = TimeSpan.FromHours(24);
+});
 
 // =========================
 // Authentication

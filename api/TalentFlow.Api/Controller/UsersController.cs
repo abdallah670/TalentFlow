@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using TalentFlow.Application.Features.Authontication.Commands.Update;
 using TalentFlow.Application.Features.User.Command.CreateUser;
 using TalentFlow.Application.Features.User.Command.DisableUser;
+using TalentFlow.Application.Features.User.Command.UpdateUserRole;
 using TalentFlow.Application.Features.User.Query.GetUser;
 
 namespace TalentFlow.Api.Controller
@@ -82,5 +83,17 @@ namespace TalentFlow.Api.Controller
         }
 
 
+        [Authorize(Roles = "TenantAdmin")]
+        [HttpPut("{id}/role")]
+        public async Task<IActionResult> UpdateUserRole(Guid id, [FromBody] UpdateUserRoleCommand command)
+        {
+            command.Id = id;
+            var result = await mediator.Send(command);
+
+            if (!result.Success)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
     }
 }

@@ -6,10 +6,13 @@ namespace TalentFlow.Application.Features.Tenant.Command.TeamMember
 {
     public class InviteTeamMemberCommand : IRequest<AuthResponse>
     {
+        // These are filled by the backend from JWT
         public Guid TenantId { get; set; }
 
         public Guid InvitedByUserId { get; set; }
 
+
+        // Frontend sends these
         public string FirstName { get; set; } = string.Empty;
 
         public string LastName { get; set; } = string.Empty;

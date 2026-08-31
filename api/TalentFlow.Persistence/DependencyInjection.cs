@@ -56,6 +56,7 @@ public static class DependencyInjection
         services.AddScoped<IcandidateProfileRepo, CandidateProfileRepo>();
         services.AddScoped<ICandidateProfileSkillRepo, CandidateProfileSkillRepo>();
         services.AddScoped<IInvitationRepository, InvitationRepository>();
+        services.AddScoped<IUserTenantRepository, UserTenantRepository>();
         services.Configure<IdentityOptions>(options =>
         {
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);

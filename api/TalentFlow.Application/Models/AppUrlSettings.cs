@@ -7,6 +7,7 @@ namespace TalentFlow.Application.Models
     public class AppUrlSettings
     {
         public string ApiBaseUrl { get; set; }
+        public string FrontendBaseUrl { get; set; }
 
     }
 }

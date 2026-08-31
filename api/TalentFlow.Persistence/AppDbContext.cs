@@ -38,6 +38,7 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
     public DbSet<Skill> Skills { get; set; } = null!;
     public DbSet<Job> Jobs { get; set; } = null!;
     public DbSet<JobSkill> JobSkills { get; set; } = null!;
+    public DbSet<UserTenant> UserTenants { get; set; } = null!;
     public DbSet<CandidateSkill> CandidateSkills { get; set; } = null!;
     public DbSet<CandidateExperience> CandidateExperiences { get; set; } = null!;
     public DbSet<CandidateEducation> CandidateEducations { get; set; } = null!;
@@ -82,6 +83,9 @@ public class AppDbContext : IdentityDbContext<User, Role, Guid>
             .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
         builder.Entity<Offer>()
                   .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
+        builder.Entity<UserTenant>()
+    .HasIndex(x => new { x.UserId, x.TenantId })
+    .IsUnique();
         builder.Entity<OfferApproval>()
           .HasQueryFilter(x => x.TenantId == _currentTenantService.TenantId);
 
