@@ -57,6 +57,19 @@ namespace TalentFlow.Infrastructure.Service
 
             return storedToken.User;
         }
+        public async Task RevokeAllRefreshTokensForUserAsync(Guid userId)
+        {
+            var activeTokens = await _context.RefreshTokens
+                .Where(x => x.UserId == userId && x.RevokedAt == null)
+                .ToListAsync();
+
+            foreach (var token in activeTokens)
+            {
+                token.RevokedAt = DateTime.UtcNow;
+            }
+
+            await _context.SaveChangesAsync();
+        }
 
         public async Task RevokeRefreshTokenAsync(string refreshToken)
         {

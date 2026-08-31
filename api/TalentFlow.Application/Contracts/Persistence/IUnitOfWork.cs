@@ -9,6 +9,7 @@ public interface IUnitOfWork : IDisposable
     ITenantSettingRepository TenantSettings { get; }
     IUserRepository Users { get; }
     IRoleRepository Roles { get; }
+    IUserTenantRepository UserTenants { get; }
     IPermissionRepository Permissions { get; }
     IUserRoleRepository UserRoles { get; }
     IRolePermissionRepository RolePermissions { get; }

@@ -12,5 +12,6 @@ namespace TalentFlow.Application.Interfaces
         Task<User?> ValidateRefreshTokenAsync(string refreshToken);
 
         Task RevokeRefreshTokenAsync(string refreshToken);
+        Task RevokeAllRefreshTokensForUserAsync(Guid userId);
     }
 }

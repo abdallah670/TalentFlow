@@ -76,7 +76,14 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                     Message = "Slug already exists."
                 };
             }
-
+            if (request.Password != request.ConfirmPassword)
+            {
+                return new AuthResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "Passwords do not match."
+                };
+            }
             var tenant = new Domain.Entities.TenantModule.Tenant
             {
                 Name = request.TenantName,
@@ -150,7 +157,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 UserName = request.UserName,
                 Email = request.Email,
                 TenantId = tenant.Id,
-                IsActive = true
+                IsActive = false
             };
 
             var createResult =
@@ -184,6 +191,12 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 };
             }
 
+            await unitOfWork.UserTenants.AddAsync(new TalentFlow.Domain.Entities.TenantModule.UserTenant
+            {
+                UserId = user.Id,
+                TenantId = tenant.Id,
+                Role = Domain.Enums.Roles.TenantAdmin.ToString()
+            });
             await unitOfWork.CompleteAsync();
 
             var token =
@@ -218,15 +231,21 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
 
             var roles = await userManager.GetRolesAsync(user);
 
+            var jwtToken = await jwtService.CreateJwtToken(user, roles);
+            var accessToken = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().WriteToken(jwtToken);
+            var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
+
             return new AuthResponse
             {
                 Id = user.Id.ToString(),
                 UserName = user.UserName!,
                 Email = user.Email!,
                 Roles = roles.ToList(),
-
-                IsAuthenticated = false,
-
+                IsAuthenticated = true,
+                Token = accessToken,
+                TokenExpiration = jwtToken.ValidTo,
+                RefreshToken = refreshToken,
+                RefreshTokenExpiration = DateTime.UtcNow.AddDays(jwtSettings.RefreshTokenDurationInDays),
                 Message = "Registration successful. Please check your email to verify your account."
             };
         }

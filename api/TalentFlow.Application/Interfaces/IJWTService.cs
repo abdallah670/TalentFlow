@@ -8,6 +8,7 @@ namespace TalentFlow.Application.Interfaces
 {
     public interface IJWTService
     {
-       Task< JwtSecurityToken> CreateJwtToken(User user, IList<string> roles);
+        Task<JwtSecurityToken> CreateJwtToken(User user, IList<string> roles, Guid? tenantId = null);
+        Task<JwtSecurityToken> CreateTenantSelectionToken(User user);
     }
 }

@@ -28,18 +28,27 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
             IRefreshTokenService refreshTokenService,
             IOptions<JwtSettings> jwtSettings,
             IEmailService emailService,
-            IOptions<AppUrlSettings> appUrlSettings) // ✅ IOptions مش الكلاس مباشرة
+            IOptions<AppUrlSettings> appUrlSettings) 
         {
             this.userManager = userManager;
             this.jWTService = jWTService;
             this.refreshTokenService = refreshTokenService;
             _jwtSettings = jwtSettings.Value;
             this.emailService = emailService;
-            _appUrlSettings = appUrlSettings.Value; // ✅ .Value
+            _appUrlSettings = appUrlSettings.Value;
         }
 
         public async Task<AuthResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            if (request.Password != request.ConfirmPassword)
+            {
+                return new AuthResponse
+                {
+                    IsAuthenticated = false,
+                    Message = "Passwords do not match."
+                };
+            }
+
             var existinguser = await userManager.FindByEmailAsync(request.Email);
             if (existinguser is not null)
             {
@@ -56,7 +65,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                IsActive = true
+                IsActive = false 
             };
 
             var result = await userManager.CreateAsync(user, request.Password);
@@ -71,22 +80,35 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
 
             await userManager.AddToRoleAsync(user, Domain.Enums.Roles.Candidate.ToString());
             var roles = await userManager.GetRolesAsync(user);
-       
-            var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            var encodedToken = Uri.EscapeDataString(token);
 
+            var emailToken = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            var encodedToken = Uri.EscapeDataString(emailToken);
             var confirmationLink = $"{_appUrlSettings.ApiBaseUrl}/api/Auth/ConfirmEmail?userId={user.Id}&token={encodedToken}";
-            Console.WriteLine("LINK: " + confirmationLink);
-            var body = $"<h2>Welcome {user.FirstName}</h2><a href='{confirmationLink}'>Click here to confirm your email</a>";
 
-            await emailService.SendEmailAsync(user.Email, "Confirm Email", body);
+            try
+            {
+                var body = $"<h2>Welcome {user.FirstName}</h2><a href='{confirmationLink}'>Click here to confirm your email</a>";
+                await emailService.SendEmailAsync(user.Email!, "Confirm Email", body);
+            }
+            catch
+            {
+            }
+
+            var jwtToken = await jWTService.CreateJwtToken(user, roles);
+            var accessToken = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().WriteToken(jwtToken);
+            var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
 
             return new AuthResponse
             {
                 Id = user.Id.ToString(),
                 UserName = user.UserName!,
                 Email = user.Email!,
-                IsAuthenticated = false,
+                Roles = roles.ToList(),
+                IsAuthenticated = true,
+                Token = accessToken,
+                TokenExpiration = jwtToken.ValidTo,
+                RefreshToken = refreshToken,
+                RefreshTokenExpiration = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays),
                 Message = "Registered successfully. Please check your email to confirm your account."
             };
         }

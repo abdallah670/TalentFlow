@@ -4,16 +4,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TalentFlow.Application.Features.Authentication.Commands.changePassword;
 using TalentFlow.Application.Features.Authentication.Commands.ConfermEmail;
 using TalentFlow.Application.Features.Authentication.Commands.ForgetPassword;
 using TalentFlow.Application.Features.Authentication.Commands.Logout;
+using TalentFlow.Application.Features.Authentication.Commands.ResendVerification;
 using TalentFlow.Application.Features.Authentication.Commands.ResetPasswors;
+using TalentFlow.Application.Features.Authentication.Commands.VerifyEmail;
+using TalentFlow.Application.Features.Authentication.Queries.EmailStatus;
 using TalentFlow.Application.Features.Authentication.Queries.GetProfile;
+using TalentFlow.Application.Features.Authentication.Queries.GetUserTenants;
 using TalentFlow.Application.Features.Authontication.Commands.Login;
 using TalentFlow.Application.Features.Authontication.Commands.RefreshToken;
 using TalentFlow.Application.Features.Authontication.Commands.Register;
+using TalentFlow.Application.Features.Authontication.Commands.SelectTenant;
 using TalentFlow.Application.Features.Authontication.Commands.Update;
+using TalentFlow.Application.Features.Tenant.Queries.GetInvitationInfo;
 
 
 namespace TalentFlow.Api.Controller
@@ -37,6 +44,17 @@ namespace TalentFlow.Api.Controller
             var response = await mediator.Send(command);
             return Ok(response);
 
+        }
+        [HttpPost("register-employer")]
+        public async Task<IActionResult> RegisterEmployer(
+    [FromBody] TenantRegisterCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var response = await mediator.Send(command);
+
+            return Ok(response);
         }
 
         [HttpPost("login")]
@@ -158,6 +176,70 @@ namespace TalentFlow.Api.Controller
 </html>";
 
             return Content(html, "text/html");
+        }
+        [HttpPost("refresh")]
+        public async Task<IActionResult> RefreshTokenAlias([FromBody] RefreshTokenCommand command)
+        {
+            var response = await mediator.Send(command);
+            return Ok(response);
+        }
+        [Authorize]
+        [HttpPost("select-tenant")]
+        public async Task<IActionResult> SelectTenant([FromBody] SelectTenantCommand command)
+        {
+            var purpose = User.FindFirst("purpose")?.Value;
+            if (purpose != "tenant_selection")
+                return Unauthorized("Invalid selection token.");
+
+            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (!Guid.TryParse(userIdClaim, out var userId))
+                return Unauthorized();
+
+            command.UserId = userId;
+
+            var response = await mediator.Send(command);
+            return Ok(response);
+        }
+        [HttpPost("verify-email")]
+        public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailCommand command)
+        {
+            var result = await mediator.Send(command);
+            if (!result.Success) return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpPost("resend-verification")]
+        public async Task<IActionResult> ResendVerification([FromBody] ResendVerificationCommand command)
+        {
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost("email-status")]
+        public async Task<IActionResult> EmailStatus([FromBody] EmailStatusQuery query)
+        {
+            var result = await mediator.Send(query);
+            return Ok(result);
+        }
+
+        [Authorize]
+        [HttpGet("tenants")]
+        public async Task<IActionResult> GetTenants()
+        {
+            var userIdClaim = User.FindFirstValue(System.Security.Claims.ClaimTypes.NameIdentifier);
+            if (!Guid.TryParse(userIdClaim, out var userId))
+                return Unauthorized();
+
+            var result = await mediator.Send(new GetUserTenantsQuery { UserId = userId });
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("invitation-info")]
+        public async Task<IActionResult> GetInvitationInfo([FromQuery] string token)
+        {
+            var result = await mediator.Send(new GetInvitationInfoQuery { Token = token });
+            return Ok(result);
         }
     }
 }

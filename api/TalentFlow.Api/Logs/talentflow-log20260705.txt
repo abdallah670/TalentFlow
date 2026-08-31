@@ -26,7 +26,7 @@
 2026-07-05 18:51:52.550 +03:00 [INF] Content root path: D:\Progects .NET\TalentFlow\api\TalentFlow.Api
 2026-07-05 18:51:52.730 +03:00 [INF] HTTP GET / started at "2026-07-05T15:51:52.7262071Z"
 2026-07-05 18:51:52.739 +03:00 [INF] Executing endpoint 'HTTP: GET /'
-2026-07-05 18:51:52.752 +03:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2026-07-05 18:51:52.752 +03:00 [INF] Executing RedirectResult, redirecting to /gswagger.
 2026-07-05 18:51:52.753 +03:00 [INF] Executed endpoint 'HTTP: GET /'
 2026-07-05 18:51:52.754 +03:00 [INF] HTTP GET / completed with 302 in 27ms
 2026-07-05 18:51:52.890 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger - null null

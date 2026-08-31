@@ -1587,6 +1587,41 @@ namespace TalentFlow.Persistence.Migrations
                     b.ToTable("TenantSetting", (string)null);
                 });
 
+            modelBuilder.Entity("TalentFlow.Domain.Entities.TenantModule.UserTenant", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId");
+
+                    b.HasIndex("UserId", "TenantId")
+                        .IsUnique();
+
+                    b.ToTable("UserTenants");
+                });
+
             modelBuilder.Entity("TalentFlow.Domain.Entities.WorkflowModule.ApplicationStageHistory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1824,6 +1859,25 @@ namespace TalentFlow.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("CandidateProfile");
+                });
+
+            modelBuilder.Entity("TalentFlow.Domain.Entities.TenantModule.UserTenant", b =>
+                {
+                    b.HasOne("TalentFlow.Domain.Entities.TenantModule.Tenant", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TalentFlow.Domain.Entities.IdentityModule.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tenant");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TalentFlow.Domain.Entities.CandidateModule.CandidateProfile", b =>

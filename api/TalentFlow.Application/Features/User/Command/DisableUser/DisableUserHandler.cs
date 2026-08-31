@@ -14,14 +14,17 @@
         {
             private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
             private readonly ICurrentUserService _currentUserService;
+        private readonly IRefreshTokenService _refreshTokenService;
 
-            public DisableUserHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService)
-            {
-                _userManager = userManager;
-                _currentUserService = currentUserService;
-            }
 
-            public async Task<BaseCommandResponse> Handle(DisAbleUserCommand request, CancellationToken cancellationToken)
+        public DisableUserHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, IRefreshTokenService refreshTokenService)
+        {
+            _userManager = userManager;
+            _currentUserService = currentUserService;
+            _refreshTokenService = refreshTokenService;
+        }
+
+        public async Task<BaseCommandResponse> Handle(DisAbleUserCommand request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
@@ -45,6 +48,8 @@
             }
             user.IsActive = false;
                 await _userManager.UpdateAsync(user);
+            await _refreshTokenService.RevokeAllRefreshTokensForUserAsync(user.Id);
+
             var dto = new GetUserDTOs
             {
                 Id = user.Id,

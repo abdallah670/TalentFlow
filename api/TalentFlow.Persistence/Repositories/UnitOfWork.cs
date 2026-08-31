@@ -44,6 +44,7 @@ public class UnitOfWork : IUnitOfWork
     private INotificationTemplateRepository? _notificationtemplateRepository;
     private IAuditLogRepository? _auditlogRepository;
     private IcandidateProfileRepo? candidateProfileRepo ;
+    private IUserTenantRepository? _userTenantRepository;
     private ICandidateProfileSkillRepo? candidateProfileSkillRepo;
     private IInvitationRepository? InvitationRepository ;
 
@@ -61,6 +62,7 @@ public class UnitOfWork : IUnitOfWork
     public IRolePermissionRepository RolePermissions => _rolepermissionRepository ??= new RolePermissionRepository(_dbContext);
     public IDepartmentRepository Departments => _departmentRepository ??= new DepartmentRepository(_dbContext);
     public ISkillRepository Skills => _skillRepository ??= new SkillRepository(_dbContext);
+    public IUserTenantRepository UserTenants => _userTenantRepository ??= new UserTenantRepository(_dbContext);
     public IJobRepository Jobs => _jobRepository ??= new JobRepository(_dbContext);
     public IJobSkillRepository JobSkills => _jobskillRepository ??= new JobSkillRepository(_dbContext);
     public ICandidateSkillRepository CandidateSkills => _candidateskillRepository ??= new CandidateSkillRepository(_dbContext);

@@ -23,3 +23,9 @@
 
     public DateTime RefreshTokenExpiration { get; set; }
 }
+public class TenantOptionDto
+{
+    public string TenantId { get; set; } = string.Empty;
+    public string TenantName { get; set; } = string.Empty;
+    public string Role { get; set; } = string.Empty;
+}
