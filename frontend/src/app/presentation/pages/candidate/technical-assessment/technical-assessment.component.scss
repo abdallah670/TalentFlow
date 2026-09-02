@@ -1,0 +1,446 @@
+@use '../../../../../styles/variables' as *;
+
+.ta-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: $surface;
+  color: $on-surface;
+  font-family: 'Roboto', system-ui, sans-serif;
+
+  // Focused header
+  .ta-header {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $sp-lg;
+    background: $surface;
+    border-bottom: 1px solid $outline-variant;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+
+    &__brand {
+      display: flex;
+      align-items: center;
+      gap: $sp-sm;
+    }
+
+    &__logo-icon {
+      color: $primary;
+      font-variation-settings: 'FILL' 1;
+    }
+
+    &__logo-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: $primary;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: $sp-lg;
+    }
+  }
+
+  .ta-timer {
+    display: flex;
+    align-items: center;
+    gap: $sp-sm;
+    background: #ffdad6;
+    color: #93000a;
+    padding: 8px $sp-md;
+    border-radius: 999px;
+
+    &__icon {
+      font-size: 20px;
+    }
+
+    &__time {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .ta-pause-btn {
+    background: $surface-variant;
+    color: $on-surface-variant;
+    border: 1px solid $outline-variant;
+    font-size: 12px;
+    padding: 8px $sp-md;
+    border-radius: 8px;
+
+    &:hover {
+      background: $surface-container-high;
+    }
+  }
+
+  // Layout
+  .ta-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+
+  // Sidebar
+  .ta-sidebar {
+    width: 256px;
+    background: $surface-container-low;
+    border-right: 1px solid $outline-variant;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    &__head {
+      padding: $sp-lg;
+      border-bottom: 1px solid $outline-variant;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: $on-surface;
+    }
+
+    &__subtitle {
+      font-size: 13px;
+      color: $on-surface-variant;
+    }
+
+    &__footer {
+      padding: $sp-lg;
+      border-top: 1px solid $outline-variant;
+      background: $surface;
+    }
+  }
+
+  .ta-progress {
+    &__label,
+    &__value {
+      font-size: 12px;
+    }
+
+    &__label {
+      color: $on-surface-variant;
+    }
+
+    &__value {
+      color: $primary;
+    }
+
+    &__bar {
+      height: 8px;
+      background: $surface-variant;
+      border-radius: 999px;
+    }
+
+    &__fill {
+      background: $primary;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  // Question map
+  .ta-map {
+    flex: 1;
+    overflow-y: auto;
+    padding: $sp-md;
+
+    &__title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: $on-surface-variant;
+      margin-bottom: $sp-sm;
+      padding: 0 $sp-sm;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+
+    &__cell {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &--answered {
+        background: #bac3ff;
+        color: #ffffff;
+        font-size: 12px;
+        opacity: 0.75;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &--current {
+        border: 2px solid $primary;
+        background: $surface;
+        color: $primary;
+        font-weight: 700;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.05),
+          0 0 0 2px rgba(186, 195, 255, 0.7);
+      }
+
+      &--unanswered {
+        background: $surface;
+        border: 1px solid $outline-variant;
+        color: $on-surface-variant;
+        font-size: 12px;
+
+        &:hover {
+          background: $surface-container;
+        }
+      }
+    }
+  }
+
+  .ta-finish-btn {
+    background: $surface;
+    color: $error;
+    border: 1px solid $error;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px $sp-md;
+
+    &:hover {
+      background: #ffdad6;
+    }
+
+    .material-symbols-outlined {
+      font-size: 18px;
+    }
+  }
+
+  }
+}
+
+
+  // Canvas
+  .ta-canvas {
+    flex: 1;
+    overflow-y: auto;
+    background: #fbf8ff;
+    display: flex;
+    justify-content: center;
+    padding: $sp-xl;
+  }
+
+  .ta-content {
+    max-width: 768px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Context
+  .ta-context {
+    &__category {
+      display: flex;
+      align-items: center;
+      gap: $sp-sm;
+      margin-bottom: $sp-md;
+      color: $secondary;
+
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+
+      span:not(.material-symbols-outlined) {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    &__heading {
+      font-size: 26px;
+      font-weight: 500;
+      color: $on-background;
+      margin-bottom: $sp-lg;
+    }
+  }
+
+  .ta-question-card {
+    background: $surface;
+    padding: $sp-lg;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    border: 1px solid $outline-variant;
+    color: $on-surface;
+
+    p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: $sp-md;
+
+      code {
+        background: $surface-container-low;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+    }
+
+    &__prompt {
+      font-size: 18px !important;
+      font-weight: 500;
+      color: $on-background !important;
+      margin-top: $sp-md !important;
+    }
+  }
+
+
+  // Options
+  .ta-option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+
+    &__radio {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &__card {
+      display: flex;
+      align-items: flex-start;
+      gap: $sp-md;
+      padding: $sp-lg;
+      border-radius: 12px;
+      border: 1px solid $outline-variant;
+      background: $surface;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: $surface-container-low;
+      }
+    }
+
+    &__radio:checked + .ta-option__card {
+      border-color: $primary-container;
+      background: $surface-container-low;
+
+      .ta-option__dot {
+        background-color: $primary-container;
+      }
+    }
+
+    &__circle {
+      margin-top: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid $outline-variant;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: $surface;
+    }
+
+    &__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+    }
+
+    &__title {
+      font-size: 17px;
+      font-weight: 500;
+      color: $on-background;
+      margin-bottom: 4px;
+    }
+
+    &__desc {
+      font-size: 13px;
+      color: $on-surface-variant;
+      margin: 0;
+    }
+  }
+
+  // Actions
+  .ta-actions {
+    margin-top: $sp-xl;
+    padding-top: $sp-lg;
+    border-top: 1px solid $outline-variant;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fbf8ff;
+    position: sticky;
+    bottom: 0;
+    padding-bottom: $sp-md;
+  }
+
+  .ta-flag-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: $secondary;
+    font-size: 12px;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $on-background;
+    }
+
+    .material-symbols-outlined {
+      font-size: 18px;
+    }
+  }
+
+  .ta-nav-btn {
+    padding: 14px $sp-lg;
+    border-radius: 8px;
+    font-size: 12px;
+    color: $primary;
+    border-color: $primary;
+
+    &:hover {
+      background: $surface-container-low;
+    }
+  }
+
+  .ta-next-btn {
+    padding: 14px $sp-lg;
+    border-radius: 8px;
+    font-size: 12px;
+    background: $primary;
+    color: $on-primary;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &:hover {
+      background: $surface-tint;
+    }
+
+    .material-symbols-outlined {
+      font-size: 18px;
+    }
+  }

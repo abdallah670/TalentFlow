@@ -1,15 +1,17 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Tenant.Queries.GetCurrentTenant
 {
-    public class GetCurrentTenantQueryHandler : IRequestHandler<GetCurrentTenantQuery, BaseCommandResponse>
+    public class GetCurrentTenantQueryHandler : IRequestHandler<GetCurrentTenantQuery, BaseCommandResponse<GetCurrentTenantDto>>
     {
+        private readonly ILogger<GetCurrentTenantQueryHandler> logger;
         private readonly ICurrentUserService _currentUserService;
         private readonly ITenantRepository _tenantRepository;
         private readonly ITenantSettingRepository _tenantSettingRepository;
@@ -17,14 +19,16 @@ namespace TalentFlow.Application.Features.Tenant.Queries.GetCurrentTenant
         public GetCurrentTenantQueryHandler(
             ICurrentUserService currentUserService,
             ITenantRepository tenantRepository,
-            ITenantSettingRepository tenantSettingRepository)
+            ITenantSettingRepository tenantSettingRepository, ILogger<GetCurrentTenantQueryHandler> logger)
         {
+            this.logger = logger;
             _currentUserService = currentUserService;
             _tenantRepository = tenantRepository;
             _tenantSettingRepository = tenantSettingRepository;
         }
-        public async Task<BaseCommandResponse> Handle(GetCurrentTenantQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<GetCurrentTenantDto>> Handle(GetCurrentTenantQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetCurrentTenantQueryHandler));
             var tenant = (await _tenantRepository
                            .FindAsync(x => x.Id == _currentUserService.TenantId))
                            .FirstOrDefault();
@@ -46,7 +50,7 @@ namespace TalentFlow.Application.Features.Tenant.Queries.GetCurrentTenant
                 TimeZone = settings?.TimeZone,
                 DateFormat = settings?.DateFormat
             };
-            return new BaseCommandResponse
+            return new BaseCommandResponse<GetCurrentTenantDto>
             {
                 Success = true,
                 Message = "Tenant retrieved successfully.",

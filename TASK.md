@@ -42,8 +42,8 @@
 | Done | Design folder | Component path |
 |---|---|---|
 | [x] | account_verified_talentflow | candidate/account-verified |
-| [ ] | assessment_results_arthur_pendragon_talentflow | candidate/assessment-results |
-| [ ] | technical_assessment_senior_backend_engineer_talentflow | candidate/technical-assessment |
+| [x] | assessment_results_arthur_pendragon_talentflow | candidate/assessment-results |
+| [x] | technical_assessment_senior_backend_engineer_talentflow | candidate/technical-assessment |
 | [ ] | candidate_profile_arthur_pendragon_talentflow | candidate/profile |
 | [ ] | candidate_comparison_matrix_talentflow | candidate/comparison-matrix |
 | [ ] | candidate_help_center_talentflow | candidate/help-center |

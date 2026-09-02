@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using TalentFlow.Application.Models.Identity;
+using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Tenant.Command.TeamMember
 {
-    public class AcceptInvitationCommand : IRequest<AuthResponse>
+    public class AcceptInvitationCommand : IRequest<BaseCommandResponse<AuthResponse>>
     {
         public string Token { get; set; } = string.Empty;
 

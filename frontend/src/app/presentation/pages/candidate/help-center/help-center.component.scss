@@ -1,0 +1,271 @@
+@use '../../../../../styles/variables' as *;
+
+.hc-page {
+  min-height: 100vh;
+  background: $background;
+  color: $on-background;
+  font-family: $font-family-body;
+}
+
+.hc-main {
+  margin-left: $sidebar-width;
+  padding: $sp-lg;
+  max-width: 1280px;
+}
+
+// ---------- Hero ----------
+.hc-hero {
+  position: relative;
+  overflow: hidden;
+  background: $primary-container;
+  color: $on-primary-container;
+  border-radius: $radius-xl;
+  padding: $sp-xl;
+  box-shadow: $shadow-sm;
+  display: flex;
+  justify-content: center;
+}
+
+.hc-hero__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  background-image: radial-gradient(#cacfff 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.hc-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 672px;
+  text-align: center;
+}
+
+.hc-hero__title {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  margin-bottom: $sp-md;
+}
+
+.hc-hero__subtitle {
+  color: #bac3ff;
+  font-size: $text-body;
+  line-height: $body-line-height;
+  margin-bottom: $sp-lg;
+}
+
+.hc-search {
+  display: flex;
+  align-items: center;
+  background: $surface-container-lowest;
+  border-radius: $radius-full;
+  padding: $sp-sm $sp-md;
+  box-shadow: $shadow-sm;
+
+  &:focus-within {
+    outline: 2px solid $primary-fixed;
+  }
+
+  &__icon {
+    color: $outline;
+    margin-right: $sp-sm;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: $text-body;
+    color: $on-surface;
+
+    &::placeholder {
+      color: $outline-variant;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+// ---------- Section title ----------
+.hc-section-title {
+  font-size: $text-h2;
+  line-height: $h2-line-height;
+  color: $on-surface;
+  border-bottom: 1px solid $outline-variant;
+  padding-bottom: $sp-sm;
+  margin-bottom: $sp-md;
+}
+
+// ---------- Category cards ----------
+.hc-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: $surface-container-lowest;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-lg;
+  padding: $sp-md;
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $sp-sm;
+    color: $primary;
+    margin-bottom: $sp-md;
+  }
+
+  &__icon {
+    background: $surface-container-low;
+    padding: $sp-sm;
+    border-radius: $radius-lg;
+  }
+
+  &__title {
+    font-size: $text-h3;
+    line-height: $h3-line-height;
+    color: $on-surface;
+    margin: 0;
+  }
+}
+
+.hc-links li {
+  margin-bottom: $sp-sm;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-xs;
+    font-size: $text-body-sm;
+    color: $secondary;
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.hc-view-all {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: $sp-md;
+  font-size: $text-label;
+  font-weight: 500;
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ---------- Support card ----------
+.hc-support {
+  background: $primary-container;
+  color: $on-primary-container;
+  border-radius: $radius-lg;
+  padding: $sp-md;
+  box-shadow: $shadow-sm;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $sp-sm;
+    margin-bottom: $sp-sm;
+
+    h4 {
+      font-size: $text-h3;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  &__meta {
+    font-size: $text-body-sm;
+    color: #bac3ff;
+    margin-bottom: $sp-md;
+  }
+
+  &__btn {
+    width: 100%;
+    background: $surface-container-lowest;
+    color: $primary;
+    font-size: $text-label;
+    font-weight: 700;
+    padding: $sp-sm $sp-md;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: $surface-container-low;
+    }
+  }
+}
+
+// ---------- Recently viewed ----------
+.hc-recent {
+  background: $surface-container-lowest;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-lg;
+  padding: $sp-md;
+  box-shadow: $shadow-sm;
+
+  &__title {
+    font-size: $text-h3;
+    color: $on-surface;
+    margin-bottom: $sp-md;
+    padding-bottom: $sp-xs;
+    border-bottom: 1px solid $outline-variant;
+  }
+
+  &__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-sm;
+
+    & + li {
+      margin-top: $sp-md;
+    }
+  }
+
+  &__icon {
+    color: $outline-variant;
+    font-size: 18px;
+    margin-top: $sp-xs;
+  }
+
+  a {
+    font-size: $text-body-sm;
+    font-weight: 500;
+    color: $on-surface;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  p {
+    font-size: 10px;
+    color: $outline;
+    margin: 0;
+  }
+}

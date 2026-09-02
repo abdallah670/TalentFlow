@@ -1,4 +1,4 @@
-﻿
+
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TalentFlow.Application.Features.Authentication.Commands.ResetPasswors;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
 {
-    public class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordCommand, BaseCommandResponse>
+    public class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordCommand, BaseCommandResponse<bool>>
     {
         private readonly UserManager<User> _userManager;
         private readonly IRefreshTokenService _refreshTokenService;
@@ -28,13 +28,13 @@ namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
             _logger = logger;
         }
 
-        public async Task<BaseCommandResponse> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
                 _logger.LogWarning($"Reset password failed: User not found with email {request.Email}");
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "User not found"
@@ -43,7 +43,7 @@ namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
 
             if (request.NewPassword != request.ConfirmPassword)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "Passwords do not match."
@@ -56,7 +56,7 @@ namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
                 _logger.LogWarning($"Reset password failed for user {request.Email}: {errors}");
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = errors
@@ -77,7 +77,7 @@ namespace ChefNear.Application.Features.Auth.Commands.ResetPassword
 
             _logger.LogInformation($"Password reset successfully for user {request.Email}");
 
-            return new BaseCommandResponse
+            return new BaseCommandResponse<bool>
             {
                 Success = true,
                 Message = "Password reset successfully."

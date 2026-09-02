@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Roles.Command.AssignPermissions
 {
-    public class AssignPermissionsCommand : IRequest<BaseCommandResponse>
+    public class AssignPermissionsCommand : IRequest<BaseCommandResponse<bool>>
     {
         public Guid RoleId { get; set; }
 

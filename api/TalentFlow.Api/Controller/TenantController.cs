@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -68,7 +68,7 @@ namespace TalentFlow.Api.Controller
             var result =
                 await _mediator.Send(command);
 
-            if (!result.IsAuthenticated)
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -127,7 +127,7 @@ namespace TalentFlow.Api.Controller
             var result =
                 await _mediator.Send(command);
 
-            if (!result.IsAuthenticated)
+            if (!result.Success)
                 return BadRequest(result);
 
             return Ok(result);
@@ -147,7 +147,7 @@ namespace TalentFlow.Api.Controller
 
             var result = await _mediator.Send(command);
 
-            if (!result.IsAuthenticated && result.Message != "Invitation resent successfully.")
+            if (!result.Success && result.Message != "Invitation resent successfully.")
                 return BadRequest(result);
 
             return Ok(result);

@@ -1,11 +1,11 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace TalentFlow.Application.Features.Authentication.Commands.VerifyEmail
 {
-    public class VerifyEmailCommandHandler : IRequestHandler<VerifyEmailCommand, BaseCommandResponse>
+    public class VerifyEmailCommandHandler : IRequestHandler<VerifyEmailCommand, BaseCommandResponse<bool>>
     {
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
 
@@ -14,18 +14,18 @@ namespace TalentFlow.Application.Features.Authentication.Commands.VerifyEmail
             _userManager = userManager;
         }
 
-        public async Task<BaseCommandResponse> Handle(VerifyEmailCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(VerifyEmailCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user is null)
             {
-                return new BaseCommandResponse { Success = false, Message = "Invalid or expired confirmation link." };
+                return new BaseCommandResponse<bool> { Success = false, Message = "Invalid or expired confirmation link." };
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, request.Token);
             if (!result.Succeeded)
             {
-                return new BaseCommandResponse { Success = false, Message = "Invalid or expired confirmation link." };
+                return new BaseCommandResponse<bool> { Success = false, Message = "Invalid or expired confirmation link." };
             }
 
             if (!user.IsActive)
@@ -34,7 +34,7 @@ namespace TalentFlow.Application.Features.Authentication.Commands.VerifyEmail
                 await _userManager.UpdateAsync(user);
             }
 
-            return new BaseCommandResponse { Success = true, Message = "Email confirmed successfully." };
+            return new BaseCommandResponse<bool> { Success = true, Message = "Email confirmed successfully." };
         }
     }
 }

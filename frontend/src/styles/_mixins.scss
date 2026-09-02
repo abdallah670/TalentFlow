@@ -1,0 +1,166 @@
+// ==========================================================================
+// TalentFlow Enterprise – Global SCSS Mixins
+// Usage:  @use '<relative-path>/styles/mixins' as *;
+// (this file also forwards all design tokens from styles/_variables.scss,
+//  so importing mixins alone gives you both mixins AND variables)
+// ==========================================================================
+
+@use 'sass:math';
+@use 'sass:color';
+@forward 'variables';
+@use 'variables' as *;
+
+// ---------- Responsive breakpoints ----------
+@mixin respond-below($breakpoint) {
+  @media (max-width: #{math.floor($breakpoint - 1px)}) {
+    @content;
+  }
+}
+
+@mixin respond-above($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include respond-below($bp-md) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $bp-md) and (max-width: #{$bp-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
+// ---------- Flex helpers ----------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ---------- Cards ----------
+@mixin card($bg: $surface-container-lowest, $with-border: true) {
+  background: $bg;
+  border-radius: $radius-xl;
+
+  @if $with-border {
+    border: 1px solid $outline-variant;
+  }
+}
+
+@mixin elevated-card {
+  background: $surface-container-lowest;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-raised;
+}
+
+// ---------- Typography ----------
+@mixin heading($size: $text-h2, $line-height: $h2-line-height, $color: $on-surface) {
+  font-family: $font-family-body;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: 500;
+  color: $color;
+}
+
+@mixin label-text($color: $secondary) {
+  font-size: $text-label;
+  line-height: $label-line-height;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// ---------- Buttons ----------
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+@mixin filled-button($bg: $primary, $fg: $on-primary) {
+  background: $bg;
+  color: $fg;
+  border-radius: $radius-lg;
+  padding: $sp-md $sp-lg;
+  font-size: $text-label;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: color.scale($bg, $lightness: -5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin outline-button($fg: $primary, $border-color: $primary) {
+  background: transparent;
+  color: $fg;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  padding: $sp-md $sp-lg;
+  font-size: $text-label;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: $surface-container-low;
+  }
+}
+
+// ---------- Forms ----------
+@mixin input-base {
+  width: 100%;
+  padding: $sp-sm $sp-md;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-lg;
+  background: $surface;
+  color: $on-surface;
+  font-size: $text-body;
+  transition: border-color 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+
+  &::placeholder {
+    color: $outline;
+  }
+}
+
+// ---------- Effects ----------
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+

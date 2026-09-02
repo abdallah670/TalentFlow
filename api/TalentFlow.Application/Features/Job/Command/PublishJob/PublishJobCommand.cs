@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +7,7 @@ using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Job.Command.PublishJob
 {
-    public class PublishJobCommand : IRequest<BaseCommandResponse>
+    public class PublishJobCommand : IRequest<BaseCommandResponse<bool>>
     {
         [JsonIgnore]
         public Guid JobId { get; set; }

@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Authontication.Commands.Update
 {
-    public class UpdateUserCommand : IRequest<BaseCommandResponse>
+    public class UpdateUserCommand : IRequest<BaseCommandResponse<bool>>
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

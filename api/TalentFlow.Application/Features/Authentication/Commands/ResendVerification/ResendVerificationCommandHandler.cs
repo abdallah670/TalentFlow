@@ -1,14 +1,14 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace TalentFlow.Application.Features.Authentication.Commands.ResendVerification
 {
-    public class ResendVerificationCommandHandler : IRequestHandler<ResendVerificationCommand, BaseCommandResponse>
+    public class ResendVerificationCommandHandler : IRequestHandler<ResendVerificationCommand, BaseCommandResponse<bool>>
     {
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly IEmailService _emailService;
@@ -24,18 +24,18 @@ namespace TalentFlow.Application.Features.Authentication.Commands.ResendVerifica
             _appUrlSettings = appUrlSettings.Value;
         }
 
-        public async Task<BaseCommandResponse> Handle(ResendVerificationCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(ResendVerificationCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user is null)
             {
-                return new BaseCommandResponse { Success = true, Message = "If this email is registered, a verification link has been sent." };
+                return new BaseCommandResponse<bool> { Success = true, Message = "If this email is registered, a verification link has been sent." };
             }
 
             if (user.EmailConfirmed)
             {
-                return new BaseCommandResponse { Success = true, Message = "This email is already verified." };
+                return new BaseCommandResponse<bool> { Success = true, Message = "This email is already verified." };
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -53,7 +53,7 @@ namespace TalentFlow.Application.Features.Authentication.Commands.ResendVerifica
             {
             }
 
-            return new BaseCommandResponse { Success = true, Message = "If this email is registered, a verification link has been sent." };
+            return new BaseCommandResponse<bool> { Success = true, Message = "If this email is registered, a verification link has been sent." };
         }
     }
 }

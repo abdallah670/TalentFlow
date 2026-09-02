@@ -1,4 +1,5 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,28 +7,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Features.User.Query.GetUser;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.User.Command.UpdateUser
 {
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, BaseCommandResponse>
+    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, BaseCommandResponse<GetUserDTOs>>
     {
+        private readonly ILogger<UpdateUserCommandHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly ICurrentUserService _currentUserService;
 
-        public UpdateUserCommandHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService)
+        public UpdateUserCommandHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, ILogger<UpdateUserCommandHandler> logger)
         {
+            this.logger = logger;
             _userManager = userManager;
             _currentUserService = currentUserService;
         }
-        public async Task<BaseCommandResponse> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<GetUserDTOs>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(UpdateUserCommandHandler));
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (user == null)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<GetUserDTOs>
                 {
                     Success = false,
                     Message = "User Not Found"
@@ -46,7 +50,7 @@ namespace TalentFlow.Application.Features.User.Command.UpdateUser
           var result=  await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<GetUserDTOs>
                 {
                     Success = false,
                     Message = "Failed to update user"
@@ -64,7 +68,7 @@ namespace TalentFlow.Application.Features.User.Command.UpdateUser
                 Roles = newRoles,
 
             };
-            return new BaseCommandResponse
+            return new BaseCommandResponse<GetUserDTOs>
             {
                 Success = true,
                 Data = dtos,

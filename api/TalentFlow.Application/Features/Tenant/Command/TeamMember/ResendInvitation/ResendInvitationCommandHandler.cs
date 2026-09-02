@@ -1,18 +1,16 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
+using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Tenant.Command.TeamMember.ResendInvitation
 {
    
 
    
-        public class ResendInvitationCommandHandler : IRequestHandler<ResendInvitationCommand, AuthResponse>
+        public class ResendInvitationCommandHandler : IRequestHandler<ResendInvitationCommand, BaseCommandResponse<bool>>
         {
             private readonly IUnitOfWork _unitOfWork;
             private readonly IEmailService _emailService;
@@ -28,7 +26,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.TeamMember.ResendInvita
                 _appUrlSettings = appUrlSettings.Value;
             }
 
-            public async Task<AuthResponse> Handle(ResendInvitationCommand request, CancellationToken cancellationToken)
+            public async Task<BaseCommandResponse<bool>> Handle(ResendInvitationCommand request, CancellationToken cancellationToken)
             {
                 var invitation = (await _unitOfWork.Invitations.FindAsync(x =>
                         x.Email == request.Email &&
@@ -39,9 +37,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.TeamMember.ResendInvita
 
                 if (invitation is null)
                 {
-                    return new AuthResponse
+                    return new BaseCommandResponse<bool>
                     {
-                        IsAuthenticated = false,
+                        Success = false,
                         Message = "No pending invitation found for this email."
                     };
                 }
@@ -83,9 +81,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.TeamMember.ResendInvita
                 {
                 }
 
-                return new AuthResponse
+                return new BaseCommandResponse<bool>
                 {
-                    IsAuthenticated = false,
+                    Success = true,
                     Message = "Invitation resent successfully."
                 };
             }

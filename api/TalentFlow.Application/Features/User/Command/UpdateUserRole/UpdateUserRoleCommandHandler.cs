@@ -1,12 +1,12 @@
-ï»¿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.User.Command.UpdateUserRole
 {
-    public class UpdateUserRoleCommandHandler : IRequestHandler<UpdateUserRoleCommand, BaseCommandResponse>
+    public class UpdateUserRoleCommandHandler : IRequestHandler<UpdateUserRoleCommand, BaseCommandResponse<bool>>
     {
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly RoleManager<Domain.Entities.IdentityModule.Role> _roleManager;
@@ -22,26 +22,26 @@ namespace TalentFlow.Application.Features.User.Command.UpdateUserRole
             _refreshTokenService = refreshTokenService;
         }
 
-        public async Task<BaseCommandResponse> Handle(UpdateUserRoleCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(UpdateUserRoleCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (user is null)
             {
-                return new BaseCommandResponse { Success = false, Message = "User Not Found" };
+                return new BaseCommandResponse<bool> { Success = false, Message = "User Not Found" };
             }
 
             var roleExists = await _roleManager.RoleExistsAsync(request.Role);
             if (!roleExists)
             {
-                return new BaseCommandResponse { Success = false, Message = $"Role '{request.Role}' does not exist." };
+                return new BaseCommandResponse<bool> { Success = false, Message = $"Role '{request.Role}' does not exist." };
             }
 
             var currentRoles = await _userManager.GetRolesAsync(user);
 
             if (currentRoles.Contains(request.Role))
             {
-                return new BaseCommandResponse { Success = false, Message = "User already has this role." };
+                return new BaseCommandResponse<bool> { Success = false, Message = "User already has this role." };
             }
 
             if (currentRoles.Any())
@@ -53,17 +53,17 @@ namespace TalentFlow.Application.Features.User.Command.UpdateUserRole
 
             if (!addResult.Succeeded)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = string.Join(", ", addResult.Errors.Select(x => x.Description))
                 };
             }
 
-            // Ù†Ù„ØºÙŠ Ø§Ù„ØªÙˆÙƒÙ†Ø§Øª Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø© Ø¹Ø´Ø§Ù† Ø§Ù„Ù€ role Ø§Ù„Ø¬Ø¯ÙŠØ¯ ÙŠØªÙØ¹Ù„ ÙÙˆØ±Ù‹Ø§ Ù…Ø´ Ø¨Ø¹Ø¯ Ù…Ø§ Ø§Ù„ØªÙˆÙƒÙ† Ø§Ù„Ù‚Ø¯ÙŠÙ… ÙŠÙ†ØªÙ‡ÙŠ
+            // äáÛí ÇáÊæßäÇÊ ÇáŞÏíãÉ ÚÔÇä ÇáÜ role ÇáÌÏíÏ íÊİÚá İæÑğÇ ãÔ ÈÚÏ ãÇ ÇáÊæßä ÇáŞÏíã íäÊåí
             await _refreshTokenService.RevokeAllRefreshTokensForUserAsync(user.Id);
 
-            return new BaseCommandResponse
+            return new BaseCommandResponse<bool>
             {
                 Success = true,
                 Message = "User role updated successfully.",

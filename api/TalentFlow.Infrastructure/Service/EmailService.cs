@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 
 using MimeKit;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 using TalentFlow.Application.Models;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 

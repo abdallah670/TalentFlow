@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models.Identity;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace TalentFlow.Application.Features.Authontication.Commands.SelectTenant
 {
-    public class SelectTenantCommandHandler : IRequestHandler<SelectTenantCommand, AuthResponse>
+    public class SelectTenantCommandHandler : IRequestHandler<SelectTenantCommand, BaseCommandResponse<AuthResponse>>
     {
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly IUnitOfWork _unitOfWork;
@@ -31,17 +32,17 @@ namespace TalentFlow.Application.Features.Authontication.Commands.SelectTenant
             _jwtSettings = jwtSettings.Value;
         }
 
-        public async Task<AuthResponse> Handle(SelectTenantCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<AuthResponse>> Handle(SelectTenantCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByIdAsync(request.UserId.ToString());
             if (user == null)
-                return new AuthResponse { IsAuthenticated = false, Message = "User not found." };
+                return new BaseCommandResponse<AuthResponse> { Success = false, Message = "User not found." };
 
             var memberships = await _unitOfWork.UserTenants.FindAsync(
                 x => x.UserId == request.UserId && x.TenantId == request.TenantId && x.IsActive);
 
             if (!memberships.Any())
-                return new AuthResponse { IsAuthenticated = false, Message = "You are not a member of this workspace." };
+                return new BaseCommandResponse<AuthResponse> { Success = false, Message = "You are not a member of this workspace." };
 
             var roles = await _userManager.GetRolesAsync(user);
 
@@ -49,8 +50,11 @@ namespace TalentFlow.Application.Features.Authontication.Commands.SelectTenant
             var accessToken = new JwtSecurityTokenHandler().WriteToken(jwtToken);
             var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(user);
 
-            return new AuthResponse
+            return new BaseCommandResponse<AuthResponse>
             {
+                Success = true,
+                Data = new AuthResponse
+                {
                 Id = user.Id.ToString(),
                 UserName = user.UserName!,
                 Email = user.Email!,
@@ -60,6 +64,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.SelectTenant
                 TokenExpiration = jwtToken.ValidTo,
                 RefreshToken = refreshToken,
                 RefreshTokenExpiration = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays)
+                }
             };
         }
     }

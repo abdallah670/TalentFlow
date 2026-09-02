@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using TalentFlow.Application.Models.Identity;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Tenant.Command.TeamMember
 {
-    public class InviteTeamMemberCommand : IRequest<AuthResponse>
+    public class InviteTeamMemberCommand : IRequest<BaseCommandResponse<AuthResponse>>
     {
         // These are filled by the backend from JWT
         public Guid TenantId { get; set; }

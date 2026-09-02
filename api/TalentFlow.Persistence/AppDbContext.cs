@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Domain.Common;
 using TalentFlow.Domain.Entities.AssessmentModule;
 using TalentFlow.Domain.Entities.AuditModule;

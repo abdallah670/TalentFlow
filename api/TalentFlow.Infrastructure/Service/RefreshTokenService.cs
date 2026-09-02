@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
 using TalentFlow.Persistence;

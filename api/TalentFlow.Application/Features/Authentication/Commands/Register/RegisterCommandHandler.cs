@@ -1,11 +1,13 @@
-﻿using MediatR;
+using MediatR;
+using TalentFlow.Application.Responses;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
@@ -13,8 +15,9 @@ using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Authontication.Commands.Register
 {
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthResponse>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, BaseCommandResponse<AuthResponse>>
     {
+        private readonly ILogger<RegisterCommandHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
         private readonly IJWTService jWTService;
         private readonly IRefreshTokenService refreshTokenService;
@@ -28,33 +31,25 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
             IRefreshTokenService refreshTokenService,
             IOptions<JwtSettings> jwtSettings,
             IEmailService emailService,
-            IOptions<AppUrlSettings> appUrlSettings) 
+            IOptions<AppUrlSettings> appUrlSettings, ILogger<RegisterCommandHandler> logger) // ? IOptions �� ������ ������
         {
             this.userManager = userManager;
             this.jWTService = jWTService;
             this.refreshTokenService = refreshTokenService;
             _jwtSettings = jwtSettings.Value;
             this.emailService = emailService;
-            _appUrlSettings = appUrlSettings.Value;
+            _appUrlSettings = appUrlSettings.Value; // ? .Value
         }
 
-        public async Task<AuthResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<AuthResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            if (request.Password != request.ConfirmPassword)
-            {
-                return new AuthResponse
-                {
-                    IsAuthenticated = false,
-                    Message = "Passwords do not match."
-                };
-            }
-
+            logger.LogInformation("Handling {Handler}", nameof(RegisterCommandHandler));
             var existinguser = await userManager.FindByEmailAsync(request.Email);
             if (existinguser is not null)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Email Already Exist"
                 };
             }
@@ -65,51 +60,41 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                IsActive = false 
+                IsActive = true
             };
 
             var result = await userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = string.Join(", ", result.Errors.Select(x => x.Description))
                 };
             }
 
             await userManager.AddToRoleAsync(user, Domain.Enums.Roles.Candidate.ToString());
             var roles = await userManager.GetRolesAsync(user);
+       
+            var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            var encodedToken = Uri.EscapeDataString(token);
 
-            var emailToken = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            var encodedToken = Uri.EscapeDataString(emailToken);
             var confirmationLink = $"{_appUrlSettings.ApiBaseUrl}/api/Auth/ConfirmEmail?userId={user.Id}&token={encodedToken}";
+            Console.WriteLine("LINK: " + confirmationLink);
+            var body = $"<h2>Welcome {user.FirstName}</h2><a href='{confirmationLink}'>Click here to confirm your email</a>";
 
-            try
-            {
-                var body = $"<h2>Welcome {user.FirstName}</h2><a href='{confirmationLink}'>Click here to confirm your email</a>";
-                await emailService.SendEmailAsync(user.Email!, "Confirm Email", body);
-            }
-            catch
-            {
-            }
+            await emailService.SendEmailAsync(user.Email, "Confirm Email", body);
 
-            var jwtToken = await jWTService.CreateJwtToken(user, roles);
-            var accessToken = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().WriteToken(jwtToken);
-            var refreshToken = await refreshTokenService.GenerateRefreshTokenAsync(user);
-
-            return new AuthResponse
+            return new BaseCommandResponse<AuthResponse>
             {
-                Id = user.Id.ToString(),
-                UserName = user.UserName!,
-                Email = user.Email!,
-                Roles = roles.ToList(),
-                IsAuthenticated = true,
-                Token = accessToken,
-                TokenExpiration = jwtToken.ValidTo,
-                RefreshToken = refreshToken,
-                RefreshTokenExpiration = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenDurationInDays),
-                Message = "Registered successfully. Please check your email to confirm your account."
+                Success = true,
+                Message = "Registered successfully. Please check your email to confirm your account.",
+                Data = new AuthResponse
+                {
+                    Id = user.Id.ToString(),
+                    UserName = user.UserName!,
+                    Email = user.Email!
+                }
             };
         }
     }

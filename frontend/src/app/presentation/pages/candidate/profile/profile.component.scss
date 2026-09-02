@@ -1,0 +1,484 @@
+@use '../../../../../styles/variables' as *;
+
+.cp-page {
+  min-height: 100vh;
+  background: $background;
+  color: $on-surface;
+  font-family: $font-family-body;
+}
+
+.cp-main {
+  margin-left: $sidebar-width;
+  padding: $sp-lg;
+  max-width: 1440px;
+}
+
+// ---------- Generic card ----------
+.cp-card {
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+}
+
+// ---------- Hero ----------
+.cp-hero {
+  padding: $sp-xl;
+  margin-bottom: $sp-lg;
+}
+
+.cp-hero__avatar-wrap {
+  flex-shrink: 0;
+}
+
+.cp-hero__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid $primary-container;
+  box-shadow: $shadow-raised;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cp-hero__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid $surface;
+}
+
+.cp-hero__name {
+  font-size: $text-h1;
+  line-height: $h1-line-height;
+  font-weight: 700;
+  color: $on-surface;
+}
+
+.cp-badge-source {
+  background: rgba(63, 81, 181, 0.1);
+  color: $primary-container;
+  border: 1px solid rgba(63, 81, 181, 0.2);
+  padding: 2px $sp-sm;
+  border-radius: $radius-full;
+  font-size: $text-label;
+  line-height: $label-line-height;
+  font-weight: 700;
+}
+
+.cp-hero__meta {
+  color: $on-surface-variant;
+  font-size: $text-body-sm;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-xs;
+
+    .material-symbols-outlined {
+      font-size: 18px;
+    }
+  }
+}
+
+// ---------- Buttons ----------
+.cp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  padding: $sp-sm $sp-lg;
+  border-radius: $radius-lg;
+  border: none;
+  font-weight: 700;
+  font-size: $text-body;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  &--neutral {
+    background: $surface-container-high;
+    color: $on-surface;
+
+    &:hover {
+      background: $surface-container-highest;
+    }
+  }
+
+  &--danger {
+    background: $error;
+    color: $on-error;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--primary {
+    background: $primary;
+    color: $on-primary;
+  }
+
+  &--sm {
+    padding: $sp-xs $sp-md;
+    font-size: $text-label;
+
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+  }
+}
+
+// ---------- Tabs ----------
+.cp-tabs {
+  display: flex;
+  gap: $sp-xl;
+  margin-bottom: $sp-lg;
+  border-bottom: 1px solid $outline-variant;
+}
+
+.cp-tab {
+  padding: $sp-sm $sp-md;
+  background: none;
+  border: none;
+  font-size: $text-label;
+  color: $on-surface-variant;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &.is-active {
+    border-bottom: 3px solid $primary;
+    color: $primary;
+    font-weight: 700;
+    margin-bottom: -1px;
+  }
+}
+
+.cp-tab-panel.is-hidden {
+  display: none;
+}
+
+// ---------- Details tab ----------
+.cp-section {
+  padding: $sp-lg;
+}
+
+.cp-section__title {
+  font-size: $text-h3;
+  line-height: $h3-line-height;
+  font-weight: 500;
+  color: $primary;
+  margin: 0;
+}
+
+.cp-field__label {
+  display: block;
+  margin-bottom: $sp-xs;
+  font-size: $text-label;
+  line-height: $label-line-height;
+  color: $on-surface-variant;
+}
+
+.cp-field__value {
+  font-size: $text-body;
+  line-height: $body-line-height;
+  color: $on-surface;
+  margin: 0;
+}
+
+.cp-note {
+  margin: 0;
+  padding: $sp-md;
+  background: $surface-container-low;
+  border: 1px solid rgba(197, 197, 212, 0.3);
+  border-radius: $radius-lg;
+  font-style: italic;
+  color: $on-surface-variant;
+}
+
+.cp-skills .cp-chip {
+  display: inline-block;
+  padding: $sp-xs $sp-md;
+  border-radius: $radius-full;
+  font-size: $text-label;
+  line-height: $label-line-height;
+  background: rgba(227, 225, 234, 0.3);
+  color: $on-surface-variant;
+  border: 1px solid $outline-variant;
+
+  &--primary {
+    background: rgba(201, 207, 253, 0.3);
+    color: $on-secondary-container;
+    border-color: $secondary-container;
+  }
+}
+
+.cp-next-action {
+  background: rgba(36, 56, 156, 0.05);
+  border: 1px solid rgba(36, 56, 156, 0.2);
+  border-radius: $radius-xl;
+  padding: $sp-lg;
+
+  &__title {
+    font-size: $text-h3;
+    color: $primary;
+    margin-bottom: $sp-md;
+  }
+
+  &__icon {
+    background: $primary;
+    color: $on-primary;
+    padding: $sp-sm;
+    border-radius: $radius-lg;
+    display: flex;
+  }
+
+  &__label {
+    font-size: $text-label;
+    font-weight: 700;
+    color: $on-surface;
+
+// ---------- Applications table ----------
+.cp-table-card {
+  overflow: hidden;
+}
+
+.cp-table {
+  margin: 0;
+  font-size: $text-body;
+  color: $on-surface;
+
+  th {
+    padding: $sp-md $sp-lg;
+    background: $surface-container-low;
+    border-bottom: 1px solid $outline-variant;
+    font-size: $text-label;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $on-surface-variant;
+  }
+
+  td {
+    padding: $sp-md $sp-lg;
+    border-bottom: 1px solid $outline-variant;
+    vertical-align: middle;
+
+    tr:last-child & {
+      border-bottom: none;
+    }
+  }
+
+  tbody tr {
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: rgba(36, 56, 156, 0.05);
+    }
+  }
+
+  &__position {
+    font-weight: 700;
+    color: $primary;
+  }
+}
+
+.cp-stage-badge {
+  display: inline-block;
+  background: $tertiary-fixed;
+  color: #301400;
+  padding: 2px $sp-sm;
+  border-radius: $radius-sm;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cp-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $primary;
+  font-size: $text-label;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ---------- Timeline ----------
+.cp-timeline {
+  margin-left: $sp-sm;
+
+  &__item {
+    position: relative;
+    padding-left: $sp-xl;
+    padding-bottom: $sp-xl;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 24px;
+      bottom: 0;
+      width: 2px;
+      background: $outline-variant;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: $primary-fixed-dim;
+    border: 2px solid $primary;
+    z-index: 1;
+
+    &--filled {
+      background: $primary;
+      border-color: $primary;
+    }
+  }
+
+  &__title {
+    font-size: $text-label;
+    line-height: $label-line-height;
+    font-weight: 700;
+    color: $on-surface;
+    margin: 0;
+
+    &--primary {
+      color: $primary;
+    }
+  }
+
+  &__date {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+    margin: 0;
+  }
+
+  &__desc {
+    margin-top: $sp-xs;
+    font-size: $text-body;
+    color: $on-surface;
+  }
+}
+
+// ---------- Documents ----------
+.cp-doc {
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-xl;
+  padding: $sp-lg;
+  box-shadow: $shadow-sm;
+
+  &__icon {
+    font-size: 48px;
+    color: $primary;
+    margin-bottom: $sp-md;
+  }
+
+  &__name {
+    font-size: $text-label;
+    line-height: $label-line-height;
+    font-weight: 700;
+    margin-bottom: $sp-xs;
+  }
+
+  &__meta {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $on-surface-variant;
+    margin-bottom: $sp-md;
+  }
+
+  &__download {
+    padding: $sp-xs 0;
+    background: $surface-container-high;
+    border: none;
+    border-radius: $radius-lg;
+    font-size: $text-label;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: $surface-container-highest;
+    }
+  }
+}
+
+.cp-upload {
+  min-height: 180px;
+  height: 100%;
+  background: $surface-container-lowest;
+  border: 2px dashed $outline-variant;
+  border-radius: $radius-xl;
+  padding: $sp-lg;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: $primary;
+
+    .cp-upload__icon,
+    .cp-upload__label {
+      color: $primary;
+    }
+  }
+
+  &__icon {
+    font-size: 32px;
+    color: $on-surface-variant;
+    margin-bottom: $sp-sm;
+    transition: color 0.15s ease;
+  }
+
+  &__label {
+    font-size: $text-label;
+    line-height: $label-line-height;
+    color: $on-surface-variant;
+    transition: color 0.15s ease;
+  }
+}
+
+    margin: 0;
+  }
+
+  &__meta {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+    margin: 0;
+  }
+}

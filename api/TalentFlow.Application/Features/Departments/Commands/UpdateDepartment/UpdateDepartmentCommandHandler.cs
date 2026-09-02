@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Departments.Commands.CreateDepartment;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.RecruitmentModule;
 
 namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
 {
-    public class UpdateDepartmentCommandHandler : IRequestHandler<UpdateDepartmentCommand, BaseCommandResponse>
+    public class UpdateDepartmentCommandHandler : IRequestHandler<UpdateDepartmentCommand, BaseCommandResponse<bool>>
     {
         private readonly IMapper mapper;
         private readonly IMemoryCache cache;
@@ -31,7 +31,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<BaseCommandResponse> Handle(UpdateDepartmentCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(UpdateDepartmentCommand request, CancellationToken cancellationToken)
         {
             var cacheKey = $"Departments_{currentTenantService.TenantId}";
 
@@ -41,7 +41,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
 
                 if (department == null)
                 {
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<bool>
                     {
                         Success = false,
                         Message = "Department not found."
@@ -50,7 +50,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
 
                 if (department.TenantId != currentTenantService.TenantId)
                 {
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<bool>
                     {
                         Success = false,
                         Message = "Unauthorized."
@@ -64,7 +64,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
                 await unitOfWork.CompleteAsync();
                 cache.Remove(cacheKey);
                 logger.LogInformation("Department updated for Tenant {TenantId}", currentTenantService.TenantId);
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = true,
                 };
@@ -73,7 +73,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.UpdateDepartment
             {
                 logger.LogError(ex, "Error updating department.");
 
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "Error updating department."

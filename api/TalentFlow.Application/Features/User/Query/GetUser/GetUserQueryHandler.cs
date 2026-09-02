@@ -1,32 +1,36 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.User.Query.GetUser
 {
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, BaseCommandResponse>
+    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, BaseCommandResponse<GetUserDTOs>>
     {
+        private readonly ILogger<GetUserQueryHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly ICurrentUserService _currentUserService;
 
-        public GetUserQueryHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService)
+        public GetUserQueryHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, ILogger<GetUserQueryHandler> logger)
         {
+            this.logger = logger;
             _userManager = userManager;
             _currentUserService = currentUserService;
         }
 
-        public async Task<BaseCommandResponse> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<GetUserDTOs>> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetUserQueryHandler));
             var user = await _userManager.Users.FirstOrDefaultAsync(x=>x.Id == request.Id,cancellationToken );
 
             if (user == null)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<GetUserDTOs>
                 {
                     Success = false,
                     Message = "User Not Found"
@@ -42,7 +46,7 @@ namespace TalentFlow.Application.Features.User.Query.GetUser
                 Email = user.Email,
                 Roles = roles.ToList()
             };
-            return new BaseCommandResponse
+            return new BaseCommandResponse<GetUserDTOs>
             {
                 Success = true,
                 Data = dto,

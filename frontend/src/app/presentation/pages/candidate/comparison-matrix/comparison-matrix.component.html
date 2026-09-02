@@ -1,0 +1,192 @@
+<div class="cm-page">
+  <app-portal-sidebar />
+
+  <main class="cm-main">
+    <!-- Page Header -->
+    <div class="cm-header d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+      <div>
+        <nav class="cm-breadcrumb" aria-label="Breadcrumb">
+          <a href="#">Engineering Dept</a>
+          <span class="material-symbols-outlined">chevron_right</span>
+          <span>Req-2048</span>
+        </nav>
+        <h1 class="cm-title">Candidate Comparison: Senior Backend Engineer</h1>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button class="cm-btn cm-btn--ghost">
+          <span class="material-symbols-outlined">download</span>
+          Export PDF
+        </button>
+        <button class="cm-btn cm-btn--primary">
+          <span class="material-symbols-outlined cm-icon-fill">check_circle</span>
+          Finalize Decision
+        </button>
+      </div>
+    </div>
+
+    <!-- Comparison Matrix -->
+    <div class="cm-canvas">
+      <div class="table-responsive">
+        <div class="cm-grid">
+          <!-- Labels column -->
+          <div class="cm-col cm-col--labels">
+            <div class="cm-cell cm-cell--head">
+              <span class="cm-cell__caption">Evaluation Criteria</span>
+            </div>
+
+            <div class="cm-cell cm-cell--experience">
+              <h3 class="cm-cell__title">Experience</h3>
+              <p class="cm-cell__hint">Years in relevant roles, scale of systems built.</p>
+            </div>
+
+            <div class="cm-cell cm-cell--skills">
+              <h3 class="cm-cell__title">Technical Skills</h3>
+              <p class="cm-cell__hint">Core tech stack proficiency &amp; system design.</p>
+            </div>
+
+            <div class="cm-cell cm-cell--fit">
+              <h3 class="cm-cell__title">Cultural Fit Score</h3>
+              <p class="cm-cell__hint">Alignment with core values, teamwork, communication.</p>
+            </div>
+
+            <div class="cm-cell cm-cell--feedback">
+              <h3 class="cm-cell__title">Interviewer Feedback</h3>
+              <p class="cm-cell__hint">Consolidated panel notes &amp; red flags.</p>
+            </div>
+
+            <div class="cm-cell cm-cell--salary">
+              <h3 class="cm-cell__title">Salary Expectations</h3>
+            </div>
+
+            <div class="cm-cell cm-cell--action">
+              <span class="cm-cell__caption">Final Action</span>
+            </div>
+          </div>
+
+          <!-- Candidate 1 -->
+          <div class="cm-col cm-col--top-pick">
+            <div class="cm-cell cm-cell--head cm-cand-head position-relative">
+              <span class="cm-top-badge">
+                <span class="material-symbols-outlined">star</span>
+                Top Pick
+              </span>
+              <div class="cm-avatar"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY76rJLfO8c9QIJcqgGiJHSKFaHmu7WkdyeZXVHhofERe0tTQR0qKjcG5L9h9oEofBAa6VMOkRiaIfyo3UmR5ToXn18ZZffxM9530gfzdOr1DtrRW7JB4qMwO7EiuZIvMQ_TCLhD3TEM4TyR59jqfDRL1QQWGGC2_c88_Dlxg4OWaOfyoZKE5AvfhZy_qomUKfxYFozB8pOaf4egQNGMdaD8rUucYhrRIAPjsvHJB_wlcXt_tSsNHF" alt="Elena Rostova" /></div>
+              <h2 class="cm-cand-name">Elena Rostova</h2>
+              <span class="cm-cand-role">Lead Engineer @ FinTech Corp</span>
+            </div>
+            <div class="cm-cell cm-cell--experience"><p class="cm-text">8 years total. Led migration of monolithic payments system to microservices handling 50k TPS.</p></div>
+            <div class="cm-cell cm-cell--skills">
+              <div class="cm-tags">
+                <span class="cm-tag">Go</span><span class="cm-tag">Kubernetes</span><span class="cm-tag">PostgreSQL</span>
+              </div>
+              <p class="cm-hint mt-2">Exceptional system design skills. Scored 95% on technical assessment.</p>
+            </div>
+            <div class="cm-cell cm-cell--fit">
+              <div class="cm-score-row"><span>Score: 9.2/10</span><span class="material-symbols-outlined cm-face cm-face--good">sentiment_very_satisfied</span></div>
+              <div class="cm-bar"><div class="cm-bar__fill cm-bar__fill--green" style="width: 92%"></div></div>
+              <p class="cm-hint mt-2">Highly collaborative, mentors juniors actively.</p>
+            </div>
+            <div class="cm-cell cm-cell--feedback">
+              <ul class="cm-feedback list-unstyled">
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--ok">check</span> Strong architectural vision.</li>
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--ok">check</span> Communicates complex ideas clearly.</li>
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--info">info</span> Prefers remote-first environment.</li>
+              </ul>
+            </div>
+            <div class="cm-cell cm-cell--salary">
+              <span class="cm-salary">$185k - $195k</span>
+              <span class="cm-budget cm-budget--within">Within Budget</span>
+            </div>
+            <div class="cm-cell cm-cell--action">
+              <label class="cm-toggle is-checked">
+                <input type="checkbox" checked />
+                <span class="cm-toggle__track"></span>
+                Recommend Hire
+                <span class="cm-toggle__track"></span>
+                Recommend Hire
+              </label>
+            </div>
+          </div>
+
+          <!-- Candidate 2 -->
+          <div class="cm-col">
+            <div class="cm-cell cm-cell--head cm-cand-head">
+              <div class="cm-avatar"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ4l0T3pXj18G7GDgDf-lY5PgA5mvPnBnttRUEGwuhosYGxMfYp8WcNqtVSg1LIelLyFacC_MGjUyR4fcSk1uZBIQBhekyKjySgWVK-DVmiKE8Or6saBRhYOW_c-ayrDINMeBMtzXdq01dObrSkQrQR8GreWQDmPOsEdWwInapmbbGi__i0tQ4CshLVN_U8zW17aL7I2poRosoXfIt9SprAuMpwKsR5_De_7Cci4dIiuwLSZitaJMK" alt="Marcus Chen" /></div>
+              <h2 class="cm-cand-name">Marcus Chen</h2>
+              <span class="cm-cand-role">Sr. Backend Dev @ DataStream</span>
+            </div>
+            <div class="cm-cell cm-cell--experience"><p class="cm-text">6 years total. Focused heavily on data pipelines and high-throughput real-time processing.</p></div>
+            <div class="cm-cell cm-cell--skills">
+              <div class="cm-tags">
+                <span class="cm-tag">Java</span><span class="cm-tag">Kafka</span><span class="cm-tag">AWS</span>
+              </div>
+              <p class="cm-hint mt-2">Solid execution, but less experience with our specific Go stack.</p>
+            </div>
+            <div class="cm-cell cm-cell--fit">
+              <div class="cm-score-row"><span>Score: 7.8/10</span><span class="material-symbols-outlined cm-face cm-face--mid">sentiment_satisfied</span></div>
+              <div class="cm-bar"><div class="cm-bar__fill cm-bar__fill--orange" style="width: 78%"></div></div>
+              <p class="cm-hint mt-2">Independent worker, might need adjustment to highly cross-functional team.</p>
+            </div>
+            <div class="cm-cell cm-cell--feedback">
+              <ul class="cm-feedback list-unstyled">
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--ok">check</span> Excellent problem-solving speed.</li>
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--bad">warning</span> Struggled slightly with ambiguous design questions.</li>
+              </ul>
+            </div>
+            <div class="cm-cell cm-cell--salary">
+              <span class="cm-salary">$170k - $180k</span>
+              <span class="cm-budget cm-budget--below">Below Budget</span>
+            </div>
+            <div class="cm-cell cm-cell--action">
+              <label class="cm-toggle">
+                <input type="checkbox" />
+                <span class="cm-toggle__track"></span>
+                Recommend Hire
+              </label>
+            </div>
+          </div>
+
+          <!-- Candidate 3 -->
+          <div class="cm-col">
+            <div class="cm-cell cm-cell--head cm-cand-head">
+              <div class="cm-avatar"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW3O8ym-pC8rjyozlATk9ThPxsF1pCVBw6M58js5ZJZ60me5yvMo-unUpY40ERx9P4IGwI1qliUGSNouDUaPtOexsTBitYacJo-uLkFEQ8ZAyhB76oAmtIsmBniNW04QMulX5sbamWKsDCRAlU7yu_-JiU0rZ82IihY584CKq5TlB3FbPINFkEvH7hj9nmtShllP5Yt2cNnarf82QROHLTaZjzFW4wvFxt4bva84Cb8XFDNX3bDBmJ" alt="Jordan Ali" /></div>
+              <h2 class="cm-cand-name">Jordan Ali</h2>
+              <span class="cm-cand-role">Staff Engineer @ CloudSys</span>
+            </div>
+            <div class="cm-cell cm-cell--experience"><p class="cm-text">10+ years total. Extensive experience designing distributed systems from scratch.</p></div>
+            <div class="cm-cell cm-cell--skills">
+              <div class="cm-tags">
+                <span class="cm-tag">Go</span><span class="cm-tag">Rust</span><span class="cm-tag">GCP</span>
+              </div>
+              <p class="cm-hint mt-2">Overqualified for senior role, possesses staff-level architecture skills.</p>
+            </div>
+            <div class="cm-cell cm-cell--fit">
+              <div class="cm-score-row"><span>Score: 8.5/10</span><span class="material-symbols-outlined cm-face cm-face--good">sentiment_satisfied</span></div>
+              <div class="cm-bar"><div class="cm-bar__fill cm-bar__fill--lime" style="width: 85%"></div></div>
+              <p class="cm-hint mt-2">Great culture fit, very process-oriented.</p>
+            </div>
+            <div class="cm-cell cm-cell--feedback">
+              <ul class="cm-feedback list-unstyled">
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--ok">check</span> Deep technical expertise.</li>
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--info">info</span> Looking for leadership responsibilities soon.</li>
+                <li><span class="material-symbols-outlined cm-fb-icon cm-fb-icon--bad">warning</span> Flight risk if role isn't challenging enough.</li>
+              </ul>
+            </div>
+            <div class="cm-cell cm-cell--salary">
+              <span class="cm-salary">$210k+</span>
+              <span class="cm-budget cm-budget--over">Over Budget</span>
+            </div>
+            <div class="cm-cell cm-cell--action">
+              <label class="cm-toggle is-disabled">
+                <input type="checkbox" disabled />
+                <span class="cm-toggle__track"></span>
+                Recommend Hire
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

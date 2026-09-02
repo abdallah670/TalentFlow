@@ -20,6 +20,15 @@ using TalentFlow.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // =========================
+// Serilog
+// =========================
+
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext());
+
+// =========================
 // Add Services
 // =========================
 
@@ -244,6 +253,8 @@ options.RoutePrefix = string.Empty;
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
 
 app.UseCors("AllowAll");
 

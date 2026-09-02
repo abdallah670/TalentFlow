@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TalentFlow.Application.Contracts;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Models.Authentication;
 using TalentFlow.Infrastructure.Service;

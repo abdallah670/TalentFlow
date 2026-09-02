@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Authentication.Commands.ForgetPassword
 {
-    public class ForgetPasswordComand :IRequest<BaseCommandResponse>
+    public class ForgetPasswordComand :IRequest<BaseCommandResponse<bool>>
     {
         public string Email { get; set; } = default!;
     }

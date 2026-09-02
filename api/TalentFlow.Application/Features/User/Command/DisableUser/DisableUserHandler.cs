@@ -1,36 +1,37 @@
-﻿    using MediatR;
+    using MediatR;
+using Microsoft.Extensions.Logging;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Text;
     using TalentFlow.Application.Features.User.Query.GetUser;
-    using TalentFlow.Application.Interfaces;
+    using TalentFlow.Application.Contracts.Infra;
     using TalentFlow.Application.Responses;
 
     namespace TalentFlow.Application.Features.User.Command.DisableUser
     {
-        public class DisableUserHandler : IRequestHandler<DisAbleUserCommand, BaseCommandResponse>
+        public class DisableUserHandler : IRequestHandler<DisAbleUserCommand, BaseCommandResponse<GetUserDTOs>>
         {
+            private readonly ILogger<DisableUserHandler> logger;
             private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
             private readonly ICurrentUserService _currentUserService;
-        private readonly IRefreshTokenService _refreshTokenService;
 
-
-        public DisableUserHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, IRefreshTokenService refreshTokenService)
-        {
-            _userManager = userManager;
-            _currentUserService = currentUserService;
-            _refreshTokenService = refreshTokenService;
-        }
-
-        public async Task<BaseCommandResponse> Handle(DisAbleUserCommand request, CancellationToken cancellationToken)
+            public DisableUserHandler(UserManager<Domain.Entities.IdentityModule.User> userManager, ICurrentUserService currentUserService, ILogger<DisableUserHandler> logger)
             {
+            this.logger = logger;
+                _userManager = userManager;
+                _currentUserService = currentUserService;
+            }
+
+            public async Task<BaseCommandResponse<GetUserDTOs>> Handle(DisAbleUserCommand request, CancellationToken cancellationToken)
+            {
+            logger.LogInformation("Handling {Handler}", nameof(DisableUserHandler));
                 var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
                 if (user == null)
                 {
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<GetUserDTOs>
                     {
                         Success = false,
                         Message = "User Not Found"
@@ -40,7 +41,7 @@
                
             if (!user.IsActive)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<GetUserDTOs>
                 {
                     Success = false,
                     Message = "User is already disabled."
@@ -48,8 +49,6 @@
             }
             user.IsActive = false;
                 await _userManager.UpdateAsync(user);
-            await _refreshTokenService.RevokeAllRefreshTokensForUserAsync(user.Id);
-
             var dto = new GetUserDTOs
             {
                 Id = user.Id,
@@ -59,7 +58,7 @@
                 Email = user.Email,
                 Roles = roles.ToList()
             };
-            return new BaseCommandResponse
+            return new BaseCommandResponse<GetUserDTOs>
                 {
                     Success = true,
                     Message = "User disabled successfully.",

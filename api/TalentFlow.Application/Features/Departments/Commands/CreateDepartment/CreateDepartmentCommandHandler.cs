@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Departments.Queries.GetDepartments;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.RecruitmentModule;
 
 namespace TalentFlow.Application.Features.Departments.Commands.CreateDepartment
 {
-    public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand, BaseCommandResponse>
+    public class CreateDepartmentCommandHandler : IRequestHandler<CreateDepartmentCommand, BaseCommandResponse<bool>>
     {
         private readonly IDepartmentRepository departmentRepository;
         private readonly IMapper mapper;
@@ -33,7 +33,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.CreateDepartment
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<BaseCommandResponse> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
         {
             var cacheKey = $"Departments_{currentTenantService.TenantId}";
 
@@ -47,14 +47,15 @@ namespace TalentFlow.Application.Features.Departments.Commands.CreateDepartment
                 logger.LogInformation(
     "Department created for Tenant {TenantId}",
     currentTenantService.TenantId);
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = true,
                 };
             }
             catch (Exception ex)
             {
-                return new BaseCommandResponse
+                logger.LogError(ex, "Unhandled exception in {Handler}", nameof(CreateDepartmentCommandHandler));
+                return new BaseCommandResponse<bool>
                 {
                     Message = ex.Message,
                     Success = false

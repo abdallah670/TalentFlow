@@ -83,13 +83,10 @@ namespace TalentFlow.Api.Controller
         {
 
             var result = await mediator.Send(command);
-            if (!result)
-                return BadRequest("Invalid refresh token.");
+            if (!result.Success)
+                return BadRequest(result);
 
-            return Ok(new
-            {
-                Message = "Logged out successfully."
-            });
+            return Ok(result);
         }
 
         [Authorize]
@@ -130,9 +127,14 @@ namespace TalentFlow.Api.Controller
 
         [Authorize]
         [HttpGet("Profile")]
-        public async Task<ActionResult<UserProfileDto>> GetProfile()
+        public async Task<IActionResult> GetProfile()
         {
-            return Ok(await mediator.Send(new GetProfileQuery()));
+            var result = await mediator.Send(new GetProfileQuery());
+
+            if (!result.Success)
+                return NotFound(result);
+
+            return Ok(result);
         }
 
         [HttpGet("ResetPasswordForm")]

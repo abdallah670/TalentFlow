@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 
 namespace TalentFlow.Infrastructure.Service
 {

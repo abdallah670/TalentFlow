@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +8,7 @@ using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Job.Command.UpdateJob
 {
-    public class UpdateJobCommand :IRequest <BaseCommandResponse>
+    public class UpdateJobCommand :IRequest <BaseCommandResponse<bool>>
     {
         [JsonIgnore]
         public Guid JobId { get; set; }

@@ -1,23 +1,28 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.CandidateModule;
 
 namespace TalentFlow.Application.Features.CandidateModule.Commands.UploadResume
 {
-    public class UploadResumeHandler : IRequestHandler<UploadResumeCommand, UploadResumeResponse>
+    public class UploadResumeHandler : IRequestHandler<UploadResumeCommand, BaseCommandResponse<UploadResumeResponse>>
     {
+        private readonly ILogger<UploadResumeHandler> logger;
         private readonly IcandidateProfileRepo candidateProfileRepo;
         private readonly IFileStorageService fileStorageService;
 
-        public UploadResumeHandler(IcandidateProfileRepo candidateProfileRepo, IFileStorageService fileStorageService)
+        public UploadResumeHandler(IcandidateProfileRepo candidateProfileRepo, IFileStorageService fileStorageService, ILogger<UploadResumeHandler> logger)
         {
+            this.logger = logger;
             this.candidateProfileRepo = candidateProfileRepo;
             this.fileStorageService = fileStorageService;
         }
 
-        public async Task<UploadResumeResponse> Handle(UploadResumeCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<UploadResumeResponse>> Handle(UploadResumeCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(UploadResumeHandler));
             var existingProfiles = await candidateProfileRepo.FindAsync(x => x.UserId == request.UserId);
             var profile = existingProfiles.FirstOrDefault();
 
@@ -44,11 +49,16 @@ namespace TalentFlow.Application.Features.CandidateModule.Commands.UploadResume
 
             await candidateProfileRepo.SaveAsync(cancellationToken);
 
-            return new UploadResumeResponse
+            return new BaseCommandResponse<UploadResumeResponse>
             {
                 Success = true,
                 Message = "Resume uploaded successfully.",
-                ResumeUrl = profile.ResumeUrl
+                Data = new UploadResumeResponse
+                {
+                    Success = true,
+                    Message = "Resume uploaded successfully.",
+                    ResumeUrl = profile.ResumeUrl
+                }
             };
         }
     }
