@@ -1,0 +1,365 @@
+@use '../../../../../styles/variables' as *;
+
+.ar-page {
+  min-height: 100vh;
+  background: $surface;
+  color: $on-surface;
+  font-family: 'Roboto', system-ui, sans-serif;
+
+  .ar-main {
+    margin-left: 256px;
+    padding: $sp-lg $sp-xl;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+
+  .ar-header {
+    margin-bottom: $sp-lg;
+
+    .ar-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $on-surface;
+    }
+
+    .ar-subtitle {
+      font-size: 13px;
+      color: $secondary;
+      margin-top: 4px;
+    }
+  }
+
+  // Generic card
+  .ar-card {
+    background: $surface-container-lowest;
+    border: 1px solid $outline-variant;
+    border-radius: 12px;
+    padding: $sp-md;
+    height: 100%;
+  }
+
+  // Score card
+  .ar-score-card {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    &__banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #22c55e;
+    }
+
+    &__pass-badge {
+      position: absolute;
+      top: $sp-md;
+      right: $sp-md;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+
+    &__body {
+      margin-top: $sp-md;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: $on-surface;
+    }
+
+    &__meta {
+      font-size: 13px;
+      color: $secondary;
+      margin-top: 4px;
+    }
+  }
+
+  // Gauge
+  .ar-gauge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 128px;
+    margin-bottom: $sp-md;
+
+    &__svg {
+      width: 128px;
+      height: 128px;
+      transform: rotate(-90deg);
+    }
+
+    &__track {
+      fill: transparent;
+      stroke: $surface-variant;
+      stroke-width: 8;
+    }
+
+    &__value {
+      fill: transparent;
+      stroke: $primary;
+      stroke-width: 8;
+    }
+
+    &__number {
+      position: absolute;
+      font-size: 28px;
+      font-weight: 700;
+      color: $primary;
+    }
+  }
+}
+
+
+  // Metric tiles
+  .ar-metric {
+    &__label {
+      display: flex;
+      align-items: center;
+      gap: $sp-sm;
+      color: $secondary;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+
+      .material-symbols-outlined {
+        font-size: 18px;
+      }
+    }
+
+    &__value {
+      font-size: 24px;
+      font-weight: 700;
+      color: $on-surface;
+      margin-top: $sp-sm;
+    }
+
+    &__meta {
+      font-size: 13px;
+      color: $secondary;
+    }
+
+    &__ok {
+      font-size: 13px;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .material-symbols-outlined {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Progress bars
+  .ar-progress {
+    height: 8px;
+    background: $surface-variant;
+    border-radius: 999px;
+    margin-top: $sp-sm;
+
+    &__bar {
+      background: $primary;
+      border-radius: 999px;
+    }
+  }
+
+  // Categories
+  .ar-categories {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-sm;
+
+    &__title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: $secondary;
+      margin-bottom: $sp-md;
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__name {
+      font-size: 13px;
+      color: $on-surface;
+      width: 33%;
+    }
+
+    &__bar {
+      width: 50%;
+      margin: 0 $sp-md;
+      margin-top: 0;
+    }
+
+    &__value {
+      font-size: 13px;
+      font-weight: 700;
+      color: $on-surface;
+    }
+  }
+
+
+  // Breakdown
+  .ar-breakdown {
+    background: $surface-container-lowest;
+    border: 1px solid $outline-variant;
+    border-radius: 12px;
+    overflow: hidden;
+
+    &__head {
+      padding: $sp-lg;
+      border-bottom: 1px solid $outline-variant;
+      background: $surface-container-low;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $sp-sm;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: $on-surface;
+      margin: 0;
+    }
+
+    &__filter {
+      max-width: 200px;
+      background: $surface;
+      border-color: $outline-variant;
+    }
+  }
+
+  .ar-question {
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-md;
+    padding: $sp-lg;
+    transition: background-color 0.15s ease;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $outline-variant;
+    }
+
+    &:hover {
+      background: rgba(244, 242, 252, 0.5);
+    }
+
+    &__status {
+      margin-top: 4px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      padding: 4px;
+      display: flex;
+
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+
+      &--correct {
+        background: #dcfce7;
+        color: #15803d;
+      }
+
+      &--incorrect {
+        background: #fee2e2;
+        color: #b91c1c;
+      }
+    }
+
+    &__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: $on-surface;
+      margin: 0;
+    }
+
+    &__tag {
+      font-size: 12px;
+      color: $secondary;
+      background: $surface-variant;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+  }
+
+  // Answers
+  .ar-answer {
+    border-radius: 8px;
+    padding: $sp-md;
+
+    &--correct,
+    &--correct-ref {
+      background: $surface-container-high;
+      border-left: 4px solid $outline;
+    }
+
+    &--wrong {
+      background: rgba(255, 218, 214, 0.3);
+      border-left: 4px solid $error;
+    }
+
+    &__label {
+      font-size: 12px;
+      color: $secondary;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .material-symbols-outlined {
+        font-size: 14px;
+      }
+
+      &--error {
+        color: $error;
+      }
+    }
+
+    &__text {
+      font-size: 15px;
+      color: $on-surface;
+    }
+
+    &__code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 15px;
+      color: $on-surface;
+      background: $surface;
+      padding: 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+  }
+
+  .ar-score {
+    font-size: 12px;
+    color: $secondary;
+
+    &--correct {
+      color: #16a34a;
+    }
+
+    &--incorrect {
+      color: $error;
+    }
+  }

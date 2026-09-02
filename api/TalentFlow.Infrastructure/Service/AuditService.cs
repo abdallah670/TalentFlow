@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 using TalentFlow.Domain.Entities.AuditModule;
 
 namespace TalentFlow.Infrastructure.Service

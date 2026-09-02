@@ -1,6 +1,7 @@
 ﻿using MediatR;
+using TalentFlow.Application.Responses;
 
-public class TenantRegisterCommand : IRequest<AuthResponse>
+public class TenantRegisterCommand : IRequest<BaseCommandResponse<AuthResponse>>
 {
     public string TenantName { get; set; }
 

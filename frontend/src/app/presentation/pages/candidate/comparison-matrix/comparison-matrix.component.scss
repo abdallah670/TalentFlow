@@ -1,0 +1,441 @@
+@use '../../../../../styles/variables' as *;
+
+.cm-page {
+  min-height: 100vh;
+  background: $background;
+  color: $on-background;
+  font-family: $font-family-body;
+}
+
+.cm-main {
+  margin-left: $sidebar-width;
+  padding: $sp-lg;
+}
+
+// ---------- Header ----------
+.cm-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $sp-xs;
+  margin-bottom: $sp-xs;
+  font-size: $text-label;
+  line-height: $label-line-height;
+  color: $on-surface-variant;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+}
+
+.cm-title {
+  font-size: $text-h1;
+  line-height: $h1-line-height;
+  color: $on-surface;
+}
+
+.cm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  padding: $sp-sm $sp-md;
+  border-radius: $radius-md;
+  font-size: $text-label;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 1px solid $outline-variant;
+    color: $on-surface;
+
+    &:hover {
+      background: $surface-container-low;
+    }
+  }
+
+  &--primary {
+    background: $primary;
+    border: none;
+    color: $on-primary;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.cm-icon-fill {
+  font-variation-settings: 'FILL' 1;
+}
+
+// ---------- Matrix canvas ----------
+.cm-canvas {
+  background: $surface-container-lowest;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+}
+
+.cm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  min-width: 1000px;
+}
+
+.cm-col {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid $outline-variant;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &--labels {
+    background: $surface-container-low;
+  }
+
+  &--top-pick:hover {
+    background: rgba(222, 224, 255, 0.2);
+  }
+}
+
+// ---------- Cells ----------
+.cm-cell {
+  padding: $sp-md;
+  border-bottom: 1px solid $outline-variant;
+
+  &--head {
+    min-height: 220px;
+    background: $surface-container-lowest;
+  }
+
+  &--experience {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+  }
+
+  &--skills {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $sp-sm;
+  }
+
+  &--fit {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $sp-sm;
+  }
+
+  &--feedback {
+    min-height: 180px;
+  }
+
+  &--salary {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &--action {
+    min-height: 100px;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $surface-container-lowest;
+  }
+
+  &__caption {
+    font-size: $text-label;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $on-surface-variant;
+  }
+
+  &__title {
+    font-size: $text-h3;
+    line-height: $h3-line-height;
+    font-weight: 500;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  &__hint {
+    margin: $sp-xs 0 0;
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+  }
+}
+
+.cm-text {
+  margin: 0;
+  font-size: $text-body;
+  line-height: $body-line-height;
+  color: $on-surface;
+}
+
+.cm-hint {
+  font-size: $text-body-sm;
+  color: $on-surface-variant;
+}
+
+// ---------- Candidate header ----------
+.cm-cand-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cm-top-badge {
+  position: absolute;
+  top: $sp-sm;
+  right: $sp-sm;
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  background: #e8f5e9;
+  color: $success;
+  border: 1px solid #c8e6c9;
+  border-radius: $radius-full;
+  padding: 2px $sp-sm;
+  font-size: $text-label;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+}
+
+.cm-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid $surface-variant;
+  box-shadow: $shadow-sm;
+  margin-bottom: $sp-md;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cm-cand-name {
+  font-size: $text-h2;
+  line-height: $h2-line-height;
+  font-weight: 700;
+  color: $on-surface;
+  margin: 0;
+}
+
+.cm-cand-role {
+  font-size: $text-body-sm;
+  color: $on-surface-variant;
+}
+
+// ---------- Tags ----------
+.cm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-sm;
+}
+
+.cm-tag {
+  background: $surface-container-high;
+  color: $on-surface-variant;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-md;
+  padding: 2px $sp-sm;
+  font-size: $text-label;
+}
+
+// ---------- Fit score ----------
+.cm-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: $text-label;
+  color: $on-surface-variant;
+}
+
+.cm-face {
+  font-size: 18px;
+
+  &--good {
+    color: $success;
+  }
+
+  &--mid {
+    color: #f57c00;
+  }
+}
+
+.cm-bar {
+  width: 100%;
+  height: 8px;
+  background: $surface-variant;
+  border-radius: $radius-full;
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+
+    &--green {
+      background: #4caf50;
+    }
+
+    &--orange {
+      background: #ff9800;
+    }
+
+    &--lime {
+      background: #8bc34a;
+    }
+  }
+}
+
+// ---------- Feedback ----------
+.cm-feedback li {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-xs;
+  margin-bottom: $sp-sm;
+  font-size: $text-body-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cm-fb-icon {
+  font-size: 16px;
+  margin-top: 2px;
+
+  &--ok {
+    color: $success;
+  }
+
+  &--info {
+    color: $outline;
+  }
+
+  &--bad {
+    color: $error;
+  }
+}
+
+// ---------- Salary ----------
+.cm-salary {
+  font-size: $text-h3;
+  font-weight: 700;
+  color: $on-surface;
+}
+
+.cm-budget {
+  padding: 2px $sp-sm;
+  border-radius: $radius-md;
+  font-size: $text-label;
+
+  &--within {
+    background: $surface-container-high;
+    color: $on-surface-variant;
+  }
+
+  &--below {
+    background: #e8f5e9;
+    color: $success;
+    border: 1px solid #c8e6c9;
+  }
+
+  &--over {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+  }
+}
+
+// ---------- Toggle ----------
+.cm-toggle {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm;
+  cursor: pointer;
+  font-size: $text-label;
+  color: $on-surface-variant;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.is-checked {
+    color: $on-surface;
+    font-weight: 700;
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  input:checked + .cm-toggle__track {
+    background: $primary;
+
+    &::after {
+      transform: translateX(20px);
+    }
+  }
+
+  input:disabled + .cm-toggle__track {
+    cursor: not-allowed;
+  }
+}
+
+.cm-toggle__track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: $surface-variant;
+  border-radius: $radius-full;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+}
+

@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdatePreferences
 {
-    public class UpdatePreferencesCommand : IRequest<UpdatePreferencesResponse>
+    public class UpdatePreferencesCommand : IRequest<BaseCommandResponse<bool>>
     {
         public Guid UserId { get; set; }
         public string? PreferredLocation { get; set; }
@@ -13,11 +14,5 @@ namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdatePrefere
         public string? Currency { get; set; }
         public DateTime? AvailableFrom { get; set; }
         public WorkAuthorization? WorkAuthorization { get; set; }
-    }
-
-    public class UpdatePreferencesResponse
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; } = default!;
     }
 }

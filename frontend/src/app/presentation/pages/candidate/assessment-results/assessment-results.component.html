@@ -1,0 +1,151 @@
+<div class="ar-page">
+  <app-portal-sidebar />
+
+  <main class="ar-main">
+    <!-- Header -->
+    <header class="ar-header">
+      <div class="ar-header__text">
+        <h1 class="ar-title">Assessment Results</h1>
+        <p class="ar-subtitle">Senior Backend Engineer &middot; Arthur Pendragon</p>
+      </div>
+    </header>
+
+    <!-- Summary Bento -->
+    <div class="ar-summary row g-3">
+      <!-- Score Card -->
+      <div class="col-12 col-md-4">
+        <div class="ar-card ar-score-card">
+          <div class="ar-score-card__banner"></div>
+          <span class="badge ar-score-card__pass-badge">Pass</span>
+
+          <div class="ar-score-card__body text-center">
+            <div class="ar-gauge">
+              <svg viewBox="0 0 128 128" class="ar-gauge__svg">
+                <circle class="ar-gauge__track" cx="64" cy="64" r="56" />
+                <circle class="ar-gauge__value" cx="64" cy="64" r="56" stroke-dasharray="351.85" stroke-dashoffset="52.77" />
+              </svg>
+              <span class="ar-gauge__number">85</span>
+            </div>
+            <h3 class="ar-score-card__title">Total Score</h3>
+            <p class="ar-score-card__meta">Top 15% of candidates</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="col-12 col-md-8">
+        <div class="row g-3 h-100">
+          <!-- Time Taken -->
+          <div class="col-12 col-md-6">
+            <div class="ar-card ar-metric d-flex flex-column justify-content-between">
+              <div class="ar-metric__label">
+                <span class="material-symbols-outlined">timer</span> Time Elapsed
+              </div>
+              <div>
+                <div class="ar-metric__value">42m 15s</div>
+                <div class="ar-metric__meta">of 60m allotted</div>
+              </div>
+              <div class="progress ar-progress">
+                <div class="progress-bar ar-progress__bar" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proctored Status -->
+          <div class="col-12 col-md-6">
+            <div class="ar-card ar-metric d-flex flex-column justify-content-between">
+              <div class="ar-metric__label">
+                <span class="material-symbols-outlined">verified_user</span> Proctoring
+              </div>
+              <div>
+                <div class="ar-metric__value">Clean</div>
+                <div class="ar-metric__ok">
+                  <span class="material-symbols-outlined">check_circle</span> No anomalies detected
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Breakdown -->
+          <div class="col-12">
+            <div class="ar-card">
+              <h4 class="ar-categories__title">Performance by Category</h4>
+              <div class="ar-categories">
+                @for (cat of categories; track cat.name) {
+                  <div class="ar-categories__row">
+                    <span class="ar-categories__name">{{ cat.name }}</span>
+                    <div class="progress ar-progress ar-categories__bar">
+                      <div class="progress-bar ar-progress__bar" [style.width.%]="cat.score"></div>
+                    </div>
+                    <span class="ar-categories__value">{{ cat.score }}%</span>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Answers Breakdown -->
+    <div class="ar-breakdown mt-3">
+      <div class="ar-breakdown__head">
+        <h3 class="ar-breakdown__title">Detailed Response Breakdown</h3>
+        <select class="form-select form-select-sm ar-breakdown__filter">
+          <option>All Questions</option>
+          <option>Incorrect Only</option>
+          <option>System Design</option>
+        </select>
+      </div>
+
+      @for (q of questions; track q.number) {
+        <div class="ar-question">
+          <div
+            class="ar-question__status"
+            [class.ar-question__status--correct]="q.status === 'correct'"
+            [class.ar-question__status--incorrect]="q.status === 'incorrect'"
+          >
+            <span class="material-symbols-outlined">{{ q.status === 'correct' ? 'check' : 'close' }}</span>
+          </div>
+
+          <div class="flex-grow-1">
+            <div class="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-2">
+              <h4 class="ar-question__title">{{ q.number }}. {{ q.title }}</h4>
+              <span class="ar-question__tag">{{ q.tag }}</span>
+            </div>
+
+            @if (q.correctAnswer) {
+              <div class="row g-3 mb-2">
+                <div class="col-12 col-md-6">
+                  <div class="ar-answer ar-answer--wrong">
+                    <p class="ar-answer__label ar-answer__label--error">
+                      <span class="material-symbols-outlined">cancel</span> Candidate Answer:
+                    </p>
+                    <p class="ar-answer__code">{{ q.candidateAnswer }}</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="ar-answer ar-answer--correct-ref">
+                    <p class="ar-answer__label">
+                      <span class="material-symbols-outlined">check_circle</span> Correct Answer:
+                    </p>
+                    <p class="ar-answer__code">{{ q.correctAnswer }}</p>
+                  </div>
+                </div>
+              </div>
+            } @else {
+              <div class="ar-answer ar-answer--correct mb-2">
+                <p class="ar-answer__label">Candidate Answer:</p>
+                <p class="ar-answer__text">{{ q.candidateAnswer }}</p>
+              </div>
+            }
+
+            <div class="text-end">
+              <span class="ar-score" [class]="'ar-score ' + q.scoreClass">{{ q.scoreLabel }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+</div>

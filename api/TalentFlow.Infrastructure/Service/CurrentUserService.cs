@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 
 namespace TalentFlow.Infrastructure.Service
 {

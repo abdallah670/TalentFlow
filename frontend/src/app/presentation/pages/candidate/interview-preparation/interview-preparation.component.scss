@@ -1,0 +1,480 @@
+@use '../../../../../styles/variables' as *;
+
+.ipg-page {
+  min-height: 100vh;
+  background: $background;
+  color: $on-background;
+  font-family: $font-family-body;
+}
+
+.ipg-main {
+  margin-left: $sidebar-width;
+}
+
+.ipg-canvas {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: $sp-gutter;
+}
+
+// ---------- Welcome banner ----------
+.ipg-banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-lg;
+  background: $primary-container;
+  color: $on-primary-container;
+  border-radius: $radius-xl;
+  padding: $sp-lg;
+  margin-bottom: $sp-lg;
+
+  &__gradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 256px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(36, 56, 156, 0.2), transparent);
+    pointer-events: none;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+    max-width: 672px;
+
+    h2 {
+      font-size: $text-h1;
+      line-height: $h1-line-height;
+      margin-bottom: $sp-sm;
+    }
+
+    p {
+      font-size: $text-body;
+      line-height: $body-line-height;
+      opacity: 0.9;
+      margin: 0;
+    }
+  }
+
+  &__stats {
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    gap: $sp-md;
+    background: rgba(251, 248, 255, 0.2);
+    border: 1px solid rgba(251, 248, 255, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: $radius-lg;
+    padding: $sp-md;
+  }
+
+  &__stat {
+    display: block;
+    font-size: $text-h2;
+    font-weight: 700;
+  }
+
+  &__stat-label {
+    font-size: $text-label;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(251, 248, 255, 0.3);
+  }
+}
+
+// ---------- Cards ----------
+.ipg-card {
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+  padding: $sp-lg;
+}
+
+.ipg-card-head {
+  display: flex;
+  align-items: center;
+  gap: $sp-md;
+  margin-bottom: $sp-lg;
+
+  h3 {
+    font-size: $text-h2;
+    line-height: $h2-line-height;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  &--bordered {
+    border-bottom: 1px solid $outline-variant;
+    padding-bottom: $sp-md;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    font-size: 24px;
+
+    &--primary {
+      color: $primary;
+      background: $primary-fixed;
+      width: 36px;
+      height: 36px;
+    }
+
+    &--secondary {
+      color: $secondary;
+      background: $secondary-fixed;
+      width: 36px;
+      height: 36px;
+    }
+
+    &--tertiary {
+      color: $tertiary-container;
+      background: $tertiary-fixed;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+
+    &--neutral {
+      color: $on-surface-variant;
+      background: $surface-container-high;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+  }
+}
+
+// ---------- Status badge ----------
+.ipg-status-badge {
+  background: #c9cffd;
+  color: $primary;
+  border-radius: $radius-full;
+  padding: $sp-xs $sp-md;
+  font-size: $text-label;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+// ---------- Fields ----------
+.ipg-field-icon {
+  color: $outline;
+}
+
+.ipg-field-label {
+  font-size: $text-label;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $on-surface-variant;
+  margin-bottom: $sp-xs;
+}
+
+.ipg-field-value {
+  font-size: $text-body;
+  font-weight: 500;
+  color: $on-surface;
+  margin: 0;
+}
+
+.ipg-field-hint {
+  font-size: $text-body-sm;
+  color: $on-surface-variant;
+  margin: 0;
+}
+
+.ipg-meeting-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  margin-top: $sp-xs;
+  font-size: $text-body-sm;
+  color: $primary;
+  text-decoration: none;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ---------- Panel ----------
+.ipg-panel {
+  background: $surface-container-low;
+  border: 1px solid rgba(197, 197, 212, 0.5);
+  border-radius: $radius-lg;
+  padding: $sp-lg;
+
+  h4 {
+    font-size: $text-h3;
+    line-height: $h3-line-height;
+    color: $on-surface;
+    margin-bottom: $sp-md;
+
+    .material-symbols-outlined {
+      font-size: 20px;
+    }
+  }
+}
+
+.ipg-interviewer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $sp-md;
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-md;
+  transition: background-color 0.15s ease;
+
+  & + & {
+    margin-top: $sp-md;
+  }
+
+  &:hover {
+    background: $surface-container-high;
+  }
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid $outline-variant;
+  }
+
+  &__name {
+    font-size: $text-body;
+    font-weight: 500;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  &__role {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+    margin: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $sp-sm;
+    border-radius: 50%;
+    color: $primary;
+    transition: background-color 0.15s ease;
+
+    .material-symbols-outlined {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background: $primary-fixed;
+    }
+  }
+}
+
+// ---------- Mission / values ----------
+.ipg-mission-title {
+  font-size: $text-body;
+  font-weight: 700;
+  color: $on-surface;
+  margin-bottom: $sp-sm;
+}
+
+.ipg-text {
+  font-size: $text-body;
+  line-height: 1.6;
+  color: $on-surface-variant;
+}
+
+.ipg-values {
+  background: $surface-container-lowest;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-md;
+  padding: $sp-md;
+
+  h5 {
+    font-size: $text-label;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $on-surface-variant;
+    margin-bottom: $sp-md;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-sm;
+
+    & + li {
+      margin-top: $sp-md;
+    }
+
+    > .material-symbols-outlined {
+      color: $primary;
+      font-size: 18px;
+      margin-top: 2px;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: $text-body;
+    font-weight: 500;
+    color: $on-surface;
+  }
+
+// ---------- Checklist ----------
+.ipg-checklist {
+  background: linear-gradient(135deg, $surface-bright, $surface-container-low);
+}
+
+.ipg-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-md;
+
+  & + li {
+    margin-top: $sp-md;
+  }
+}
+
+.ipg-check-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid $outline-variant;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 16px;
+    color: transparent;
+    transition: color 0.15s ease;
+  }
+
+  &:hover .material-symbols-outlined {
+    color: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.ipg-check-title {
+  font-size: $text-body;
+  font-weight: 500;
+  color: $on-surface;
+  margin: 0;
+}
+
+// ---------- Resources ----------
+.ipg-resource {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-sm;
+  padding: $sp-md;
+  background: $surface-container-lowest;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-md;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: $primary;
+
+    .ipg-resource__name,
+    .ipg-resource__action {
+      color: $primary;
+    }
+  }
+
+  &__icon {
+    font-size: 24px;
+
+    &--pdf {
+      color: $error;
+    }
+
+    &--video {
+      color: $primary;
+    }
+  }
+
+  &__name {
+    font-size: $text-body-sm;
+    font-weight: 500;
+    color: $on-surface;
+    margin: 0;
+    transition: color 0.15s ease;
+  }
+
+  &__meta {
+    font-size: $text-label;
+    color: $on-surface-variant;
+    margin: 0;
+  }
+
+  &__action {
+    color: $outline;
+    font-size: 20px;
+    transition: color 0.15s ease;
+  }
+}
+
+// ---------- Footer ----------
+.ipg-footer {
+  margin-top: $sp-xl;
+  padding-top: $sp-lg;
+  padding-bottom: $sp-lg;
+  border-top: 1px solid $outline-variant;
+  text-align: center;
+
+  p {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+  }
+
+  a {
+    color: $primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+  p {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+    margin: 0;
+  }
+}
+

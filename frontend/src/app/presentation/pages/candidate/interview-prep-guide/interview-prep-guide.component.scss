@@ -1,0 +1,284 @@
+@use '../../../../../styles/variables' as *;
+
+.ip-page {
+  min-height: 100vh;
+  background: $surface-container-lowest;
+  color: $on-background;
+  font-family: $font-family-body;
+}
+
+.ip-main {
+  margin-left: $sidebar-width;
+  padding: $sp-lg;
+}
+
+.ip-title {
+  font-size: $text-h1;
+  line-height: $h1-line-height;
+  color: $on-background;
+  margin-bottom: $sp-sm;
+}
+
+.ip-subtitle {
+  max-width: 672px;
+  font-size: $text-body;
+  line-height: $body-line-height;
+  color: $on-surface-variant;
+}
+
+// ---------- Generic bento card ----------
+.ip-card {
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+
+  &__title {
+    font-size: $text-h3;
+    line-height: $h3-line-height;
+    color: $on-surface;
+    margin: 0;
+  }
+}
+
+.ip-text {
+  font-size: $text-body-sm;
+  line-height: 18px;
+  color: $on-surface-variant;
+}
+
+.ip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  font-size: $text-label;
+  color: $primary;
+  text-decoration: none;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ---------- Interview details ----------
+.ip-interview {
+  position: relative;
+  overflow: hidden;
+  background: $surface-container-low;
+  padding: $sp-lg;
+
+  &__glow {
+    position: absolute;
+    top: -64px;
+    right: -64px;
+    width: 256px;
+    height: 256px;
+    background: rgba(63, 81, 181, 0.1);
+    border-radius: 50%;
+    filter: blur(48px);
+  }
+
+  &__role {
+    font-size: $text-h2;
+    line-height: $h2-line-height;
+    color: $primary;
+    margin-bottom: $sp-xs;
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    gap: $sp-xs;
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+    margin: 0;
+
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+  }
+}
+
+.ip-badge-upcoming {
+  display: inline-block;
+  background: $tertiary-fixed;
+  color: #301400;
+  border-radius: $radius-full;
+  padding: $sp-xs $sp-md;
+  font-size: $text-label;
+  margin-bottom: $sp-md;
+}
+
+.ip-schedule {
+  background: $surface;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-lg;
+  padding: $sp-md;
+  box-shadow: $shadow-sm;
+  min-width: 240px;
+
+  &__icon {
+    color: $primary;
+  }
+
+  &__icon--muted {
+    color: $on-surface-variant;
+  }
+
+  &__date {
+    font-size: $text-h3;
+    line-height: $h3-line-height;
+    color: $on-surface;
+  }
+
+  &__time {
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+  }
+
+  &__panel {
+    border-top: 1px solid $outline-variant;
+    padding-top: $sp-md;
+  }
+
+  &__panel img,
+  &__more {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $surface;
+    object-fit: cover;
+  }
+
+  &__panel img + img,
+  &__panel img + .ip-schedule__more {
+    margin-left: -8px;
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $surface-variant;
+    font-size: $text-label;
+    color: $on-surface-variant;
+  }
+}
+
+// ---------- Culture card ----------
+.ip-culture__photo {
+  height: 128px;
+  background: $surface-variant;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// ---------- Strategies ----------
+.ip-bulb {
+  color: $primary-container;
+}
+
+.ip-tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-lg;
+
+  & + li {
+    margin-top: $sp-lg;
+  }
+
+  h4 {
+    font-size: $text-body;
+    font-weight: 500;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  p {
+    margin-top: $sp-xs;
+    font-size: $text-body-sm;
+    color: $on-surface-variant;
+  }
+}
+
+.ip-tip-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $primary-fixed;
+  color: $primary;
+  font-size: $text-label;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+// ---------- Resources ----------
+.ip-resources,
+.ip-faq {
+  padding: $sp-lg;
+}
+
+.ip-resource-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-xs;
+  padding: $sp-sm $sp-md;
+  background: $surface-container;
+  border: 1px solid $outline-variant;
+  border-radius: $radius-lg;
+  font-size: $text-label;
+  color: $on-surface;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: $surface-container-high;
+  }
+}
+
+// ---------- FAQ ----------
+.ip-faq {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: $surface-container-lowest;
+
+    .ip-faq__deco {
+      transform: scale(1.1);
+    }
+  }
+
+  &__deco {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    transform: translate(16px, 16px);
+    transition: transform 0.2s ease;
+
+    .material-symbols-outlined {
+      font-size: 120px;
+      color: $primary;
+    }
+  }
+}
+

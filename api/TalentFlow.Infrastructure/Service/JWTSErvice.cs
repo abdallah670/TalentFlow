@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra  ;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
 using static TalentFlow.Infrastructure.Service.JWTSErvice;

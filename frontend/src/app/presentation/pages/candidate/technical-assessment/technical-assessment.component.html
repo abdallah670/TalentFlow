@@ -1,0 +1,121 @@
+<div class="ta-page">
+  <!-- Focused header -->
+  <header class="ta-header">
+    <div class="ta-header__brand">
+      <span class="material-symbols-outlined ta-header__logo-icon">water_drop</span>
+      <span class="ta-header__logo-text">TalentFlow</span>
+    </div>
+    <div class="ta-header__actions">
+      <div class="ta-timer">
+        <span class="material-symbols-outlined ta-timer__icon">timer</span>
+        <span class="ta-timer__time">42:15</span>
+      </div>
+      <button type="button" class="btn btn-outline-secondary ta-pause-btn">Pause Assessment</button>
+    </div>
+  </header>
+
+  <div class="ta-body">
+    <!-- Progress sidebar -->
+    <aside class="ta-sidebar">
+      <div class="ta-sidebar__head">
+        <h1 class="ta-sidebar__title">Senior Backend Engineer</h1>
+        <p class="ta-sidebar__subtitle">Technical Screen</p>
+
+        <div class="ta-progress mt-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="ta-progress__label">Progress</span>
+            <span class="ta-progress__value">7 of 20</span>
+          </div>
+          <div class="progress ta-progress__bar">
+            <div class="progress-bar ta-progress__fill" style="width: 35%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ta-map">
+        <p class="ta-map__title">Question Map</p>
+        <div class="ta-map__grid">
+          @for (item of questionMap; track item.number) {
+            <div
+              class="ta-map__cell"
+              [class.ta-map__cell--answered]="item.status === 'answered'"
+              [class.ta-map__cell--current]="item.status === 'current'"
+              [class.ta-map__cell--unanswered]="item.status === 'unanswered' || item.status === 'flagged'"
+            >{{ item.number }}</div>
+          }
+        </div>
+      </div>
+
+      <div class="ta-sidebar__footer">
+        <button type="button" class="btn ta-finish-btn w-100">
+          <span class="material-symbols-outlined">stop_circle</span>
+          Finish Assessment
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main assessment canvas -->
+    <main class="ta-canvas">
+      <div class="ta-content">
+        <!-- Question context -->
+        <div class="ta-context mb-4">
+          <div class="ta-context__category">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dns</span>
+            <span>Architecture &amp; System Design</span>
+          </div>
+          <h2 class="ta-context__heading">Question 7</h2>
+
+          <div class="ta-question-card">
+            <p>
+              You are designing a distributed order processing system for an e-commerce platform
+              transitioning to a microservices architecture. The system involves several discrete
+              services: <code>OrderService</code>, <code>InventoryService</code>, and
+              <code>PaymentService</code>.
+            </p>
+            <p>
+              When a customer places an order, all three services must update their respective
+              states. If <code>PaymentService</code> fails after <code>InventoryService</code> has
+              already deducted stock, the system must revert the inventory change to maintain
+              consistency.
+            </p>
+            <p class="ta-question-card__prompt">
+              Which pattern is most appropriate to handle this distributed transaction scenario
+              without relying on a centralized two-phase commit (2PC) protocol?
+            </p>
+          </div>
+        </div>
+
+        <!-- Answer options -->
+        <form class="ta-options d-grid gap-3">
+          @for (opt of options; track opt.value) {
+            <label class="ta-option">
+              <input class="ta-option__radio" type="radio" name="q7" [value]="opt.value" />
+              <div class="ta-option__card">
+                <div class="ta-option__circle"><div class="ta-option__dot"></div></div>
+                <div>
+                  <h4 class="ta-option__title">{{ opt.title }}</h4>
+                  <p class="ta-option__desc">{{ opt.description }}</p>
+                </div>
+              </div>
+            </label>
+          }
+        </form>
+
+        <!-- Actions -->
+        <div class="ta-actions">
+          <button type="button" class="ta-flag-btn">
+            <span class="material-symbols-outlined">flag</span>
+            Flag for review
+          </button>
+          <div class="d-flex gap-3">
+            <button type="button" class="btn btn-outline-primary ta-nav-btn">Previous</button>
+            <button type="button" class="btn ta-next-btn">
+              Save &amp; Next
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

@@ -1,21 +1,26 @@
-﻿// TalentFlow.Application/Features/CandidateModule/Commands/UpdatePreferences/UpdatePreferencesHandler.cs
+// TalentFlow.Application/Features/CandidateModule/Commands/UpdatePreferences/UpdatePreferencesHandler.cs
 using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.CandidateModule;
 
 namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdatePreferences
 {
-    public class UpdatePreferencesHandler : IRequestHandler<UpdatePreferencesCommand, UpdatePreferencesResponse>
+    public class UpdatePreferencesHandler : IRequestHandler<UpdatePreferencesCommand, BaseCommandResponse<bool>>
     {
+        private readonly ILogger<UpdatePreferencesHandler> logger;
         private readonly IcandidateProfileRepo candidateProfileRepo;
 
-        public UpdatePreferencesHandler(IcandidateProfileRepo candidateProfileRepo)
+        public UpdatePreferencesHandler(IcandidateProfileRepo candidateProfileRepo, ILogger<UpdatePreferencesHandler> logger)
         {
+            this.logger = logger;
             this.candidateProfileRepo = candidateProfileRepo;
         }
 
-        public async Task<UpdatePreferencesResponse> Handle(UpdatePreferencesCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(UpdatePreferencesCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(UpdatePreferencesHandler));
             var existingProfiles = await candidateProfileRepo.FindAsync(x => x.UserId == request.UserId);
             var profile = existingProfiles.FirstOrDefault();
 
@@ -50,10 +55,11 @@ namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdatePrefere
 
             await candidateProfileRepo.SaveAsync(cancellationToken);
 
-            return new UpdatePreferencesResponse
+            return new BaseCommandResponse<bool>
             {
                 Success = true,
-                Message = "Preferences updated successfully."
+                Message = "Preferences updated successfully.",
+                Data = true
             };
         }
     }

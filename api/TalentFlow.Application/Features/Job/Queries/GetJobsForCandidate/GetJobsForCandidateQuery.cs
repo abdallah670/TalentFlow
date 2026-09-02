@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Features.Job.DTOs;
 using TalentFlow.Application.Models;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Job.Queries.GetJobsForCandidate
 {
-    public class GetJobsForCandidateQuery : IRequest<PaginatedResult<GetJobDto>>
+    public class GetJobsForCandidateQuery : IRequest<BaseCommandResponse<PaginatedResult<GetJobDto>>>
     {
 
         public EmploymentType? EmploymentType { get; set; }

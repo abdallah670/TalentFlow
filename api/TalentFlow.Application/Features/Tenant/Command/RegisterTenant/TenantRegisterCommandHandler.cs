@@ -1,9 +1,11 @@
-﻿using MediatR;
+using MediatR;
+using TalentFlow.Application.Responses;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
@@ -12,8 +14,9 @@ using TalentFlow.Domain.Entities.WorkflowModule;
 
 namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
 {
-    public class TenantRegisterCommandHandler : IRequestHandler<TenantRegisterCommand, AuthResponse>
+    public class TenantRegisterCommandHandler : IRequestHandler<TenantRegisterCommand, BaseCommandResponse<AuthResponse>>
     {
+        private readonly ILogger<TenantRegisterCommandHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
         private readonly IJWTService jwtService;
         private readonly IRefreshTokenService refreshTokenService;
@@ -29,8 +32,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             IOptions<JwtSettings> jwtSettings,
             IUnitOfWork unitOfWork,
             IOptions<AppUrlSettings> appUrlSettings,
-            IEmailService emailService)
+            IEmailService emailService, ILogger<TenantRegisterCommandHandler> logger)
         {
+            this.logger = logger;
             this.userManager = userManager;
             this.jwtService = jwtService;
             this.refreshTokenService = refreshTokenService;
@@ -40,15 +44,16 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             this.emailService = emailService;
         }
 
-        public async Task<AuthResponse> Handle(TenantRegisterCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<AuthResponse>> Handle(TenantRegisterCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(TenantRegisterCommandHandler));
             var existingUser = await userManager.FindByEmailAsync(request.Email);
 
             if (existingUser != null)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Email already exists."
                 };
             }
@@ -58,9 +63,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
 
             if (existingTenant.Any())
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Tenant already exists."
                 };
             }
@@ -70,9 +75,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
 
             if (existingSlug.Any())
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Slug already exists."
                 };
             }
@@ -160,9 +165,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             {
                 await unitOfWork.Tenants.DeleteAsync(tenant);
 
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = string.Join(", ",
                         createResult.Errors.Select(x => x.Description))
                 };
@@ -176,9 +181,9 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 await userManager.DeleteAsync(user);
                 await unitOfWork.Tenants.DeleteAsync(tenant);
 
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = string.Join(", ",
                         roleResult.Errors.Select(x => x.Description))
                 };
@@ -211,23 +216,25 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                     </a>
                     """);
             }
-            catch
+            catch (Exception ex)
             {
-            
+                logger.LogWarning(ex, "Role assignment failed for new tenant user, continuing registration.");
             }
 
             var roles = await userManager.GetRolesAsync(user);
 
-            return new AuthResponse
+            return new BaseCommandResponse<AuthResponse>
             {
-                Id = user.Id.ToString(),
-                UserName = user.UserName!,
-                Email = user.Email!,
-                Roles = roles.ToList(),
-
-                IsAuthenticated = false,
-
-                Message = "Registration successful. Please check your email to verify your account."
+                Success = true,
+                Message = "Registration successful. Please check your email to verify your account.",
+                Data = new AuthResponse
+                {
+                    Id = user.Id.ToString(),
+                    UserName = user.UserName!,
+                    Email = user.Email!,
+                    Roles = roles.ToList(),
+                    IsAuthenticated = false
+                }
             };
         }
     }

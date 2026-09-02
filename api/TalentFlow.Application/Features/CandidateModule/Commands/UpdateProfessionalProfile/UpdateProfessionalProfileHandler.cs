@@ -1,21 +1,26 @@
-﻿// TalentFlow.Application/Features/CandidateModule/Commands/UpdateProfessionalProfile/UpdateProfessionalProfileHandler.cs
+// TalentFlow.Application/Features/CandidateModule/Commands/UpdateProfessionalProfile/UpdateProfessionalProfileHandler.cs
 using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.CandidateModule;
 
 namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdateProfessionalProfile
 {
-    public class UpdateProfessionalProfileHandler : IRequestHandler<UpdateProfessionalProfileCommand, UpdateProfessionalProfileResponse>
+    public class UpdateProfessionalProfileHandler : IRequestHandler<UpdateProfessionalProfileCommand, BaseCommandResponse<bool>>
     {
+        private readonly ILogger<UpdateProfessionalProfileHandler> logger;
         private readonly IcandidateProfileRepo candidateProfileRepo;
 
-        public UpdateProfessionalProfileHandler(IcandidateProfileRepo candidateProfileRepo)
+        public UpdateProfessionalProfileHandler(IcandidateProfileRepo candidateProfileRepo, ILogger<UpdateProfessionalProfileHandler> logger)
         {
+            this.logger = logger;
             this.candidateProfileRepo = candidateProfileRepo;
         }
 
-        public async Task<UpdateProfessionalProfileResponse> Handle(UpdateProfessionalProfileCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(UpdateProfessionalProfileCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(UpdateProfessionalProfileHandler));
             var existingProfiles = await candidateProfileRepo.FindAsync(x => x.UserId == request.UserId);
             var profile = existingProfiles.FirstOrDefault();
 
@@ -45,10 +50,11 @@ namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdateProfess
 
             await candidateProfileRepo.SaveAsync(cancellationToken);
 
-            return new UpdateProfessionalProfileResponse
+            return new BaseCommandResponse<bool>
             {
                 Success = true,
-                Message = "Professional profile updated successfully."
+                Message = "Professional profile updated successfully.",
+                Data = true
             };
         }
     }

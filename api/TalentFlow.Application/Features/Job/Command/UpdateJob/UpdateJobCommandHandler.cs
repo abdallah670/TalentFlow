@@ -1,32 +1,36 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Job.Command.UpdateJob
 {
-    public class UpdateJobCommandHandler : IRequestHandler<UpdateJobCommand, BaseCommandResponse>
+    public class UpdateJobCommandHandler : IRequestHandler<UpdateJobCommand, BaseCommandResponse<bool>>
     {
+        private readonly ILogger<UpdateJobCommandHandler> logger;
         private readonly IUnitOfWork unitOfWork;
         private readonly ICurrentUserService currentUserService;
         private readonly ICurrentTenantService currentTenantService;
 
-        public UpdateJobCommandHandler(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ICurrentTenantService currentTenantService)
+        public UpdateJobCommandHandler(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ICurrentTenantService currentTenantService, ILogger<UpdateJobCommandHandler> logger)
         {
+            this.logger = logger;
             this.unitOfWork = unitOfWork;
             this.currentUserService = currentUserService;
             this.currentTenantService = currentTenantService;
         }
 
-        public async Task<BaseCommandResponse> Handle(UpdateJobCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(UpdateJobCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(UpdateJobCommandHandler));
             var job = await unitOfWork.Jobs.GetByIdAsync(request.JobId);
             if (job == null)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "Job not found.",
@@ -36,7 +40,7 @@ namespace TalentFlow.Application.Features.Job.Command.UpdateJob
             }
             if (job.TenantId != currentTenantService.TenantId)
             {
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "You are not authorized to update this job.",
@@ -57,7 +61,7 @@ namespace TalentFlow.Application.Features.Job.Command.UpdateJob
             job.CloseDate = request.CloseDate;
             await unitOfWork.Jobs.UpdateAsync(job);
             await unitOfWork.CompleteAsync();
-            return new BaseCommandResponse
+            return new BaseCommandResponse<bool>
             {
                 Success = true,
                 Message = "Job updated successfully."

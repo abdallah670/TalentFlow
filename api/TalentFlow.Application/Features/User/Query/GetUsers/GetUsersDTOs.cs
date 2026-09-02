@@ -12,6 +12,7 @@ namespace TalentFlow.Application.Features.User.Query.GetUser
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
         public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
         public IList<string> Roles { get; set; } = new List<string>();
     }
 }

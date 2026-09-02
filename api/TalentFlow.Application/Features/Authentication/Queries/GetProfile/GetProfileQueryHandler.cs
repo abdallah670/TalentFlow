@@ -1,44 +1,59 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace TalentFlow.Application.Features.Authentication.Queries.GetProfile
 {
     public class GetProfileQueryHandler
-        : IRequestHandler<GetProfileQuery, UserProfileDto>
+        : IRequestHandler<GetProfileQuery, BaseCommandResponse<UserProfileDto>>
     {
+        private readonly ILogger<GetProfileQueryHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> _userManager;
         private readonly ICurrentUserService _currentUserService;
 
         public GetProfileQueryHandler(
             UserManager<Domain.Entities.IdentityModule.User> userManager,
-            ICurrentUserService currentUserService)
+            ICurrentUserService currentUserService, ILogger<GetProfileQueryHandler> logger)
         {
+            this.logger = logger;
             _userManager = userManager;
             _currentUserService = currentUserService;
         }
 
-        public async Task<UserProfileDto> Handle(
+        public async Task<BaseCommandResponse<UserProfileDto>> Handle(
             GetProfileQuery request,
             CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetProfileQueryHandler));
             var user = await _userManager.FindByIdAsync(
                 _currentUserService.UserId.ToString());
 
             if (user is null)
-                throw new Exception("User not found");
+            {
+                return new BaseCommandResponse<UserProfileDto>
+                {
+                    Success = false,
+                    Message = "User not found."
+                };
+            }
 
             var roles = await _userManager.GetRolesAsync(user);
 
-            return new UserProfileDto
+            return new BaseCommandResponse<UserProfileDto>
             {
-                Id = user.Id,
-                UserName = user.UserName!,
-                Email = user.Email!,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Roles = roles.ToList()
+                Success = true,
+                Data = new UserProfileDto
+                {
+                    Id = user.Id,
+                    UserName = user.UserName!,
+                    Email = user.Email!,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Roles = roles.ToList()
+                }
             };
         }
     }

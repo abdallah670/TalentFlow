@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Departments.Commands.CreateDepartment;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Entities.RecruitmentModule;
 
 namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
 {
-    public class DeleteDepartmentCommandHandler : IRequestHandler<DeleteDepartmentCommand, BaseCommandResponse>
+    public class DeleteDepartmentCommandHandler : IRequestHandler<DeleteDepartmentCommand, BaseCommandResponse<bool>>
     {
         private readonly IMemoryCache cache;
         private readonly ICurrentTenantService currentTenantService;
@@ -29,7 +29,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<BaseCommandResponse> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<bool>> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
             var cacheKey = $"Departments_{currentTenantService.TenantId}";
 
@@ -39,7 +39,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
 
                 if (department == null)
                 {
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<bool>
                     {
                         Success = false,
                         Message = "Department not found."
@@ -48,7 +48,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
 
                 if (department.TenantId != currentTenantService.TenantId)
                 {
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<bool>
                     {
                         Success = false,
                         Message = "Unauthorized."
@@ -61,7 +61,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
                 await unitOfWork.CompleteAsync();
                 cache.Remove(cacheKey);
                 logger.LogInformation("Department {DepartmentId} deleted for Tenant {TenantId}", currentTenantService.TenantId);
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = true,
                 };
@@ -70,7 +70,7 @@ namespace TalentFlow.Application.Features.Departments.Commands.DeleteDepartment
             {
                 logger.LogError(ex, "Error deleting department.");
 
-                return new BaseCommandResponse
+                return new BaseCommandResponse<bool>
                 {
                     Success = false,
                     Message = "Error Dleting department."

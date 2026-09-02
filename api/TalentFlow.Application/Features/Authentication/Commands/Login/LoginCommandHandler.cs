@@ -1,4 +1,6 @@
-﻿using MediatR;
+using MediatR;
+using TalentFlow.Application.Responses;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System;
@@ -6,38 +8,41 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.IdentityModule;
 
 namespace TalentFlow.Application.Features.Authontication.Commands.Login
 {
-    public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResponse>
+    public class LoginCommandHandler : IRequestHandler<LoginCommand, BaseCommandResponse<AuthResponse>>
     {
+        private readonly ILogger<LoginCommandHandler> logger;
         private readonly IJWTService jWTService;
         private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
         private readonly IRefreshTokenService refreshTokenService;
         private readonly JwtSettings jwtSettings;
         private readonly IcandidateProfileRepo candidateProfileRepo;
-        public LoginCommandHandler(IJWTService jWTService, UserManager<Domain.Entities.IdentityModule.User> userManager, IRefreshTokenService refreshTokenService, IOptions<JwtSettings> jwtSettings, IcandidateProfileRepo candidateProfileRepo)
+        public LoginCommandHandler(IJWTService jWTService, UserManager<Domain.Entities.IdentityModule.User> userManager, IRefreshTokenService refreshTokenService, IOptions<JwtSettings> jwtSettings, IcandidateProfileRepo candidateProfileRepo, ILogger<LoginCommandHandler> logger)
 
         {
+            this.logger = logger;
             this.jWTService = jWTService;
             this.userManager = userManager;
             this.refreshTokenService = refreshTokenService;
             this.jwtSettings = jwtSettings.Value;
             this.candidateProfileRepo = candidateProfileRepo;
         }
-        public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<AuthResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
 
+            logger.LogInformation("Handling {Handler}", nameof(LoginCommandHandler));
             var user = await userManager.FindByEmailAsync(request.Email);
 
             if (user is null)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Invalid Email or Password"
                 };
             }
@@ -49,9 +54,9 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
                 var minutes = Math.Ceiling(
                     (lockoutEnd.Value.UtcDateTime - DateTime.UtcNow).TotalMinutes);
 
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = $"Too many failed attempts. Try again after {minutes} minute(s)."
                 };
             }
@@ -60,9 +65,9 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
             {
                 await userManager.AccessFailedAsync(user);
 
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Invalid email or password."
                 };
             }
@@ -70,17 +75,17 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
             await userManager.ResetAccessFailedCountAsync(user);
             if (!user.IsActive)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Your account is inactive"
                 };
             }
             if (!user.EmailConfirmed)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Your Must Conferm Email"
                 };
             }
@@ -119,8 +124,11 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
                 else
                     currentStep = 5;
             }
-            return new AuthResponse
+            return new BaseCommandResponse<AuthResponse>
             {
+                Success = true,
+                Data = new AuthResponse
+                {
                 Id = user.Id.ToString(),
                 UserName = user.UserName!,
                 Email = user.Email!,
@@ -136,6 +144,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Login
 
                 CurrentStep = currentStep,
                 OnboardingCompleted = currentStep == 5
+                }
             };
         }
 

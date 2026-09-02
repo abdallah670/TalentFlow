@@ -1,27 +1,29 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Job.DTOs;
 using TalentFlow.Application.Features.Job.Queries.GetJobsCompany;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Job.Queries.GetJobsForCandidate
 {
-    public class GetJobsForCandidateQueryHandler : IRequestHandler<GetJobsForCandidateQuery , PaginatedResult<DTOs.GetJobDto>>
+    public class GetJobsForCandidateQueryHandler : IRequestHandler<GetJobsForCandidateQuery, BaseCommandResponse<PaginatedResult<GetJobDto>>>
     {
+        private readonly ILogger<GetJobsForCandidateQueryHandler> logger;
         private readonly IUnitOfWork unitOfWork;
 
-        public GetJobsForCandidateQueryHandler(IUnitOfWork unitOfWork)
+        public GetJobsForCandidateQueryHandler(IUnitOfWork unitOfWork, ILogger<GetJobsForCandidateQueryHandler> logger)
         {
+            this.logger = logger;
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<PaginatedResult<GetJobDto>> Handle(GetJobsForCandidateQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<PaginatedResult<GetJobDto>>> Handle(GetJobsForCandidateQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetJobsForCandidateQueryHandler));
             var jobs = await unitOfWork.Jobs.GetAllAsync();
             jobs = jobs
                 .Where(x => x.Status == JobStatus.Published)
@@ -82,14 +84,16 @@ namespace TalentFlow.Application.Features.Job.Queries.GetJobsForCandidate
                     CloseDate = job.CloseDate
                 });
             }
-            var totalPages = (int)Math.Ceiling((double)totalCount / request.PageSize);
-            return new PaginatedResult<GetJobDto>
+            return new BaseCommandResponse<PaginatedResult<GetJobDto>>
             {
+                Success = true,
+                Data = new PaginatedResult<GetJobDto>
+                {
                 Items = items,
-                PageNumber = request.PageNumber,
+                Page = request.PageNumber,
                 PageSize = request.PageSize,
                 TotalCount = totalCount,
-                TotalPages = totalPages
+                }
             };
 
         }

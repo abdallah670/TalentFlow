@@ -1,4 +1,5 @@
-﻿using MediatR;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,18 +10,21 @@ using TalentFlow.Application.Responses;
 namespace TalentFlow.Application.Features.Roles.Query.GetRoles
 {
     
-    public class GetRolesQueryHandler : IRequestHandler<GetRolesQuery, BaseCommandResponse>
+    public class GetRolesQueryHandler : IRequestHandler<GetRolesQuery, BaseCommandResponse<List<RoleDto>>>
     {
+        private readonly ILogger<GetRolesQueryHandler> logger;
         private readonly RoleManager<Domain.Entities.IdentityModule.Role> roleManager;
 
-        public GetRolesQueryHandler(RoleManager<Domain.Entities.IdentityModule.Role> roleManager)
+        public GetRolesQueryHandler(RoleManager<Domain.Entities.IdentityModule.Role> roleManager, ILogger<GetRolesQueryHandler> logger)
         {
+            this.logger = logger;
             this.roleManager = roleManager;
         }
 
         
-public async Task<BaseCommandResponse> Handle(GetRolesQuery request, CancellationToken cancellationToken)
+public async Task<BaseCommandResponse<List<RoleDto>>> Handle(GetRolesQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetRolesQueryHandler));
             var res = await roleManager.Roles
         .Select(x => new RoleDto
         {
@@ -29,7 +33,7 @@ public async Task<BaseCommandResponse> Handle(GetRolesQuery request, Cancellatio
         })
         .ToListAsync(cancellationToken);
 
-            return new BaseCommandResponse
+            return new BaseCommandResponse<List<RoleDto>>
             {
                 Success = true,
                 Data = res,

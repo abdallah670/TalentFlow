@@ -1,8 +1,10 @@
-﻿using MediatR;
+using MediatR;
+using TalentFlow.Application.Responses;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using TalentFlow.Application.Contracts.Persistence;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
 using TalentFlow.Application.Models.Identity;
 using TalentFlow.Domain.Entities.CandidateModule;
@@ -11,8 +13,9 @@ using TalentFlow.Domain.Entities.IdentityModule;
 namespace TalentFlow.Application.Features.Tenant.Command.TeamMember
 {
     public class InviteTeamMemberCommandHandler
-        : IRequestHandler<InviteTeamMemberCommand, AuthResponse>
+        : IRequestHandler<InviteTeamMemberCommand, BaseCommandResponse<AuthResponse>>
     {
+        private readonly ILogger<InviteTeamMemberCommandHandler> logger;
         private readonly UserManager<Domain.Entities.IdentityModule.User> userManager;
         private readonly IUnitOfWork unitOfWork;
         private readonly IEmailService emailService;
@@ -22,18 +25,20 @@ namespace TalentFlow.Application.Features.Tenant.Command.TeamMember
             UserManager<Domain.Entities.IdentityModule.User> userManager,
             IUnitOfWork unitOfWork,
             IEmailService emailService,
-            IOptions<AppUrlSettings> appUrlSettings)
+            IOptions<AppUrlSettings> appUrlSettings, ILogger<InviteTeamMemberCommandHandler> logger)
         {
+            this.logger = logger;
             this.userManager = userManager;
             this.unitOfWork = unitOfWork;
             this.emailService = emailService;
             this.appUrlSettings = appUrlSettings.Value;
         }
 
-        public async Task<AuthResponse> Handle(
+        public async Task<BaseCommandResponse<AuthResponse>> Handle(
             InviteTeamMemberCommand request,
             CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(InviteTeamMemberCommandHandler));
             var existingInvitation = await unitOfWork.Invitations
     .FindAsync(x =>
       x.Email == request.Email &&
@@ -43,9 +48,9 @@ x.ExpirationDate > DateTime.UtcNow);
 
             if (existingInvitation.Any())
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "An invitation has already been sent to this email."
                 };
             }
@@ -53,9 +58,9 @@ x.ExpirationDate > DateTime.UtcNow);
 
             if (existingUser != null && existingUser.TenantId == request.TenantId)
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "This user is already a member of your company."
                 };
             }
@@ -91,9 +96,9 @@ x.ExpirationDate > DateTime.UtcNow);
 
     <p>This invitation expires in 7 days.</p>
     ");
-            return new AuthResponse
+            return new BaseCommandResponse<AuthResponse>
             {
-                IsAuthenticated = true,
+                Success = true,
                 Message = "Invitation sent successfully."
             };
         }

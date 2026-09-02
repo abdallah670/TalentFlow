@@ -5,11 +5,12 @@ using System.Text;
 using System.Text.Json.Serialization;
 using TalentFlow.Application.Features.Job.DTOs;
 using TalentFlow.Application.Models;
+using TalentFlow.Application.Responses;
 using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Job.Queries.GetJobsCompany
 {
-    public class GetJobsCompanyQuery : IRequest<PaginatedResult<GetJobDto>>
+    public class GetJobsCompanyQuery : IRequest<BaseCommandResponse<PaginatedResult<GetJobDto>>>
     {
         
         public EmploymentType? EmploymentType { get; set; }

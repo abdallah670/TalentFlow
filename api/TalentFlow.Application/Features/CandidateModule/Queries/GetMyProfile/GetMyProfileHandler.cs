@@ -1,25 +1,36 @@
-﻿// TalentFlow.Application/Features/CandidateModule/Queries/GetMyProfile/GetMyProfileHandler.cs
+// TalentFlow.Application/Features/CandidateModule/Queries/GetMyProfile/GetMyProfileHandler.cs
 using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
+using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.CandidateModule.Queries.GetMyProfile
 {
-    public class GetMyProfileHandler : IRequestHandler<GetMyProfileQuery, GetMyProfileResponse?>
+    public class GetMyProfileHandler : IRequestHandler<GetMyProfileQuery, BaseCommandResponse<GetMyProfileResponse>>
     {
+        private readonly ILogger<GetMyProfileHandler> logger;
         private readonly IcandidateProfileRepo candidateProfileRepo;
 
-        public GetMyProfileHandler(IcandidateProfileRepo candidateProfileRepo)
+        public GetMyProfileHandler(IcandidateProfileRepo candidateProfileRepo, ILogger<GetMyProfileHandler> logger)
         {
+            this.logger = logger;
             this.candidateProfileRepo = candidateProfileRepo;
         }
 
-        public async Task<GetMyProfileResponse?> Handle(GetMyProfileQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<GetMyProfileResponse>> Handle(GetMyProfileQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetMyProfileHandler));
             var profile = await candidateProfileRepo
      .GetByUserIdWithSkillsAsync(request.UserId);
 
             if (profile is null)
-                return null;
+            {
+                return new BaseCommandResponse<GetMyProfileResponse>
+                {
+                    Success = false,
+                    Message = "Profile not found."
+                };
+            }
 
             bool professional =
        !string.IsNullOrWhiteSpace(profile.PhoneNumber)
@@ -44,8 +55,11 @@ namespace TalentFlow.Application.Features.CandidateModule.Queries.GetMyProfile
                 currentStep = 4;
             else
                 currentStep = 5;
-            return new GetMyProfileResponse
+            return new BaseCommandResponse<GetMyProfileResponse>
             {
+                Success = true,
+                Data = new GetMyProfileResponse
+                {
                 PhoneNumber = profile.PhoneNumber,
                 CurrentJobTitle = profile.CurrentJobTitle,
                 CurrentCompany = profile.CurrentCompany,
@@ -67,6 +81,7 @@ namespace TalentFlow.Application.Features.CandidateModule.Queries.GetMyProfile
                 PreferencesCompleted = preferences,
                 CurrentStep = currentStep,
 
+                }
             };
         }
     }

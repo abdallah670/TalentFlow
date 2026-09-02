@@ -1,16 +1,16 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Departments.DTOs;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
 {
-    public class GetDepartmentsQueryHandler : IRequestHandler<GetDepartmentsQuery, BaseCommandResponse>
+    public class GetDepartmentsQueryHandler : IRequestHandler<GetDepartmentsQuery, BaseCommandResponse<List<DepartmentDto>>>
     {
 
         private readonly IDepartmentRepository departmentRepository;
@@ -29,7 +29,7 @@ namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
             this.logger = logger;
         }
 
-        public async Task<BaseCommandResponse> Handle(GetDepartmentsQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<List<DepartmentDto>>> Handle(GetDepartmentsQuery request, CancellationToken cancellationToken)
         {
             var cacheKey = $"Departments_{currentTenantService.TenantId}";
             try
@@ -37,7 +37,7 @@ namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
                 if (cache.TryGetValue(cacheKey, out List<DepartmentDto> departments))
                 {
                     logger.LogInformation("Departments loaded from cache.");
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<List<DepartmentDto>>
                     {
                         Success = true,
                         Data = departments
@@ -48,7 +48,7 @@ namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
                 if (!res.Any())
                 {
 
-                    return new BaseCommandResponse
+                    return new BaseCommandResponse<List<DepartmentDto>>
                     {
                         Success = false,
                         Message = "No departments found."
@@ -62,7 +62,7 @@ namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
                     SlidingExpiration = TimeSpan.FromMinutes(5)
                 };
                 cache.Set(cacheKey, map,r);
-                return new BaseCommandResponse
+                return new BaseCommandResponse<List<DepartmentDto>>
                 {
                     Data = map,
                     Success = true,
@@ -71,7 +71,8 @@ namespace TalentFlow.Application.Features.Departments.Queries.GetDepartments
             }
             catch (Exception ex)
             {
-                return new BaseCommandResponse
+                logger.LogError(ex, "Unhandled exception in {Handler}", nameof(GetDepartmentsQueryHandler));
+                return new BaseCommandResponse<List<DepartmentDto>>
                 {
                     Success = false,
                     Message = ex.Message

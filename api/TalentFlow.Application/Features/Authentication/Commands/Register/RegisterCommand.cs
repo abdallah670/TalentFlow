@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TalentFlow.Application.Features.Authontication.DTOs;
+
+using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Authontication.Commands.Register
 {
-    public class RegisterCommand :IRequest<AuthResponse>
+    public class RegisterCommand : IRequest<BaseCommandResponse<AuthResponse>>
     {
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;

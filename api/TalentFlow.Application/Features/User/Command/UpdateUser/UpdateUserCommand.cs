@@ -1,12 +1,13 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TalentFlow.Application.Features.User.Query.GetUser;
 using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.User.Command.UpdateUser
 {
-    public class UpdateUserCommand:IRequest<BaseCommandResponse>
+    public class UpdateUserCommand:IRequest<BaseCommandResponse<GetUserDTOs>>
     {
         public Guid Id { get; set; }
 

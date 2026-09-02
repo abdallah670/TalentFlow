@@ -1,35 +1,46 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Features.Job.DTOs;
-using TalentFlow.Application.Interfaces;
+using TalentFlow.Application.Contracts.Infra;
+using TalentFlow.Application.Responses;
 
 namespace TalentFlow.Application.Features.Job.Queries.GetJobById
 {
-    public class GetJobByIdCandidateQueryHandler : IRequestHandler<GetJObByIdCandiateQuery, GetJobDto>
+    public class GetJobByIdCandidateQueryHandler : IRequestHandler<GetJObByIdCandiateQuery, BaseCommandResponse<GetJobDto>>
     {
+        private readonly ILogger<GetJobByIdCandidateQueryHandler> logger;
         private readonly IUnitOfWork unitOfWork;
         private readonly ICurrentTenantService currentTenantService;
 
-        public GetJobByIdCandidateQueryHandler(IUnitOfWork unitOfWork, ICurrentTenantService currentTenantService)
+        public GetJobByIdCandidateQueryHandler(IUnitOfWork unitOfWork, ICurrentTenantService currentTenantService, ILogger<GetJobByIdCandidateQueryHandler> logger)
         {
+            this.logger = logger;
             this.unitOfWork = unitOfWork;
             this.currentTenantService = currentTenantService;
         }
 
-        public async Task<GetJobDto> Handle(GetJObByIdCandiateQuery request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<GetJobDto>> Handle(GetJObByIdCandiateQuery request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(GetJobByIdCandidateQueryHandler));
+            try
+            {
             var job = await unitOfWork.Jobs.GetByIdAsync(request.JobId);
             if (job == null)
             {
-                throw new Exception($"Job with ID {request.JobId} not found.");
-
+                return new BaseCommandResponse<GetJobDto>
+                {
+                    Success = false,
+                    Message = $"Job with ID {request.JobId} not found."
+                };
             }
             if (job.Status != Domain.Enums.JobStatus.Published)
             {
-                throw new Exception("This job is not available.");
+                return new BaseCommandResponse<GetJobDto>
+                {
+                    Success = false,
+                    Message = "This job is not available."
+                };
             }
             var tenant = await unitOfWork.Tenants.GetByIdAsync(job.TenantId);
 
@@ -50,7 +61,22 @@ namespace TalentFlow.Application.Features.Job.Queries.GetJobById
                 CloseDate = job.CloseDate
             };
 
-            return jobDto;
+            return new BaseCommandResponse<GetJobDto>
+            {
+                Success = true,
+                Data = jobDto
+            };
+            }
+            catch (System.Exception ex)
+            {
+                logger.LogError(ex, "Failed to get job by id (candidate) in {Handler}", nameof(GetJobByIdCandidateQueryHandler));
+                return new BaseCommandResponse<GetJobDto>
+                {
+                    Success = false,
+                    Message = "Failed to retrieve job.",
+                    Errors = { ex.Message }
+                };
+            }
         }
     }
 }

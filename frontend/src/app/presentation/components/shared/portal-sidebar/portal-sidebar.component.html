@@ -1,0 +1,20 @@
+<aside class="portal-sidebar">
+  <div class="portal-sidebar__branding">
+    <h1 class="portal-sidebar__logo">TalentFlow</h1>
+    <p class="portal-sidebar__tagline">{{ subtitle }}</p>
+  </div>
+
+  <ul class="portal-sidebar__nav">
+    @for (item of items; track item.label) {
+      <li>
+        <a class="portal-sidebar__link" [class.portal-sidebar__link--active]="item.active" href="#">
+          <span
+            class="material-symbols-outlined"
+            [style.font-variation-settings]="item.active ? &quot;'FILL' 1&quot; : null"
+          >{{ item.icon }}</span>
+          {{ item.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</aside>

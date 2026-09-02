@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +8,7 @@ using TalentFlow.Domain.Enums;
 
 namespace TalentFlow.Application.Features.Job.Command.CreateJob
 {
-    public class CreateJobCommand :IRequest<BaseCommandResponse>
+    public class CreateJobCommand :IRequest<BaseCommandResponse<bool>>
     {
         [JsonIgnore]
         public Guid TenantId { get; set; }

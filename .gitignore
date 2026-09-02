@@ -11,6 +11,8 @@
 # Visual Studio temp files
 *.vspscc
 *.vssscc
+.vs/
+
 
 # Rider
 .idea/
@@ -140,3 +142,5 @@ important.md
 *.txt
 .Kilo/
 AI/
+.kilo/
+
