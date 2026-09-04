@@ -2,7 +2,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import Swal from 'sweetalert2';
-import { selectAuthState } from '../state/auth/auth.selectors';
+import { selectAuthState } from '@features/auth/state/auth.selectors';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const store = inject(Store);
