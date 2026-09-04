@@ -14,10 +14,10 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { tokenInterceptor } from './core/interceptors/token-interceptor';
-import { authReducer } from './core/state/auth/auth.reducer';
-import * as authEffects from './core/state/auth/auth.effects';
-import { GlobalErrorHandler } from './core/errors/global-error-handler';
+import { tokenInterceptor } from '@core/interceptors/token-interceptor';
+import { authReducer } from '@features/auth/state/auth.reducer';
+import * as authEffects from '@features/auth/state/auth.effects';
+import { GlobalErrorHandler } from '@core/errors/global-error-handler';
 
 export const appConfig: ApplicationConfig = {
   providers: [

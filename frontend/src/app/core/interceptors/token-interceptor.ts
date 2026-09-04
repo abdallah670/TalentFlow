@@ -1,9 +1,9 @@
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '@features/auth/services/auth.service';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { AuthResponse } from '../../data/models/auth.model';
+import { AuthResponse } from '@features/auth/models/auth.model';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const cookieService = inject(CookieService);
