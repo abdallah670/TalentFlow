@@ -44,3 +44,19 @@
     background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCM-iUwUaDBMwk6jLB1vJTSEeWLp00dbLdyk05tB39xu9yZ7V62yAbPXax0NUV7QvGCMcv14J9vyIXa2KMt3VXTjPz_dvU6CKzM5Dq94Yvla-uTj-YMpeVqWWveGB_5U9VBm-nPmI-2Va5yu85m4UwIiz5Bm3J1VPxZjdsbYRJdbAZKQkYd3qA6MZ0A8W1TJ1LQy67at_Hm8flLRUQw5f6t3Giz80YLKBhIUTb9JX8Aa5MRmg64VOiqHdkGjZu824iG2kcoC_i2muE');
   }
 }
+
+
+.sidebar-footer {
+  @apply mt-auto px-md flex items-center gap-sm opacity-50;
+  cursor: pointer;
+  &:hover { @apply opacity-100; }
+}
+.logo-wrapper {
+  @apply w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary;
+}
+.logo-icon {
+  @apply text-[18px];
+}
+.logo-text {
+  @apply font-label text-label text-on-surface-variant;
+}

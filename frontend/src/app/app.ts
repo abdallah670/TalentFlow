@@ -1,13 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from '@shared/components/navbar/navbar.component';
-import { BackButtonComponent } from '@shared/ui/back-button/back-button.component';
 import { AuthService } from '@features/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, BackButtonComponent],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -43,11 +42,5 @@ export class App {
   // Show navbar only when authenticated AND not on auth pages
   protected get showNavbar(): boolean {
     return this.isAuthenticated() && !this.isAuthPage;
-  }
-
-  // Show the floating back button on every page except home
-  protected get showBackButton(): boolean {
-    const url = this.currentUrl().split('?')[0];
-    return url !== '/' && url !== '';
   }
 }

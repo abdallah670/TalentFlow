@@ -33,6 +33,8 @@
 }
 .sidebar-footer {
   @apply mt-auto px-md flex items-center gap-sm opacity-50;
+  &:hover { @apply opacity-100; }
+  cursor: pointer;
 }
 .logo-wrapper {
   @apply w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary;
