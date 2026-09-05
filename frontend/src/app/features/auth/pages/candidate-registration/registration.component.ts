@@ -40,8 +40,8 @@ export class RegistrationComponent {
   nextStep() {
     const step = this.currentStep();
 
-    // Validate step 1 before allowing advance
-    if (step === 1 && !this.registrationService.isStepValid(1)) {
+    // Block advancing while the current step has invalid fields
+    if (!this.registrationService.isStepValid(step)) {
       Swal.fire({
         icon: 'warning',
         title: 'Incomplete Step',

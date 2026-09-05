@@ -15,6 +15,34 @@ export class EmployerRegistrationService {
   readonly error = signal<string | null>(null);
   readonly submitted = signal(false);
 
+  /** Onboarding route order + completion tracking (for step guards). */
+  static readonly ROUTE_ORDER = [
+    'company-setup',
+    'workspace',
+    'subscription',
+    'review',
+  ] as const;
+
+  readonly stepCompleted = signal<Record<string, boolean>>({
+    'company-setup': true,
+    workspace: false,
+    subscription: false,
+    review: false,
+  });
+
+  setStepCompleted(key: string) {
+    this.stepCompleted.update((s) => ({ ...s, [key]: true }));
+  }
+
+  /** A step is accessible when every step before it is completed. */
+  isStepAccessible(key: string): boolean {
+    const order = EmployerRegistrationService.ROUTE_ORDER;
+    const idx = order.indexOf(key as any);
+    if (idx < 0) return false;
+    const done = this.stepCompleted();
+    return order.slice(0, idx).every((k) => done[k]);
+  }
+
   readonly steps = [
     { id: 1, label: 'Step 1', title: 'Account' },
     { id: 2, label: 'Step 2', title: 'Role' },

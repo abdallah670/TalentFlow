@@ -49,6 +49,7 @@ export class CompanySetupComponent implements OnInit {
         officeLocation: value.location,
       });
       this.employerService.setStepValid(3, true);
+      this.employerService.setStepCompleted('company-setup');
       this.router.navigate(['/register/workspace']);
     } else {
       this.companyForm.markAllAsTouched();

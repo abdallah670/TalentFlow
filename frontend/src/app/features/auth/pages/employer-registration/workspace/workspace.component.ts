@@ -54,6 +54,7 @@ export class WorkspaceComponent implements OnInit {
         workspaceUrl: value.url,
       });
       this.employerService.setStepValid(4, true);
+      this.employerService.setStepCompleted('workspace');
       this.router.navigate(['/register/subscription']);
     } else {
       this.workspaceForm.markAllAsTouched();

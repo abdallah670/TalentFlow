@@ -11,8 +11,12 @@
   @apply flex flex-col gap-10 z-10 flex-1;
 }
 .step-item {
-  @apply flex items-start gap-4 relative;
+  @apply flex items-start gap-4 relative w-full text-left bg-transparent border-none p-0 cursor-pointer transition-opacity;
+  &:hover:not(:disabled) .step-circle { @apply border-[#24389c]; }
+  &:focus-visible { @apply outline-none rounded-lg ring-2 ring-[#3f51b5]; }
+  &:disabled { cursor: not-allowed; }
   &.is-future { @apply opacity-50; }
+  &.is-locked { @apply opacity-40; }
 }
 .step-connector {
   @apply absolute left-[15px] top-[36px] bottom-[-44px] w-[2px] bg-[#c5c5d4];

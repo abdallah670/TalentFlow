@@ -5,18 +5,18 @@
   </div>
 
   <div class="sidebar-nav">
-    <a routerLink="/register/company-setup" routerLinkActive="nav-item-active" [routerLinkActiveOptions]="{exact: true}" 
+    <a routerLink="/register/employer" routerLinkActive="nav-item-active" [routerLinkActiveOptions]="{exact: true}" 
        class="nav-item"
-       [class.nav-item-disabled]="!isCompleted('/register/company-setup') && router.url !== '/register/company-setup'">
-      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/company-setup')" [style.font-variation-settings]="router.url === '/register/company-setup' ? '\'FILL\' 1' : '\'FILL\' 0'">
-        {{ isCompleted('/register/company-setup') ? 'check_circle' : 'business' }}
+       [class.nav-item-disabled]="isLocked('/register/employer') && router.url !== '/register/employer'">
+      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/employer')" [style.font-variation-settings]="router.url === '/register/employer' ? '\'FILL\' 1' : '\'FILL\' 0'">
+        {{ isCompleted('/register/employer') ? 'check_circle' : 'business' }}
       </span>
       <span class="nav-label">Company Setup</span>
     </a>
     
     <a routerLink="/register/workspace" routerLinkActive="nav-item-active"
-       class="nav-item"
-       [class.nav-item-disabled]="!isCompleted('/register/workspace') && router.url !== '/register/workspace'">
+        class="nav-item"
+        [class.nav-item-disabled]="isLocked('/register/workspace') && router.url !== '/register/workspace'">
       <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/workspace')" [style.font-variation-settings]="router.url === '/register/workspace' ? '\'FILL\' 1' : '\'FILL\' 0'">
         {{ isCompleted('/register/workspace') ? 'check_circle' : 'domain' }}
       </span>
@@ -25,7 +25,7 @@
     
     <a routerLink="/register/subscription" routerLinkActive="nav-item-active"
        class="nav-item"
-       [class.nav-item-disabled]="!isCompleted('/register/subscription') && router.url !== '/register/subscription'">
+       [class.nav-item-disabled]="isLocked('/register/subscription') && router.url !== '/register/subscription'">
       <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/subscription')" [style.font-variation-settings]="router.url === '/register/subscription' ? '\'FILL\' 1' : '\'FILL\' 0'">
         {{ isCompleted('/register/subscription') ? 'check_circle' : 'payments' }}
       </span>

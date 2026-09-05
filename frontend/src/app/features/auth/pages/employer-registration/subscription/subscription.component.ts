@@ -31,6 +31,7 @@ export class SubscriptionComponent implements OnInit {
   selectPlan(plan: Plan) {
     this.selectedPlan = plan;
     this.employerService.updateProfile({ selectedPlan: plan });
+    this.employerService.setStepCompleted('subscription');
     this.router.navigate(['/register/review']);
   }
 
