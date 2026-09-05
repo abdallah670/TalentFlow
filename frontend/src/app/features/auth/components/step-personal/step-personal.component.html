@@ -5,42 +5,63 @@
 
 <div class="card">
   <p class="card-description">Enter your details to get started.</p>
-  
-  <form class="space-y-4">
+
+  <form [formGroup]="form" class="space-y-4">
       <div class="form-grid">
         <div class="form-group">
-            <input type="text" id="firstName" name="firstName" placeholder=" " class="form-input">
+            <input type="text" id="firstName" formControlName="firstName" placeholder=" " class="form-input" [class.invalid]="isInvalid('firstName')">
             <label for="firstName" class="form-label">First Name</label>
+            @if (isInvalid('firstName')) {
+              <span class="error-text">First name is required.</span>
+            }
         </div>
         <div class="form-group">
-            <input type="text" id="lastName" name="lastName" placeholder=" " class="form-input">
+            <input type="text" id="lastName" formControlName="lastName" placeholder=" " class="form-input" [class.invalid]="isInvalid('lastName')">
             <label for="lastName" class="form-label">Last Name</label>
+            @if (isInvalid('lastName')) {
+              <span class="error-text">Last name is required.</span>
+            }
         </div>
       </div>
-      
+
       <div class="form-group">
-        <input type="email" id="email" name="email" placeholder=" " class="form-input">
+        <input type="email" id="email" formControlName="email" placeholder=" " class="form-input" [class.invalid]="isInvalid('email')">
         <label for="email" class="form-label">Email Address</label>
+        @if (isInvalid('email')) {
+          <span class="error-text">Enter a valid email address.</span>
+        }
       </div>
-      
+
       <div class="form-group">
-        <input type="password" id="password" name="password" placeholder=" " class="form-input has-icon">
+        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder=" " class="form-input has-icon" [class.invalid]="isInvalid('password')">
         <label for="password" class="form-label">Password</label>
-        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
-            <span class="material-symbols-outlined text-[20px]">visibility</span>
+        <button type="button" class="password-toggle" (click)="togglePassword()" aria-label="Toggle password visibility">
+            <span class="material-symbols-outlined text-[20px]">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
         </button>
+        @if (isInvalid('password')) {
+          <span class="error-text">Password must be 8+ chars with upper, lower and a number.</span>
+        }
       </div>
-      
+
       <div class="form-group">
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" " class="form-input">
+        <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword" formControlName="confirmPassword" placeholder=" " class="form-input has-icon" [class.invalid]="isInvalid('confirmPassword')">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <button type="button" class="password-toggle" (click)="toggleConfirmPassword()" aria-label="Toggle confirm password visibility">
+            <span class="material-symbols-outlined text-[20px]">{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</span>
+        </button>
+        @if (isInvalid('confirmPassword')) {
+          <span class="error-text">Passwords must match.</span>
+        }
       </div>
-      
+
       <div class="checkbox-group">
-        <input type="checkbox" id="privacy" class="checkbox">
+        <input type="checkbox" id="privacy" formControlName="agreeToTerms" class="checkbox" [class.invalid]="isInvalid('agreeToTerms')">
         <label for="privacy" class="checkbox-label">I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</label>
       </div>
-      
+      @if (isInvalid('agreeToTerms')) {
+        <span class="error-text">You must agree to the terms to continue.</span>
+      }
+
       <div class="info-box">
         <span class="material-symbols-outlined info-icon">mail</span>
         <p class="info-text">A verification email will be sent to the address provided upon account creation.</p>

@@ -16,6 +16,7 @@
 .form-input {
   @apply h-14 px-4 border border-[#c5c5d4] rounded bg-white text-[15px] focus:outline-none focus:border-[#24389c] focus:ring-1 focus:ring-[#24389c] transition-colors;
   &.has-icon { @apply pr-12; }
+  &.invalid { @apply border-[#ba1a1a] focus:border-[#ba1a1a] focus:ring-[#ba1a1a]; }
 }
 .form-label {
   @apply absolute left-4 top-1/2 -translate-y-1/2 text-[15px] text-[#454652] transition-all duration-200 pointer-events-none origin-left;
@@ -30,11 +31,14 @@
 }
 .checkbox-group {
   @apply flex items-start gap-2 pt-2;
-  .checkbox { @apply mt-1 w-4 h-4 text-[#3f51b5] bg-white border-[#c5c5d4] rounded focus:ring-[#3f51b5] focus:ring-offset-1; }
+  .checkbox { @apply mt-1 w-4 h-4 text-[#3f51b5] bg-white border-[#c5c5d4] rounded focus:ring-[#3f51b5] focus:ring-offset-1; &.invalid { @apply border-[#ba1a1a]; } }
   .checkbox-label {
     @apply text-[13px] text-[#454652] cursor-pointer;
     a { @apply text-[#24389c] hover:underline font-medium; }
   }
+}
+.error-text {
+  @apply block text-[12px] text-[#ba1a1a] mt-1;
 }
 .info-box {
   @apply flex items-start gap-3 p-4 bg-[#f4f2fc] rounded border border-[#e3e1ea] mt-4;

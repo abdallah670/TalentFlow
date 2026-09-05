@@ -12,14 +12,14 @@
   @apply font-body text-body text-on-surface-variant;
 }
 .plans-grid {
-  @apply grid grid-cols-1 xl:grid-cols-3 gap-lg max-w-3xl w-full;
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-xl max-w-6xl w-full;
 }
 .plan-card {
-  @apply bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm flex flex-col hover:shadow-md transition-shadow;
+  @apply bg-surface-container-lowest rounded-xl border border-outline-variant p-xl shadow-sm flex flex-col hover:shadow-md transition-shadow;
   &.selected { @apply border-2 border-primary-container; }
 }
 .plan-card-pro {
-  @apply bg-surface-container-lowest rounded-xl border-2 border-primary-container p-lg shadow-lg relative flex flex-col transform md:-translate-y-2;
+  @apply bg-surface-container-lowest rounded-xl border-2 border-primary-container p-xl shadow-lg relative flex flex-col transform md:-translate-y-2;
   &.selected { box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.35); }
 }
 .plan-badge {

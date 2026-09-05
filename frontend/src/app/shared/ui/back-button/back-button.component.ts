@@ -19,7 +19,7 @@ import { Location } from '@angular/common';
     `
       .back-button {
         position: fixed;
-        bottom: 24px;
+        top: 24px;
         right: 24px;
         z-index: 1000;
         display: inline-flex;

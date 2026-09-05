@@ -27,20 +27,18 @@
 </div>
 
 <div class="bottom-bar">
-  @if (currentStep() > 1) {
-     <button type="button" class="btn-back" (click)="prevStep()">
-        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-        Back
-     </button>
-  } @else {
-     <div></div>
-  }
-  
+  <div class="left-group">
+    @if (currentStep() > 1) {
+       <button type="button" class="btn-back" (click)="prevStep()">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+          Back
+       </button>
+    } @else if (currentStep() === 1) {
+       <span class="login-prompt">Already have an account? <a routerLink="/login">Log in</a></span>
+    }
+  </div>
+
   <div class="actions-group">
-     @if (currentStep() === 1) {
-        <span class="login-prompt">Already have an account? <a routerLink="/login">Log in</a></span>
-     }
-     
      <button type="button" class="btn-primary" (click)="nextStep()" [disabled]="isLoading()">
         @if (isLoading()) {
            <span class="spinner"></span>
