@@ -10,6 +10,7 @@ export interface CandidateRegistrationRequest {
   email: string;
   password: string;
   confirmPassword: string;
+  acceptedPrivacyPolicy?: boolean;
   phoneNumber?: string;
   currentJobTitle?: string;
   currentCompany?: string;

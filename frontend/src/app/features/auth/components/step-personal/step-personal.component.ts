@@ -36,7 +36,7 @@ export class StepPersonalComponent {
       email: profile.email,
       password: profile.password,
       confirmPassword: profile.confirmPassword,
-      agreeToTerms: false,
+      agreeToTerms: !!profile.acceptedPrivacyPolicy,
     });
 
     // Sync form changes to profile signal + step validity
@@ -48,6 +48,7 @@ export class StepPersonalComponent {
         email: value.email,
         password: value.password,
         confirmPassword: value.confirmPassword,
+        acceptedPrivacyPolicy: value.agreeToTerms,
       });
       this.registrationService.setStepValid(1, this.form.valid);
     });
