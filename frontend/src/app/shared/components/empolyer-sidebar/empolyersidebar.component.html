@@ -5,41 +5,25 @@
   </div>
 
   <div class="sidebar-nav">
-    <a routerLink="/register/employer" routerLinkActive="nav-item-active" [routerLinkActiveOptions]="{exact: true}" 
-       class="nav-item"
-       [class.nav-item-disabled]="isLocked('/register/employer') && router.url !== '/register/employer'">
-      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/employer')" [style.font-variation-settings]="router.url === '/register/employer' ? '\'FILL\' 1' : '\'FILL\' 0'">
-        {{ isCompleted('/register/employer') ? 'check_circle' : 'business' }}
-      </span>
-      <span class="nav-label">Company Setup</span>
-    </a>
-    
-    <a routerLink="/register/workspace" routerLinkActive="nav-item-active"
-        class="nav-item"
-        [class.nav-item-disabled]="isLocked('/register/workspace') && router.url !== '/register/workspace'">
-      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/workspace')" [style.font-variation-settings]="router.url === '/register/workspace' ? '\'FILL\' 1' : '\'FILL\' 0'">
-        {{ isCompleted('/register/workspace') ? 'check_circle' : 'domain' }}
-      </span>
-      <span class="nav-label">Workspace</span>
-    </a>
-    
-    <a routerLink="/register/subscription" routerLinkActive="nav-item-active"
-       class="nav-item"
-       [class.nav-item-disabled]="isLocked('/register/subscription') && router.url !== '/register/subscription'">
-      <span class="nav-icon material-symbols-outlined" [class.nav-icon-completed]="isCompleted('/register/subscription')" [style.font-variation-settings]="router.url === '/register/subscription' ? '\'FILL\' 1' : '\'FILL\' 0'">
-        {{ isCompleted('/register/subscription') ? 'check_circle' : 'payments' }}
-      </span>
-      <span class="nav-label">Subscription</span>
-    </a>
-    
-    <a routerLink="/register/review" routerLinkActive="nav-item-active"
-       class="nav-item"
-       [class.nav-item-disabled]="router.url !== '/register/review'">
-      <span class="nav-icon material-symbols-outlined" [style.font-variation-settings]="router.url === '/register/review' ? '\'FILL\' 1' : '\'FILL\' 0'">
-        fact_check
-      </span>
-      <span class="nav-label">Review</span>
-    </a>
+    @for (step of steps; track step.id) {
+      <button type="button" class="step-item"
+        [class.is-current]="currentStep() === step.id"
+        [class.is-past]="currentStep() > step.id"
+        [class.is-future]="currentStep() < step.id"
+        [class.is-locked]="step.id > currentStep() && !canGoTo(step.id)"
+        [disabled]="step.id > currentStep() && !canGoTo(step.id)"
+        (click)="goTo(step.id)"
+        [attr.aria-label]="'Go to ' + step.title">
+        <span class="nav-icon material-symbols-outlined" [class.completed]="currentStep() > step.id">
+          @if (currentStep() > step.id) {
+            check_circle
+          } @else {
+            {{ iconFor(step.id) }}
+          }
+        </span>
+        <span class="nav-label">{{ step.title }}</span>
+      </button>
+    }
   </div>
 
   <div class="sidebar-footer">

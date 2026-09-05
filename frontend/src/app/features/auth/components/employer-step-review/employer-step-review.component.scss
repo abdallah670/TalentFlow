@@ -1,6 +1,6 @@
-@reference '../../../../../../styles.scss';
+@reference '../../../../../styles.scss';
 .review-card {
-  @apply w-full max-w-3xl bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm mt-[64px];
+  @apply w-full max-w-3xl mx-auto bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm;
   box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0,0,0,0.12);
 }
 .card-header-line {
@@ -77,16 +77,4 @@
 }
 .plan-period {
   @apply font-label text-label text-on-surface-variant;
-}
-.form-actions {
-  @apply flex items-center justify-between pt-lg mt-xl border-t border-outline-variant/50;
-}
-.btn-back {
-  @apply h-10 px-lg rounded font-label text-label text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2;
-}
-.btn-primary {
-  @apply h-10 px-xl bg-primary-container text-on-primary rounded font-label text-label shadow-sm hover:opacity-90 active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 flex items-center gap-sm cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed;
-}
-.btn-icon {
-  @apply text-[18px];
 }

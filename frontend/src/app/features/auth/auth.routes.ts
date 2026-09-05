@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { employerStepGuard } from './guards/employer-step.guard';
 
 export const AUTH_ROUTES: Routes = [
   {
@@ -18,35 +17,8 @@ export const AUTH_ROUTES: Routes = [
   {
     path: 'register/employer',
     loadComponent: () =>
-      import('./pages/employer-registration/company-setup/company-setup.component').then(
-        (m) => m.CompanySetupComponent,
-      ),
-  },
-  {
-    path: 'register/workspace',
-    canActivate: [employerStepGuard],
-    data: { stepKey: 'workspace' },
-    loadComponent: () =>
-      import('./pages/employer-registration/workspace/workspace.component').then(
-        (m) => m.WorkspaceComponent,
-      ),
-  },
-  {
-    path: 'register/subscription',
-    canActivate: [employerStepGuard],
-    data: { stepKey: 'subscription' },
-    loadComponent: () =>
-      import('./pages/employer-registration/subscription/subscription.component').then(
-        (m) => m.SubscriptionComponent,
-      ),
-  },
-  {
-    path: 'register/review',
-    canActivate: [employerStepGuard],
-    data: { stepKey: 'review' },
-    loadComponent: () =>
-      import('./pages/employer-registration/review/review.component').then(
-        (m) => m.ReviewComponent,
+      import('./pages/employer-registration/registration.component').then(
+        (m) => m.RegistrationComponent,
       ),
   },
   {

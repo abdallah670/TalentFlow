@@ -14,23 +14,22 @@
 .sidebar-nav {
   @apply flex-1 flex flex-col gap-xs;
 }
-.nav-item {
-  @apply flex items-center gap-md p-md mb-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-xl transition-all;
-}
-.nav-item-active {
-  @apply bg-secondary-container text-on-secondary-container opacity-100;
-}
-.nav-item-disabled {
-  @apply opacity-60;
+.step-item {
+  @apply flex items-center gap-md p-md mb-xs text-on-surface-variant relative w-full text-left bg-transparent border-none cursor-pointer rounded-xl transition-all;
+  &:hover:not(:disabled) { @apply text-on-surface bg-surface-container-high; }
+  &:focus-visible { @apply outline-none ring-2 ring-primary-container; }
+  &.is-current { @apply bg-secondary-container text-on-secondary-container font-medium; }
+  &.is-past { @apply text-primary; }
+  &.is-future { @apply opacity-60; }
+  &.is-locked { @apply opacity-40 cursor-not-allowed; }
+  &:disabled { cursor: not-allowed; }
 }
 .nav-icon {
-  /* removed apply */
-}
-.nav-icon-completed {
-  @apply text-primary;
+  @apply text-[20px] shrink-0;
+  &.completed { @apply text-primary; }
 }
 .nav-label {
-  @apply font-label text-label font-medium;
+  @apply font-label text-label font-medium text-left;
 }
 .sidebar-footer {
   @apply mt-auto px-md flex items-center gap-sm opacity-50;

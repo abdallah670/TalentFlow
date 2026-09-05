@@ -1,38 +1,45 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { EmployerRegistrationService } from '@features/auth/services/employer-registration.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './empolyersidebar.component.html',
   styleUrl: './empolyersidebar.component.scss',
 })
 export class SidebarComponent {
-  public router = inject(Router);
-  private readonly employerService = inject(EmployerRegistrationService);
+  employerService = inject(EmployerRegistrationService);
+  steps = this.employerService.steps;
+  currentStep = this.employerService.currentStep;
 
-  private readonly routes = [
-    '/register/employer',
-    '/register/workspace',
-    '/register/subscription',
-    '/register/review',
-  ];
+  private readonly icons = ['business', 'domain', 'payments', 'fact_check'];
 
-  private readonly stepKeys = EmployerRegistrationService.ROUTE_ORDER;
-
-  isCompleted(path: string): boolean {
-    const currentIndex = this.routes.indexOf(this.router.url.split('?')[0]);
-    const itemIndex = this.routes.indexOf(path);
-    return itemIndex < currentIndex;
+  /** A step is clickable when it is a previous step or when every step
+   *  before it is valid — i.e. the user cannot jump ahead past an
+   *  invalid/blank step. */
+  canGoTo(stepId: number): boolean {
+    if (stepId <= this.currentStep()) {
+      return true;
+    }
+    for (let i = 1; i < stepId; i++) {
+      if (!this.employerService.isStepValid(i)) {
+        return false;
+      }
+    }
+    return true;
   }
 
-  /** A nav item is locked when a previous onboarding step is not done yet. */
-  isLocked(path: string): boolean {
-    const itemIndex = this.routes.indexOf(path);
-    const stepKey = this.stepKeys[itemIndex];
-    return stepKey !== undefined && !this.employerService.isStepAccessible(stepKey);
+  goTo(stepId: number): void {
+    if (this.canGoTo(stepId)) {
+      this.employerService.setStep(stepId);
+    }
+  }
+
+  iconFor(stepId: number): string {
+    return this.icons[stepId - 1] ?? 'circle';
   }
 }
 

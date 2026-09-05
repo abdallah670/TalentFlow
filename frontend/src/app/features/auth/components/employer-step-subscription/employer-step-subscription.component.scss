@@ -1,6 +1,6 @@
-@reference '../../../../../../styles.scss';
+@reference '../../../../../styles.scss';
 .subscription-container {
-  @apply flex flex-col items-center justify-start w-full bg-background pt-[64px] px-md sm:px-xl lg:px-[64px];
+  @apply flex flex-col items-center justify-start w-full bg-background p-md sm:px-xl lg:p-[48px];
 }
 .header-section {
   @apply text-center mb-xl max-w-3xl mx-auto w-full;
@@ -12,13 +12,15 @@
   @apply font-body text-body text-on-surface-variant;
 }
 .plans-grid {
-  @apply grid grid-cols-1 xl:grid-cols-3 gap-lg max-w-6xl w-full;
+  @apply grid grid-cols-1 xl:grid-cols-3 gap-lg max-w-3xl w-full;
 }
 .plan-card {
   @apply bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm flex flex-col hover:shadow-md transition-shadow;
+  &.selected { @apply border-2 border-primary-container; }
 }
 .plan-card-pro {
   @apply bg-surface-container-lowest rounded-xl border-2 border-primary-container p-lg shadow-lg relative flex flex-col transform md:-translate-y-2;
+  &.selected { box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.35); }
 }
 .plan-badge {
   @apply absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary-container text-on-primary font-label text-label px-sm py-[2px] rounded-full shadow-sm;

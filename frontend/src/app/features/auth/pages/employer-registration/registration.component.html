@@ -1,0 +1,54 @@
+<div class="registration-layout">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+      <div class="content-container">
+        <div class="mobile-branding">
+           <h1 class="logo">TalentFlow</h1>
+           <p class="tagline">Enterprise HR Recruitment</p>
+        </div>
+
+        @switch (currentStep()) {
+          @case (1) {
+            <app-employer-step-company></app-employer-step-company>
+          }
+          @case (2) {
+            <app-employer-step-workspace></app-employer-step-workspace>
+          }
+          @case (3) {
+            <app-employer-step-subscription></app-employer-step-subscription>
+          }
+          @case (4) {
+            <app-employer-step-review></app-employer-step-review>
+          }
+        }
+      </div>
+  </main>
+</div>
+
+<div class="bottom-bar">
+  @if (currentStep() > 1) {
+     <button type="button" class="btn-back" (click)="prevStep()">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        Back
+     </button>
+  } @else {
+     <div></div>
+  }
+
+  <div class="actions-group">
+     @if (currentStep() === 1) {
+        <span class="login-prompt">Already have an account? <a routerLink="/login">Log in</a></span>
+     }
+
+     <button type="button" class="btn-primary" (click)="nextStep()" [disabled]="isLoading()">
+        @if (isLoading()) {
+           <span class="spinner"></span>
+           Submitting...
+        } @else {
+           {{ currentStep() === 4 ? 'Confirm & Launch Workspace' : 'Continue' }}
+           <span class="material-symbols-outlined text-[20px]">{{ currentStep() === 4 ? 'send' : 'arrow_forward' }}</span>
+        }
+     </button>
+  </div>
+</div>
