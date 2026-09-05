@@ -43,6 +43,13 @@ export const AUTH_ROUTES: Routes = [
       ),
   },
   {
+    path: 'register/candidate',
+    loadComponent: () =>
+      import('./pages/candidate-registration/registration.component').then(
+        (m) => m.RegistrationComponent,
+      ),
+  },
+  {
     path: 'verify-email',
     loadComponent: () =>
       import('./pages/verify-email/verify-email.component').then(

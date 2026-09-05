@@ -7,10 +7,7 @@ import { SidebarComponent as EmpolyerSidebarComponent } from './components/empol
 import { LayoutComponent } from './components/empolyer-layout/layout.component';
 import { StepIndicatorComponent } from './components/empolyer-step-indicator/step-indicator.component';
 
-/**
- * Convenience barrel for reusable, feature-agnostic UI components.
- * Components are standalone; import them directly or import this module.
- */
+
 @NgModule({
   imports: [
     NavbarComponent,

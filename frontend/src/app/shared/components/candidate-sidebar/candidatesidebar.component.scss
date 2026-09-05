@@ -1,4 +1,4 @@
-@reference "tailwindcss";
+@reference '../../../../styles.scss';
 .sidebar {
   @apply hidden lg:flex w-[320px] xl:w-[400px] bg-[#efedf6] border-r border-[#c5c5d4] flex-col p-8 xl:p-10 relative overflow-hidden shrink-0 h-full min-h-screen;
 }

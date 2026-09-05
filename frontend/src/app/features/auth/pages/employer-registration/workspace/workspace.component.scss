@@ -1,4 +1,4 @@
-@reference "../../../../../styles.scss";
+@reference '../../../../../../styles.scss';
 .workspace-card {
   @apply w-full max-w-[600px] bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden relative z-10 backdrop-blur-sm mt-[64px];
   box-shadow: 0 4px 24px -4px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0,0,0,0.12);

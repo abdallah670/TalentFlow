@@ -2,6 +2,134 @@
    TalentFlow Enterprise - Material Design 3
    ======================================== */
 
+@import 'tailwindcss';
+
+/* Explicit source scan (Angular templates + component styles) */
+@source './app';
+
+/* ==========================================================================
+   Tailwind v4 theme - mirrors the design mockups' tailwind.config
+   (see Design folders' code.html) and src/styles/_variables.scss tokens.
+   ========================================================================== */
+@theme {
+  /* Colors - Material Design 3 palette */
+  --color-primary: #24389c;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #3f51b5;
+  --color-on-primary-container: #cacfff;
+  --color-primary-fixed: #dee0ff;
+  --color-primary-fixed-dim: #bac3ff;
+  --color-on-primary-fixed: #00105c;
+  --color-on-primary-fixed-variant: #293ca0;
+  --color-inverse-primary: #bac3ff;
+
+  --color-secondary: #565c84;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #c9cffd;
+  --color-on-secondary-container: #51577f;
+  --color-secondary-fixed: #dee0ff;
+  --color-secondary-fixed-dim: #bec4f2;
+  --color-on-secondary-fixed: #12183d;
+  --color-on-secondary-fixed-variant: #3e446b;
+
+  --color-tertiary: #6c3400;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #8f4700;
+  --color-on-tertiary-container: #ffc7a2;
+  --color-tertiary-fixed: #ffdcc6;
+  --color-tertiary-fixed-dim: #ffb784;
+  --color-on-tertiary-fixed: #301400;
+  --color-on-tertiary-fixed-variant: #713700;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-success: #2e7d32;
+  --color-success-container: #e8f5e9;
+  --color-on-success-container: #c8e6c9;
+  --color-warning: #f9a825;
+
+  --color-background: #fbf8ff;
+  --color-on-background: #1a1b22;
+  --color-surface: #fbf8ff;
+  --color-surface-dim: #dbd9e2;
+  --color-surface-bright: #fbf8ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f2fc;
+  --color-surface-container: #efedf6;
+  --color-surface-container-high: #e9e7f0;
+  --color-surface-container-highest: #e3e1ea;
+  --color-surface-variant: #e3e1ea;
+  --color-on-surface: #1a1b22;
+  --color-on-surface-variant: #454652;
+  --color-inverse-surface: #2f3037;
+  --color-inverse-on-surface: #f2eff9;
+  --color-surface-tint: #4355b9;
+
+  --color-outline: #757684;
+  --color-outline-variant: #c5c5d4;
+
+  /* Named spacing scale (xs..xl + gutter) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 4px;
+
+  /* Border radii (design config overrides) */
+  --radius: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  /* Font families */
+  --font-h1: 'Roboto', system-ui, sans-serif;
+  --font-h1-mobile: 'Roboto', system-ui, sans-serif;
+  --font-h2: 'Roboto', system-ui, sans-serif;
+  --font-h3: 'Roboto', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
+  --font-body-sm: 'Roboto', system-ui, sans-serif;
+  --font-label: 'Roboto', system-ui, sans-serif;
+
+  /* Type scale (size, line-height, weight, letter-spacing) */
+  --text-h1: 28px;
+  --text-h1--line-height: 36px;
+  --text-h1--font-weight: 500;
+  --text-h1--letter-spacing: -0.01em;
+
+  --text-h1-mobile: 24px;
+  --text-h1-mobile--line-height: 32px;
+  --text-h1-mobile--font-weight: 500;
+
+  --text-h2: 22px;
+  --text-h2--line-height: 28px;
+  --text-h2--font-weight: 500;
+  --text-h2--letter-spacing: 0;
+
+  --text-h3: 18px;
+  --text-h3--line-height: 24px;
+  --text-h3--font-weight: 500;
+  --text-h3--letter-spacing: 0;
+
+  --text-body: 15px;
+  --text-body--line-height: 22px;
+  --text-body--font-weight: 400;
+  --text-body--letter-spacing: 0;
+
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 18px;
+  --text-body-sm--font-weight: 400;
+  --text-body-sm--letter-spacing: 0;
+
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+  --text-label--font-weight: 500;
+  --text-label--letter-spacing: 0.02em;
+}
+
 :root {
   /* Primary */
   --primary: #24389c;

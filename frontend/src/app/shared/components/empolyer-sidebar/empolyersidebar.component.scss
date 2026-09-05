@@ -1,4 +1,4 @@
-@reference "../../../../styles.scss";
+@reference '../../../../styles.scss';
 .sidebar {
   @apply h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface-container-low flex flex-col py-xl px-md z-10 hidden md:flex;
 }

@@ -1,4 +1,4 @@
-@reference "tailwindcss";
+@reference '../../../../../styles.scss';
 .registration-layout {
   @apply flex min-h-screen w-full bg-[#fbf8ff];
 }
@@ -14,7 +14,7 @@
   .tagline { @apply text-[15px] text-[#454652]; }
 }
 .bottom-bar {
-  @apply fixed bottom-0 right-0 w-full lg:w-[calc(100% - 320px)] xl:w-[calc(100% - 400px)] bg-white border-t border-[#c5c5d4] p-4 px-6 lg:px-8 flex items-center justify-between z-20;
+  @apply fixed bottom-0 right-0 w-full lg:w-[calc(100%_-_320px)] xl:w-[calc(100%_-_400px)]  bg-white border-t border-[#c5c5d4] p-4 px-6 lg:px-8 flex items-center justify-between z-20;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
 }
 .btn-back {

@@ -1,4 +1,4 @@
-@reference "tailwindcss";
+@reference '../../../../../styles.scss';
 .step-header {
   @apply mb-6;
   .step-subtitle { @apply text-xs font-bold text-[#24389c] uppercase tracking-wider mb-2 block; }
