@@ -17,6 +17,7 @@ namespace TalentFlow.Domain.Entities.CandidateModule
         public int? TotalYearsOfExperience { get; set; }
         public string? LinkedInUrl { get; set; }
         public string? PortfolioUrl { get; set; }
+        public string? CoverLetter { get; set; }
 
         // Step 3 - Resume
         public string? ResumeUrl { get; set; }

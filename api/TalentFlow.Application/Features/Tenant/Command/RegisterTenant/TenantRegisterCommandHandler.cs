@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text.RegularExpressions;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Contracts.Infra;
 using TalentFlow.Application.Models;
@@ -70,9 +71,15 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 };
             }
 
-            var existingSlug =
-                await unitOfWork.Tenants.FindAsync(x => x.Slug == request.Slug);
+            // لو مبعتش Slug، اعمله تلقائي من اسم الشركة
+            var slug = string.IsNullOrWhiteSpace(request.Slug)
+                ? GenerateSlug(request.TenantName)
+                : GenerateSlug(request.Slug);
 
+            var existingSlug =
+                await unitOfWork.Tenants.FindAsync(x => x.Slug == slug);
+
+            // لو الـ Slug مكرر، ضيف رقم عشوائي في الآخر لحد ما يبقى فريد
             if (existingSlug.Any())
             {
                 return new BaseCommandResponse<AuthResponse>
@@ -85,7 +92,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             var tenant = new Domain.Entities.TenantModule.Tenant
             {
                 Name = request.TenantName,
-                Slug = request.Slug,
+                Slug = slug,
                 SubscriptionPlan = request.SubscriptionPlan,
                 CompanySize = request.CompanySize,
                 Industry = request.Industry,
@@ -148,11 +155,10 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             });
 
             var user = new Domain.Entities.IdentityModule.User
-
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.UserName,
+                UserName = string.IsNullOrWhiteSpace(request.UserName) ? request.Email : request.UserName,
                 Email = request.Email,
                 TenantId = tenant.Id,
                 IsActive = true
@@ -236,6 +242,15 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                     IsAuthenticated = false
                 }
             };
+        }
+
+        private static string GenerateSlug(string name)
+        {
+            var slug = name.ToLower().Trim();
+            slug = Regex.Replace(slug, @"[^a-z0-9\s-]", "");
+            slug = Regex.Replace(slug, @"\s+", "-");
+            slug = Regex.Replace(slug, @"-+", "-").Trim('-');
+            return slug;
         }
     }
 }

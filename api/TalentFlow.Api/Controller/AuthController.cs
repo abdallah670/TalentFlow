@@ -20,6 +20,7 @@ using TalentFlow.Application.Features.Authontication.Commands.RefreshToken;
 using TalentFlow.Application.Features.Authontication.Commands.Register;
 using TalentFlow.Application.Features.Authontication.Commands.SelectTenant;
 using TalentFlow.Application.Features.Authontication.Commands.Update;
+using TalentFlow.Application.Features.CandidateModule.Commands.CompleteCandidateRegistration;
 using TalentFlow.Application.Features.Tenant.Queries.GetInvitationInfo;
 
 
@@ -242,6 +243,12 @@ namespace TalentFlow.Api.Controller
         {
             var result = await mediator.Send(new GetInvitationInfoQuery { Token = token });
             return Ok(result);
+        }
+        [HttpPost("complete-registration")]
+        public async Task<IActionResult> CompleteRegistration([FromBody] CompleteCandidateRegistrationCommand command)
+        {
+            var result = await mediator.Send(command);
+            return result.Success ? Ok(result) : BadRequest(result);
         }
     }
 }
