@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text.RegularExpressions;
 using TalentFlow.Application.Contracts.Persistence;
 using TalentFlow.Application.Interfaces;
 using TalentFlow.Application.Models;
@@ -42,6 +43,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
 
         public async Task<AuthResponse> Handle(TenantRegisterCommand request, CancellationToken cancellationToken)
         {
+            logger.LogInformation("Handling {Handler}", nameof(TenantRegisterCommandHandler));
             var existingUser = await userManager.FindByEmailAsync(request.Email);
 
             if (existingUser != null)
@@ -65,14 +67,20 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 };
             }
 
-            var existingSlug =
-                await unitOfWork.Tenants.FindAsync(x => x.Slug == request.Slug);
+            // لو مبعتش Slug، اعمله تلقائي من اسم الشركة
+            var slug = string.IsNullOrWhiteSpace(request.Slug)
+                ? GenerateSlug(request.TenantName)
+                : GenerateSlug(request.Slug);
 
+            var existingSlug =
+                await unitOfWork.Tenants.FindAsync(x => x.Slug == slug);
+
+            // لو الـ Slug مكرر، ضيف رقم عشوائي في الآخر لحد ما يبقى فريد
             if (existingSlug.Any())
             {
-                return new AuthResponse
+                return new BaseCommandResponse<AuthResponse>
                 {
-                    IsAuthenticated = false,
+                    Success = false,
                     Message = "Slug already exists."
                 };
             }
@@ -87,7 +95,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             var tenant = new Domain.Entities.TenantModule.Tenant
             {
                 Name = request.TenantName,
-                Slug = request.Slug,
+                Slug = slug,
                 SubscriptionPlan = request.SubscriptionPlan,
                 CompanySize = request.CompanySize,
                 Industry = request.Industry,
@@ -150,11 +158,10 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             });
 
             var user = new Domain.Entities.IdentityModule.User
-
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.UserName,
+                UserName = string.IsNullOrWhiteSpace(request.UserName) ? request.Email : request.UserName,
                 Email = request.Email,
                 TenantId = tenant.Id,
                 IsActive = false
@@ -226,7 +233,7 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
             }
             catch
             {
-            
+                logger.LogWarning(ex, "Role assignment failed for new tenant user, continuing registration.");
             }
 
             var roles = await userManager.GetRolesAsync(user);
@@ -248,6 +255,15 @@ namespace TalentFlow.Application.Features.Tenant.Command.RegisterTenant
                 RefreshTokenExpiration = DateTime.UtcNow.AddDays(jwtSettings.RefreshTokenDurationInDays),
                 Message = "Registration successful. Please check your email to verify your account."
             };
+        }
+
+        private static string GenerateSlug(string name)
+        {
+            var slug = name.ToLower().Trim();
+            slug = Regex.Replace(slug, @"[^a-z0-9\s-]", "");
+            slug = Regex.Replace(slug, @"\s+", "-");
+            slug = Regex.Replace(slug, @"-+", "-").Trim('-');
+            return slug;
         }
     }
 }

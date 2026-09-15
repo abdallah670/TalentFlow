@@ -13,6 +13,6 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
         public string UserName { get; set; } = default!;
         public string Email { get; set; } = default!;
         public string Password { get; set; } = default!;
-        public string ConfirmPassword { get; set; } = default!;
+        public string CompanyName { get; set; } = default!;
     }
 }

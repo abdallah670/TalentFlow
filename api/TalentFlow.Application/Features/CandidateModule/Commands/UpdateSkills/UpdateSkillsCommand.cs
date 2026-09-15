@@ -6,6 +6,7 @@ namespace TalentFlow.Application.Features.CandidateModule.Commands.UpdateSkills
     {
         public Guid UserId { get; set; }
         public List<Guid> SkillIds { get; set; } = new();
+        public string? CoverLetter { get; set; }
     }
 
     public class UpdateSkillsResponse

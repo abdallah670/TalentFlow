@@ -40,15 +40,7 @@ namespace TalentFlow.Application.Features.Authontication.Commands.Register
 
         public async Task<AuthResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            if (request.Password != request.ConfirmPassword)
-            {
-                return new AuthResponse
-                {
-                    IsAuthenticated = false,
-                    Message = "Passwords do not match."
-                };
-            }
-
+            logger.LogInformation("Handling {Handler}", nameof(RegisterCommandHandler));
             var existinguser = await userManager.FindByEmailAsync(request.Email);
             if (existinguser is not null)
             {

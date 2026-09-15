@@ -395,6 +395,9 @@ namespace TalentFlow.Persistence.Migrations
                     b.Property<DateTime?>("AvailableFrom")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CoverLetter")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
